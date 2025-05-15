@@ -1,0 +1,397 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ANLEITUNG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 25px 35px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            max-width: 720px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .nav-button {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #073763;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 6px;
+        }
+
+        h3 {
+            color: #165ba8;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        h4 {
+            color: #1a73e8;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #444;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        img.instruction-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 15px auto 25px auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><button class="nav-button" data-href="/login">Login</button></li>
+                    <li><button class="nav-button" data-href="/!">Produktliste</button></li>
+                    <li><button class="nav-button" data-href="/AGB">AGBs</button></li>
+                    <li><button class="nav-button" data-href="/info">Kundenseite</button></li>
+                    <li><button class="nav-button" data-href="/!sys">Hilfe</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>ANLEITUNGEN</h1>
+
+            <section id="login">
+                <h2>1. Einloggen</h2>
+                <p>Um dich einzuloggen, brauchst du ein Passwort und Benutzername.</
+                
+                <p>Falls du eines davon nicht kennst, frag Henrik oder Mika :)</p>
+
+                <ol>
+                    <li>Gib deinen Benutzername und das Passwort ein</li>
+                </ol>
+                
+                <ol start="2">
+                    <li>Drücke ENTER</li>
+                </ol>
+                
+                <ol start="3">
+                    <li>Du solltest jetzt auf die Webseite von deinem Shop kommen, wenn nicht frag einen von uns :)</li>
+                </ol>
+            </section>
+
+            <section id="shop-webside">
+                <h2>2. SHOP WEBSIDE</h2>
+                <h3>1. ALLGEMEINES</h3>
+                <p>Über diese Webseite kann man Produkte an eine Kundennummer "senden".</p>
+
+                <p>Dabei wird das ausgewählte Produkt an die Liste des Kunden angehängt.</p>
+
+                <p>Dabei werden alle Produkte von allen Shops an der Kasse für die angegebene Kundennummer zusammengezählt</p>
+
+                <h3>2. Produkte an Kundennummer "senden"</h3>
+                <p>Um ein Produkt an eine Kundennummer zu "senden", musst du erst einmal eine Kundennummer eingeben.</p>
+
+                <p>Wenn du jetzt ein Produkt wählst, wird es an diese Nummer gesendet.</p>
+
+                <p>An der Kasse ist dann eine Liste mit allem was die Kundennummer gekauft hat.</p>
+
+                <h4>WICHTIG => WENN DU EIN PRODUKT KAUFST, WIRD DIE KUNDENNUMMER ZURÜCKGESETZT!!!</h4>
+
+                <h3>3. Produkte und deren Preis bearbeiten</h3>
+                <p>Um den Namen oder den Preis von einem Produkt zu ändern, musst du nur auf das kleine Zahnrad drücken und im unteren Teil der Webseite die Einstellungen ändern :)</p>
+            </section>
+
+            <section id="kasse-bedienen">
+                <h2>KASSE BEDIENEN</h2>
+                <p>Die Kasse ist sehr einfach zu bedienen, da es nur 2 wichtige Teile gibt.</p>
+
+                <h3>1. An der Seite siehst du immer alle Bestellungen.</h3>
+                <p>Jeder Balken steht für eine Kundennummer.</p>
+
+                <p>Nachdem der Kunde bezahlt hat, drückst du einfach auf das kleine Kästchen an der ganz linken Seite der Bestellung und diese wird von der Liste gelöscht.</p>
+
+                <h3>2. Oben rechts siehst du wieviel Geld schon eingenommen wurde.</h3>
+                <p>Sobald eine Bestellung reinkommt, erhöht sich dieser Wert um den Wert des Produktes.</p>
+            </section>
+            <section id="Registrieren">
+                <h2>REGISTRIEREN</h2>
+                <p>Du musst nur deinen Benutzernamen (oftmals dein Shop) eingeben, eine E-Mail brauchst du nicht.</p>
+                <br>
+                <p>Dein Passwort muss mindestens 8 Zeichen lang sein und minedestens 1 Zahl enthalten. </p>
+                <br>
+                <br>
+                {% load static %}
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ANLEITUNG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 25px 35px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            max-width: 720px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .nav-button {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #073763;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 6px;
+        }
+
+        h3 {
+            color: #165ba8;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        h4 {
+            color: #1a73e8;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #444;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        img.instruction-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 15px auto 25px auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><button class="nav-button" data-href="/login">Login</button></li>
+                    <li><button class="nav-button" data-href="/!">Produktliste</button></li>
+                    <li><button class="nav-button" data-href="/AGB">AGBs</button></li>
+                    <li><button class="nav-button" data-href="/info">Kundenseite</button></li>
+                    <li><button class="nav-button" data-href="/!sys">Hilfe</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>ANLEITUNGEN</h1>
+
+            <section id="login">
+                <h2>1. Einloggen</h2>
+                <p>Um dich einzuloggen, brauchst du ein Passwort und Benutzername.</
+                
+                <p>Falls du eines davon nicht kennst, frag Henrik oder Mika :)</p>
+
+                <ol>
+                    <li>Gib deinen Benutzername und das Passwort ein</li>
+                </ol>
+                
+                <ol start="2">
+                    <li>Drücke ENTER</li>
+                </ol>
+                
+                <ol start="3">
+                    <li>Du solltest jetzt auf die Webseite von deinem Shop kommen, wenn nicht frag einen von uns :)</li>
+                </ol>
+            </section>
+
+            <section id="shop-webside">
+                <h2>2. SHOP WEBSIDE</h2>
+                <h3>1. ALLGEMEINES</h3>
+                <p>Über diese Webseite kann man Produkte an eine Kundennummer "senden".</p>
+
+                <p>Dabei wird das ausgewählte Produkt an die Liste des Kunden angehängt.</p>
+
+                <p>Dabei werden alle Produkte von allen Shops an der Kasse für die angegebene Kundennummer zusammengezählt</p>
+
+                <h3>2. Produkte an Kundennummer "senden"</h3>
+                <p>Um ein Produkt an eine Kundennummer zu "senden", musst du erst einmal eine Kundennummer eingeben.</p>
+
+                <p>Wenn du jetzt ein Produkt wählst, wird es an diese Nummer gesendet.</p>
+
+                <p>An der Kasse ist dann eine Liste mit allem was die Kundennummer gekauft hat.</p>
+
+                <h4>WICHTIG => WENN DU EIN PRODUKT KAUFST, WIRD DIE KUNDENNUMMER ZURÜCKGESETZT!!!</h4>
+
+                <h3>3. Produkte und deren Preis bearbeiten</h3>
+                <p>Um den Namen oder den Preis von einem Produkt zu ändern, musst du nur auf das kleine Zahnrad drücken und im unteren Teil der Webseite die Einstellungen ändern :)</p>
+            </section>
+
+            <section id="kasse-bedienen">
+                <h2>KASSE BEDIENEN</h2>
+                <p>Die Kasse ist sehr einfach zu bedienen, da es nur 2 wichtige Teile gibt.</p>
+
+                <h3>1. An der Seite siehst du immer alle Bestellungen.</h3>
+                <p>Jeder Balken steht für eine Kundennummer.</p>
+
+                <p>Nachdem der Kunde bezahlt hat, drückst du einfach auf das kleine Kästchen an der ganz linken Seite der Bestellung und diese wird von der Liste gelöscht.</p>
+
+                <h3>2. Oben rechts siehst du wieviel Geld schon eingenommen wurde.</h3>
+                <p>Sobald eine Bestellung reinkommt, erhöht sich dieser Wert um den Wert des Produktes.</p>
+            </section>
+            <section id="Registrieren">
+                <h2>REGISTRIEREN</h2>
+                <p>Du musst nur deinen Benutzernamen (oftmals dein Shop) eingeben, eine E-Mail brauchst du nicht.</p>
+                <br>
+                <p>Dein Passwort muss mindestens 8 Zeichen lang sein und minedestens 1 Zahl enthalten </p>
+        </main>
+    </div>
+
+<script>
+    const navButtons = document.querySelectorAll('.nav-button');
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            window.location.href = button.dataset.href;
+        });
+    });
+</script>
+</body>
+</html>
+
+
+        </main>
+    </div>
+
+<script>
+    const navButtons = document.querySelectorAll('.nav-button');
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            window.location.href = button.dataset.href;
+        });
+    });
+</script>
+</body>
+</html>
+

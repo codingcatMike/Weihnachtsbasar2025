@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Shop erstellen{% endblock title %}
+
+{% block content %}
+<div class="container">
+<h1>Shop Registrieren</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="password" name="one-time-password" placeholder="Einmaliges Passwort (vom Admin)">
+    <button type="submit">Registrieren</button>
+</form>
+</div>
+{% endblock %}
