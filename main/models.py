@@ -21,3 +21,4 @@ class Shop(models.Model):
 
 
 
+

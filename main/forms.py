@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Shop
+from .models import *
 from django import forms
 
 
@@ -21,3 +21,13 @@ class ShopAddForm(forms.ModelForm):
         model = Shop
         fields = ['name', 'sellers']
 
+
+
+class ProductAddForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'shop']
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['shop'].queryset = Shop.objects.filter(sellers=user)

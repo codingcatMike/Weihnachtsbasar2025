@@ -29,6 +29,10 @@ urlpatterns = [
     path("help", help, name="help"),
     path("get-onetime-password", generate_one_time_password, name="get-onetime-password"),
     path("create-shop", CreateShop, name="createShop"),
+    path("AGB", AGB, name="AGB"),
+    path("Shop/<id>", Shop_view, name="Shop"),
+    path("Shop", Shop_view, name="Shop"),
+    path("create_product", create_product, name="create_product"),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT, "show_indexes": True}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -5,25 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #f0f0f0; /* neutral light background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
 
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        background-color: #f0f0f0;
+        /* Remove these properties */
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* height: 100vh; */
+    }
+
+
 
         h1, h2, h3, h4, h5, h6 {
             color: #333;
@@ -93,20 +89,56 @@
     </style>
 </head>
 <body>
-        <form method="post" action="{% url 'logout' %}" style="position: absolute; top: 10px; right: 10px;">
-            <button type="submit">Logout</button>
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" style="position: absolute; top: 10px; right: 10px; width: 100px; height: 40px;">
+            <button type="submit">Logout as {{ user.username }}</button>
             {% csrf_token %}
         </form>
-<div style="position: absolute; top: 5px; left: 10px;">
-        {% if user.is_authenticated %}
-        <p> Logged in as: {{ user.username }} </p>
         {% else %}
-        <h2> Not logged in </h2>
-        {% endif %}  
+        <button type="button" onclick="window.location.href='{% url 'login' %}'" style="position: absolute; top: 10px; right: 10px; width: 100px; height: 40px;">Login</button>
+        <button type="button" onclick="window.location.href='{% url 'signup' %}'" style="position: absolute; top: 10px; right: 120px; width: 100px; height: 40px;">Signup</button>
+        {% endif %}
+<div style="position: absolute; top: 5px; left: 10px;">
+    <button type="button" onclick="window.location.href='{% url 'index' %}'"> 🏠 </button>
     </div>  
 
+
         {% block content %}{% endblock content %}
+<footer style="position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; align-items: center;">
+    {% if messages %}
+        {% for message in messages %}
+            <div style="background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %}; padding: 10px; margin: 5px; {% if message.tags == 'success' %}color: #3c763d;{% elif message.tags == 'warning' %}color: rgb(255, 255, 255);{% elif message.tags == 'error' %}color: rgb(255, 255, 255);{% endif %}; position: relative;" class="message">
+                <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; cursor: pointer;">&times;</button>
+                <br>
+                {{ message|safe }}
+                
+            </div>
+            <script>
+                setTimeout(function() {
+                    var messageElement = document.querySelectorAll('.message')[{{ forloop.counter0 }}];
+                    if (messageElement) {
+                        messageElement.style.display = 'none';
+                    }
+                }, 10000);
+            </script>
+        {% endfor %}
+    {% endif %}
+</footer>
 
+<script>
+    function copyOtp() {
+        var textarea = document.getElementById('otp-textarea');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '10px';
+        textarea.style.top = '10px';
+        textarea.select();
+        document.execCommand('copy');
+        textarea.style.position = 'absolute';
+        textarea.style.left = '-9999px';
+        textarea.style.background_color = 'white'
+    }
+</script>
 
+</footer>
 </body>
 </html>

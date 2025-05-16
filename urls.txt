@@ -1,0 +1,6 @@
+Login bei /accounts/Login
+Register bei /accounts/signup
+Produktliste bei /products
+Help bei /help
+AGBs bei /AGBs
+

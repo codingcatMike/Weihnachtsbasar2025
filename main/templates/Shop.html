@@ -4,5 +4,8 @@
 <div class="container">
     <h1>Shop</h1>
     <p>Shop</p>
+    {% for product in products %}
+    <p>{{ product.name }} - {{ product.price }}€</p>
+    {% endfor %}
 </div>
 {% endblock %}
