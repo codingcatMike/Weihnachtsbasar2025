@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,56 +89,65 @@ button:hover, input[type="submit"]:hover {
     </style>
 </head>
 <body>
-<script>
-let x = Math.random() * 60 + 20;
-let y = Math.random() * 60 + 20;
-let targetX = Math.random() * 60 + 20;
-let targetY = Math.random() * 60 + 20;
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let x = Math.random() * 60 + 20;
+            let y = Math.random() * 60 + 20;
+            let targetX = Math.random() * 60 + 20;
+            let targetY = Math.random() * 60 + 20;
+        
 
 
 
 
-const duration = 70000; // Dauer in ms für einen Übergang
+            const duration = 90000; // Dauer in ms für einen Übergang
 
 
 
 
-let startTime = null;
-
-function animate(timestamp) {
-    if (!startTime) startTime = timestamp;
-    let progress = (timestamp - startTime) / duration;
-    if (progress > 1) progress = 1;
-
-    // Lineare Interpolation
-    let currentX = x + (targetX - x) * progress;
-    let currentY = y + (targetY - y) * progress;
-
-    document.body.style.background = `
-        repeating-radial-gradient(
-            circle at ${currentX}% ${currentY}%,
-            #808080,
-            #505050 40px,
-            #8b8b8b 40px,
-            #6e6e6e 80px
-        )
-    `;
-
-    if (progress < 1) {
-        requestAnimationFrame(animate);
-    } else {
-        // Nach Ablauf: neues Ziel setzen
-        x = targetX;
-        y = targetY;
-        targetX = Math.random() * 60 + 20;
-        targetY = Math.random() * 60 + 20;
-        startTime = null;
-        requestAnimationFrame(animate);
-    }
-}
-
-requestAnimationFrame(animate);
-</script>
+            let startTime = null;
+        
+            function animate(timestamp) {
+                if (!startTime) {
+                    startTime = timestamp;
+                    console.log("Startwerte:", x.toFixed(2), y.toFixed(2));
+                    console.log("Zielwerte:", targetX.toFixed(2), targetY.toFixed(2));
+                }
+        
+                let progress = (timestamp - startTime) / duration;
+                if (progress > 1) progress = 1;
+        
+                // Lineare Interpolation
+                let currentX = x + (targetX - x) * progress;
+                let currentY = y + (targetY - y) * progress;
+        
+                document.body.style.background = `
+                    repeating-radial-gradient(
+                        circle at ${currentX}% ${currentY}%,
+                        #808080,
+                        #505050 40px,
+                        #8b8b8b 40px,
+                        #6e6e6e 80px
+                    )
+                `;
+        
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    // Nach Ablauf: neue Zielwerte setzen
+                    x = targetX;
+                    y = targetY;
+                    targetX = Math.random() * 60 + 20;
+                    targetY = Math.random() * 60 + 20;
+                    startTime = null;
+                    requestAnimationFrame(animate);
+                }
+            }
+        
+            requestAnimationFrame(animate);
+        });
+        </script>
+        
 
 {% if user.is_authenticated %}
 <div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
@@ -155,8 +165,11 @@ requestAnimationFrame(animate);
 {% endif %}
 
 <div style="position: absolute; top: 5px; left: 10px;">
-    <button type="button" onclick="window.location.href='{% url 'index' %}'"> 🏠 </button>
+    <a href="{% url 'index' %}">
+        <img src="{% static 'main/images/logo.png' %}" alt="Logo" style="height: 50px;">
+    </a>
 </div>
+
 
 {% block content %}{% endblock content %}
 

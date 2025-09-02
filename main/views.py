@@ -281,16 +281,45 @@ def pay_id(request, id):
     order.payed = True
     order.save()
 
-    # Add income
+    # Optional: record income
     Income.objects.create(price=order.price, order=order, reason='Order')
 
-    # Send update to WebSocket clients
-    send_orders_update()
+    # Notify pay screen to remove order
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "pay_screen_updates",  # MUST match PayScreenConsumer.group_name
+        {
+            "type": "order_paid",
+            "order_id": order.id
+        }
+    )
 
-    log(f'The User account of {request.user.username} paid an order with id {id}')
+    return JsonResponse({"status": "ok", "order_id": order.id})
 
-    # Redirect to cash register page
-    return redirect('cash_register')
+def display_order(request, id):
+    order = get_object_or_404(Order, id=id)
+    order_data = {
+        "id": order.id,
+        "customer_id": order.customer.id,
+        "price": float(order.price),
+        "items": [
+            {"name": i.product.name, "quantity": i.quantity, "price": float(i.product.price)}
+            for i in order.orderitem_set.all()
+        ]
+    }
+
+    # Send order to PayScreen via correct group and type
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "pay_screen_updates",  # MUST match PayScreenConsumer.group_name
+        {
+            "type": "new_onscreen",  # MUST match the async def in consumer
+            "order": order_data
+        }
+    )
+
+    return JsonResponse({"status": "ok", "order_id": order.id})
+
 
 def ShopSettings(request, shop_id):
     shop = get_object_or_404(Shop, id=shop_id)
@@ -359,17 +388,5 @@ def ShopSettings(request, shop_id):
     return render(request, "shop_settings.html", context)
 
 
-def pay_Screen(request, id):
-    order = Order.objects.get(id=id)
-    order_items = [] 
-    for item in order.orderitem_set.all():
-        order_items.append({
-            "name": item.product.name,
-            "quantity": item.quantity, 
-            "price": item.product.price
-        })
-
-    return render(request, "pay_Screen.html", {
-        "order": order,
-        "order_items": order_items,
-    })
+def pay_Screen(request):
+    return render(request, "pay_Screen.html", {})

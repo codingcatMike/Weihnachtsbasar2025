@@ -44,6 +44,7 @@ class PayConsumer(AsyncWebsocketConsumer):
             "income": event.get("income_money", 0),
         }))
 
+
 class PayScreenConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.group_name = "pay_screen_updates"
@@ -70,12 +71,15 @@ class PayScreenConsumer(AsyncWebsocketConsumer):
     # Receive from server (group)
     async def new_onscreen(self, event):
         order = event["order"]
-        # Only send the order if it matches current_order_id
-        if self.current_order_id and order["id"] == self.current_order_id:
-            await self.send(text_data=json.dumps({
-                "order": order
-            }))
+        await self.send(text_data=json.dumps({
+            "order": order
+        }))
 
+    async def order_paid(self, event):
+        """Remove order from display when paid"""
+        await self.send(text_data=json.dumps({
+            "paid_order_id": event["order_id"]
+        }))
 
 # main/utils.py
 def send_orders_update():

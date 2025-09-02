@@ -1,14 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Pay Screen</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
         table {
+            font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
@@ -24,84 +22,64 @@
 </head>
 <body>
 
-<table id="orders-table">
-    <tr>
-        <th>Anzahl</th>
-        <th>Produkt</th>
-        <th>Einzelpreis</th>
-        <th>Total</th>
-    </tr>
-    {% for product in order.orderitem_set.all %}
-    <tr>
-        <td>{{ product.quantity }}</td>
-        <td>{{ product.product.name }}</td>
-        <td>{{ product.product.price }}€</td>
-        <td>{{ product.total }}€</td>
-    </tr>
-    {% endfor %}
-    <tr>
-        <td></td>
-        <td></td>
-        <td><strong>Gesamt:</strong></td>
-        <td><strong id="total-sum">{{ order.price }}€</strong></td>
-    </tr>
-</table>
+<h2>Aktuelle Bestellung</h2>
+<div id="order-container">
+    <!-- Order table will appear here -->
+</div>
 
 <script>
-let socket = new WebSocket(
-    (window.location.protocol === "https:" ? "wss://" : "ws://") 
-    + window.location.host 
-    + "/ws/pay_screen/"
-);
+let socket = new WebSocket("ws://" + window.location.host + "/ws/pay_screen/");
 
 socket.onopen = function() {
-    console.log("Connected to WebSocket");
+    console.log("Connected to PayScreen WebSocket");
 };
 
 socket.onclose = function() {
-    console.log("Disconnected from WebSocket");
+    console.log("Disconnected from PayScreen WebSocket");
 };
 
 socket.onmessage = function(e) {
     const data = JSON.parse(e.data);
+    const container = document.getElementById("order-container");
+
+    // Clear display if order is None
+    if(data.order === null) {
+        container.innerHTML = "<p>Keine Bestellung angezeigt</p>";
+        return;
+    }
 
     if(data.order) {
         const order = data.order;
+        let itemsHtml = order.items.map(item => 
+            `<tr>
+                <td>${item.quantity}</td>
+                <td>${item.name}</td>
+                <td>${item.price}€</td>
+                <td>${(item.quantity * item.price)}€</td>
+            </tr>`).join("");
 
-        // Replace table rows except for header and total row
-        const table = document.getElementById("orders-table");
-        table.innerHTML = `
-            <tr>
-                <th>Anzahl</th>
-                <th>Produkt</th>
-                <th>Einzelpreis</th>
-                <th>Total</th>
-            </tr>
+        const tableHtml = `
+            <table>
+                <tr>
+                    <th>Anzahl</th>
+                    <th>Produkt</th>
+                    <th>Einzelpreis</th>
+                    <th>Gesamt</th>
+                </tr>
+                ${itemsHtml}
+                <tr>
+                    <td colspan="3"><strong>Total (innsgesammt):</strong></td>
+                    <td><strong>${order.price}€</strong></td>
+                </tr>
+            </table>
         `;
 
-        let totalSum = 0;
-        order.items.forEach(product => {
-            const row = document.createElement("tr");
-            const total = product.quantity * product.price;
-            totalSum += total;
-            row.innerHTML = `
-                <td>${product.quantity}</td>
-                <td>${product.name}</td>
-                <td>${product.price}€</td>
-                <td>${total}€</td>
-            `;
-            table.appendChild(row);
-        });
+        container.innerHTML = tableHtml;
+    }
 
-        // Add total row
-        const totalRow = document.createElement("tr");
-        totalRow.innerHTML = `
-            <td></td>
-            <td></td>
-            <td><strong>Gesamt:</strong></td>
-            <td><strong>${totalSum}€</strong></td>
-        `;
-        table.appendChild(totalRow);
+    // Optionally handle order removal if it's paid
+    if(data.paid_order_id) {
+        container.innerHTML = "<p>Keine Bestellung angezeigt</p>";
     }
 };
 </script>

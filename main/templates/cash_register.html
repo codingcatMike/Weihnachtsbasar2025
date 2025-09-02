@@ -23,10 +23,9 @@
                     {% endfor %}
                     ({{ order.created_at|date:"d.m.Y H:i" }}/Order ID: {{ order.id }})
                 </p>
-                <form class="delete-order-form" data-order-id="{{ order.id }}" method="post" action="{% url 'pay_id' order.id %}">
-                    {% csrf_token %}
-                    <button type="submit">Delete Order {{ order.id }}</button>
-                </form>
+                <button class="display-pay-button" data-order-id="{{ order.id }}">
+                    Display on Pay Screen
+                </button>
             </div>
         {% endfor %}
     </div>
@@ -35,9 +34,9 @@
 <script>
 let socket = null;
 
+// Update connection status indicator
 function updateConnectionStatus(state) {
     const statusEl = document.getElementById("connection-status");
-
     if(state === "connected") {
         statusEl.textContent = "Live-Server verbunden (click to disconnect)";
         statusEl.style.color = "rgba(45, 210, 0, 1)";
@@ -53,13 +52,11 @@ function updateConnectionStatus(state) {
     }
 }
 
+// Connect WebSocket
 function connectSocket() {
     updateConnectionStatus("connecting");
-    if(localStorage.getItem("lsc") == "0") {
-        console.log("Live-Server ist deaktiviert");
-        return;
-    }
     socket = new WebSocket("ws://" + window.location.host + "/ws/pay/");
+
 
     socket.onopen = function() {
         updateConnectionStatus("connected");
@@ -71,62 +68,54 @@ function connectSocket() {
 
     socket.onmessage = function(e) {
         const data = JSON.parse(e.data);
-        const ordersDiv = document.getElementById("orders");
-
-        if(data.orders) {
-            ordersDiv.innerHTML = "";
-            data.orders.forEach(order => {
-                const items = order.items.map(i => `${i.quantity} x ${i.name}`).join(", ");
-                const orderHtml = `
-                <div class="order" id="order-${order.id}">
-                    <p>${order.customer_id}: ${order.price}€</p>
-                    <p>${items}</p>
-                    <form method="post" action="/pay/${order.id}/" class="delete-order-form">
-                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                        <button type="submit">Delete Order ${order.id}</button>
-                    </form>
-                </div>`;
-                ordersDiv.innerHTML += orderHtml;
-            });
-            attachDeleteListeners();
-        }
-
-        if(data.income_money !== undefined) {
-            document.getElementById("income").textContent = data.income_money;
+        // Remove order from page if it was marked as paid
+        if(data.paid_order_id) {
+            const el = document.getElementById(`order-${data.paid_order_id}`);
+            if(el) el.remove();
         }
     };
 }
 
-function attachDeleteListeners() {
-    document.querySelectorAll(".delete-order-form").forEach(form => {
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
-            const url = form.action;
-            const csrftoken = form.querySelector("input[name=csrfmiddlewaretoken]").value;
+connectSocket();
 
-            fetch(url, { method: "POST", headers: { "X-CSRFToken": csrftoken } })
-                .then(response => { if (!response.ok) console.error("Fehler beim Löschen", response.status); });
-        });
-    });
-}
+// Handle display/pay buttons
+document.addEventListener("click", function(e) {
+    if(e.target.classList.contains("display-pay-button")) {
+        const orderId = e.target.dataset.orderId;
 
-attachDeleteListeners();
+        if(!e.target.dataset.displaying) {
+            // First click: send order to pay screen
+            fetch(`/display_order/${orderId}/`, {
+                method: "POST",
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            })
+            .then(res => res.json())
+            .then(data => {
+                e.target.textContent = "NOW DISPLAYING ORDER ON SCREEN - MARK AS PAYED";
+                e.target.dataset.displaying = "true";
+            });
+        } else {
+            // Second click: mark order as paid
+            fetch(`${orderId}/`, {
+                method: "POST",
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            })
+            .then(res => res.json())
+            .then(data => {
+                const orderDiv = document.getElementById(`order-${orderId}`);
+                if(orderDiv) orderDiv.remove();
+            });
+        }
+    }
+});
 
-if (localStorage.getItem("lsc") === "1") {
-    connectSocket();
-} else {
-    updateConnectionStatus("disconnected"); // reflect the disabled state
-}
-
-
+// Toggle WebSocket connection by clicking status text
 document.getElementById("connection-status").addEventListener("click", function() {
     if(socket && socket.readyState === WebSocket.OPEN) {
         updateConnectionStatus("closing");
         socket.close();
-        localStorage.setItem("lsc", "0");
     } else if(!socket || socket.readyState === WebSocket.CLOSED) {
         connectSocket();
-        localStorage.setItem("lsc", "1");
     }
 });
 
