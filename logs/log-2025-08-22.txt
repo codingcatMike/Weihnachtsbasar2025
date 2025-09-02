@@ -1,0 +1,15 @@
+Log file for 2025-08-22
+Created at: 2025-08-22 17:49:10.218463
+Device : nt
+User : mikaz
+Python version : 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]
+--------------------------------------------------
+
+[Info] main accessed / page --at-- 2025-08-22 17:49:10.207436
+[Info] main accessed / page --at-- 2025-08-22 18:01:30.802974
+[Info] main accessed http://localhost:8000/Shop/5/settings/ page --at-- 2025-08-22 18:04:56.152183
+[Info] The Product of main has been created successfully with name erdbeere --at-- 2025-08-22 18:05:09.098130
+[Info] main accessed http://localhost:8000/create-product/ page --at-- 2025-08-22 18:05:09.144614
+[Info] main accessed http://localhost:8000/Shop/5/ page --at-- 2025-08-22 18:05:19.668139
+[Info] The User account of main sent an order with customer id 34 and products [4, 4, 6, 6] --at-- 2025-08-22 18:05:19.871976
+[Info] main accessed / page --at-- 2025-08-22 18:05:44.706237

@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Cash Register{% endblock title %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 80px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h1>Cash Register</h1>
+    <h2>Aktuelles Geld: <span id="income">{{ income }}</span>€</h2>
+
+    <div id="connection" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+        <p id="connection-status" style="margin: 0; padding: 5px; border-radius: 4px; cursor: pointer; color: red;">
+            Nicht verbunden oder Verbindung wird aufgebaut…
+        </p>
+    </div>
+
+    <div id="orders">
+        {% for order in orders %}
+            <div class="order" id="order-{{ order.id }}">
+                <p>{{ order.customer.id }}: {{ order.price }}€</p>
+                <p>
+                    {% for product in order.orderitem_set.all %}
+                        {{ product.quantity }} x {{ product.product.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <form class="delete-order-form" data-order-id="{{ order.id }}" method="post" action="{% url 'pay_id' order.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete Order {{ order.id }}</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+let socket = null;
+
+function updateConnectionStatus(state) {
+    const statusEl = document.getElementById("connection-status");
+
+    if(state === "connected") {
+        statusEl.textContent = "Live-Server verbunden (click to disconnect)";
+        statusEl.style.color = "rgba(45, 210, 0, 1)";
+    } else if(state === "disconnected") {
+        statusEl.textContent = "Nicht verbunden (click to connect)";
+        statusEl.style.color = "red";
+    } else if(state === "connecting") {
+        statusEl.textContent = "Verbindung wird aufgebaut…";
+        statusEl.style.color = "orange";
+    } else if(state === "closing") {
+        statusEl.textContent = "Verbindung wird geschlossen…";
+        statusEl.style.color = "darkorange";
+    }
+}
+
+function connectSocket() {
+    updateConnectionStatus("connecting");
+    if(localStorage.getItem("lsc") == "0") {
+        console.log("Live-Server ist deaktiviert");
+        return;
+    }
+    socket = new WebSocket("ws://" + window.location.host + "/ws/pay/");
+
+    socket.onopen = function() {
+        updateConnectionStatus("connected");
+    };
+
+    socket.onclose = function() {
+        updateConnectionStatus("disconnected");
+    };
+
+    socket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const ordersDiv = document.getElementById("orders");
+
+        if(data.orders) {
+            ordersDiv.innerHTML = "";
+            data.orders.forEach(order => {
+                const items = order.items.map(i => `${i.quantity} x ${i.name}`).join(", ");
+                const orderHtml = `
+                <div class="order" id="order-${order.id}">
+                    <p>${order.customer_id}: ${order.price}€</p>
+                    <p>${items}</p>
+                    <form method="post" action="/pay/${order.id}/" class="delete-order-form">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                        <button type="submit">Delete Order ${order.id}</button>
+                    </form>
+                </div>`;
+                ordersDiv.innerHTML += orderHtml;
+            });
+            attachDeleteListeners();
+        }
+
+        if(data.income_money !== undefined) {
+            document.getElementById("income").textContent = data.income_money;
+        }
+    };
+}
+
+function attachDeleteListeners() {
+    document.querySelectorAll(".delete-order-form").forEach(form => {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const url = form.action;
+            const csrftoken = form.querySelector("input[name=csrfmiddlewaretoken]").value;
+
+            fetch(url, { method: "POST", headers: { "X-CSRFToken": csrftoken } })
+                .then(response => { if (!response.ok) console.error("Fehler beim Löschen", response.status); });
+        });
+    });
+}
+
+attachDeleteListeners();
+
+if (localStorage.getItem("lsc") === "1") {
+    connectSocket();
+} else {
+    updateConnectionStatus("disconnected"); // reflect the disabled state
+}
+
+
+document.getElementById("connection-status").addEventListener("click", function() {
+    if(socket && socket.readyState === WebSocket.OPEN) {
+        updateConnectionStatus("closing");
+        socket.close();
+        localStorage.setItem("lsc", "0");
+    } else if(!socket || socket.readyState === WebSocket.CLOSED) {
+        connectSocket();
+        localStorage.setItem("lsc", "1");
+    }
+});
+
+window.addEventListener("beforeunload", () => {
+    if(socket) updateConnectionStatus("closing");
+});
+</script>
+{% endblock content %}

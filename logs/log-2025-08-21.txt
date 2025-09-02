@@ -1,0 +1,106 @@
+Log file for 2025-08-21
+Created at: 2025-08-21 17:08:12.072774
+Device : nt
+User : mikaz
+Python version : 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]
+--------------------------------------------------
+
+[Info]  accessed / page --at-- 2025-08-21 17:08:12.066289
+[Info] main accessed http://172.30.48.1:8000/accounts/login/ page --at-- 2025-08-21 17:08:24.040519
+[Info] main accessed / page --at-- 2025-08-21 17:17:54.437472
+[Info] main accessed / page --at-- 2025-08-21 17:18:13.322779
+[Info] main accessed / page --at-- 2025-08-21 17:19:22.795423
+[Info] main accessed / page --at-- 2025-08-21 17:19:42.527067
+[Info] main accessed / page --at-- 2025-08-21 17:20:50.918277
+[Info] main accessed / page --at-- 2025-08-21 17:21:52.872650
+[Info] main accessed http://172.30.48.1:8000/ page --at-- 2025-08-21 17:21:55.809356
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:22:05.595793
+[Info] The User account of main sent an order with customer id 123321 and products [4] --at-- 2025-08-21 17:22:05.995597
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:22:06.061540
+[Info] main accessed / page --at-- 2025-08-21 17:27:15.800406
+[Info] main accessed / page --at-- 2025-08-21 17:27:33.882099
+[Info] main accessed / page --at-- 2025-08-21 17:27:38.042670
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:28:18.434402
+[Info] The User account of main sent an order with customer id 123456123 and products [4] --at-- 2025-08-21 17:28:18.567787
+[Info] The User account of main sent an order with customer id 0909 and products [4, 4] --at-- 2025-08-21 17:29:26.641620
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:29:26.664282
+[Info] main accessed / page --at-- 2025-08-21 17:30:32.107467
+[Info] The User account of main sent an order with customer id 0000999 and products [4, 4, 4] --at-- 2025-08-21 17:32:25.060530
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:32:25.077457
+[Info] main accessed / page --at-- 2025-08-21 17:38:16.022533
+[Info] main accessed / page --at-- 2025-08-21 17:39:24.953797
+[Info] main accessed / page --at-- 2025-08-21 17:39:48.927715
+[Info] main accessed / page --at-- 2025-08-21 17:43:00.063560
+[Info] The User account of main paid an order with id 11 --at-- 2025-08-21 17:43:16.994007
+[Info] main accessed http://172.30.48.1:8000/pay/ page --at-- 2025-08-21 17:43:17.080444
+[Info] main accessed / page --at-- 2025-08-21 17:46:16.467566
+[Info] The User account of main paid an order with id 12 --at-- 2025-08-21 17:46:19.608279
+[Info] main accessed http://172.30.48.1:8000/pay/ page --at-- 2025-08-21 17:46:19.655575
+[Info] main accessed / page --at-- 2025-08-21 17:46:24.940442
+[Info] The User account of main paid an order with id 13 --at-- 2025-08-21 17:46:33.496413
+[Info] main accessed http://172.30.48.1:8000/pay/ page --at-- 2025-08-21 17:46:33.541707
+[Info] The User account of main paid an order with id 14 --at-- 2025-08-21 17:46:34.449866
+[Info] main accessed http://172.30.48.1:8000/pay/ page --at-- 2025-08-21 17:46:34.495502
+[Info] main accessed / page --at-- 2025-08-21 17:46:38.793924
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:46:46.174751
+[Info] main accessed / page --at-- 2025-08-21 17:46:57.905913
+[Info] main accessed / page --at-- 2025-08-21 17:46:59.376354
+[Info] The User account of main sent an order with customer id 6677 and products [4, 4] --at-- 2025-08-21 17:47:17.173693
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:47:17.189256
+[Info] main accessed http://172.30.48.1:8000/Shop/5/ page --at-- 2025-08-21 17:47:17.236410
+[Info] The User account of main paid an order with id 15 --at-- 2025-08-21 17:47:41.299560
+[Info] main accessed http://172.30.48.1:8000/pay/ page --at-- 2025-08-21 17:47:41.350719
+[Info] main accessed / page --at-- 2025-08-21 17:48:49.736160
+[Info] main accessed / page --at-- 2025-08-21 18:00:36.392085
+[Info] main accessed / page --at-- 2025-08-21 18:00:45.626478
+[Info] main accessed http://localhost:8000/ page --at-- 2025-08-21 18:00:48.391620
+[Info] main accessed http://localhost:8000/Shop/5/ page --at-- 2025-08-21 18:00:59.801504
+[Info] The User account of main sent an order with customer id 009988 and products [4, 4, 4, 4] --at-- 2025-08-21 18:01:00.062604
+[Info] main accessed / page --at-- 2025-08-21 18:01:05.352408
+[Info] main accessed / page --at-- 2025-08-21 18:01:10.783737
+[Info] main accessed / page --at-- 2025-08-21 18:01:11.205516
+[Info] The User account of main paid an order with id 16 --at-- 2025-08-21 18:01:23.424734
+[Info] main accessed http://172.30.48.1:8000/pay/ page --at-- 2025-08-21 18:01:23.465708
+[Info] main accessed / page --at-- 2025-08-21 20:39:25.651500
+[Info] main accessed / page --at-- 2025-08-21 20:42:42.387360
+[Info] main accessed / page --at-- 2025-08-21 20:42:47.273704
+[Info] main accessed / page --at-- 2025-08-21 20:43:51.583187
+[Info] main accessed / page --at-- 2025-08-21 20:43:58.573342
+[Info] main accessed / page --at-- 2025-08-21 20:44:10.205997
+[Info] main accessed / page --at-- 2025-08-21 20:44:29.213174
+[Info] main accessed / page --at-- 2025-08-21 20:44:32.861209
+[Info] main accessed / page --at-- 2025-08-21 20:44:44.805210
+[Info] main accessed / page --at-- 2025-08-21 20:45:14.185932
+[Info] main accessed / page --at-- 2025-08-21 20:45:45.724098
+[Info] main accessed / page --at-- 2025-08-21 20:46:13.631492
+[Info] main accessed / page --at-- 2025-08-21 20:47:37.326676
+[Info] main accessed / page --at-- 2025-08-21 20:48:05.060470
+[Info] main accessed / page --at-- 2025-08-21 20:48:18.882891
+[Info] main accessed / page --at-- 2025-08-21 20:50:56.388935
+[Info] main accessed / page --at-- 2025-08-21 20:52:03.197668
+[Info] main accessed / page --at-- 2025-08-21 20:52:06.388289
+[Info] main accessed / page --at-- 2025-08-21 20:55:35.381857
+[Info] main accessed / page --at-- 2025-08-21 20:55:38.604438
+[Info] main accessed / page --at-- 2025-08-21 20:57:43.040449
+[Info] main accessed / page --at-- 2025-08-21 20:58:55.267859
+[Info] main accessed / page --at-- 2025-08-21 21:00:36.482369
+[Info] main accessed / page --at-- 2025-08-21 21:02:18.598457
+[Info] main accessed / page --at-- 2025-08-21 21:06:09.734944
+[Info] main accessed / page --at-- 2025-08-21 21:06:13.825241
+[Info] main accessed / page --at-- 2025-08-21 21:06:56.647749
+[Info] main accessed / page --at-- 2025-08-21 21:07:27.660658
+[Info] main accessed / page --at-- 2025-08-21 21:07:42.905687
+[Info] main accessed / page --at-- 2025-08-21 21:09:24.877974
+[Info] main accessed / page --at-- 2025-08-21 21:09:28.085121
+[Info] main accessed / page --at-- 2025-08-21 21:09:37.863095
+[Info] main accessed / page --at-- 2025-08-21 21:10:02.062928
+[Info] main accessed / page --at-- 2025-08-21 21:14:41.517081
+[Info] main accessed / page --at-- 2025-08-21 21:14:43.233797
+[Info] main accessed / page --at-- 2025-08-21 21:14:44.509232
+[Info] main accessed / page --at-- 2025-08-21 21:14:49.420385
+[Info] main accessed / page --at-- 2025-08-21 21:14:50.972171
+[Info] main accessed / page --at-- 2025-08-21 21:14:52.131173
+[Info] main accessed / page --at-- 2025-08-21 21:14:52.357199
+[Info] main accessed / page --at-- 2025-08-21 21:14:53.616840
+[Info] main accessed / page --at-- 2025-08-21 21:14:54.470298
+[Info] main accessed / page --at-- 2025-08-21 21:15:00.662278

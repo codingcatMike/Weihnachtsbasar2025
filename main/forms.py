@@ -30,4 +30,19 @@ class ProductAddForm(forms.ModelForm):
 
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['shop'].queryset = Shop.objects.filter(sellers=user)
+
+        if user.is_superuser:
+            queryset = Shop.objects.all()
+        else:
+            queryset = Shop.objects.filter(sellers=user)
+
+        # Modify the display names
+        choices = []
+        for shop in queryset:
+            label = shop.name
+            # Add * if user is superuser but not a seller of this shop
+            if user.is_superuser and user not in shop.sellers.all():
+                label += ' *'
+            choices.append((shop.id, label))
+
+        self.fields['shop'].choices = choices

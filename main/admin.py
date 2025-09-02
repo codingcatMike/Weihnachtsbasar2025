@@ -1,8 +1,9 @@
 from django.contrib import admin
-from django.urls import reverse
-from django.utils.safestring import mark_safe
-from .models import Shop
-
+from .models import *
 
 admin.site.register(Shop)
-
+admin.site.register(Product)
+admin.site.register(Order)
+admin.site.register(Customers)
+admin.site.register(Income)
+admin.site.register(OrderItem)

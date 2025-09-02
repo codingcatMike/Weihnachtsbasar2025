@@ -1,0 +1,24 @@
+Log file for 2025-05-20
+Created at: 2025-05-20 14:46:48.916197
+Device : nt
+User : User
+Python version : 3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.1942 64 bit (AMD64)]
+--------------------------------------------------
+
+[Info] main accessed / page --at-- 2025-05-20 14:46:48.912530
+[Info] The User account of main sent an order with customer id 13 and products [1, 1, 1, 2, 2, 2, 3] --at-- 2025-05-20 14:53:58.171079
+[Info] main accessed http://192.168.178.156:8000/Shop/4 page --at-- 2025-05-20 14:53:58.235913
+[Info] The User account of main sent an order with customer id 13 and products [1, 1, 1, 2, 2, 2, 3] --at-- 2025-05-20 14:54:27.422848
+[Info] main accessed http://192.168.178.156:8000/Shop/4 page --at-- 2025-05-20 14:54:27.492943
+[Info] main accessed / page --at-- 2025-05-20 14:56:06.009101
+[Info] main accessed / page --at-- 2025-05-20 14:58:42.191212
+[Info] The User account of main sent an order with customer id 1 and products [1, 1, 1, 2, 2, 3] --at-- 2025-05-20 14:59:07.430141
+[Info] main accessed http://192.168.178.156:8000/Shop/4 page --at-- 2025-05-20 14:59:07.499376
+[Info] main accessed / page --at-- 2025-05-20 14:59:16.318417
+[Info] main accessed / page --at-- 2025-05-20 14:59:58.000519
+[Info] main accessed / page --at-- 2025-05-20 15:00:54.396433
+[Info] main accessed / page --at-- 2025-05-20 15:02:55.507736
+[Info] main accessed / page --at-- 2025-05-20 15:03:18.848470
+[Info] main accessed / page --at-- 2025-05-20 15:03:50.101099
+[Info] main accessed / page --at-- 2025-05-20 15:05:07.322644
+[Info] main accessed / page --at-- 2025-05-20 15:06:10.772096
