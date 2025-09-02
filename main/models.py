@@ -43,6 +43,10 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1) # Die Menge des Produkts in dieser Bestellung
 
+    @property
+    def total(self):
+        return self.product.price * self.quantity
+
     class Meta:
         # Stellt sicher, dass ein Produkt in einer Bestellung nur einmal vorkommt
         unique_together = ('order', 'product')

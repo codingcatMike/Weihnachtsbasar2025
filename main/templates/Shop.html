@@ -20,33 +20,50 @@ function AddProduct(id, name) {
 
 
 function SendOrder() {
-    if (orders.length == 0) {
+    if (orders.length === 0) {
         alert("Bitte fügen Sie Produkte zum Warenkorb hinzu.");
         return;
     }
-    if (document.querySelector('input[name="customer_id"]').value == "") {
+    const customerId = document.querySelector('input[name="customer_id"]').value;
+    if (!customerId) {
         alert("Bitte geben Sie eine Kunden ID ein.");
         return;
     }
-    fetch('{% url 'sendOrder'%}', {
-        method: 'POST',
+
+    fetch("{% url 'sendOrder' %}", {
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': "{{ csrf_token }}"
+            "Content-Type": "application/json",
+            "X-CSRFToken": "{{ csrf_token }}"
         },
         body: JSON.stringify({
-            "customer_id": document.querySelector('input[name="customer_id"]').value,
-            "products": orders
+            customer_id: customerId,
+            products: orders
         })
     })
-    console.log("Sende Bestellung: " + orders)
-    location.reload();
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Server error: " + response.status);
+        }
+        return response.json(); // or .text() depending on your Django view
+    })
+    .then(data => {
+        console.log("Antwort vom Server:", data);
+        location.reload();
+    })
+    .catch(err => {
+        console.error("Fehler beim Senden:", err);
+        alert("Es gab ein Problem mit der Bestellung.");
+    });
+    
 }
+
 </script>
 <div class="container">
     <h1>{{ shop.name }} </h1>
         <div style="align-items: center; justify-content: center;">
-            Kunden ID: <input type="text" name="customer_id" required style="background-color: rgb(214, 214, 214);" placeholder="Kunden ID">
+            Kunden ID: <input type="text" name="customer_id" id="customer_id" placeholder="Kunden ID" autocomplete="off" style="background-color: rgb(214, 214, 214);">
+
         </div>
     {% for product in products %}
     <button style="margin-top: 10px;" onclick="AddProduct({{ product.id }}, '{{product.name}}')">{{ product.name }} - {{ product.price }}€</button>

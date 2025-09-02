@@ -21,6 +21,7 @@
                     {% for product in order.orderitem_set.all %}
                         {{ product.quantity }} x {{ product.product.name }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
+                    ({{ order.created_at|date:"d.m.Y H:i" }}/Order ID: {{ order.id }})
                 </p>
                 <form class="delete-order-form" data-order-id="{{ order.id }}" method="post" action="{% url 'pay_id' order.id %}">
                     {% csrf_token %}

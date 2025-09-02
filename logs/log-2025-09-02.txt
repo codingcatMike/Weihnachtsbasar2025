@@ -1,0 +1,293 @@
+Log file for 2025-09-02
+Created at: 2025-09-02 13:12:39.846761
+Device : nt
+User : User
+Python version : 3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.1942 64 bit (AMD64)]
+--------------------------------------------------
+
+[Info]  accessed / page --at-- 2025-09-02 13:12:39.839957
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-09-02 13:12:48.923354
+[Info]  accessed / page --at-- 2025-09-02 13:12:48.938356
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:13:01.125952
+[Info] main accessed / page --at-- 2025-09-02 13:13:07.549026
+[Info] main accessed / page --at-- 2025-09-02 13:13:24.292422
+[Info] main accessed / page --at-- 2025-09-02 13:13:28.898953
+[Info] main accessed / page --at-- 2025-09-02 13:13:32.300052
+[Info] main accessed shop page as superuser --at-- 2025-09-02 13:13:35.732897
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:13:35.743805
+[Info] main accessed shop page as superuser --at-- 2025-09-02 13:13:46.979893
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:13:46.990614
+[Info] main accessed shop page as superuser --at-- 2025-09-02 13:13:57.989241
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:13:58.000238
+[Info] main accessed shop page as superuser --at-- 2025-09-02 13:14:13.507309
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:14:13.518836
+[Info] main accessed / page --at-- 2025-09-02 13:14:18.481303
+[Info] main accessed shop page as superuser --at-- 2025-09-02 13:15:02.848363
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:15:02.858013
+[Info] main accessed / page --at-- 2025-09-02 13:15:12.689258
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:15:26.452389
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:15:28.764463
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:15:39.167995
+[Info]  accessed / page --at-- 2025-09-02 13:16:37.446372
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-09-02 13:16:46.191634
+[Info]  accessed / page --at-- 2025-09-02 13:16:46.209545
+[Info] main accessed http://192.168.178.156:8000/accounts/login/ page --at-- 2025-09-02 13:16:54.402852
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 13:16:59.473902
+[Info] main accessed / page --at-- 2025-09-02 13:17:04.445858
+[Info] main accessed / page --at-- 2025-09-02 13:17:19.446425
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 13:17:21.255395
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 13:17:41.423178
+[Info] main accessed / page --at-- 2025-09-02 13:18:11.597452
+[Info] The User account of main paid an order with id 17 --at-- 2025-09-02 13:18:14.134269
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:18:14.153061
+[Info] main accessed / page --at-- 2025-09-02 13:18:20.144860
+[Info] The User account of main paid an order with id 17 --at-- 2025-09-02 13:18:25.930608
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:18:25.949168
+[Info] The User account of main paid an order with id 16 --at-- 2025-09-02 13:18:26.994391
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:18:27.013795
+[Info] main accessed / page --at-- 2025-09-02 13:19:13.372926
+[Info] main accessed / page --at-- 2025-09-02 13:19:19.463305
+[Info] main accessed / page --at-- 2025-09-02 13:19:41.938870
+[Info] main accessed / page --at-- 2025-09-02 13:20:05.961436
+[Info] main accessed / page --at-- 2025-09-02 13:20:19.758063
+[Info] main accessed / page --at-- 2025-09-02 13:20:32.657067
+[Info] main accessed / page --at-- 2025-09-02 13:20:45.263350
+[Info] main accessed / page --at-- 2025-09-02 13:20:56.350814
+[Info] main accessed / page --at-- 2025-09-02 13:21:36.188855
+[Info] main accessed / page --at-- 2025-09-02 13:21:41.912868
+[Info] main accessed / page --at-- 2025-09-02 13:21:43.870468
+[Info] main accessed / page --at-- 2025-09-02 13:21:49.956037
+[Info] main accessed / page --at-- 2025-09-02 13:22:27.092238
+[Info] main accessed / page --at-- 2025-09-02 13:23:08.797765
+[Info] main accessed / page --at-- 2025-09-02 13:24:45.058595
+[Info] The User account of main sent an order with customer id 2211 and products [4] --at-- 2025-09-02 13:24:51.486015
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 13:24:51.509236
+[Info] main accessed / page --at-- 2025-09-02 13:25:24.117587
+[Info] main accessed / page --at-- 2025-09-02 13:26:27.998242
+[Info] The User account of main sent an order with customer id 2211 and products [6] --at-- 2025-09-02 13:26:36.401636
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 13:26:36.425635
+[Info] main accessed / page --at-- 2025-09-02 13:29:36.023071
+[Info] The User account of main sent an order with customer id 2211 and products [6] --at-- 2025-09-02 13:29:41.075175
+[Info] main accessed / page --at-- 2025-09-02 13:29:43.358659
+[Info] main accessed / page --at-- 2025-09-02 13:29:52.849741
+[Info] The User account of main paid an order with id 18 --at-- 2025-09-02 13:30:34.719884
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:30:34.741888
+[Info] main accessed / page --at-- 2025-09-02 13:30:40.762029
+[Info]  accessed / page --at-- 2025-09-02 13:36:42.379054
+[Info] The User account of main sent an order with customer id 667755 and products [4] --at-- 2025-09-02 13:37:05.097679
+[Info] main accessed / page --at-- 2025-09-02 13:37:08.511421
+[Info]  accessed / page --at-- 2025-09-02 13:37:08.552719
+[Info] The User account of main sent an order with customer id 667755 and products [6] --at-- 2025-09-02 13:38:45.011834
+[Info] The User account of main sent an order with customer id 667755 and products [6, 6] --at-- 2025-09-02 13:39:33.906051
+[Info] main accessed / page --at-- 2025-09-02 13:39:33.945411
+[Info]  accessed / page --at-- 2025-09-02 13:39:50.261957
+[Info] main accessed / page --at-- 2025-09-02 13:40:09.514607
+[Info] The User account of main sent an order with customer id 121223 and products [4] --at-- 2025-09-02 13:40:21.650396
+[Info] main accessed / page --at-- 2025-09-02 13:40:21.686514
+[Info]  accessed / page --at-- 2025-09-02 13:40:27.380897
+[Info]  accessed / page --at-- 2025-09-02 13:40:27.995015
+[Info]  accessed / page --at-- 2025-09-02 13:40:28.249546
+[Info]  accessed / page --at-- 2025-09-02 13:40:28.438546
+[Info]  accessed / page --at-- 2025-09-02 13:40:28.633899
+[Info]  accessed / page --at-- 2025-09-02 13:40:28.809345
+[Info]  accessed / page --at-- 2025-09-02 13:40:28.954491
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:40:54.691328
+[Info] main accessed / page --at-- 2025-09-02 13:41:24.582792
+[Info] The User account of main sent an order with customer id 121223 and products [4] --at-- 2025-09-02 13:41:38.940954
+[Info] main accessed / page --at-- 2025-09-02 13:41:38.985843
+[Info] The User account of main sent an order with customer id 121223 and products [6, 6, 4, 4] --at-- 2025-09-02 13:43:52.153113
+[Info] main accessed / page --at-- 2025-09-02 13:43:52.201527
+[Info] main accessed / page --at-- 2025-09-02 13:44:09.197610
+[Info] main accessed / page --at-- 2025-09-02 13:44:20.755640
+[Info] main accessed / page --at-- 2025-09-02 13:44:25.379013
+[Info] The User account of main sent an order with customer id 334433 and products [4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 6, 4, 4, 4] --at-- 2025-09-02 13:45:18.016377
+[Info] main accessed / page --at-- 2025-09-02 13:45:18.059058
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:46:20.117583
+[Info] The User account of main sent an order with customer id 7777777 and products [4, 4] --at-- 2025-09-02 13:46:21.719373
+[Info] main accessed / page --at-- 2025-09-02 13:46:21.768373
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:46:34.035608
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:46:38.770741
+[Info] main accessed / page --at-- 2025-09-02 13:46:45.247686
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 13:46:46.925310
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:47:22.947286
+[Info] main accessed / page --at-- 2025-09-02 13:47:27.395268
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:47:35.425497
+[Info] main accessed / page --at-- 2025-09-02 13:47:37.072873
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:47:37.246275
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:47:52.863426
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:48:03.877151
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:48:06.018494
+[Info] The User account of main sent an order with customer id 10000 and products [4] --at-- 2025-09-02 13:48:14.289647
+[Info] main accessed / page --at-- 2025-09-02 13:48:14.333732
+[Info] main accessed / page --at-- 2025-09-02 13:48:20.001946
+[Info] The User account of main paid an order with id 19 --at-- 2025-09-02 13:48:22.953275
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:48:22.973895
+[Info] The User account of main paid an order with id 20 --at-- 2025-09-02 13:48:23.466453
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:48:23.485736
+[Info] The User account of main paid an order with id 21 --at-- 2025-09-02 13:48:23.787122
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:48:23.806186
+[Info] The User account of main paid an order with id 22 --at-- 2025-09-02 13:48:24.034170
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:48:24.052819
+[Info] The User account of main paid an order with id 23 --at-- 2025-09-02 13:48:24.252236
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:48:24.271750
+[Info] main accessed / page --at-- 2025-09-02 13:49:00.464978
+[Info] The User account of main sent an order with customer id 22 and products [4, 6] --at-- 2025-09-02 13:49:05.536900
+[Info] main accessed / page --at-- 2025-09-02 13:49:05.577552
+[Info] main accessed / page --at-- 2025-09-02 13:50:12.757383
+[Info] main accessed / page --at-- 2025-09-02 13:51:41.518755
+[Info] The User account of main paid an order with id 24 --at-- 2025-09-02 13:51:58.550698
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 13:51:58.571799
+[Info] main accessed / page --at-- 2025-09-02 13:53:14.010962
+[Info] main accessed / page --at-- 2025-09-02 13:53:15.106219
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:53:20.504069
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:53:51.288283
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:55:02.211777
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:55:02.211777
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:55:04.867073
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:55:05.711709
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:55:06.316916
+[Info] main accessed / page --at-- 2025-09-02 13:55:34.510787
+[Info] main accessed / page --at-- 2025-09-02 13:56:14.009057
+[Info] The User account of main sent an order with customer id 55 and products [4, 6] --at-- 2025-09-02 13:56:28.595780
+[Info] main accessed / page --at-- 2025-09-02 13:56:28.644047
+[Info] main accessed / page --at-- 2025-09-02 13:57:02.148669
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:58:00.069119
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:58:02.137095
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:58:02.897883
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:58:03.619719
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:58:03.822520
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:59:41.124673
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:59:41.663596
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 13:59:42.204098
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 13:59:43.708124
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:00:09.467788
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:00:09.915384
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:00:10.071607
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:00:10.257358
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:00:10.404892
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:00:10.529156
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:00:10.706206
+[Info] The User account of main sent an order with customer id 55 and products [4, 4] --at-- 2025-09-02 14:00:51.259367
+[Info] main accessed / page --at-- 2025-09-02 14:00:51.301885
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:13.771209
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:14.305226
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:14.621878
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:14.901909
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:15.101725
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:15.220225
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:15.355103
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:15.506242
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:15.649585
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:15.794483
+[Info] The User account of main sent an order with customer id 55 and products [4, 6] --at-- 2025-09-02 14:01:18.230516
+[Info] main accessed / page --at-- 2025-09-02 14:01:18.275513
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:21.039159
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:21.905887
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:22.354919
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:22.767062
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:23.021820
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:23.177795
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:23.320336
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:01:23.474076
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:03.731970
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:04.226508
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:04.366563
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:04.536476
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:04.682738
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:05.025239
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:05.377387
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:05.635762
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:05.821420
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:05.960404
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:06.092372
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:06.263395
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:06.386908
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:06.532973
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:22.009098
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:22.631411
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:22.766833
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:22.913689
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:23.064016
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:23.219164
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:23.554899
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:23.779031
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:23.953019
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:02:24.121638
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:03:30.768687
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:03:31.514769
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:03:31.992696
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:21.223891
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:22.451019
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:22.992171
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:23.477498
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:23.884830
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:24.223762
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:24.474932
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:24.627106
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:24.895262
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:25.059651
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:25.216166
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:25.397201
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:25.558495
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:25.724619
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:25.891591
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:26.099684
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:26.368277
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:26.769437
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:27.191607
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 14:04:27.557857
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:05:13.876535
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:05:57.352716
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:05:58.429469
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:05:59.261390
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:05:59.935760
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:00.591603
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:01.163814
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:01.711826
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:02.268711
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:02.734882
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:03.235927
+[Info] main accessed / page --at-- 2025-09-02 14:06:03.502323
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:03.716437
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:04.152694
+[Info] main accessed / page --at-- 2025-09-02 14:06:04.549252
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:04.623394
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:05.126564
+[Info] main accessed / page --at-- 2025-09-02 14:06:05.184913
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:05.577268
+[Info] main accessed / page --at-- 2025-09-02 14:06:05.735580
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:06.133504
+[Info] main accessed / page --at-- 2025-09-02 14:06:06.194445
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:06.661069
+[Info] main accessed / page --at-- 2025-09-02 14:06:06.922339
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:07.130303
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:07.637628
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:08.101170
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:08.539994
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:08.944091
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:09.155386
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:09.292863
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:09.435231
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:09.587949
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:09.737222
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:09.878314
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:10.038402
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:10.200381
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:06:10.504392
+[Info] main accessed / page --at-- 2025-09-02 14:06:14.928896
+[Info] main accessed / page --at-- 2025-09-02 14:06:15.505626
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:11:32.164431
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:11:33.294511
+[Info] main accessed / page --at-- 2025-09-02 14:11:42.216236
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:13:42.091843
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:13:42.842797
+[Info] main accessed / page --at-- 2025-09-02 14:13:52.248084
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:14:14.948946
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:14:28.478616
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:15:02.974462
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:15:06.566496
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:27.207278
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:30.050699
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:38.904205
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:40.901687
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:42.558572

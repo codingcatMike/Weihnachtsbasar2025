@@ -174,45 +174,87 @@ def create_product(request):
         return redirect('index')
 
 
+from django.http import JsonResponse
+import json
+from collections import Counter
+
+from django.http import JsonResponse
+from collections import Counter
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+import json
+
 def SendOrder(request):
-    if request.method == 'POST':
-        customer_id = json.loads(request.body).get('customer_id', None)
-        products = json.loads(request.body).get('products', None)
-        print(products)
-        quantity = json.loads(request.body).get('quantity', None)
-        try:
-            customer = Customers.objects.get(id=customer_id)
-            order = Order.objects.get(customer=customer)
-            print('Customer Exists')
-        except Customers.DoesNotExist:
-            customer = Customers.objects.create(id=customer_id)
-            order = Order.objects.create(customer=customer, price=0)
-            print('Customer Created')
+    if request.method != 'POST':
+        return JsonResponse({"status": "error", "message": "Nur POST erlaubt"}, status=405)
 
-        #order = Order.objects.create(customer=customer)
-        #current_price = order.price
-        items = products  # wenn nichts angepasst werden muss
+    data = json.loads(request.body)
+    customer_id = data.get('customer_id')
+    products = data.get('products', [])
+
+    if not customer_id or not products:
+        return JsonResponse({"status": "error", "message": "Kunden-ID oder Produkte fehlen"}, status=400)
+
+    # Customer und Order abrufen oder erstellen
+    customer, created_customer = Customers.objects.get_or_create(id=customer_id)
+    order, created_order = Order.objects.get_or_create(customer=customer, defaults={"price": 0})
+
+    # Produkte zählen und OrderItems erstellen/aktualisieren
+    counter = Counter(products)
+    total_price = 0
+
+    for product_id, quantity in counter.items():
+        product = Product.objects.get(id=product_id)
+
+        order_item, created_item = OrderItem.objects.get_or_create(
+            order=order,
+            product=product,
+            defaults={"quantity": quantity}
+        )
+        if not created_item:
+            order_item.quantity += quantity
+            order_item.save()
+
+        total_price += product.price * quantity
+
+    order.price += total_price
+    order.save()
+
+    # Loggen
+    log(f'The User account of {request.user.username} sent an order with customer id {customer_id} and products {products}')
+
+    # Live-Update an Cash-Register Clients
+    channel_layer = get_channel_layer()
+
+    orders_data = [
+        {
+            "id": o.id,
+            "customer_id": o.customer.id,
+            "price": float(o.price),
+            "items": [
+                {"name": item.product.name, "quantity": item.quantity}
+                for item in o.orderitem_set.all()
+            ]
+        }
+        for o in Order.objects.all()
+    ]
+
+    current_income = sum(o.price for o in Order.objects.all())
+
+    async_to_sync(channel_layer.group_send)(
+        "pay_room",  # Name der Gruppe für Cash-Register-Clients
+        {
+            "type": "new_order",
+            "orders": orders_data,
+            "income": float(current_income),
+        }
+    )
+    send_orders_update()    
+
+    # Response an den Client
+    return JsonResponse({"status": "ok", "order_id": order.id, "total": order.price})
 
 
-
-        # Zähle die Häufigkeit jedes Elements
-        counter = Counter(items)
-
-        # Gib die Häufigkeit aus
-        for item, quantity in counter.items():
-            item = Product.objects.get(id=item)
-            OrderItem.objects.create(order=order, product=item, quantity=quantity)
-            order.price = order.price + item.price * quantity
-            order.save()
-            print(f"{item}: {quantity}")
-      
-
-
-
-        log(f'The User account of {request.user.username} sent an order with customer id {customer_id} and products {products}')
-        print(products)
-        send_orders_update()
-        return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def cash_register(request):
@@ -319,4 +361,15 @@ def ShopSettings(request, shop_id):
 
 def pay_Screen(request, id):
     order = Order.objects.get(id=id)
-    return render(request, "pay_Screen.html", {"order": order})
+    order_items = [] 
+    for item in order.orderitem_set.all():
+        order_items.append({
+            "name": item.product.name,
+            "quantity": item.quantity, 
+            "price": item.product.price
+        })
+
+    return render(request, "pay_Screen.html", {
+        "order": order,
+        "order_items": order_items,
+    })

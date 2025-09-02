@@ -47,41 +47,34 @@ class PayConsumer(AsyncWebsocketConsumer):
 class PayScreenConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.group_name = "pay_screen_updates"
-
-        await self.channel_layer.group_add(
-            self.group_name,
-            self.channel_name
-        )
+        await self.channel_layer.group_add(self.group_name, self.channel_name)
         await self.accept()
+        self.current_order_id = None  # track which order to display
 
     async def disconnect(self, close_code):
-        await self.channel_layer.group_discard(
-            self.group_name,
-            self.channel_name
-        )
+        await self.channel_layer.group_discard(self.group_name, self.channel_name)
 
+    # Receive from client
     async def receive(self, text_data):
         data = json.loads(text_data)
-        message = data.get("message", "")
+        
+        if "display_order_id" in data:
+            # Client wants to display a specific order
+            self.current_order_id = data["display_order_id"]
+        
+        if "clear_display" in data and data["clear_display"]:
+            # Client wants to clear the order
+            self.current_order_id = None
+            await self.send(text_data=json.dumps({"order": None}))
 
-        await self.channel_layer.group_send(
-            self.group_name,
-            {
-                "type": "pay_screen_message",
-                "message": message
-            }
-        )
-
-    async def pay_screen_message(self, event):
-        await self.send(text_data=json.dumps({
-            "message": event["message"]
-        }))
-
+    # Receive from server (group)
     async def new_onscreen(self, event):
-        await self.send(text_data=json.dumps({
-            "order": event["order"],
-        }))
-
+        order = event["order"]
+        # Only send the order if it matches current_order_id
+        if self.current_order_id and order["id"] == self.current_order_id:
+            await self.send(text_data=json.dumps({
+                "order": order
+            }))
 
 
 # main/utils.py

@@ -4,141 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
+    
     <style>
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: repeating-radial-gradient(
+    circle at 50% 50%,
+    #808080,
+    #505050 40px,
+    #8b8b8b 40px,
+    #6e6e6e 80px
+  );
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 1.6;
-        background-color: #f0f0f0;
-        /* Remove these properties */
-        /* display: flex; */
-        /* justify-content: center; */
-        /* align-items: center; */
-        /* height: 100vh; */
-    }
+/* Text und Buttons */
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-align: center;
+}
 
+p {
+    margin-bottom: 15px;
+    color: #555;
+}
 
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
 
-        h1, h2, h3, h4, h5, h6 {
-            color: #333;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-align: center;
-        }
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
 
-        p {
-            margin-bottom: 15px;
-            color: #555;
-        }
+.helptext {
+    font-size: 0.9em;
+    color: #888;
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+button, input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3;
+}
 
-        .helptext {
-            font-size: 0.9em;
-            color: #888;
-        }
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
 
-        button, input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            width: 100%;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+}
 
-        button:hover, input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-        }
-
-        .footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
+.footer a:hover {
+    text-decoration: underline;
+}
     </style>
 </head>
 <body>
-        {% if user.is_authenticated %}
-        <form method="post" action="{% url 'logout' %}" style="position: absolute; top: 10px; right: 10px; width: 100px; height: 40px;">
-            <button type="submit">Logout as {{ user.username }}</button>
-            {% csrf_token %}
-        </form>
-        {% else %}
-        <button type="button" onclick="window.location.href='{% url 'login' %}'" style="position: absolute; top: 10px; right: 10px; width: 100px; height: 40px;">Login</button>
-        <button type="button" onclick="window.location.href='{% url 'signup' %}'" style="position: absolute; top: 10px; right: 120px; width: 100px; height: 40px;">Signup</button>
-        {% endif %}
+<script>
+let x = Math.random() * 60 + 20;
+let y = Math.random() * 60 + 20;
+let targetX = Math.random() * 60 + 20;
+let targetY = Math.random() * 60 + 20;
+
+
+
+
+const duration = 70000; // Dauer in ms für einen Übergang
+
+
+
+
+let startTime = null;
+
+function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+    let progress = (timestamp - startTime) / duration;
+    if (progress > 1) progress = 1;
+
+    // Lineare Interpolation
+    let currentX = x + (targetX - x) * progress;
+    let currentY = y + (targetY - y) * progress;
+
+    document.body.style.background = `
+        repeating-radial-gradient(
+            circle at ${currentX}% ${currentY}%,
+            #808080,
+            #505050 40px,
+            #8b8b8b 40px,
+            #6e6e6e 80px
+        )
+    `;
+
+    if (progress < 1) {
+        requestAnimationFrame(animate);
+    } else {
+        // Nach Ablauf: neues Ziel setzen
+        x = targetX;
+        y = targetY;
+        targetX = Math.random() * 60 + 20;
+        targetY = Math.random() * 60 + 20;
+        startTime = null;
+        requestAnimationFrame(animate);
+    }
+}
+
+requestAnimationFrame(animate);
+</script>
+
+{% if user.is_authenticated %}
+<div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
+    <a href="/help">
+        <button type="button" style="width: 100px; height: 40px;">Support</button>
+    </a>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" style="width: 100px; height: 52px;">Logout as {{ user.username }}</button>
+    </form>
+</div>
+{% else %}
+<button type="button" onclick="window.location.href='{% url 'login' %}'" style="position: absolute; top: 10px; right: 10px; width: 100px; height: 40px;">Login</button>
+<button type="button" onclick="window.location.href='{% url 'signup' %}'" style="position: absolute; top: 10px; right: 120px; width: 100px; height: 40px;">Signup</button>
+{% endif %}
+
 <div style="position: absolute; top: 5px; left: 10px;">
     <button type="button" onclick="window.location.href='{% url 'index' %}'"> 🏠 </button>
-    </div>  
+</div>
 
+{% block content %}{% endblock content %}
 
-        {% block content %}{% endblock content %}
 <footer style="position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; align-items: center;">
-    {% if messages %}
-        {% for message in messages %}
-            <div style="background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %}; padding: 10px; margin: 5px; {% if message.tags == 'success' %}color: #3c763d;{% elif message.tags == 'warning' %}color: rgb(255, 255, 255);{% elif message.tags == 'error' %}color: rgb(255, 255, 255);{% endif %}; position: relative;" class="message">
-                <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; cursor: pointer;">&times;</button>
-                <br>
-                {{ message|safe }}
-                
-            </div>
-            <script>
-                setTimeout(function() {
-                    var messageElement = document.querySelectorAll('.message')[{{ forloop.counter0 }}];
-                    if (messageElement) {
-                        messageElement.style.display = 'none';
-                    }
-                }, 10000);
-            </script>
-        {% endfor %}
-    {% endif %}
+{% if messages %}
+    {% for message in messages %}
+        <div style="background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %}; padding: 10px; margin: 5px; {% if message.tags == 'success' %}color: #3c763d;{% elif message.tags == 'warning' %}color: rgb(255, 255, 255);{% elif message.tags == 'error' %}color: rgb(255, 255, 255);{% endif %}; position: relative;" class="message">
+            <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; cursor: pointer;">&times;</button>
+            <br>
+            {{ message|safe }}
+        </div>
+    {% endfor %}
+{% endif %}
 </footer>
 
 <script>
-    function copyOtp() {
-        var textarea = document.getElementById('otp-textarea');
-        textarea.style.position = 'fixed';
-        textarea.style.left = '10px';
-        textarea.style.top = '10px';
-        textarea.select();
-        document.execCommand('copy');
-        textarea.style.position = 'absolute';
-        textarea.style.left = '-9999px';
-        textarea.style.background_color = 'white'
-    }
+function copyOtp() {
+    var textarea = document.getElementById('otp-textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.left = '10px';
+    textarea.style.top = '10px';
+    textarea.select();
+    document.execCommand('copy');
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    textarea.style.background_color = 'white'
+}
 </script>
 
-</footer>
 </body>
 </html>

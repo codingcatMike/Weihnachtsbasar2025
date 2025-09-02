@@ -1,83 +1,110 @@
-{% extends "base.html" %}
-
-{% block title %}Pay Screen{% endblock title %}
-{% block content %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pay Screen</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 </head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
 <body>
 
-<h2>HTML Table</h2>
-
-<table>
-  <tr>
-    <th>Anzahl</th>
-    <th>Produkt</th>
-    <th>Einzelpreis</th>
-    <th>Total</th>
-  </tr>
-{% for product in order.orderitem_set.all %}
-  <tr>
-    <td>{{ product.quantity }}</td>
-    <td>{{product.name}}</td>
-    <td>{{product.price}}</td>
-    <td>{{ product.price * product.quantity }}</td>
-</td>
-  </tr>
-{% endfor %}
-
+<table id="orders-table">
+    <tr>
+        <th>Anzahl</th>
+        <th>Produkt</th>
+        <th>Einzelpreis</th>
+        <th>Total</th>
+    </tr>
+    {% for product in order.orderitem_set.all %}
+    <tr>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.product.name }}</td>
+        <td>{{ product.product.price }}€</td>
+        <td>{{ product.total }}€</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Gesamt:</strong></td>
+        <td><strong id="total-sum">{{ order.price }}€</strong></td>
+    </tr>
 </table>
+
 <script>
-function connectSocket() {
-socket = new WebSocket("ws://" + window.location.host + "/ws/pay_screen/");
+let socket = new WebSocket(
+    (window.location.protocol === "https:" ? "wss://" : "ws://") 
+    + window.location.host 
+    + "/ws/pay_screen/"
+);
 
 socket.onopen = function() {
-    //alert("Connected to live server");
+    console.log("Connected to WebSocket");
 };
 
 socket.onclose = function() {
-    alert("Disconnected from live server");
+    console.log("Disconnected from WebSocket");
 };
 
 socket.onmessage = function(e) {
     const data = JSON.parse(e.data);
-    const ordersDiv = document.getElementById("orders");
 
-    if(data.orders) {
-        ordersDiv.innerHTML = "";
-        data.orders.forEach(order => {
-            const items = order.items.map(i => `${i.quantity} x ${i.name}`).join(", ");
-            const orderHtml = `
-            <div class="order" id="order-${order.id}">
-                <p>${order.customer_id}: ${order.price}€</p>
-                <p>${items}</p>
-                <form method="post" action="/pay/${order.id}/" class="delete-order-form">
-                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                    <button type="submit">Delete Order ${order.id}</button>
-                </form>
-            </div>`;
-            ordersDiv.innerHTML += orderHtml;
+    if(data.order) {
+        const order = data.order;
+
+        // Replace table rows except for header and total row
+        const table = document.getElementById("orders-table");
+        table.innerHTML = `
+            <tr>
+                <th>Anzahl</th>
+                <th>Produkt</th>
+                <th>Einzelpreis</th>
+                <th>Total</th>
+            </tr>
+        `;
+
+        let totalSum = 0;
+        order.items.forEach(product => {
+            const row = document.createElement("tr");
+            const total = product.quantity * product.price;
+            totalSum += total;
+            row.innerHTML = `
+                <td>${product.quantity}</td>
+                <td>${product.name}</td>
+                <td>${product.price}€</td>
+                <td>${total}€</td>
+            `;
+            table.appendChild(row);
         });
-        
+
+        // Add total row
+        const totalRow = document.createElement("tr");
+        totalRow.innerHTML = `
+            <td></td>
+            <td></td>
+            <td><strong>Gesamt:</strong></td>
+            <td><strong>${totalSum}€</strong></td>
+        `;
+        table.appendChild(totalRow);
     }
-}
-};   
-connectSocket()
+};
 </script>
-{% endblock %}
+
+</body>
+</html>
