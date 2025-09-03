@@ -31,6 +31,9 @@ STATIC_URL = 'main/static/'
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.webdevcode.de',
+]
 
 # Application definition
 

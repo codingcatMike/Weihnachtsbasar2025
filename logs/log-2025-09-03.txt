@@ -1,0 +1,21 @@
+Log file for 2025-09-03
+Created at: 2025-09-03 11:01:43.448439
+Device : posix
+User : main
+Python version : 3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]
+--------------------------------------------------
+
+[Info]  accessed / page --at-- 2025-09-03 11:01:43.448236
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-09-03 11:01:43.955848
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 11:02:57.195511
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 11:03:00.204588
+[Info] main accessed shop page as superuser --at-- 2025-09-03 11:03:03.261487
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 11:03:03.261935
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 11:03:06.727789
+[Info] main accessed shop page as superuser --at-- 2025-09-03 11:06:57.979109
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 11:06:57.979463
+[Info] main accessed https://www.webdevcode.de/Shop/6/ page --at-- 2025-09-03 11:07:00.011257
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 11:07:02.516414
+[Info] main accessed shop page as superuser --at-- 2025-09-03 11:07:02.879443
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 11:07:02.879888
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 11:07:05.350562
