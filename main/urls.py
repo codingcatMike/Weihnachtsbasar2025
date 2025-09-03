@@ -39,6 +39,7 @@ urlpatterns = [
     path("Shop/<shop_id>/settings/", ShopSettings, name="ShopSettings"),
     path("pay_Screen/", pay_Screen, name="pay_Screen"),
     path("display_order/<id>/", display_order, name="display_order"),
+    path('receipt/<int:order_id>/', generate_pdf_receipt, name='receipt'),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT, "show_indexes": True}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

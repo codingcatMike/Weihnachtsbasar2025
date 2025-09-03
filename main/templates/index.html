@@ -3,32 +3,48 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <div class="content-wrapper">
-    <h2 style="text-align: center; color: #439effff;">Über die 8. Klasse</h2>
-    <section style="display: flex; flex-direction: column; align-items: center; background-color:rgb(214, 214, 214); border-radius: 10px; padding: 20px; margin: 20px;">
-        <p style="color: #4a5568;">Wir sind die 8. Klasse des <a href="https://www.derksen-gym.de/">Derksen-Gymnasiums</a> in München.</p>
-        <p style="color: #4a5568;">Wir sind eine Gemeinschaft von {{ schueler }} Schüler*innen.</p>
+    <h1 style="text-align: center; color: #439effff;">Über die 8. Klasse</h1>
+    <section style="display: flex; flex-direction: column; align-items: center; background-color:rgb(214, 214, 214); border-radius: 10px; padding: 10px; margin-left: 500px; margin-right: 500px">
+        <h3 style="color: #4a5568;">Wir sind die 8. Klasse des <a href="https://www.derksen-gym.de/">Derksen-Gymnasiums</a> in München.</h3>
+        <h4 style="color: #4a5568;">Wir sind eine Gemeinschaft von  Schüler*innen.</h4>
     </section>
     {% if user.is_authenticated %}
-    <section style="display: flex; flex-direction: column; align-items: center; background-color:rgb(214, 214, 214); border-radius: 10px; padding: 20px; margin: 20px;">
-        <p style="color: #4a5568;">Willkommen zurück, {{ user.username }}!</p>
-        <p style="color: #4a5568;">Hier sind deine Shops:</p>
+    <section style="display: flex; flex-direction: column; align-items: center; background-color:rgb(214, 214, 214); border-radius: 10px; padding: 20px; margin: 30px; margin-right: 500px; margin-left: 500px;">
+        <h2 style="color: #4a5568;">Willkommen zurück, {{ user.username }}!</h2>
+        <br>
+        <h2 style="color: #4a5568;">Hier sind deine Shops:</h2>
         <ul>
            
             {% if user.is_superuser %}
             {% for shop in marker_shops %}
-            <a href="{% url 'Shop' shop.shop.id %}">{{ shop.display_name }} Home</a> / <a href="{% url 'ShopSettings' shop.shop.id %}">Settings</a>
+            <a style="font-size: 20px;" href="{% url 'Shop' shop.shop.id %}">{{ shop.display_name }} Home</a>   ==>   <a style="font-size: 20px;" href="{% url 'ShopSettings' shop.shop.id %}">Settings</a>
             <br>
             {% endfor %}
             {% else %}
             {% for shop in user_shops %}
-                <a href="{% url 'Shop' shop.id %}">{{ shop.name }} Home</a> / <a href="{% url 'ShopSettings' shop.id %}">Settings</a>
                 <br>
+                <a style="font-size: 20px;" href="{% url 'Shop' shop.id %}">{{ shop.name }} Home</a>   ==>   <a href="{% url 'ShopSettings' shop.id %}">Settings</a>
             {% endfor %}
+            {% endif %}
+            {% if user.is_staff %}
+            <a style="font-size: 20px;" href="{% url 'cash_register' %}">Kassenübersicht</a>
             {% endif %}
 
         </ul>
-        <p style="color: #4a5568;">Oder erstelle einen neuen Shop:</p>
-        <a href="{% url 'createShop' %}" style="color: #2b6cb0; text-decoration: underline;">Neuen Shop erstellen</a>
+        <p style="font-size: 20px;" style="color: #4a5568;">Oder erstelle einen neuen Shop:</p>
+        <div style="display: flex; justify-content: center; margin-top: 10px;">
+            <a href="{% url 'createShop' %}" 
+               style="background-color: #28a745; color: white; padding: 12px 24px; 
+                      border-radius: 6px; text-decoration: none; font-size: 16px; 
+                      font-weight: bold; transition: background-color 0.3s ease;">
+                Neuen Shop erstellen
+            </a>
+        </div>
+        <style>
+        a[href="{% url 'createShop' %}"]:hover {
+            background-color: #218838;
+        }
+        </style>        
     </section>
     {% endif %}
 </div>

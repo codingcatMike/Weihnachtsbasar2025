@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Shop{% endblock title %}
 {% block content %}
+{% load static %}
 <script defer>
 orders = []
 orders_name =  []
@@ -17,7 +18,6 @@ function AddProduct(id, name) {
         return;
     }
 }
-
 
 function SendOrder() {
     if (orders.length === 0) {
@@ -45,7 +45,7 @@ function SendOrder() {
         if (!response.ok) {
             throw new Error("Server error: " + response.status);
         }
-        return response.json(); // or .text() depending on your Django view
+        return response.json();
     })
     .then(data => {
         console.log("Antwort vom Server:", data);
@@ -55,28 +55,51 @@ function SendOrder() {
         console.error("Fehler beim Senden:", err);
         alert("Es gab ein Problem mit der Bestellung.");
     });
-    
 }
-
 </script>
-<div class="container">
-    <h1>{{ shop.name }} </h1>
-        <div style="align-items: center; justify-content: center;">
-            Kunden ID: <input type="text" name="customer_id" id="customer_id" placeholder="Kunden ID" autocomplete="off" style="background-color: rgb(214, 214, 214);">
 
-        </div>
+<!-- Haupt-Container auf 66% Breite, mittig -->
+<div class="container" style="width: 66%; margin: 0 auto; text-align: center;">
+    <h1>{{ shop.name }}</h1>
+
+    <div style="margin-bottom: 20px;">
+        Kunden ID: 
+        <input type="text" 
+               name="customer_id" 
+               id="customer_id" 
+               placeholder="Kunden ID" 
+               autocomplete="off" 
+               style="background-color: rgb(214, 214, 214);">
+    </div>
+
     {% for product in products %}
-    <button style="margin-top: 10px;" onclick="AddProduct({{ product.id }}, '{{product.name}}')">{{ product.name }} - {{ product.price }}€</button>
+        <button style="margin-top: 10px;" 
+                onclick="AddProduct({{ product.id }}, '{{product.name}}')">
+            {{ product.name }} - {{ product.price }}€
+        </button><br>
     {% endfor %}
-    <button type="submit" style="margin-top: 30px; background-color: rgb(136, 255, 0);" onclick="SendOrder()">Senden</button>
-    <button style="position: absolute; bottom: 30px; left: 0px; background-color: rgb(255, 0, 0);" onclick="location.reload()">Alle Felder Löschen</button>
-    <div id="orders"> Produkte im Warenkorb: </div>
+
+    <button type="submit" 
+            style="margin-top: 30px; background-color: rgb(136, 255, 0);" 
+            onclick="SendOrder()">Senden</button>
+
+    <button style="margin-top: 20px; background-color: rgb(255, 0, 0);" 
+            onclick="location.reload()">Alle Felder Löschen</button>
+
+    <div id="orders" style="margin-top: 20px;">
+        Produkte im Warenkorb:
+    </div>
 </div>
 
-<button style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: fixed; bottom: 10px; right: 10px; background-color: rgb(0, 0, 0); color: white; border-radius: 50%; border: none; cursor: pointer;" onclick="window.location.href='/Shop/{{ shop.id }}/settings';" title="Shop Settings" aria-label="Shop Settings" tabindex="0" role="button" aria-pressed="false" style="background-color: #007bff; color: white; font-size: 24px; padding: 10px; border-radius: 50%; border: none; cursor: pointer;"
-    >
+<!-- Floating Button für Settings -->
+<button style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: fixed; bottom: 10px; right: 10px; background-color: #007bff; color: white; font-size: 24px; padding: 10px; border-radius: 50%; border: none; cursor: pointer;"
+        onclick="window.location.href='/Shop/{{ shop.id }}/settings';" 
+        title="Shop Settings" 
+        aria-label="Shop Settings" 
+        tabindex="0" 
+        role="button" 
+        aria-pressed="false">
     ⚙️
 </button>
 
 {% endblock %}
-

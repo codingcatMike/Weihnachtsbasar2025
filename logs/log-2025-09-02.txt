@@ -291,3 +291,827 @@ Python version : 3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.194
 [Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:38.904205
 [Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:40.901687
 [Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:16:42.558572
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:23:52.433129
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:24:57.998175
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 14:24:58.612865
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:49.064131
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:50.441222
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:50.650639
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:51.003712
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:51.345725
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:51.641950
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:51.813059
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:52.000054
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:52.213598
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:52.386908
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:52.568748
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:52.713787
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:52.893559
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:53.214275
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:53.367946
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:53.561773
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:54.080275
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:54.364511
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:26:54.659569
+[Info] main accessed / page --at-- 2025-09-02 14:27:07.183588
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:28:00.761848
+[Info] main accessed / page --at-- 2025-09-02 14:28:04.882537
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:28:22.588807
+[Info] main accessed / page --at-- 2025-09-02 14:28:28.091114
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:28:35.973987
+[Info] main accessed / page --at-- 2025-09-02 14:28:40.205545
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:28:52.330362
+[Info] main accessed / page --at-- 2025-09-02 14:29:08.866561
+[Info] main accessed / page --at-- 2025-09-02 14:35:50.239573
+[Info] main accessed / page --at-- 2025-09-02 14:39:15.214454
+[Info] main accessed / page --at-- 2025-09-02 14:42:20.028492
+[Info] main accessed / page --at-- 2025-09-02 14:42:59.558461
+[Info] main accessed / page --at-- 2025-09-02 14:48:10.883770
+[Info] main accessed / page --at-- 2025-09-02 14:50:34.660414
+[Info] main accessed / page --at-- 2025-09-02 14:51:13.078425
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:52:55.577627
+[Info] main accessed / page --at-- 2025-09-02 14:53:09.695238
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:53:20.053728
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:53:21.665108
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:53:22.460453
+[Info] main accessed / page --at-- 2025-09-02 14:54:18.025334
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:47.333536
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:48.160757
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:48.687016
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:48.905952
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:49.060932
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:49.340490
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:49.484812
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:49.755958
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:49.902170
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:54:50.069561
+[Info] The User account of main sent an order with customer id 776688 and products [4, 4, 6, 6] --at-- 2025-09-02 14:55:22.083387
+[Info] main accessed / page --at-- 2025-09-02 14:55:22.131894
+[Info] main accessed / page --at-- 2025-09-02 14:55:27.136168
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:56:41.463815
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:56:43.533186
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:57:20.830945
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:57:21.396812
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:57:21.823047
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:57:22.225659
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:57:22.619621
+[Info] The User account of main sent an order with customer id 223311 and products [6, 6, 6, 6, 4, 4, 4] --at-- 2025-09-02 14:58:40.295281
+[Info] main accessed / page --at-- 2025-09-02 14:58:40.342695
+[Info] main accessed / page --at-- 2025-09-02 14:58:46.238648
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:14.000626
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:15.856408
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:16.471307
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:16.881374
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:17.104348
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:17.261354
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:17.405357
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:17.552466
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:17.820368
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:17.954893
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:18.222924
+[Info] main accessed / page --at-- 2025-09-02 14:59:18.223924
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:18.373377
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 14:59:18.701190
+[Info] main accessed / page --at-- 2025-09-02 15:00:58.250926
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:02:08.135189
+[Info] main accessed / page --at-- 2025-09-02 15:02:26.214726
+[Info] main accessed / page --at-- 2025-09-02 15:03:26.958894
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 15:03:28.409775
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:29.431567
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:31.676272
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:32.891102
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:34.703093
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:53.105637
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:53.652887
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:53.937226
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:54.338194
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:54.825905
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:55.246773
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:55.668373
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:55.820565
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:03:55.954708
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:30.689558
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:31.116074
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:31.285108
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:31.437581
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:31.584847
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:31.869392
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:32.018122
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:32.168911
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:32.317604
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:32.521886
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:32.692202
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:32.848993
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:33.091123
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:33.257243
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:33.485887
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:34.040270
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:34.624235
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:34.882352
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:35.262798
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:35.497639
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:35.721680
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:35.981684
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:36.247692
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:36.511104
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:36.743031
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:36.977021
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:37.229620
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:37.512725
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:37.893032
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:38.304213
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:38.491105
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:38.682374
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:38.864987
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:39.042598
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:39.234974
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:39.424960
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:39.586884
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:39.745773
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:39.922165
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:40.075593
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:40.249534
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:40.402712
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:40.827349
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:40.983353
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:41.170336
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:41.329982
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:41.526598
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:41.730047
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:41.983425
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:42.250294
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:42.575945
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:42.987539
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:43.630862
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:43.843036
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:44.056909
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:44.243031
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:44.425530
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:45.713633
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:47.688956
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:47.978020
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:48.187520
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:48.362729
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:48.545250
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:48.715176
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:48.899734
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:49.179085
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:49.368865
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:49.547514
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:49.742857
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:51.085279
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:51.602987
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:51.842864
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:52.047440
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:52.237699
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:52.460851
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:52.656802
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:52.851430
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:53.064257
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:53.241777
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:53.403929
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:53.635886
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:54.020303
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:54.212663
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:54.755118
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:54.958898
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:55.135408
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:55.534015
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:55.780149
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:55.998927
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:56.261619
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:56.699718
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:57.156254
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:57.654456
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:58.005634
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:58.546778
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:58.891505
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:04:59.457241
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:00.410242
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:00.818685
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:01.310171
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:05.303517
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:06.183143
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:06.599296
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:06.864832
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:07.090354
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:07.295632
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:07.472319
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:07.649291
+[Info] main accessed / page --at-- 2025-09-02 15:05:32.725991
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:37.581317
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:38.065115
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:38.386735
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:38.683182
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:38.984786
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:39.302149
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:54.496911
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:54.991674
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:55.179855
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:55.327176
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:55.493690
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:55.666955
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:56.155027
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 15:05:56.672912
+[Info] main accessed / page --at-- 2025-09-02 15:06:32.390675
+[Info] main accessed / page --at-- 2025-09-02 15:07:12.956155
+[Info] main accessed / page --at-- 2025-09-02 18:04:51.927810
+[Info] main accessed / page --at-- 2025-09-02 18:04:52.838285
+[Info] main accessed / page --at-- 2025-09-02 18:04:55.888575
+[Info] The User account of main sent an order with customer id 3344 and products [4, 4, 6, 6] --at-- 2025-09-02 18:05:46.118080
+[Info] main accessed / page --at-- 2025-09-02 18:05:46.167634
+[Info] The User account of main sent an order with customer id 77889900 and products [4, 4, 6, 6] --at-- 2025-09-02 18:06:04.377299
+[Info] main accessed / page --at-- 2025-09-02 18:06:04.423418
+[Info] main accessed / page --at-- 2025-09-02 18:06:09.057484
+[Info] main accessed / page --at-- 2025-09-02 18:06:31.120065
+[Info] main accessed / page --at-- 2025-09-02 18:06:42.797248
+[Info]  accessed / page --at-- 2025-09-02 18:07:15.405300
+[Info]  accessed / page --at-- 2025-09-02 18:07:17.158851
+[Info]  accessed / page --at-- 2025-09-02 18:07:17.589214
+[Info] main accessed / page --at-- 2025-09-02 18:07:17.697386
+[Info]  accessed / page --at-- 2025-09-02 18:07:17.817527
+[Info]  accessed / page --at-- 2025-09-02 18:07:17.991672
+[Info]  accessed / page --at-- 2025-09-02 18:07:18.175665
+[Info]  accessed / page --at-- 2025-09-02 18:07:18.323031
+[Info]  accessed / page --at-- 2025-09-02 18:07:18.483922
+[Info]  accessed / page --at-- 2025-09-02 18:07:18.640611
+[Info]  accessed / page --at-- 2025-09-02 18:07:18.801128
+[Info]  accessed / page --at-- 2025-09-02 18:07:18.956942
+[Info]  accessed / page --at-- 2025-09-02 18:07:19.122667
+[Info]  accessed / page --at-- 2025-09-02 18:07:19.292022
+[Info]  accessed / page --at-- 2025-09-02 18:07:19.462709
+[Info]  accessed / page --at-- 2025-09-02 18:07:19.633264
+[Info]  accessed / page --at-- 2025-09-02 18:07:19.825778
+[Info]  accessed / page --at-- 2025-09-02 18:07:20.029981
+[Info]  accessed / page --at-- 2025-09-02 18:07:20.206941
+[Info]  accessed / page --at-- 2025-09-02 18:07:20.390345
+[Info]  accessed / page --at-- 2025-09-02 18:07:20.560706
+[Info]  accessed / page --at-- 2025-09-02 18:07:20.753427
+[Info]  accessed / page --at-- 2025-09-02 18:07:20.937141
+[Info]  accessed / page --at-- 2025-09-02 18:07:21.110641
+[Info]  accessed / page --at-- 2025-09-02 18:07:21.298890
+[Info]  accessed / page --at-- 2025-09-02 18:07:21.479094
+[Info]  accessed / page --at-- 2025-09-02 18:07:21.790760
+[Info]  accessed / page --at-- 2025-09-02 18:07:22.115264
+[Info]  accessed / page --at-- 2025-09-02 18:07:33.419352
+[Info] main accessed / page --at-- 2025-09-02 18:08:43.005530
+[Info]  accessed / page --at-- 2025-09-02 18:09:06.288934
+[Info]  accessed / page --at-- 2025-09-02 18:09:07.054372
+[Info] main accessed / page --at-- 2025-09-02 18:09:16.807658
+[Info] main accessed / page --at-- 2025-09-02 18:09:24.973148
+[Info]  accessed / page --at-- 2025-09-02 18:09:40.508578
+[Info]  accessed / page --at-- 2025-09-02 18:09:41.062093
+[Info]  accessed / page --at-- 2025-09-02 18:09:41.369873
+[Info]  accessed / page --at-- 2025-09-02 18:09:41.530124
+[Info]  accessed / page --at-- 2025-09-02 18:09:41.670164
+[Info]  accessed / page --at-- 2025-09-02 18:09:41.952652
+[Info]  accessed / page --at-- 2025-09-02 18:09:42.104212
+[Info]  accessed / page --at-- 2025-09-02 18:09:42.272055
+[Info]  accessed / page --at-- 2025-09-02 18:09:42.434694
+[Info]  accessed / page --at-- 2025-09-02 18:09:42.589893
+[Info]  accessed / page --at-- 2025-09-02 18:09:42.749435
+[Info]  accessed / page --at-- 2025-09-02 18:09:42.918570
+[Info]  accessed / page --at-- 2025-09-02 18:09:43.065766
+[Info]  accessed / page --at-- 2025-09-02 18:09:43.225433
+[Info]  accessed / page --at-- 2025-09-02 18:09:43.388249
+[Info]  accessed / page --at-- 2025-09-02 18:09:43.720061
+[Info]  accessed / page --at-- 2025-09-02 18:09:43.898209
+[Info]  accessed / page --at-- 2025-09-02 18:09:44.054742
+[Info]  accessed / page --at-- 2025-09-02 18:09:44.223716
+[Info]  accessed / page --at-- 2025-09-02 18:09:44.379061
+[Info]  accessed / page --at-- 2025-09-02 18:09:44.541198
+[Info]  accessed / page --at-- 2025-09-02 18:09:44.728569
+[Info]  accessed / page --at-- 2025-09-02 18:09:44.886620
+[Info]  accessed / page --at-- 2025-09-02 18:09:45.071766
+[Info]  accessed / page --at-- 2025-09-02 18:09:45.237905
+[Info]  accessed / page --at-- 2025-09-02 18:09:45.415409
+[Info]  accessed / page --at-- 2025-09-02 18:09:45.572162
+[Info]  accessed / page --at-- 2025-09-02 18:09:45.724116
+[Info]  accessed / page --at-- 2025-09-02 18:09:45.874482
+[Info]  accessed / page --at-- 2025-09-02 18:09:46.036774
+[Info]  accessed / page --at-- 2025-09-02 18:09:46.175161
+[Info]  accessed / page --at-- 2025-09-02 18:09:46.337954
+[Info] main accessed / page --at-- 2025-09-02 18:10:05.996751
+[Info] main accessed / page --at-- 2025-09-02 18:10:30.957061
+[Info]  accessed / page --at-- 2025-09-02 18:10:35.096680
+[Info]  accessed / page --at-- 2025-09-02 18:10:35.637941
+[Info]  accessed / page --at-- 2025-09-02 18:10:36.089774
+[Info]  accessed / page --at-- 2025-09-02 18:10:36.486130
+[Info]  accessed / page --at-- 2025-09-02 18:10:36.622664
+[Info]  accessed / page --at-- 2025-09-02 18:10:36.945545
+[Info]  accessed / page --at-- 2025-09-02 18:10:37.087754
+[Info]  accessed / page --at-- 2025-09-02 18:10:37.235387
+[Info]  accessed / page --at-- 2025-09-02 18:10:37.386815
+[Info]  accessed / page --at-- 2025-09-02 18:10:37.539867
+[Info]  accessed / page --at-- 2025-09-02 18:10:37.700955
+[Info]  accessed / page --at-- 2025-09-02 18:10:37.864402
+[Info]  accessed / page --at-- 2025-09-02 18:10:38.020469
+[Info]  accessed / page --at-- 2025-09-02 18:10:38.165632
+[Info]  accessed / page --at-- 2025-09-02 18:10:38.349506
+[Info]  accessed / page --at-- 2025-09-02 18:10:38.491003
+[Info]  accessed / page --at-- 2025-09-02 18:10:38.633931
+[Info]  accessed / page --at-- 2025-09-02 18:10:38.791478
+[Info]  accessed / page --at-- 2025-09-02 18:10:38.959828
+[Info]  accessed / page --at-- 2025-09-02 18:10:39.129638
+[Info]  accessed / page --at-- 2025-09-02 18:10:39.278892
+[Info]  accessed / page --at-- 2025-09-02 18:10:39.445016
+[Info]  accessed / page --at-- 2025-09-02 18:10:39.612533
+[Info]  accessed / page --at-- 2025-09-02 18:10:39.774979
+[Info]  accessed / page --at-- 2025-09-02 18:10:39.951953
+[Info]  accessed / page --at-- 2025-09-02 18:10:40.106563
+[Info]  accessed / page --at-- 2025-09-02 18:10:40.265627
+[Info]  accessed / page --at-- 2025-09-02 18:10:40.462973
+[Info]  accessed / page --at-- 2025-09-02 18:10:40.619032
+[Info]  accessed / page --at-- 2025-09-02 18:10:40.791046
+[Info]  accessed / page --at-- 2025-09-02 18:10:40.949595
+[Info]  accessed / page --at-- 2025-09-02 18:10:41.136520
+[Info]  accessed / page --at-- 2025-09-02 18:10:41.288549
+[Info]  accessed / page --at-- 2025-09-02 18:10:41.447855
+[Info]  accessed / page --at-- 2025-09-02 18:10:41.609120
+[Info]  accessed / page --at-- 2025-09-02 18:10:41.788602
+[Info]  accessed / page --at-- 2025-09-02 18:10:41.954887
+[Info]  accessed / page --at-- 2025-09-02 18:10:42.130423
+[Info] main accessed / page --at-- 2025-09-02 18:10:55.757837
+[Info] main accessed / page --at-- 2025-09-02 18:11:07.758505
+[Info]  accessed / page --at-- 2025-09-02 18:11:53.954901
+[Info] main accessed / page --at-- 2025-09-02 18:12:36.526309
+[Info] main accessed / page --at-- 2025-09-02 18:12:54.075274
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:14:16.259205
+[Info]  accessed / page --at-- 2025-09-02 18:16:35.590146
+[Info]  accessed / page --at-- 2025-09-02 18:17:57.885449
+[Info]  accessed / page --at-- 2025-09-02 18:18:00.223577
+[Info]  accessed / page --at-- 2025-09-02 18:18:03.318601
+[Info]  accessed / page --at-- 2025-09-02 18:18:04.304785
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:18:27.816009
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:18:29.866197
+[Info] main accessed / page --at-- 2025-09-02 18:18:32.043961
+[Info]  accessed / page --at-- 2025-09-02 18:20:55.891171
+[Info]  accessed / page --at-- 2025-09-02 18:21:02.853493
+[Info] main accessed / page --at-- 2025-09-02 18:21:04.553217
+[Info] main accessed / page --at-- 2025-09-02 18:21:05.397277
+[Info] main accessed / page --at-- 2025-09-02 18:21:07.185818
+[Info] main accessed / page --at-- 2025-09-02 18:21:07.895853
+[Info] main accessed / page --at-- 2025-09-02 18:21:08.358046
+[Info] main accessed / page --at-- 2025-09-02 18:21:08.754059
+[Info] main accessed / page --at-- 2025-09-02 18:21:09.112395
+[Info] main accessed / page --at-- 2025-09-02 18:21:09.450996
+[Info] main accessed / page --at-- 2025-09-02 18:21:09.969761
+[Info] main accessed / page --at-- 2025-09-02 18:21:17.909280
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:21:23.273578
+[Info]  accessed / page --at-- 2025-09-02 18:21:47.002157
+[Info]  accessed / page --at-- 2025-09-02 18:21:47.809364
+[Info]  accessed / page --at-- 2025-09-02 18:21:58.211272
+[Info]  accessed / page --at-- 2025-09-02 18:22:35.672044
+[Info]  accessed / page --at-- 2025-09-02 18:22:53.127540
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:23:03.786207
+[Info]  accessed / page --at-- 2025-09-02 18:23:05.779918
+[Info]  accessed / page --at-- 2025-09-02 18:23:15.229750
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:23:21.025014
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:23:22.106974
+[Info]  accessed http://localhost:8000/ page --at-- 2025-09-02 18:23:36.730598
+[Info]  accessed http://localhost:8000/ page --at-- 2025-09-02 18:23:37.491566
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 18:23:41.431895
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:23:42.062909
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:23:42.680616
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:23:43.102289
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:23:44.929427
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 18:23:56.902466
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 18:23:59.330996
+[Info] main accessed / page --at-- 2025-09-02 18:28:21.446410
+[Info] main accessed / page --at-- 2025-09-02 18:28:44.066465
+[Info] main accessed / page --at-- 2025-09-02 18:28:45.602832
+[Info] main accessed / page --at-- 2025-09-02 18:28:46.006811
+[Info] main accessed / page --at-- 2025-09-02 18:28:46.229611
+[Info] main accessed / page --at-- 2025-09-02 18:28:46.384198
+[Info] main accessed / page --at-- 2025-09-02 18:28:46.542516
+[Info] main accessed / page --at-- 2025-09-02 18:28:52.758803
+[Info] main accessed / page --at-- 2025-09-02 18:28:53.378617
+[Info] main accessed / page --at-- 2025-09-02 18:28:53.521755
+[Info] main accessed / page --at-- 2025-09-02 18:28:53.675893
+[Info] main accessed / page --at-- 2025-09-02 18:28:53.807832
+[Info] main accessed / page --at-- 2025-09-02 18:29:03.104744
+[Info] main accessed / page --at-- 2025-09-02 18:29:03.667080
+[Info] main accessed / page --at-- 2025-09-02 18:29:03.819540
+[Info] main accessed / page --at-- 2025-09-02 18:29:03.981811
+[Info] main accessed / page --at-- 2025-09-02 18:29:04.120022
+[Info] main accessed / page --at-- 2025-09-02 18:29:04.441202
+[Info] main accessed / page --at-- 2025-09-02 18:29:04.598061
+[Info] main accessed / page --at-- 2025-09-02 18:29:04.716101
+[Info] main accessed / page --at-- 2025-09-02 18:29:04.866156
+[Info] main accessed / page --at-- 2025-09-02 18:29:05.007036
+[Info] main accessed / page --at-- 2025-09-02 18:29:05.170978
+[Info] main accessed / page --at-- 2025-09-02 18:29:05.322842
+[Info] main accessed / page --at-- 2025-09-02 18:29:06.032945
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:29:15.654496
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:29:16.471025
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:29:16.966240
+[Info] main accessed / page --at-- 2025-09-02 18:29:18.746879
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:29:18.849590
+[Info] main accessed / page --at-- 2025-09-02 18:29:19.187712
+[Info] main accessed / page --at-- 2025-09-02 18:29:19.380939
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:29:19.463630
+[Info] main accessed / page --at-- 2025-09-02 18:29:19.547139
+[Info] main accessed / page --at-- 2025-09-02 18:29:19.811565
+[Info] main accessed / page --at-- 2025-09-02 18:29:19.985323
+[Info] main accessed / page --at-- 2025-09-02 18:29:20.160745
+[Info] main accessed / page --at-- 2025-09-02 18:29:20.330638
+[Info] main accessed / page --at-- 2025-09-02 18:29:20.490865
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:29:20.634114
+[Info] main accessed / page --at-- 2025-09-02 18:29:20.643168
+[Info] main accessed / page --at-- 2025-09-02 18:29:20.805700
+[Info] main accessed / page --at-- 2025-09-02 18:29:20.953974
+[Info] main accessed / page --at-- 2025-09-02 18:29:21.117661
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:29:21.171366
+[Info] main accessed / page --at-- 2025-09-02 18:29:21.450303
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:29:21.533434
+[Info] main accessed / page --at-- 2025-09-02 18:29:21.652393
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:29:21.878634
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:29:22.204561
+[Info] main accessed / page --at-- 2025-09-02 18:29:24.187405
+[Info] main accessed / page --at-- 2025-09-02 18:29:28.685708
+[Info] main accessed / page --at-- 2025-09-02 18:30:22.659881
+[Info] main accessed / page --at-- 2025-09-02 18:30:23.325779
+[Info] main accessed / page --at-- 2025-09-02 18:30:23.601626
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:30:28.232772
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:30:29.021740
+[Info] main accessed / page --at-- 2025-09-02 18:30:35.988391
+[Info] main accessed / page --at-- 2025-09-02 18:30:36.687216
+[Info] main accessed / page --at-- 2025-09-02 18:30:37.524867
+[Info] main accessed / page --at-- 2025-09-02 18:30:38.038937
+[Info] main accessed / page --at-- 2025-09-02 18:30:38.233887
+[Info] main accessed / page --at-- 2025-09-02 18:30:38.381146
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:30:42.646595
+[Info] main accessed / page --at-- 2025-09-02 18:30:42.913713
+[Info] main accessed / page --at-- 2025-09-02 18:30:43.353787
+[Info] main accessed / page --at-- 2025-09-02 18:30:43.505471
+[Info] main accessed / page --at-- 2025-09-02 18:30:43.653222
+[Info] main accessed / page --at-- 2025-09-02 18:30:43.792753
+[Info] main accessed / page --at-- 2025-09-02 18:30:43.935688
+[Info] main accessed / page --at-- 2025-09-02 18:30:44.072586
+[Info] main accessed / page --at-- 2025-09-02 18:30:51.696138
+[Info] main accessed / page --at-- 2025-09-02 18:30:52.119425
+[Info] main accessed / page --at-- 2025-09-02 18:30:52.251458
+[Info] main accessed / page --at-- 2025-09-02 18:30:52.403919
+[Info] main accessed / page --at-- 2025-09-02 18:30:52.544981
+[Info] main accessed / page --at-- 2025-09-02 18:30:52.765941
+[Info] main accessed / page --at-- 2025-09-02 18:30:52.941102
+[Info] main accessed / page --at-- 2025-09-02 18:30:53.839003
+[Info] main accessed / page --at-- 2025-09-02 18:30:54.366198
+[Info] main accessed / page --at-- 2025-09-02 18:30:54.499403
+[Info] main accessed / page --at-- 2025-09-02 18:30:54.662620
+[Info] main accessed / page --at-- 2025-09-02 18:30:55.062862
+[Info] main accessed / page --at-- 2025-09-02 18:30:55.207352
+[Info] main accessed / page --at-- 2025-09-02 18:31:04.094074
+[Info] main accessed / page --at-- 2025-09-02 18:31:04.559332
+[Info] main accessed / page --at-- 2025-09-02 18:31:04.721594
+[Info] main accessed / page --at-- 2025-09-02 18:31:04.871381
+[Info] main accessed / page --at-- 2025-09-02 18:31:23.955771
+[Info] main accessed / page --at-- 2025-09-02 18:31:35.741915
+[Info] main accessed / page --at-- 2025-09-02 18:31:46.078923
+[Info] main accessed / page --at-- 2025-09-02 18:31:55.436545
+[Info] main accessed / page --at-- 2025-09-02 18:32:04.330247
+[Info] main accessed / page --at-- 2025-09-02 18:32:10.125247
+[Info] main accessed http://192.168.178.156:8000/pay/ page --at-- 2025-09-02 18:32:40.288850
+[Info] main accessed / page --at-- 2025-09-02 18:33:06.545131
+[Info] main accessed / page --at-- 2025-09-02 18:33:07.441214
+[Info] main accessed / page --at-- 2025-09-02 18:33:08.033706
+[Info] main accessed / page --at-- 2025-09-02 18:33:08.394950
+[Info] main accessed / page --at-- 2025-09-02 18:33:08.533043
+[Info] main accessed / page --at-- 2025-09-02 18:33:08.692077
+[Info] main accessed / page --at-- 2025-09-02 18:33:08.842716
+[Info] main accessed / page --at-- 2025-09-02 18:33:08.987078
+[Info] main accessed / page --at-- 2025-09-02 18:33:14.661007
+[Info] main accessed / page --at-- 2025-09-02 18:35:09.825777
+[Info] main accessed / page --at-- 2025-09-02 18:35:11.671055
+[Info] main accessed / page --at-- 2025-09-02 18:35:37.036250
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:35:54.937106
+[Info] main accessed / page --at-- 2025-09-02 18:36:05.352746
+[Info] main accessed / page --at-- 2025-09-02 18:36:06.176865
+[Info] main accessed / page --at-- 2025-09-02 18:36:06.901577
+[Info] main accessed / page --at-- 2025-09-02 18:36:33.253697
+[Info] main accessed / page --at-- 2025-09-02 18:36:37.505259
+[Info] main accessed / page --at-- 2025-09-02 18:37:17.549808
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:38:30.893376
+[Info] main accessed / page --at-- 2025-09-02 18:38:41.515409
+[Info] main accessed / page --at-- 2025-09-02 18:38:42.061423
+[Info] main accessed / page --at-- 2025-09-02 18:39:06.890271
+[Info] main accessed / page --at-- 2025-09-02 18:39:11.506107
+[Info] main accessed / page --at-- 2025-09-02 18:39:12.071156
+[Info] main accessed / page --at-- 2025-09-02 18:39:12.196529
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:39:55.170327
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:40:26.358505
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:40:32.640811
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:40:50.591862
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:42:35.291092
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:43:05.389707
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:43:53.190458
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:44:00.060733
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:44:44.677111
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:45:10.312784
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:45:19.307341
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:54:16.485479
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:04.457651
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:06.326602
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:07.123287
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:07.585664
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:07.874537
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:08.334692
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:14.158504
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:14.825012
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:15.309733
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:55:15.740968
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:55:45.018291
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:56:06.697602
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:56:07.939050
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 18:56:28.695194
+[Info] main accessed / page --at-- 2025-09-02 18:56:30.973102
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 18:58:40.093155
+[Info] main accessed / page --at-- 2025-09-02 18:58:45.172809
+[Info] main accessed / page --at-- 2025-09-02 18:58:46.866185
+[Info] main accessed / page --at-- 2025-09-02 18:58:49.460855
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:08.742408
+[Info] main accessed / page --at-- 2025-09-02 19:00:16.564064
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:30.647705
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:31.322119
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:31.774657
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:32.247209
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:32.595591
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:32.899250
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:33.093681
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:37.495325
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:38.020536
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:38.465783
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:38.790693
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:39.350915
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:39.815263
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:40.225047
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:40.576495
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:41.051237
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:41.425313
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:41.674689
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:41.904819
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:42.319879
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:42.667744
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:43.015381
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:44.525282
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:44.948728
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:45.368287
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:45.825582
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:47.920882
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:48.427691
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:48.816396
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:49.206721
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:49.585581
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:49.785975
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:50.202299
+[Info] main accessed / page --at-- 2025-09-02 19:00:52.342372
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:53.466914
+[Info] main accessed / page --at-- 2025-09-02 19:00:53.806525
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:54.044502
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:54.061011
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:54.351565
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:54.629048
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:54.808929
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:00:55.146590
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:19.781828
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:20.549847
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:21.659956
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:22.682696
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:23.502751
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:23.987759
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:24.456474
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:24.785750
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:26.292084
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:28.181125
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:28.688029
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:29.230300
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:29.570892
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:30.146891
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:30.922226
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:31.379446
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:32.988187
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:34.133097
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:35.134983
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:35.716732
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:36.234991
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:36.717004
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:37.093967
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:37.933132
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:38.432051
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:01:38.860462
+[Info] main accessed / page --at-- 2025-09-02 19:02:01.329438
+[Info] main accessed / page --at-- 2025-09-02 19:02:14.899160
+[Info] main accessed / page --at-- 2025-09-02 19:02:19.829929
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:02:22.001072
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:04:05.799668
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:07:17.542777
+[Info] main accessed / page --at-- 2025-09-02 19:07:19.481932
+[Info] main accessed / page --at-- 2025-09-02 19:07:27.168809
+[Info] main accessed / page --at-- 2025-09-02 19:07:27.783123
+[Info] main accessed / page --at-- 2025-09-02 19:07:28.066903
+[Info] main accessed / page --at-- 2025-09-02 19:07:28.218914
+[Info] main accessed / page --at-- 2025-09-02 19:07:28.377877
+[Info] main accessed / page --at-- 2025-09-02 19:07:28.516922
+[Info] main accessed / page --at-- 2025-09-02 19:07:28.666837
+[Info] main accessed / page --at-- 2025-09-02 19:07:29.086552
+[Info] main accessed / page --at-- 2025-09-02 19:07:29.434576
+[Info] main accessed / page --at-- 2025-09-02 19:07:29.580797
+[Info] main accessed / page --at-- 2025-09-02 19:07:29.738387
+[Info] main accessed / page --at-- 2025-09-02 19:07:29.863962
+[Info] main accessed / page --at-- 2025-09-02 19:07:30.008424
+[Info] main accessed / page --at-- 2025-09-02 19:07:30.346002
+[Info] main accessed / page --at-- 2025-09-02 19:07:30.725906
+[Info] main accessed / page --at-- 2025-09-02 19:07:31.001758
+[Info] main accessed / page --at-- 2025-09-02 19:07:31.800987
+[Info] main accessed / page --at-- 2025-09-02 19:07:32.288010
+[Info] main accessed / page --at-- 2025-09-02 19:07:32.744019
+[Info] main accessed / page --at-- 2025-09-02 19:07:32.944109
+[Info] main accessed / page --at-- 2025-09-02 19:07:33.179804
+[Info] main accessed / page --at-- 2025-09-02 19:07:33.658421
+[Info] main accessed / page --at-- 2025-09-02 19:07:42.214903
+[Info] main accessed / page --at-- 2025-09-02 19:07:42.710396
+[Info] main accessed / page --at-- 2025-09-02 19:07:43.093158
+[Info] main accessed / page --at-- 2025-09-02 19:07:43.456075
+[Info] main accessed / page --at-- 2025-09-02 19:07:43.609890
+[Info] main accessed / page --at-- 2025-09-02 19:07:43.743679
+[Info] main accessed / page --at-- 2025-09-02 19:07:43.952885
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:09:45.840945
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:53.468027
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:56.754498
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:57.559735
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:57.989242
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:58.354830
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:58.764110
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:58.908696
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:14:59.056286
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:15:09.810204
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 19:17:46.592463
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:18:30.667524
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:20:54.634580
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:21:02.273821
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:21:03.803961
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:21:08.274212
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:47.165153
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:47.819689
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:48.251319
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:48.426582
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:48.593796
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:48.729348
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:48.867864
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:48.999759
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:49.142355
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:49.284822
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:49.444289
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:49.617298
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:22:49.740934
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:22:52.106916
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:23:11.751436
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:23:14.042317
+[Info] main accessed / page --at-- 2025-09-02 19:26:39.304788
+[Info] main accessed / page --at-- 2025-09-02 19:26:42.657977
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:26:49.902090
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:29:13.599265
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:30:10.473952
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:30:13.127175
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:30:14.021779
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:30:14.545923
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:30:14.693553
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:30:38.411864
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:30:58.941640
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:05.904206
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:06.968846
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:14.690819
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:29.504474
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:49.397250
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:52.169878
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:52.818921
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:53.084188
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:31:53.434359
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:31:58.891111
+[Info] main accessed / page --at-- 2025-09-02 19:32:11.898078
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:32:31.275225
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:33:23.755886
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:33:31.754675
+[Info] main accessed / page --at-- 2025-09-02 19:33:51.651787
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:33:51.782013
+[Info]  accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:34:08.236092
+[Info]  accessed http://localhost:8000/ page --at-- 2025-09-02 19:34:18.621981
+[Info] main accessed / page --at-- 2025-09-02 19:34:20.636241
+[Info]  accessed http://localhost:8000/ page --at-- 2025-09-02 19:34:25.097318
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:34:36.737651
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:35:53.732716
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:36:15.387822
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:36:27.028114
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:36:27.694262
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:36:45.776493
+[Info] main accessed / page --at-- 2025-09-02 19:36:48.234165
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:37:27.094305
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:37:36.297043
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:38:40.165312
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:38:58.323247
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:38:58.796399
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:38:58.991075
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:38:59.286025
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:38:59.440897
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:39:37.616873
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:41:35.464353
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:41:37.382590
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:41:54.438690
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:42:30.958399
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:43:14.584003
+[Info] main accessed / page --at-- 2025-09-02 19:43:28.968034
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:43:39.776994
+[Info] main accessed http://localhost:8000/accounts/login/ page --at-- 2025-09-02 19:44:02.034267
+[Info] main accessed / page --at-- 2025-09-02 19:44:19.843765
+[Info] main accessed / page --at-- 2025-09-02 19:45:54.687511
+[Info] main accessed / page --at-- 2025-09-02 19:45:55.359389
+[Info] main accessed / page --at-- 2025-09-02 19:46:20.056892
+[Info] main accessed / page --at-- 2025-09-02 19:46:41.275673
+[Info] main accessed / page --at-- 2025-09-02 19:46:45.603769
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:47:04.981046
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 19:47:11.301175
+[Info] The User account of main sent an order with customer id 33443322 and products [4, 6, 4, 6] --at-- 2025-09-02 19:50:02.783637
+[Info] main accessed / page --at-- 2025-09-02 19:50:02.835319
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:50:13.105837
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:50:13.787301
+[Info] main accessed / page --at-- 2025-09-02 19:50:14.466689
+[Info] main accessed / page --at-- 2025-09-02 19:56:04.191389
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 19:56:06.085415
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:56:09.180902
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 19:56:13.830647
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:56:18.825824
+[Info] main accessed http://localhost:8000/pay/ page --at-- 2025-09-02 19:56:28.101756
+[Info] The User account of main sent an order with customer id 33443322 and products [4, 4, 6, 6] --at-- 2025-09-02 19:56:28.155972
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:56:28.210031
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:56:30.237858
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:56:30.246856
+[Info] main accessed / page --at-- 2025-09-02 19:56:31.494483
+[Info] main accessed / page --at-- 2025-09-02 19:56:32.717890
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 19:56:41.814301
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 19:56:45.116885
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:56:47.012025
+[Info] The User account of main sent an order with customer id 666777 and products [4, 4, 6, 6] --at-- 2025-09-02 19:56:55.465025
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:56:55.522129
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:57:01.387079
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:57:01.395078
+[Info] main accessed / page --at-- 2025-09-02 19:57:01.678452
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:57:02.378034
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:57:02.386032
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:57:02.920094
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:57:02.928254
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:57:04.023048
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:57:04.032052
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:57:15.528269
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:57:15.535009
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:57:16.622873
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:57:16.632402
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:57:17.207995
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:57:17.215111
+[Info] main accessed / page --at-- 2025-09-02 19:57:29.366553
+[Info] The User account of main sent an order with customer id 66667777 and products [6, 6, 4, 4] --at-- 2025-09-02 19:57:58.879345
+[Info] main accessed / page --at-- 2025-09-02 19:57:58.931996
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:58:39.803608
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:58:39.815115
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 19:58:46.028790
+[Info] main accessed / page --at-- 2025-09-02 19:58:48.417621
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:58:49.875936
+[Info] main accessed http://192.168.178.156:8000/Shop/5/ page --at-- 2025-09-02 19:58:55.999097
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:58:57.605602
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:58:59.413653
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:58:59.422161
+[Info] main accessed shop page as superuser --at-- 2025-09-02 19:59:00.260203
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 19:59:00.268202
+[Info] The User account of main sent an order with customer id 332211 and products [6, 6] --at-- 2025-09-02 19:59:04.005617
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:59:04.057683
+[Info] The User account of main sent an order with customer id 223311 and products [6] --at-- 2025-09-02 19:59:35.209249
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:59:35.264525
+[Info] main accessed / page --at-- 2025-09-02 19:59:42.688857
+[Info] The User account of main sent an order with customer id 556633 and products [6, 6] --at-- 2025-09-02 19:59:57.897575
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 19:59:57.948137
+[Info] The User account of main sent an order with customer id 1199 and products [6, 6] --at-- 2025-09-02 20:00:36.009946
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 20:00:36.069174
+[Info] main accessed shop page as superuser --at-- 2025-09-02 20:00:47.243574
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 20:00:47.251131
+[Info] main accessed shop page as superuser --at-- 2025-09-02 20:00:47.893224
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 20:00:47.901259
+[Info] The User account of main sent an order with customer id 4499 and products [6, 6, 6] --at-- 2025-09-02 20:00:55.663841
+[Info] main accessed http://192.168.178.156:8000/ page --at-- 2025-09-02 20:00:55.726610
+[Info] main accessed shop page as superuser --at-- 2025-09-02 20:01:04.584825
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 20:01:04.593338
+[Info] main accessed shop page as superuser --at-- 2025-09-02 20:01:44.873662
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 20:01:44.881279
+[Info] main accessed shop page as superuser --at-- 2025-09-02 20:01:57.313668
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 20:01:57.321169
+[Info] main accessed shop page as superuser --at-- 2025-09-02 20:04:24.171987
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 20:04:24.182495
+[Info] main accessed / page --at-- 2025-09-02 20:06:14.911794
+[Info] main accessed / page --at-- 2025-09-02 20:06:36.426501
+[Info] The User account of main sent an order with customer id 44551122 and products [4, 4, 6, 6] --at-- 2025-09-02 20:06:45.607642
+[Info] main accessed / page --at-- 2025-09-02 20:06:45.668787
+[Info] main accessed / page --at-- 2025-09-02 20:09:13.274417
+[Info] The User account of main sent an order with customer id 77099 and products [4, 4, 6, 6] --at-- 2025-09-02 20:09:22.821574
+[Info] main accessed / page --at-- 2025-09-02 20:09:22.883932
+[Info] The User account of main sent an order with customer id 11992288 and products [4, 4, 6, 6] --at-- 2025-09-02 20:09:36.624484
+[Info] main accessed / page --at-- 2025-09-02 20:09:36.701117
+[Info] main accessed shop page as superuser --at-- 2025-09-02 20:16:58.107284
+[Info] main accessed http://localhost:8000/ page --at-- 2025-09-02 20:16:58.116101

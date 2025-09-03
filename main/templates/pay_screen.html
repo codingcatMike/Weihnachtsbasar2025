@@ -9,6 +9,7 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
+            margin: 0px;
         }
         td, th {
             border: 1px solid #dddddd;
@@ -18,13 +19,24 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+        .total-row {
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+        .qr-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .qr-container img {
+            width: 200px;
+            height: 200px;
+        }
     </style>
 </head>
 <body>
 
-<h2>Aktuelle Bestellung</h2>
 <div id="order-container">
-    <!-- Order table will appear here -->
+    <!-- Order table + QR code will appear here -->
 </div>
 
 <script>
@@ -41,22 +53,29 @@ socket.onclose = function() {
 socket.onmessage = function(e) {
     const data = JSON.parse(e.data);
     const container = document.getElementById("order-container");
+    console.log("DEBUG order:", data.order);
+    console.log("QR Code:", data.order ? data.order.qr_code : "No order");
 
     // Clear display if order is None
-    if(data.order === null) {
-        container.innerHTML = "<p>Keine Bestellung angezeigt</p>";
+    if (data.order === null) {
+        container.innerHTML = "";
         return;
     }
 
-    if(data.order) {
+    if (data.paid_order_id) {
+    container.innerHTML = "";
+}
+
+    if (data.order) {
         const order = data.order;
-        let itemsHtml = order.items.map(item => 
+        let itemsHtml = order.items.map(item =>
             `<tr>
                 <td>${item.quantity}</td>
                 <td>${item.name}</td>
                 <td>${item.price}€</td>
                 <td>${(item.quantity * item.price)}€</td>
-            </tr>`).join("");
+            </tr>`
+        ).join("");
 
         const tableHtml = `
             <table>
@@ -67,18 +86,26 @@ socket.onmessage = function(e) {
                     <th>Gesamt</th>
                 </tr>
                 ${itemsHtml}
-                <tr>
-                    <td colspan="3"><strong>Total (innsgesammt):</strong></td>
-                    <td><strong>${order.price}€</strong></td>
+                <tr class="total-row">
+                    <td colspan="2"><strong>Total (insgesamt):</strong></td>
+                    <td colspan="2"><strong>${order.price}€</strong></td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="2"><strong>Kundennummer:</strong></td>
+                    <td colspan="2"><strong>${order.customer_id} (${order.id})</strong></td>
                 </tr>
             </table>
+            <div class="qr-container">
+              <p>Scan this QR code to get your receipt:</p>
+              <img src="${order.qr_code}" alt="QR Code">
+          </div>
         `;
 
         container.innerHTML = tableHtml;
     }
 
     // Optionally handle order removal if it's paid
-    if(data.paid_order_id) {
+    if (data.paid_order_id) {
         container.innerHTML = "<p>Keine Bestellung angezeigt</p>";
     }
 };

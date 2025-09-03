@@ -10,9 +10,81 @@ from .log import log
 import json
 from collections import Counter
 from django.utils.safestring import mark_safe
-from .consumers import send_orders_update
+from .consumers import send_orders_update # send_onscreen_order
+from django.http import FileResponse
+from .utils import generate_receipt_pdf
+from django.http import HttpResponse
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from .models import Order
+import io
+import base64
+import qrcode
+from django.conf import settings
+from django.urls import reverse
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+from django.http import JsonResponse
+from .models import Order
+from django.http import HttpResponse
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+from reportlab.platypus import Table, TableStyle
+from reportlab.lib.units import mm
 
-# Create your views here.
+def generate_pdf_receipt(request, order_id):
+    order = Order.objects.get(id=order_id)
+    items = [
+        {"name": item.product.name, "quantity": item.quantity, "price": float(item.product.price)}
+        for item in order.orderitem_set.all()
+    ]
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'inline; filename="receipt_{order.id}.pdf"'
+
+    pdf = canvas.Canvas(response, pagesize=A4)
+    width, height = A4
+
+    # Header
+    pdf.setFont("Helvetica-Bold", 20)
+    pdf.drawCentredString(width / 2, height - 50, "🛍️ My Shop Receipt")
+    pdf.setFont("Helvetica", 12)
+    pdf.drawCentredString(width / 2, height - 70, f"Receipt #{order.id}")
+
+    # Customer info
+    pdf.drawString(50, height - 110, f"Customer ID: {order.customer.id}")
+    pdf.drawString(50, height - 125, f"Total Price: ${order.price:.2f}")
+
+    # Table data
+    data = [["Qty", "Product", "Unit Price", "Total"]]
+    for item in items:
+        total_item = item['quantity'] * item['price']
+        data.append([item['quantity'], item['name'], f"${item['price']:.2f}", f"${total_item:.2f}"])
+
+    # Add total row
+    data.append(["", "", "TOTAL:", f"${order.price:.2f}"])
+
+    table = Table(data, colWidths=[30*mm, 70*mm, 30*mm, 30*mm])
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.lightgrey),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.black),
+        ('ALIGN', (2,1), (-1,-1), 'RIGHT'),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.black),
+        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+        ('FONTNAME', (0,-1), (-1,-1), 'Helvetica-Bold'),
+        ('BACKGROUND', (0,-1), (-1,-1), colors.whitesmoke),
+    ]))
+
+    # Position table
+    table.wrapOn(pdf, width, height)
+    table.drawOn(pdf, 50, height - 300)
+
+    pdf.showPage()
+    pdf.save()
+
+    return response
+
 def index(request):
     log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
     
@@ -249,6 +321,7 @@ def SendOrder(request):
             "income": float(current_income),
         }
     )
+    
     send_orders_update()    
 
     # Response an den Client
@@ -290,7 +363,7 @@ def pay_id(request, id):
         "pay_screen_updates",  # MUST match PayScreenConsumer.group_name
         {
             "type": "order_paid",
-            "order_id": order.id
+            "order_id": 0
         }
     )
 
@@ -298,6 +371,18 @@ def pay_id(request, id):
 
 def display_order(request, id):
     order = get_object_or_404(Order, id=id)
+
+    # QR-Code URL zur PDF-Receipt
+    url = settings.SITE_URL + reverse("receipt", args=[order.id])
+    
+    qr = qrcode.make(url)
+    buf = io.BytesIO()
+    qr.save(buf, format="PNG")
+    buf.seek(0)
+    qr_base64 = base64.b64encode(buf.read()).decode("utf-8")
+    qr_data = f"data:image/png;base64,{qr_base64}"  # Base64-String für img src
+
+    # Order-Daten inkl. QR-Code
     order_data = {
         "id": order.id,
         "customer_id": order.customer.id,
@@ -305,15 +390,16 @@ def display_order(request, id):
         "items": [
             {"name": i.product.name, "quantity": i.quantity, "price": float(i.product.price)}
             for i in order.orderitem_set.all()
-        ]
+        ],
+        "qr_code": qr_data,  # <-- hier einfügen
     }
 
-    # Send order to PayScreen via correct group and type
+    # Sende an WebSocket-Gruppe
     channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
-        "pay_screen_updates",  # MUST match PayScreenConsumer.group_name
+        "pay_screen_updates",
         {
-            "type": "new_onscreen",  # MUST match the async def in consumer
+            "type": "new_onscreen",
             "order": order_data
         }
     )
@@ -390,3 +476,7 @@ def ShopSettings(request, shop_id):
 
 def pay_Screen(request):
     return render(request, "pay_Screen.html", {})
+
+def receipt_pdf(request, order_id):
+    buffer = generate_receipt_pdf(order_id)
+    return FileResponse(buffer, as_attachment=True, filename=f"receipt_{order_id}.pdf")

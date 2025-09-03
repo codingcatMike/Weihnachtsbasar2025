@@ -57,7 +57,6 @@ function connectSocket() {
     updateConnectionStatus("connecting");
     socket = new WebSocket("ws://" + window.location.host + "/ws/pay/");
 
-
     socket.onopen = function() {
         updateConnectionStatus("connected");
     };
@@ -68,10 +67,33 @@ function connectSocket() {
 
     socket.onmessage = function(e) {
         const data = JSON.parse(e.data);
-        // Remove order from page if it was marked as paid
+
+        // Remove order if it was marked as paid
         if(data.paid_order_id) {
             const el = document.getElementById(`order-${data.paid_order_id}`);
             if(el) el.remove();
+        }
+
+        // Update orders list
+        if(data.orders) {
+            const ordersContainer = document.getElementById("orders");
+            ordersContainer.innerHTML = ""; // clear current orders
+
+            data.orders.forEach(order => {
+                const items = order.items.map(i => `${i.quantity} x ${i.name}`).join(", ");
+                const div = document.createElement("div");
+                div.classList.add("order");
+                div.id = `order-${order.id}`;
+                div.innerHTML = `
+                    <p>${order.customer_id}: ${order.price}€</p>
+                    <p>${items} (Order ID: ${order.id})</p>
+                    <button class="display-pay-button" data-order-id="${order.id}">Display on Pay Screen</button>
+                `;
+                ordersContainer.appendChild(div);
+            });
+
+            // Update income
+            document.getElementById("income").textContent = data.income;
         }
     };
 }

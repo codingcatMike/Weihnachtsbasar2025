@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-    
+    <link rel="icon" type="image/x-icon" href="{% static 'main/favicon.ico' %}">
+
     <style>
 body {
   height: 100vh;
@@ -20,7 +21,7 @@ body {
   );
 }
 
-/* Text und Buttons */
+/* Text */
 h1, h2, h3, h4, h5, h6 {
     color: #333;
     margin-bottom: 20px;
@@ -39,6 +40,7 @@ label {
     font-weight: bold;
 }
 
+/* Inputs */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -52,18 +54,18 @@ input[type="password"] {
 }
 
 .helptext {
-    font-size: 0.9em;
+    font-size: 1em;
     color: #888;
 }
 
+/* Buttons */
 button, input[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 10px 16px;
     cursor: pointer;
     border-radius: 4px;
-    width: 100%;
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
@@ -72,10 +74,11 @@ button:hover, input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+/* Footer */
 .footer {
     text-align: center;
     margin-top: 20px;
-    font-size: 0.9em;
+    font-size: 1.2em;
 }
 
 .footer a {
@@ -86,6 +89,17 @@ button:hover, input[type="submit"]:hover {
 .footer a:hover {
     text-decoration: underline;
 }
+
+/* Message Box */
+.message {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 6px;
+    min-width: max-content;
+    position: relative;
+    font-size: 16px;
+}
     </style>
 </head>
 <body>
@@ -95,16 +109,8 @@ button:hover, input[type="submit"]:hover {
             let y = Math.random() * 60 + 20;
             let targetX = Math.random() * 60 + 20;
             let targetY = Math.random() * 60 + 20;
-        
-
-
-
 
             const duration = 90000; // Dauer in ms für einen Übergang
-
-
-
-
             let startTime = null;
         
             function animate(timestamp) {
@@ -146,44 +152,52 @@ button:hover, input[type="submit"]:hover {
         
             requestAnimationFrame(animate);
         });
-        </script>
+    </script>
         
 
 {% if user.is_authenticated %}
 <div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
     <a href="/help">
-        <button type="button" style="width: 100px; height: 40px;">Support</button>
+        <button type="button">Support</button>
     </a>
     <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
-        <button type="submit" style="width: 100px; height: 52px;">Logout as {{ user.username }}</button>
+        <button type="submit">Logout as {{ user.username }}</button>
     </form>
 </div>
 {% else %}
-<button type="button" onclick="window.location.href='{% url 'login' %}'" style="position: absolute; top: 10px; right: 10px; width: 100px; height: 40px;">Login</button>
-<button type="button" onclick="window.location.href='{% url 'signup' %}'" style="position: absolute; top: 10px; right: 120px; width: 100px; height: 40px;">Signup</button>
+<div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
+    <button type="button" onclick="window.location.href='{% url 'login' %}'">Login</button>
+    <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+</div>
 {% endif %}
 
-<div style="position: absolute; top: 5px; left: 10px;">
+<div style="position: absolute; top: 40px; left: 10px;">
     <a href="{% url 'index' %}">
-        <img src="{% static 'main/images/logo.png' %}" alt="Logo" style="height: 50px;">
+        <img src="{% static 'main/logo.png' %}" alt="Logo" style="height: 200px;">
     </a>
 </div>
 
 
 {% block content %}{% endblock content %}
 
-<footer style="position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; align-items: center;">
+<footer style="position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center;">
 {% if messages %}
-    {% for message in messages %}
-        <div style="background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %}; padding: 10px; margin: 5px; {% if message.tags == 'success' %}color: #3c763d;{% elif message.tags == 'warning' %}color: rgb(255, 255, 255);{% elif message.tags == 'error' %}color: rgb(255, 255, 255);{% endif %}; position: relative;" class="message">
-            <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; cursor: pointer;">&times;</button>
-            <br>
-            {{ message|safe }}
-        </div>
-    {% endfor %}
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        {% for message in messages %}
+            <div class="message"
+                 style="background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %};
+                        color: {% if message.tags == 'success' %}#3c763d{% elif message.tags == 'warning' %}#fff{% elif message.tags == 'error' %}#fff{% endif %};
+                        max-width: 80%; text-align: center; white-space: nowrap;">
+                <button onclick="this.parentElement.style.display='none'"
+                        style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; cursor: pointer;">&times;</button>
+                {{ message|safe }}
+            </div>
+        {% endfor %}
+    </div>
 {% endif %}
 </footer>
+
 
 <script>
 function copyOtp() {
@@ -195,7 +209,6 @@ function copyOtp() {
     document.execCommand('copy');
     textarea.style.position = 'absolute';
     textarea.style.left = '-9999px';
-    textarea.style.background_color = 'white'
 }
 </script>
 
