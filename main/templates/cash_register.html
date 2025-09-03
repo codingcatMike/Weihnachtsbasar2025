@@ -55,7 +55,8 @@ function updateConnectionStatus(state) {
 // Connect WebSocket
 function connectSocket() {
     updateConnectionStatus("connecting");
-    socket = new WebSocket("ws://" + window.location.host + "/ws/pay/");
+    const socket = new WebSocket(`${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws/pay/`);
+
 
     socket.onopen = function() {
         updateConnectionStatus("connected");

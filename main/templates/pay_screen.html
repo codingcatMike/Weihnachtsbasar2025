@@ -40,7 +40,8 @@
 </div>
 
 <script>
-let socket = new WebSocket("ws://" + window.location.host + "/ws/pay_screen/");
+const socket = new WebSocket(`${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws/pay_screen/`);
+
 
 socket.onopen = function() {
     console.log("Connected to PayScreen WebSocket");
