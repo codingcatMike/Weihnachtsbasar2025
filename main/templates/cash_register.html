@@ -38,10 +38,10 @@ let socket = null;
 function updateConnectionStatus(state) {
     const statusEl = document.getElementById("connection-status");
     if(state === "connected") {
-        statusEl.textContent = "Live-Server verbunden (click to disconnect)";
+        statusEl.textContent = "Live-Server verbunden (click to reconnect)";
         statusEl.style.color = "rgba(45, 210, 0, 1)";
     } else if(state === "disconnected") {
-        statusEl.textContent = "Nicht verbunden (click to connect)";
+        statusEl.textContent = "Nicht verbunden (click to reconnect)";
         statusEl.style.color = "red";
     } else if(state === "connecting") {
         statusEl.textContent = "Verbindung wird aufgebaut…";

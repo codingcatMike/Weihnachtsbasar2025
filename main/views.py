@@ -420,7 +420,7 @@ def ShopSettings(request, shop_id):
     return render(request, "shop_settings.html", context)
 
 def pay_Screen(request):
-    return render(request, "pay_Screen.html", {})
+    return render(request, "pay_screen.html", {})
 
 def receipt_pdf(request, order_id):
     buffer = generate_receipt_pdf(order_id)

@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # settings.py
-SITE_URL = "http://192.168.178.156:8000"
+SITE_URL = "https://webdevcode.de"
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-ed%gkrmb9^7wd9rssu*0gwvp%3e2dept3mdx6o2v4^uzqu$to4
 DEBUG = True
 
 STATIC_URL = 'main/static/'
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
