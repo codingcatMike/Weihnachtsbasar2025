@@ -29,7 +29,7 @@ DEBUG = True
 
 STATIC_URL = 'main/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["webdevcode.de", "www.webdevcode.de", "127.0.0.1", "localhost", "*"]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://www.webdevcode.de',

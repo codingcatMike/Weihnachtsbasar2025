@@ -71,3 +71,141 @@ Python version : 3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]
 [Info] main accessed http://www.webdevcode.de/pay/ page --at-- 2025-09-03 12:16:01.088402
 [Info]  accessed / page --at-- 2025-09-03 12:16:38.952547
 [Info] main accessed / page --at-- 2025-09-03 12:18:30.583500
+[Info]  accessed / page --at-- 2025-09-03 12:22:06.731393
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-03 12:43:44.280006
+[Info]  accessed / page --at-- 2025-09-03 12:58:47.019714
+[Info] main accessed / page --at-- 2025-09-03 13:57:55.700772
+[Info] main accessed / page --at-- 2025-09-03 13:58:21.549127
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 13:58:30.536033
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 13:58:34.771056
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 13:58:37.534986
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 13:58:45.244109
+[Info]  accessed android-app://com.google.android.googlequicksearchbox/ page --at-- 2025-09-03 13:58:47.132604
+[Info]  accessed https://www.google.com/ page --at-- 2025-09-03 13:58:56.401236
+[Info]  accessed / page --at-- 2025-09-03 14:01:12.022454
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:04:11.926299
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:04:12.394356
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-03 14:04:14.888053
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:04:15.828631
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:04:16.293785
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:04:16.606049
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:04:17.013692
+[Info]  accessed / page --at-- 2025-09-03 14:06:47.061430
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:06:54.643632
+[Info]  accessed / page --at-- 2025-09-03 14:06:58.633857
+[Info]  accessed / page --at-- 2025-09-03 14:08:19.993860
+[Info]  accessed / page --at-- 2025-09-03 14:08:20.844488
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:08:57.519341
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:09:00.107966
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:29.221266
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:30.764316
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:31.255100
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:31.711494
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:31.899259
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:32.078257
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:32.248955
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:10:32.416524
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:47.595747
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:48.449932
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:54.772265
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:55.255223
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:55.415084
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:56.601305
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:56.974374
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:57.258788
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:10:57.556496
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:14:58.820109
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:14:59.356496
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:14:59.636158
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:15:00.184132
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:15:00.615256
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:15:00.851778
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:15:01.020589
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:15:01.175862
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:15:01.604944
+[Info]  accessed / page --at-- 2025-09-03 14:16:27.741623
+[Info]  accessed / page --at-- 2025-09-03 14:16:31.743663
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:52.629664
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:55.290196
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:56.772031
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:57.398825
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:57.845971
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:58.081108
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:58.392687
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:58.665503
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:58.926771
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:59.359581
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:16:59.865943
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:17:00.413043
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:17:00.771250
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:17:01.314533
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:17:07.039111
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:17:08.264799
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:18:15.255576
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:31.722650
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:32.404250
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:32.831168
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:33.180690
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:33.585277
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:34.064175
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:34.447309
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:34.799722
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:35.110928
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:35.325531
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:35.520225
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:35.996636
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:36.903074
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:37.411794
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:37.665617
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:37.877708
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:38.074505
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:38.271708
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:38.500973
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:38.741369
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:38.884256
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.021208
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.150912
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.286946
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.408725
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.515713
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.631234
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.829568
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:39.919457
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:41.814126
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:42.855166
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:42.987983
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:43.128448
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:43.328825
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:44.176870
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:45.465787
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:45.720711
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:46.162675
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:46.879675
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:47.749855
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:48.120606
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:48.347334
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:48.957071
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:49.143881
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:21:49.612361
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:23:28.000807
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:23:28.346999
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:23:28.743184
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:23:28.945107
+[Info]  accessed / page --at-- 2025-09-03 14:23:58.155399
+[Info]  accessed / page --at-- 2025-09-03 14:24:42.843550
+[Info]  accessed / page --at-- 2025-09-03 14:24:44.327031
+[Info]  accessed / page --at-- 2025-09-03 14:26:55.570162
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:27:07.092091
+[Info]  accessed / page --at-- 2025-09-03 14:27:24.258282
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:27:36.071658
+[Info]  accessed / page --at-- 2025-09-03 14:27:38.857193
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:33:34.892789
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:33:35.391887
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:33:35.623316
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:33:35.787521
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-03 14:33:35.942466
+[Info]  accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:33:39.704615
+[Info] The User account of GamingChair199 has been created successfully --at-- 2025-09-03 14:33:53.698322
+[Info] GamingChair199 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-03 14:33:55.556811
+[Info] main accessed / page --at-- 2025-09-03 14:39:18.120027
+[Info] main accessed / page --at-- 2025-09-03 14:39:20.405927
