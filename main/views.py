@@ -32,6 +32,18 @@ from reportlab.pdfgen import canvas
 from reportlab.lib import colors
 from reportlab.platypus import Table, TableStyle
 from reportlab.lib.units import mm
+from django.http import JsonResponse
+import json
+from collections import Counter
+from django.http import JsonResponse
+from collections import Counter
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+import json
+from reportlab.graphics.charts.barcharts import VerticalBarChart
+from reportlab.graphics.shapes import Drawing
+from reportlab.graphics import renderPDF
+
 
 def generate_pdf_receipt(request, order_id):
     order = Order.objects.get(id=order_id)
@@ -47,25 +59,31 @@ def generate_pdf_receipt(request, order_id):
     width, height = A4
 
     # Header
-    pdf.setFont("Helvetica-Bold", 20)
-    pdf.drawCentredString(width / 2, height - 50, "🛍️ My Shop Receipt")
+    pdf.setFont("Helvetica-Bold", 18)
+    pdf.drawCentredString(width / 2, height - 50, "Weihnachtsbasarprojekt 2025 Derksen")
+    
+    pdf.setFont("Helvetica-Oblique", 10)
+    pdf.drawCentredString(width / 2, height - 65, "(NOT AN OFFICIAL RECEIPT / KEIN OFFIZIELLER KASSENZETTEL)")
+
     pdf.setFont("Helvetica", 12)
-    pdf.drawCentredString(width / 2, height - 70, f"Receipt #{order.id}")
+    pdf.drawCentredString(width / 2, height - 85, f"Receipt #{order.id}")
 
     # Customer info
-    pdf.drawString(50, height - 110, f"Customer ID: {order.customer.id}")
-    pdf.drawString(50, height - 125, f"Total Price: ${order.price:.2f}")
+    pdf.setFont("Helvetica", 11)
+    pdf.drawString(50, height - 120, f"Customer ID: {order.customer.id}")
+    pdf.drawString(50, height - 135, f"Total Price: €{order.price:.2f}")
 
     # Table data
     data = [["Qty", "Product", "Unit Price", "Total"]]
     for item in items:
         total_item = item['quantity'] * item['price']
-        data.append([item['quantity'], item['name'], f"${item['price']:.2f}", f"${total_item:.2f}"])
-
+        data.append([item['quantity'], item['name'], f"€{item['price']:.2f}", f"€{total_item:.2f}"])
+    
     # Add total row
-    data.append(["", "", "TOTAL:", f"${order.price:.2f}"])
+    data.append(["", "", "TOTAL:", f"€{order.price:.2f}"])
 
-    table = Table(data, colWidths=[30*mm, 70*mm, 30*mm, 30*mm])
+    # Table styling
+    table = Table(data, colWidths=[25*mm, 80*mm, 30*mm, 30*mm])
     table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.lightgrey),
         ('TEXTCOLOR', (0,0), (-1,0), colors.black),
@@ -229,14 +247,7 @@ def create_product(request):
         log(f"Someone tried to access create product page, but failed because he is not logged in", 2)
         return redirect('index')
 
-from django.http import JsonResponse
-import json
-from collections import Counter
-from django.http import JsonResponse
-from collections import Counter
-from asgiref.sync import async_to_sync
-from channels.layers import get_channel_layer
-import json
+
 
 def SendOrder(request):
     if request.method != 'POST':
@@ -409,7 +420,7 @@ def ShopSettings(request, shop_id):
                 product = Product.objects.get(id=product_id, shop=shop)
                 product.price = float(price)
                 product.save()
-                messages.success(request, f"Price for '{product.name}' updated to ${price}.")
+                messages.success(request, f"Price for '{product.name}' updated to €{price}.")
             except Product.DoesNotExist:
                 messages.error(request, "Product not found.")
             except ValueError:
@@ -425,3 +436,64 @@ def pay_Screen(request):
 def receipt_pdf(request, order_id):
     buffer = generate_receipt_pdf(order_id)
     return FileResponse(buffer, as_attachment=True, filename=f"receipt_{order_id}.pdf")
+
+
+from django.http import HttpResponse
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
+from reportlab.graphics.shapes import Drawing
+from reportlab.graphics.charts.barcharts import VerticalBarChart
+from reportlab.graphics import renderPDF
+from reportlab.pdfgen import canvas
+from django.db.models import F, Sum # Ersetze 'deine_app' durch deinen App-Namen
+
+def generate_stat_pdf(request):
+    # 1️⃣ PDF-Seite und Drawing vorbereiten
+    width, height = A4
+    margin = 50
+    drawing_width = width - 2 * margin
+    drawing_height = height - 2 * margin
+    drawing = Drawing(drawing_width, drawing_height)
+
+    # 2️⃣ Einnahmen pro Produkt direkt in der DB aggregieren
+    product_income_qs = (
+        OrderItem.objects
+        .values('product__name')
+        .annotate(total_income=Sum(F('product__price') * F('quantity')))
+        .order_by('product__name')
+    )
+
+    # 3️⃣ Listen für das Diagramm
+    x_axis = [item['product__name'] for item in product_income_qs]
+    y_axis = [float(item['total_income']) for item in product_income_qs]
+
+    # 4️⃣ Chart erstellen und konfigurieren
+    chart = VerticalBarChart()
+    chart.x = 50
+    chart.y = 50
+    chart.width = drawing_width - 100
+    chart.height = drawing_height - 100
+
+    chart.data = [y_axis]
+    chart.categoryAxis.categoryNames = x_axis
+    chart.valueAxis.valueMin = 0
+    chart.valueAxis.valueMax = max(y_axis) * 1.1 if y_axis else 10  # 10 als Default, falls leer
+    chart.valueAxis.labelTextFormat = lambda v: f"{v:.0f} €"
+
+    # Balkenfarbe
+    for bar in chart.bars:
+        bar.fillColor = colors.blue
+
+    # 5️⃣ Chart ins Drawing einfügen
+    drawing.add(chart)
+
+    # 6️⃣ PDF direkt an den Browser streamen
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="produkt_einnahmen.pdf"'
+
+    c = canvas.Canvas(response, pagesize=A4)
+    renderPDF.drawToCanvas(drawing, c, 0, 0)
+    c.showPage()
+    c.save()
+
+    return response

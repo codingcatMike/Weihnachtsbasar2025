@@ -5,161 +5,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'main/favicon.ico' %}">
 
     <style>
-body {
-  height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: repeating-radial-gradient(
-    circle at 50% 50%,
-    #808080,
-    #505050 40px,
-    #8b8b8b 40px,
-    #6e6e6e 80px
-  );
-}
+        body {
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: repeating-radial-gradient(
+                circle at 50% 50%,
+                #808080,
+                #505050 40px,
+                #8b8b8b 40px,
+                #6e6e6e 80px
+            );
+        }
 
-/* Text */
-h1, h2, h3, h4, h5, h6 {
-    color: #333;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    text-align: center;
-}
+        h1, h2, h3, h4, h5, h6 {
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-align: center;
+        }
 
-p {
-    margin-bottom: 15px;
-    color: #555;
-}
+        p {
+            margin-bottom: 15px;
+            color: #555;
+        }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
 
-/* Inputs */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
 
-.helptext {
-    font-size: 1em;
-    color: #888;
-}
+        .helptext {
+            font-size: 1em;
+            color: #888;
+        }
 
-/* Buttons */
-button, input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
+        button, input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
 
-button:hover, input[type="submit"]:hover {
-    background-color: #0056b3;
-}
+        button:hover, input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
 
-/* Footer */
-.footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.2em;
-}
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
 
-.footer a {
-    color: #007bff;
-    text-decoration: none;
-}
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
 
-.footer a:hover {
-    text-decoration: underline;
-}
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
-/* Message Box */
-.message {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 6px;
-    min-width: max-content;
-    position: relative;
-    font-size: 16px;
-}
+        .message {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 6px;
+            min-width: max-content;
+            position: relative;
+            font-size: 16px;
+        }
+
+        /* Logo */
+        #logo-container {
+            position: absolute;
+        }
+
+        #logo-container img {
+            height: 200px;
+        }
     </style>
 </head>
 <body>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let x = Math.random() * 60 + 20;
-            let y = Math.random() * 60 + 20;
-            let targetX = Math.random() * 60 + 20;
-            let targetY = Math.random() * 60 + 20;
 
-            const duration = 90000; // Dauer in ms für einen Übergang
-            let startTime = null;
-        
-            function animate(timestamp) {
-                if (!startTime) {
-                    startTime = timestamp;
-                    console.log("Startwerte:", x.toFixed(2), y.toFixed(2));
-                    console.log("Zielwerte:", targetX.toFixed(2), targetY.toFixed(2));
-                }
-        
-                let progress = (timestamp - startTime) / duration;
-                if (progress > 1) progress = 1;
-        
-                // Lineare Interpolation
-                let currentX = x + (targetX - x) * progress;
-                let currentY = y + (targetY - y) * progress;
-        
-                document.body.style.background = `
-                    repeating-radial-gradient(
-                        circle at ${currentX}% ${currentY}%,
-                        #808080,
-                        #505050 40px,
-                        #8b8b8b 40px,
-                        #6e6e6e 80px
-                    )
-                `;
-        
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    // Nach Ablauf: neue Zielwerte setzen
-                    x = targetX;
-                    y = targetY;
-                    targetX = Math.random() * 60 + 20;
-                    targetY = Math.random() * 60 + 20;
-                    startTime = null;
-                    requestAnimationFrame(animate);
-                }
-            }
-        
-            requestAnimationFrame(animate);
-        });
-    </script>
-        
-
+<!-- Login/Logout Bereich -->
 {% if user.is_authenticated %}
 <div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
-    <a href="/help">
-        <button type="button">Support</button>
-    </a>
+    <a href="/help"><button type="button">Support</button></a>
     <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit">Logout as {{ user.username }}</button>
@@ -172,12 +126,72 @@ button:hover, input[type="submit"]:hover {
 </div>
 {% endif %}
 
-<div style="position: absolute; top: 40px; left: 10px;">
-    <a href="{% url 'index' %}">
-        <img src="{% static 'main/logo.png' %}" alt="Logo" style="height: 200px;">
+<!-- Logo -->
+<div id="logo-container">
+    <a href="/">
+        <img src="{% static 'main/logo.png' %}" alt="Logo">
     </a>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const logo = document.getElementById('logo-container');
+
+    // Logo oben links auf Homepage, unten links auf allen anderen Seiten
+    if (window.location.pathname === "/") {
+        logo.style.top = "10px";
+        logo.style.left = "10px";
+        logo.style.bottom = "";
+    } else {
+        logo.style.bottom = "50px";
+        logo.style.left = "10px";
+        logo.style.top = "";
+    }
+
+    // Hintergrund-Animation
+    let x = Math.random() * 60 + 20;
+    let y = Math.random() * 60 + 20;
+    let targetX = Math.random() * 60 + 20;
+    let targetY = Math.random() * 60 + 20;
+
+    const duration = 90000; // 90 Sekunden pro Bewegung
+    let startTime = null;
+
+    function animate(timestamp) {
+        if (!startTime) startTime = timestamp;
+
+        let progress = (timestamp - startTime) / duration;
+        if (progress > 1) progress = 1;
+
+        let currentX = x + (targetX - x) * progress;
+        let currentY = y + (targetY - y) * progress;
+
+        document.body.style.background = `
+            repeating-radial-gradient(
+                circle at ${currentX}% ${currentY}%,
+                #808080,
+                #505050 40px,
+                #8b8b8b 40px,
+                #6e6e6e 80px
+            )
+        `;
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            // Neues Ziel setzen und neu starten
+            x = targetX;
+            y = targetY;
+            targetX = Math.random() * 60 + 20;
+            targetY = Math.random() * 60 + 20;
+            startTime = null;
+            requestAnimationFrame(animate);
+        }
+    }
+
+    requestAnimationFrame(animate);
+});
+</script>
 
 {% block content %}{% endblock content %}
 
@@ -197,20 +211,6 @@ button:hover, input[type="submit"]:hover {
     </div>
 {% endif %}
 </footer>
-
-
-<script>
-function copyOtp() {
-    var textarea = document.getElementById('otp-textarea');
-    textarea.style.position = 'fixed';
-    textarea.style.left = '10px';
-    textarea.style.top = '10px';
-    textarea.select();
-    document.execCommand('copy');
-    textarea.style.position = 'absolute';
-    textarea.style.left = '-9999px';
-}
-</script>
 
 </body>
 </html>
