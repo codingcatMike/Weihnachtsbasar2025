@@ -40,7 +40,9 @@ urlpatterns = [
     path("pay_Screen/", pay_Screen, name="pay_Screen"),
     path("display_order/<id>/", display_order, name="display_order"),
     path('receipt/<int:order_id>/', generate_pdf_receipt, name='receipt'),
-    path('statistics/', generate_stat_pdf, name="stats"),
+    path("admin/", admin.site.urls, name="admin"),
+    path("rmfps/", remove_from_payscreen, name="rmfps"),
+    path("customer", customer, name="customer"),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT, "show_indexes": True}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Kundenbestellungen</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #customer-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #customer-id {
+            font-size: 16px;
+            padding: 5px 10px;
+            width: 150px;
+            text-align: center;
+        }
+
+        #generate-btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        #generate-btn:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        #orders-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .order-card {
+            background: #fff;
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .order-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .order-card .products {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .order-card .price {
+            font-weight: bold;
+            font-size: 16px;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live-Bestellungen</h1>
+
+    <div id="customer-section">
+        <label for="customer-id">Kunden-ID:</label>
+        <input type="text" id="customer-id" readonly>
+        <button id="generate-btn">Neue Kunden-ID generieren</button>
+    </div>
+
+    <div id="orders-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const ordersContainer = document.getElementById("orders-container");
+            const customerInput = document.getElementById("customer-id");
+            const generateBtn = document.getElementById("generate-btn");
+
+            let cid = localStorage.getItem("customer_id");
+
+            customerInput.value = cid || "";
+
+            async function fetchUnpaidOrders(customerId) {
+                try {
+                    const response = await fetch(`/customer?cid=${customerId}`, {
+                        headers: { "X-Requested-With": "XMLHttpRequest" }
+                    });
+                    if (!response.ok) throw new Error("Failed to fetch orders");
+                    const htmlText = await response.text();
+
+                    // Extract JSON orders from rendered template if necessary
+                    // Here we assume view renders JSON for AJAX fetch
+                    return JSON.parse(htmlText).orders || [];
+                } catch (err) {
+                    console.error(err);
+                    return [];
+                }
+            }
+
+            async function initCustomer() {
+                if (!cid) return;
+
+                const unpaidOrders = await fetchUnpaidOrders(cid);
+
+                generateBtn.disabled = unpaidOrders.length > 0;
+
+                unpaidOrders.forEach(order => displayOrder(order));
+
+                initWebSocket();
+            }
+
+            function displayOrder(order) {
+                const itemsText = order.items.map(i => `${i.name} x${i.quantity}`).join(", ");
+                const priceText = `€${order.price.toFixed(2)}`;
+
+                let existingCard = document.querySelector(`#order-card-${order.id}`);
+                if (existingCard) {
+                    existingCard.querySelector(".products").textContent = itemsText;
+                    existingCard.querySelector(".price").textContent = priceText;
+                } else {
+                    const card = document.createElement("div");
+                    card.id = `order-card-${order.id}`;
+                    card.className = "order-card";
+                    card.innerHTML = `
+                        <div class="products">${itemsText}</div>
+                        <div class="price">${priceText}</div>
+                    `;
+                    ordersContainer.prepend(card);
+                }
+            }
+
+            generateBtn.addEventListener("click", async () => {
+                try {
+                    const response = await fetch("/customer", {
+                        method: "POST",
+                        headers: {
+                            "X-CSRFToken": getCookie("csrftoken"),
+                            "Content-Type": "application/json"
+                        }
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        cid = data.cid;
+                        localStorage.setItem("customer_id", cid);
+                        customerInput.value = cid;
+                        generateBtn.disabled = true;
+                        initWebSocket();
+                    } else {
+                        console.error("Error generating CID");
+                    }
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+
+            function markOrderPaid(orderId) {
+                let paidOrders = JSON.parse(localStorage.getItem("paid_orders") || "[]");
+                paidOrders.push(parseInt(cid));
+                localStorage.setItem("paid_orders", JSON.stringify(paidOrders));
+                generateBtn.disabled = false;
+            }
+
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let cookie of cookies) {
+                        cookie = cookie.trim();
+                        if (cookie.startsWith(name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            let ws;
+            function initWebSocket() {
+                if (!cid) return;
+
+                ws = new WebSocket(`wss://${window.location.host}/ws/customer/`);
+
+                ws.addEventListener("open", () => {
+                    ws.send(JSON.stringify({ cid }));
+                });
+
+                ws.addEventListener("message", (event) => {
+                    const order = JSON.parse(event.data);
+                    displayOrder(order);
+
+                    if (order.paid) {
+                        markOrderPaid(order.id);
+                    }
+                });
+            }
+
+            // Initialize on page load
+            initCustomer();
+        });
+    </script>
+</body>
+</html>

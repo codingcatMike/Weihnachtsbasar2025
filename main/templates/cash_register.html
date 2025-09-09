@@ -1,99 +1,95 @@
 {% extends "base.html" %}
 
-{% block title %}Cash Register{% endblock title %}
+{% block title %}Kasse{% endblock title %}
 
 {% block content %}
-<div class="container" style="max-width: 800px; margin: 80px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <h1>Cash Register</h1>
-    <h2>Aktuelles Geld: <span id="income">{{ income }}</span>€</h2>
+<div class="container" style="max-width: 900px; margin: 80px auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    <h1 style="text-align:center; margin-bottom: 20px;">Kasse</h1>
+    <h2 style="text-align:center; margin-bottom: 30px;">Aktuelles Geld: <span id="income">{{ income }}</span>€</h2>
+    
+    <input type="number" id="order-search" placeholder="Kundennummer suchen..." style="width:100%; padding:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
 
     <div id="connection" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
-        <p id="connection-status" style="margin: 0; padding: 5px; border-radius: 4px; cursor: pointer; color: red;">
+        <p id="connection-status" style="margin: 0; padding: 6px 12px; border-radius: 6px; cursor: pointer; color: red; border: 1px solid red;">
             Nicht verbunden oder Verbindung wird aufgebaut…
         </p>
+        <a href="{% url 'pay_Screen' %}" style="display:block; margin-top:5px;">Diese Instanz als Bildschirm nutzen</a>
     </div>
 
     <div id="orders">
         {% for order in orders %}
-            <div class="order" id="order-{{ order.id }}">
-                <p>{{ order.customer.id }}: {{ order.price }}€</p>
-                <p>
+            <div class="order-card" id="order-{{ order.id }}" data-customer-id="{{ order.customer.id }}" style="background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                <p style="font-weight:bold; margin-bottom:8px;">Kunde #{{ order.customer.id }} - {{ order.price }}€</p>
+                <p style="margin-bottom:10px;">
                     {% for product in order.orderitem_set.all %}
-                        {{ product.quantity }} x {{ product.product.name }}{% if not forloop.last %}, {% endif %}
+                        {{ product.product.name }} x{{ product.quantity }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
-                    ({{ order.created_at|date:"d.m.Y H:i" }}/Order ID: {{ order.id }})
                 </p>
-                <button class="display-pay-button" data-order-id="{{ order.id }}">
-                    Display on Pay Screen
-                </button>
+                <button class="display-pay-button" data-order-id="{{ order.id }}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Auf Bildschirm anzeigen</button>
             </div>
         {% endfor %}
     </div>
 </div>
 
+<div id="popup" style="
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+"></div>
+
 <script>
 let socket = null;
+const popup = document.getElementById('popup');
 
-// Update connection status indicator
 function updateConnectionStatus(state) {
     const statusEl = document.getElementById("connection-status");
-    if(state === "connected") {
-        statusEl.textContent = "Live-Server verbunden (click to reconnect)";
-        statusEl.style.color = "rgba(45, 210, 0, 1)";
-    } else if(state === "disconnected") {
-        statusEl.textContent = "Nicht verbunden (click to reconnect)";
-        statusEl.style.color = "red";
-    } else if(state === "connecting") {
-        statusEl.textContent = "Verbindung wird aufgebaut…";
-        statusEl.style.color = "orange";
-    } else if(state === "closing") {
-        statusEl.textContent = "Verbindung wird geschlossen…";
-        statusEl.style.color = "darkorange";
-    }
+    const colors = {connected:"rgba(45,210,0,1)", disconnected:"red", connecting:"orange", closing:"darkorange"};
+    statusEl.textContent = {
+        connected:"Live-Server verbunden (click to reconnect)",
+        disconnected:"Nicht verbunden (click to reconnect)",
+        connecting:"Verbindung wird aufgebaut…",
+        closing:"Verbindung wird geschlossen…"
+    }[state];
+    statusEl.style.color = colors[state];
+    statusEl.style.borderColor = colors[state];
 }
 
-// Connect WebSocket
 function connectSocket() {
     updateConnectionStatus("connecting");
-    const socket = new WebSocket(`${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws/pay/`);
-
-
-    socket.onopen = function() {
-        updateConnectionStatus("connected");
-    };
-
-    socket.onclose = function() {
-        updateConnectionStatus("disconnected");
-    };
-
-    socket.onmessage = function(e) {
+    socket = new WebSocket(`${window.location.protocol==='https:'?'wss':'ws'}://${window.location.host}/ws/pay/`);
+    socket.onopen = () => updateConnectionStatus("connected");
+    socket.onclose = () => updateConnectionStatus("disconnected");
+    socket.onmessage = (e) => {
         const data = JSON.parse(e.data);
-
-        // Remove order if it was marked as paid
-        if(data.paid_order_id) {
+        if(data.paid_order_id){
             const el = document.getElementById(`order-${data.paid_order_id}`);
             if(el) el.remove();
         }
-
-        // Update orders list
-        if(data.orders) {
+        if(data.orders){
             const ordersContainer = document.getElementById("orders");
-            ordersContainer.innerHTML = ""; // clear current orders
-
+            ordersContainer.innerHTML = "";
             data.orders.forEach(order => {
-                const items = order.items.map(i => `${i.quantity} x ${i.name}`).join(", ");
+                const items = order.items.map(i => `${i.name} x${i.quantity}`).join(", ");
                 const div = document.createElement("div");
-                div.classList.add("order");
+                div.className = "order-card";
                 div.id = `order-${order.id}`;
+                div.dataset.customerId = order.customer_id;
+                div.style = "background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);";
                 div.innerHTML = `
-                    <p>${order.customer_id}: ${order.price}€</p>
-                    <p>${items} (Order ID: ${order.id})</p>
-                    <button class="display-pay-button" data-order-id="${order.id}">Display on Pay Screen</button>
+                    <p style="font-weight:bold; margin-bottom:8px;">Kunde #${order.customer_id} - ${order.price}€</p>
+                    <p style="margin-bottom:10px;">${items}</p>
+                    <button class="display-pay-button" data-order-id="${order.id}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Auf Bildschirm anzeigen</button>
                 `;
                 ordersContainer.appendChild(div);
             });
-
-            // Update income
             document.getElementById("income").textContent = data.income;
         }
     };
@@ -101,49 +97,86 @@ function connectSocket() {
 
 connectSocket();
 
-// Handle display/pay buttons
-document.addEventListener("click", function(e) {
-    if(e.target.classList.contains("display-pay-button")) {
-        const orderId = e.target.dataset.orderId;
+function displayOrder(orderDiv){
+    const button = orderDiv.querySelector('.display-pay-button');
+    const orderId = button.dataset.orderId;
+    if(!button.dataset.displaying){
+        fetch(`/display_order/${orderId}/`,{method:"GET", headers:{"X-CSRFToken":"{{ csrf_token }}"}})
+        .then(()=>{
+            button.textContent="NOW DISPLAYING ON SCREEN - REMOVE?";
+            button.dataset.displaying="true";
 
-        if(!e.target.dataset.displaying) {
-            // First click: send order to pay screen
-            fetch(`/display_order/${orderId}/`, {
-                method: "POST",
-                headers: { "X-CSRFToken": "{{ csrf_token }}" }
-            })
-            .then(res => res.json())
-            .then(data => {
-                e.target.textContent = "NOW DISPLAYING ORDER ON SCREEN - MARK AS PAYED";
-                e.target.dataset.displaying = "true";
+            const paidBtn = document.createElement("button");
+            paidBtn.textContent="Als bezahlt markieren";
+            paidBtn.dataset.orderId=orderId;
+            paidBtn.style.cssText="margin-left:10px;padding:6px 12px;border:none;border-radius:5px;background:#2196f3;color:white;cursor:pointer;";
+            orderDiv.appendChild(paidBtn);
+            paidBtn.addEventListener("click",()=>markPaid(orderId));
+
+            button.addEventListener("click",function removeHandler(){
+                fetch('/rmfps/',{method:'GET', headers:{'X-CSRFToken':'{{ csrf_token }}'}})
+                .then(()=>{
+                    button.textContent="Auf Bildschirm anzeigen";
+                    delete button.dataset.displaying;
+                    paidBtn.remove();
+                    button.removeEventListener("click",removeHandler);
+                });
             });
-        } else {
-            // Second click: mark order as paid
-            fetch(`${orderId}/`, {
-                method: "POST",
-                headers: { "X-CSRFToken": "{{ csrf_token }}" }
-            })
-            .then(res => res.json())
-            .then(data => {
-                const orderDiv = document.getElementById(`order-${orderId}`);
-                if(orderDiv) orderDiv.remove();
-            });
+
+            const ordersContainer=document.getElementById('orders');
+            ordersContainer.prepend(orderDiv);
+
+            popup.textContent=`Kunde #${orderDiv.dataset.customerId} auf Bildschirm!`;
+            popup.style.display='block';
+            setTimeout(()=>{popup.style.display='none';},2000);
+        });
+    }
+}
+
+function markPaid(orderId){
+    fetch(`/pay/${orderId}/`,{method:'GET', headers:{"X-CSRFToken":"{{ csrf_token }}"}})
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.status==="ok"){
+            const el=document.getElementById(`order-${orderId}`);
+            if(el) el.remove();
+            popup.textContent=`Kunde #${orderId} als bezahlt markiert!`;
+            popup.style.display='block';
+            setTimeout(()=>{popup.style.display='none';},2000);
         }
+    });
+}
+
+document.addEventListener("click",function(e){
+    if(e.target.classList.contains("display-pay-button")){
+        displayOrder(e.target.closest('.order-card'));
     }
 });
 
-// Toggle WebSocket connection by clicking status text
-document.getElementById("connection-status").addEventListener("click", function() {
-    if(socket && socket.readyState === WebSocket.OPEN) {
+document.getElementById("connection-status").addEventListener("click",()=>{
+    if(socket && socket.readyState===WebSocket.OPEN){
         updateConnectionStatus("closing");
         socket.close();
-    } else if(!socket || socket.readyState === WebSocket.CLOSED) {
+    } else if(!socket || socket.readyState===WebSocket.CLOSED){
         connectSocket();
     }
 });
 
-window.addEventListener("beforeunload", () => {
-    if(socket) updateConnectionStatus("closing");
+const searchInput=document.getElementById('order-search');
+let searchTimeout=null;
+searchInput.addEventListener('input',function(){
+    clearTimeout(searchTimeout);
+    searchTimeout=setTimeout(()=>{
+        const value=searchInput.value.trim();
+        if(!value) return;
+        const searchNumber=Number(value);
+        document.querySelectorAll('.order-card').forEach(div=>{
+            if(Number(div.dataset.customerId)===searchNumber){
+                displayOrder(div);
+                searchInput.value='';
+            }
+        });
+    },300);
 });
 </script>
 {% endblock content %}

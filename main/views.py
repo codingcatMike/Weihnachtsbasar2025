@@ -10,7 +10,7 @@ from .log import log
 import json
 from collections import Counter
 from django.utils.safestring import mark_safe
-from .consumers import send_orders_update # send_onscreen_order
+from .consumers import send_orders_update, send_order_customer_update # send_onscreen_order
 from django.http import FileResponse
 from .utils import generate_receipt_pdf
 from django.http import HttpResponse
@@ -123,7 +123,6 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-
 def login(request):
     log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
     return render(request, 'registration/login.html')
@@ -150,12 +149,6 @@ def credits(request):
 def CreateShop(request):
     if request.method == 'POST':
         form = ShopAddForm(request.POST)
-        oneTimePassword = request.POST['one-time-password']
-        if oneTimePassword != open('one_time_password.txt', 'r').read():
-            os.remove('one_time_password.txt')
-            messages.error(request, 'Wrong one time password')
-            log(f'The User account of {request.user.username} tried to create a Shop with wrong one time password', 2)
-            return redirect('createShop')
         if form.is_valid():
             form.save()
             os.remove('one_time_password.txt')
@@ -247,18 +240,28 @@ def create_product(request):
         log(f"Someone tried to access create product page, but failed because he is not logged in", 2)
         return redirect('index')
 
-
-
 def SendOrder(request):
     if request.method != 'POST':
         return JsonResponse({"status": "error", "message": "Nur POST erlaubt"}, status=405)
-
+    
     data = json.loads(request.body)
+    shop = data.get('shop')
     customer_id = data.get('customer_id')
     products = data.get('products', [])
-
+    print('Your shop is: ' + shop)
     if not customer_id or not products:
         return JsonResponse({"status": "error", "message": "Kunden-ID oder Produkte fehlen"}, status=400)
+
+
+    shop_obj = get_object_or_404(Shop, id=shop)
+
+    if not shop_obj.activated:
+        messages.error(request, "Dein Shop ist nicht aktiviert.\nWende dich an den Admin")
+        return JsonResponse(
+            {"status": "error", "message": "Der Shop ist nicht aktiviert"}, 
+            status=400
+        )
+
 
     customer, created_customer = Customers.objects.get_or_create(id=customer_id)
     order, created_order = Order.objects.get_or_create(customer=customer, defaults={"price": 0})
@@ -308,6 +311,8 @@ def SendOrder(request):
     )
 
     send_orders_update()
+    print(f"[VIEW] Sending order update for customer {order.customer.id}")
+    send_order_customer_update(order)
     return JsonResponse({"status": "ok", "order_id": order.id, "total": order.price})
 
 def cash_register(request):
@@ -437,63 +442,53 @@ def receipt_pdf(request, order_id):
     buffer = generate_receipt_pdf(order_id)
     return FileResponse(buffer, as_attachment=True, filename=f"receipt_{order_id}.pdf")
 
-
-from django.http import HttpResponse
-from reportlab.lib.pagesizes import A4
-from reportlab.lib import colors
-from reportlab.graphics.shapes import Drawing
-from reportlab.graphics.charts.barcharts import VerticalBarChart
-from reportlab.graphics import renderPDF
-from reportlab.pdfgen import canvas
-from django.db.models import F, Sum # Ersetze 'deine_app' durch deinen App-Namen
-
-def generate_stat_pdf(request):
-    # 1️⃣ PDF-Seite und Drawing vorbereiten
-    width, height = A4
-    margin = 50
-    drawing_width = width - 2 * margin
-    drawing_height = height - 2 * margin
-    drawing = Drawing(drawing_width, drawing_height)
-
-    # 2️⃣ Einnahmen pro Produkt direkt in der DB aggregieren
-    product_income_qs = (
-        OrderItem.objects
-        .values('product__name')
-        .annotate(total_income=Sum(F('product__price') * F('quantity')))
-        .order_by('product__name')
+def remove_from_payscreen(request):
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "pay_screen_updates",
+        {
+            "type": "order_paid",
+            "order_id": 0
+        }
     )
+    return JsonResponse({"status": "ok"})
 
-    # 3️⃣ Listen für das Diagramm
-    x_axis = [item['product__name'] for item in product_income_qs]
-    y_axis = [float(item['total_income']) for item in product_income_qs]
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Customers
+from django.views.decorators.csrf import csrf_exempt
 
-    # 4️⃣ Chart erstellen und konfigurieren
-    chart = VerticalBarChart()
-    chart.x = 50
-    chart.y = 50
-    chart.width = drawing_width - 100
-    chart.height = drawing_height - 100
+@csrf_exempt
+def customer(request):
+    """
+    Handles customer screen:
+    - POST: generates a new customer ID
+    - GET: optionally preloads unpaid orders if ?cid=... is passed
+    """
+    if request.method == "POST":
+        # Generate next customer ID
+        top_customer = Customers.objects.order_by('-id').first()
+        next_cid = top_customer.id + 1 if top_customer else 1
+        return JsonResponse({"cid": next_cid})
 
-    chart.data = [y_axis]
-    chart.categoryAxis.categoryNames = x_axis
-    chart.valueAxis.valueMin = 0
-    chart.valueAxis.valueMax = max(y_axis) * 1.1 if y_axis else 10  # 10 als Default, falls leer
-    chart.valueAxis.labelTextFormat = lambda v: f"{v:.0f} €"
+    # GET request
+    cid = request.GET.get("cid")
+    orders = []
 
-    # Balkenfarbe
-    for bar in chart.bars:
-        bar.fillColor = colors.blue
+    if cid:
+        # Fetch all unpaid orders for this customer
+        qs = Order.objects.filter(customer_id=cid, payed=False).prefetch_related("orderitem_set__product")
+        for o in qs:
+            orders.append({
+                "id": o.id,
+                "price": o.price,
+                "customer_id": o.customer.id,
+                "items": [{"name": item.product.name, "quantity": item.quantity} for item in o.orderitem_set.all()]
+            })
 
-    # 5️⃣ Chart ins Drawing einfügen
-    drawing.add(chart)
+        # If the request is AJAX, return JSON directly
+        if request.headers.get("x-requested-with") == "XMLHttpRequest":
+            return JsonResponse({"orders": orders})
 
-    # 6️⃣ PDF direkt an den Browser streamen
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'inline; filename="produkt_einnahmen.pdf"'
-
-    c = canvas.Canvas(response, pagesize=A4)
-    renderPDF.drawToCanvas(drawing, c, 0, 0)
-    c.showPage()
-    c.save()
-
-    return response
+    # Otherwise, render template with preloaded orders
+    return render(request, "customer.html", {"cid": cid, "orders": orders})

@@ -267,3 +267,40 @@ Device : posix
 [Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-04 09:21:08.276074
 [Info] main accessed / page --at-- 2025-09-04 09:23:00.822319
 [Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 09:23:08.495929
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 09:27:55.755201
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 09:28:25.263101
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 09:28:26.264316
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 09:28:26.827103
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.767602
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.767438
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.778862
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.784948
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.785326
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.785110
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.788886
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.789172
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.789067
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.810437
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.852531
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.869688
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.873237
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.873298
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.888155
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.888205
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.893587
+[Info]  accessed / page --at-- 2025-09-04 09:32:28.896899
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 09:42:07.916796
+[Info]  accessed / page --at-- 2025-09-04 10:31:35.304556
+[Info]  accessed / page --at-- 2025-09-04 11:33:58.859013
+[Info]  accessed / page --at-- 2025-09-04 13:20:35.918828
+[Info]  accessed / page --at-- 2025-09-04 13:20:36.228079
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 18:27:49.635533
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 18:27:52.128635
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 18:27:58.045855
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 18:27:58.872882
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 18:27:59.330547
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 18:27:59.533012
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-04 18:27:59.715443
+[Info]  accessed / page --at-- 2025-09-04 20:05:04.846208
+[Info]  accessed / page --at-- 2025-09-04 20:05:09.352570
+[Info]  accessed / page --at-- 2025-09-04 20:05:09.888711

@@ -9,6 +9,25 @@ from django.urls import reverse
 import io
 import base64
 import qrcode
+from channels.generic.websocket import AsyncJsonWebsocketConsumer
+
+class CustomerConsumer(AsyncJsonWebsocketConsumer):
+    async def connect(self):
+        await self.accept()
+        self.cid = None
+
+    async def disconnect(self, close_code):
+        if self.cid:
+            await self.channel_layer.group_discard(f"customer_{self.cid}", self.channel_name)
+
+    async def receive_json(self, content):
+        if "cid" in content:
+            self.cid = content["cid"]
+            self.group_name = f"customer_{self.cid}"
+            await self.channel_layer.group_add(self.group_name, self.channel_name)
+
+    async def order_update(self, event):
+        await self.send_json(event["order"])
 
 
 class PayConsumer(AsyncWebsocketConsumer):
@@ -119,6 +138,24 @@ class PayScreenConsumer(AsyncWebsocketConsumer):
             "paid_order_id": event["order_id"]  # optional
         }))
 
+class CustomerConsumer(AsyncJsonWebsocketConsumer):
+    async def connect(self):
+        await self.accept()
+        self.cid = None
+
+    async def disconnect(self, close_code):
+        if self.cid:
+            await self.channel_layer.group_discard(f"customer_{self.cid}", self.channel_name)
+
+    async def receive_json(self, content):
+        if "cid" in content:
+            self.cid = content["cid"]
+            self.group_name = f"customer_{self.cid}"
+            await self.channel_layer.group_add(self.group_name, self.channel_name)
+
+    async def order_update(self, event):
+        await self.send_json(event["order"])
+
 # main/utils.py
 def send_orders_update():
     print("Sending orders update to WebSocket clients...")
@@ -172,4 +209,30 @@ def get_new_onscreen_order(id):
             "order": order_data,
         }
     )
+
+
+
+def send_order_customer_update(order):
+    channel_layer = get_channel_layer()
+
+    # Use the correct related manager
+    items = [
+        {"name": item.product.name, "quantity": item.quantity}
+        for item in order.orderitem_set.all()
+    ]
+
+    order_data = {
+        "id": order.id,
+        "customer_id": order.customer.id,
+        "price": float(order.price),
+        "items": items
+    }
+
+    async_to_sync(channel_layer.group_send)(
+    f"customer_{order.customer.id}",
+    {
+        "type": "order_update",  # <-- this must match the async def order_update(self, event)
+        "order": order_data
+    }
+)
 

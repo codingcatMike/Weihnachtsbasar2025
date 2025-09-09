@@ -17,19 +17,23 @@
            
             {% if user.is_superuser %}
             {% for shop in marker_shops %}
-            <a style="font-size: 20px;" href="{% url 'Shop' shop.shop.id %}">{{ shop.display_name }} Home</a>   ==>   <a style="font-size: 20px;" href="{% url 'ShopSettings' shop.shop.id %}">Settings</a>
+            <a style="font-size: 20px;" href="{% url 'Shop' shop.shop.id %}">{{ shop.display_name }}{% if shop.shop.activated == False%}°{%endif%} Home</a>   ==>   <a style="font-size: 20px;" href="{% url 'ShopSettings' shop.shop.id %}">Settings</a> 
             <br>
             {% endfor %}
+            <a href="{% url 'admin:index'%}" style="font-size: 20px;"> AdminÜbersicht </a>
+            <br>
             {% else %}
             {% for shop in user_shops %}
                 <br>
-                <a style="font-size: 20px;" href="{% url 'Shop' shop.id %}">{{ shop.name }} Home</a>   ==>   <a href="{% url 'ShopSettings' shop.id %}">Settings</a>
+                <a style="font-size: 20px;" href="{% url 'Shop' shop.id %}">{{ shop.name }}{% if shop.activated == False%}°{%endif%} Home</a>   ==>   <a href="{% url 'ShopSettings' shop.id %}">Settings</a>{% if shop.activated == False%}°{%endif%}
             {% endfor %}
             {% endif %}
             {% if user.is_staff %}
             <a style="font-size: 20px;" href="{% url 'cash_register' %}">Kassenübersicht</a>
             {% endif %}
-
+            <p style="font-size: 13px;" style="color: #4a5568;">Shops, die mit ° markiert sind, sind nochnicht aktiviert</p>
+            {% if user.is_superuser %}
+            <p style="font-size: 13px; margin-top: -3px" style="color: #4a5568;">Shops, die mit * markiert sind, beiinhalten {{request.user.username}} nicht als Verkäufer</p> {% endif %}
         </ul>
         <p style="font-size: 20px;" style="color: #4a5568;">Oder erstelle einen neuen Shop:</p>
         <div style="display: flex; justify-content: center; margin-top: 10px;">

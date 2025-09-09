@@ -38,14 +38,17 @@ function SendOrder() {
         },
         body: JSON.stringify({
             customer_id: customerId,
-            products: orders
+            products: orders,
+            shop: "{{shop.id}}"
         })
     })
-    .then(response => {
+    .then(async response => {
+        const data = await response.json();
         if (!response.ok) {
-            throw new Error("Server error: " + response.status);
+            // Zeige die Nachricht aus dem Backend
+            throw new Error(data.message || "Unbekannter Fehler vom Server");
         }
-        return response.json();
+        return data;
     })
     .then(data => {
         console.log("Antwort vom Server:", data);
@@ -53,14 +56,19 @@ function SendOrder() {
     })
     .catch(err => {
         console.error("Fehler beim Senden:", err);
-        alert("Es gab ein Problem mit der Bestellung.");
+        alert("Es gab ein Problem mit der Bestellung:\n" + err.message);
+        location.reload()
     });
 }
+
 </script>
 
 <!-- Haupt-Container auf 66% Breite, mittig -->
 <div class="container" style="width: 66%; margin: 0 auto; text-align: center;">
     <h1>{{ shop.name }}</h1>
+    {% if shop.activated == False %}
+    <p style="color: orange">Dein Shop ist nochnicht aktiviert, deshalb kannst du keine Orders abschicken. Du kannst trotzdem Produkte erstellen </p>
+    {% endif %}
 
     <div style="margin-bottom: 20px;">
         Kunden ID: 
@@ -73,7 +81,7 @@ function SendOrder() {
     </div>
 
     {% for product in products %}
-        <button style="margin-top: 10px;" 
+        <button style="margin-top: 10px; width: 100%" 
                 onclick="AddProduct({{ product.id }}, '{{product.name}}')">
             {{ product.name }} - {{ product.price }}€
         </button><br>

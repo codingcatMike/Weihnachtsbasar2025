@@ -10,10 +10,35 @@
     <link rel="icon" type="image/x-icon" href="{% static 'main/favicon.ico' %}">
 
     <style>
-        body {
-            height: 100vh;
+        .message {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress-bar {
+            transition: width linear;
+        }
+
+        /* Reset and basic styles */
+        body, html {
             margin: 0;
+            padding: 0;
+            height: 100%;
             font-family: Arial, sans-serif;
+        }
+
+        /* Fixed animated background */
+        #animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
             background: repeating-radial-gradient(
                 circle at 50% 50%,
                 #808080,
@@ -23,6 +48,13 @@
             );
         }
 
+        /* Page content above background */
+        #content {
+            position: relative;
+            z-index: 0;
+        }
+
+        /* Headings and text */
         h1, h2, h3, h4, h5, h6 {
             color: #333;
             margin-bottom: 20px;
@@ -73,19 +105,37 @@
             background-color: #0056b3;
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.2em;
+        /* Logo */
+        #logo-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
         }
 
-        .footer a {
-            color: #007bff;
-            text-decoration: none;
+        #logo-container img {
+            height: 200px;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
+        /* Login/logout buttons */
+        #auth-buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
         }
 
         .message {
@@ -97,64 +147,74 @@
             position: relative;
             font-size: 16px;
         }
-
-        /* Logo */
-        #logo-container {
-            position: absolute;
-        }
-
-        #logo-container img {
-            height: 200px;
-        }
     </style>
 </head>
 <body>
 
-<!-- Login/Logout Bereich -->
-{% if user.is_authenticated %}
-<div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
-    <a href="/help"><button type="button">Support</button></a>
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">Logout as {{ user.username }}</button>
-    </form>
-</div>
-{% else %}
-<div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
-    <button type="button" onclick="window.location.href='{% url 'login' %}'">Login</button>
-    <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+<!-- Animated background -->
+<div id="animated-background"></div>
+
+<!-- Page content -->
+<div id="content">
+
+    <!-- Login/Logout Bereich -->
+    <div id="auth-buttons">
+        {% if user.is_authenticated %}
+            <a href="/help"><button type="button">Support</button></a>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout as {{ user.username }}</button>
+            </form>
+        {% else %}
+            <button type="button" onclick="window.location.href='{% url 'login' %}'">Login</button>
+            <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+        {% endif %}
+    </div>
+
+    <!-- Logo -->
+    <div id="logo-container">
+        <a href="/"><img src="{% static 'main/logo.png' %}" alt="Logo"></a>
+    </div>
+
+    {% block content %}{% endblock content %}
+
+    <!-- Footer and messages -->
+    <footer>
+        {% if messages %}
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    {% for message in messages %}
+    <div class="message" data-duration="4000"
+         style="position: relative; overflow: hidden;
+                background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %};
+                color: {% if message.tags == 'success' %}#3c763d{% elif message.tags == 'warning' %}#fff{% elif message.tags == 'error' %}#fff{% endif %};
+                max-width: 80%; text-align: center; padding: 10px 15px; border-radius: 5px; width: 300px;">
+        <!-- Progress bar -->
+        <div class="progress-bar" style="position: absolute; top: 0; left: 0; height: 4px; background: rgba(255,255,255,0.7); width: 100%;"></div>
+
+        <!-- Close button -->
+        <button onclick="this.parentElement.remove()"
+                style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; font-size: 16px; cursor: pointer;">&times;</button>
+
+        {{ message|safe }}
+    </div>
+    {% endfor %}
 </div>
 {% endif %}
 
-<!-- Logo -->
-<div id="logo-container">
-    <a href="/">
-        <img src="{% static 'main/logo.png' %}" alt="Logo">
-    </a>
+    </footer>
+
 </div>
 
+<!-- Background animation script -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const logo = document.getElementById('logo-container');
+    const bg = document.getElementById('animated-background');
 
-    // Logo oben links auf Homepage, unten links auf allen anderen Seiten
-    if (window.location.pathname === "/") {
-        logo.style.top = "10px";
-        logo.style.left = "10px";
-        logo.style.bottom = "";
-    } else {
-        logo.style.bottom = "50px";
-        logo.style.left = "10px";
-        logo.style.top = "";
-    }
-
-    // Hintergrund-Animation
     let x = Math.random() * 60 + 20;
     let y = Math.random() * 60 + 20;
     let targetX = Math.random() * 60 + 20;
     let targetY = Math.random() * 60 + 20;
-
-    const duration = 90000; // 90 Sekunden pro Bewegung
+    const duration = 90000; // 90 seconds per movement
     let startTime = null;
 
     function animate(timestamp) {
@@ -166,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentX = x + (targetX - x) * progress;
         let currentY = y + (targetY - y) * progress;
 
-        document.body.style.background = `
+        bg.style.background = `
             repeating-radial-gradient(
                 circle at ${currentX}% ${currentY}%,
                 #808080,
@@ -179,7 +239,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (progress < 1) {
             requestAnimationFrame(animate);
         } else {
-            // Neues Ziel setzen und neu starten
             x = targetX;
             y = targetY;
             targetX = Math.random() * 60 + 20;
@@ -191,26 +250,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     requestAnimationFrame(animate);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const messages = document.querySelectorAll(".message");
+    messages.forEach(msg => {
+        const duration = parseInt(msg.dataset.duration) || 4000; // default 4s
+        const progressBar = msg.querySelector(".progress-bar");
+        let startTime = Date.now();
+
+        // Animate progress bar
+        const interval = setInterval(() => {
+            const elapsed = Date.now() - startTime;
+            const percent = Math.max(0, 100 - (elapsed / duration) * 100);
+            progressBar.style.width = percent + "%";
+            if (elapsed >= duration) {
+                clearInterval(interval);
+                msg.remove();
+            }
+        }, 20);
+    });
+});
+
 </script>
-
-{% block content %}{% endblock content %}
-
-<footer style="position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center;">
-{% if messages %}
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        {% for message in messages %}
-            <div class="message"
-                 style="background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %};
-                        color: {% if message.tags == 'success' %}#3c763d{% elif message.tags == 'warning' %}#fff{% elif message.tags == 'error' %}#fff{% endif %};
-                        max-width: 80%; text-align: center; white-space: nowrap;">
-                <button onclick="this.parentElement.style.display='none'"
-                        style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; cursor: pointer;">&times;</button>
-                {{ message|safe }}
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
-</footer>
 
 </body>
 </html>
