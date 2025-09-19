@@ -1,0 +1,92 @@
+Log file for 2025-09-17
+Created at: 2025-09-17 00:47:09.597426
+Device : posix
+[Info]  accessed / page --at-- 2025-09-17 00:47:10.000661
+[Info]  accessed / page --at-- 2025-09-17 01:19:05.284437
+[Info]  accessed / page --at-- 2025-09-17 01:48:39.127419
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-17 03:49:11.016426
+[Info]  accessed / page --at-- 2025-09-17 07:55:06.610712
+[Info]  accessed / page --at-- 2025-09-17 07:55:06.779024
+[Info]  accessed / page --at-- 2025-09-17 13:18:41.988296
+[Info]  accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-17 13:21:09.529824
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-09-17 13:21:10.482383
+[Info]  accessed / page --at-- 2025-09-17 13:21:28.044703
+[Info]  accessed / page --at-- 2025-09-17 13:21:33.285261
+[Info] The User account of Fcichlar has been created successfully --at-- 2025-09-17 13:21:38.019974
+[Info] Fcichlar accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-17 13:22:02.289926
+[Info]  accessed / page --at-- 2025-09-17 13:22:19.004450
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-17 13:22:28.923502
+[Info] Fcichlar accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-17 13:45:18.801728
+[Info] Fcichlar accessed https://www.webdevcode.de/ page --at-- 2025-09-17 13:45:28.628148
+[Info] The Shop of Fcichlar has been created successfully with name FCB --at-- 2025-09-17 13:45:53.979522
+[Info] Fcichlar accessed https://www.webdevcode.de/Shop/5/settings/ page --at-- 2025-09-17 13:46:04.830767
+[Info] main accessed / page --at-- 2025-09-17 13:46:16.585416
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 13:46:20.377949
+[Info] Fcichlar accessed https://www.webdevcode.de/Shop/5/settings/ page --at-- 2025-09-17 13:46:22.624955
+[Info] The User account of Fcichlar sent an order with customer id 18345 and products [4] --at-- 2025-09-17 13:46:55.678404
+[Info] Fcichlar accessed https://www.webdevcode.de/Shop/5/ page --at-- 2025-09-17 13:46:55.776193
+[Info] main accessed / page --at-- 2025-09-17 13:49:08.232408
+[Info]  accessed / page --at-- 2025-09-17 14:51:33.140871
+[Info]  accessed / page --at-- 2025-09-17 15:09:55.416084
+[Info]  accessed / page --at-- 2025-09-17 15:12:31.235081
+[Info]  accessed / page --at-- 2025-09-17 15:12:36.288348
+[Info] Betatest accessed / page --at-- 2025-09-17 15:41:41.739326
+[Info]  accessed https://www.webdevcode.de/kontakt page --at-- 2025-09-17 15:43:49.610451
+[Info]  accessed / page --at-- 2025-09-17 15:43:54.359288
+[Info] Betatest accessed https://www.webdevcode.de/7 page --at-- 2025-09-17 16:00:21.550304
+[Info] main accessed https://www.webdevcode.de/qwrzvjkjf page --at-- 2025-09-17 16:37:59.063006
+[Info] main accessed https://www.webdevcode.de/AGB/h page --at-- 2025-09-17 16:56:12.650716
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 16:56:51.339357
+[Info] main accessed / page --at-- 2025-09-17 16:57:57.390358
+[Info] main accessed / page --at-- 2025-09-17 16:57:58.640795
+[Info] main accessed https://www.webdevcode.de/pay/www/ page --at-- 2025-09-17 17:37:47.757432
+[Info]  accessed / page --at-- 2025-09-17 17:44:25.184853
+[Info]  accessed / page --at-- 2025-09-17 17:45:22.964215
+[Info]  accessed https://www.webdevcode.de/pay/ww/ page --at-- 2025-09-17 17:48:23.020008
+[Info]  accessed https://www.google.com/ page --at-- 2025-09-17 17:48:26.692596
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-17 17:49:38.813759
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-17 17:49:47.530808
+[Error] Someone tried to access shop page, but failed because he is not logged in --at-- 2025-09-17 17:49:51.478259
+[Info]  accessed / page --at-- 2025-09-17 17:49:51.585641
+[Info]  accessed / page --at-- 2025-09-17 17:49:51.907650
+[Info]  accessed / page --at-- 2025-09-17 17:49:52.180799
+[Info] The User account of Betatest sent an order with customer id 1 and products [2, 2, 2, 2, 2, 2] --at-- 2025-09-17 17:49:59.601420
+[Info] Betatest accessed https://www.webdevcode.de/Shop/2/ page --at-- 2025-09-17 17:49:59.816298
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-17 17:50:13.446934
+[Error] Someone tried to access shop page, but failed because he is not logged in --at-- 2025-09-17 17:50:17.324555
+[Info]  accessed / page --at-- 2025-09-17 17:50:17.393677
+[Info] main accessed https://www.webdevcode.de/pay/ww/ page --at-- 2025-09-17 19:15:58.983803
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:16:02.717248
+[Info] main accessed / page --at-- 2025-09-17 19:21:21.109872
+[Info] main accessed / page --at-- 2025-09-17 19:21:22.470369
+[Info] main accessed / page --at-- 2025-09-17 19:22:24.266416
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-17 19:25:21.261276
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-09-17 19:27:45.534780
+[Info]  accessed / page --at-- 2025-09-17 19:27:45.628482
+[Info] main accessed / page --at-- 2025-09-17 19:29:02.500112
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:29:05.660221
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:29:07.745022
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-09-17 19:29:53.952062
+[Info] main accessed / page --at-- 2025-09-17 19:31:52.643173
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:33:52.488141
+[Info] main accessed / page --at-- 2025-09-17 19:34:06.002526
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:34:10.536755
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:34:26.911190
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-09-17 19:34:39.294410
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:34:42.354362
+[Info] main accessed / page --at-- 2025-09-17 19:39:17.836475
+[Info] main accessed / page --at-- 2025-09-17 19:48:09.250744
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-17 19:55:31.312130
+[Info] main accessed shop page as superuser --at-- 2025-09-17 19:55:37.778944
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 19:55:37.779401
+[Info] main accessed https://www.webdevcode.de/Shop/4/ page --at-- 2025-09-17 19:55:45.932427
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-17 20:03:24.700087
+[Info] main accessed https://www.webdevcode.de/pay/ww/ page --at-- 2025-09-17 20:06:40.532003
+[Info] main accessed https://www.webdevcode.de/pay/ww/ page --at-- 2025-09-17 20:06:51.539347
+[Info] main accessed https://www.webdevcode.de/pay/ww/ page --at-- 2025-09-17 20:06:52.709404
+[Info]  accessed / page --at-- 2025-09-17 20:25:55.139294
+[Info] Betatest accessed / page --at-- 2025-09-17 20:44:19.541094
+[Info] Betatest accessed / page --at-- 2025-09-17 20:44:19.558035
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-17 20:44:58.591801
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-17 20:45:12.710661
+[Info] main accessed https://www.webdevcode.de/agb page --at-- 2025-09-17 20:45:59.876199

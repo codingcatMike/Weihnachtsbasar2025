@@ -10,7 +10,7 @@ from .log import log
 import json
 from collections import Counter
 from django.utils.safestring import mark_safe
-from .consumers import send_orders_update, send_order_customer_update # send_onscreen_order
+from .consumers import send_orders_update, send_order_customer_update, announce_order_update # send_onscreen_order
 from django.http import FileResponse
 from .utils import generate_receipt_pdf
 from django.http import HttpResponse
@@ -43,6 +43,10 @@ import json
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics import renderPDF
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Customers
+from django.views.decorators.csrf import csrf_exempt
 
 
 def generate_pdf_receipt(request, order_id):
@@ -146,18 +150,44 @@ def credits(request):
     log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
     return render(request, 'credits.html')
 
+
+
 def CreateShop(request):
     if request.method == 'POST':
         form = ShopAddForm(request.POST)
         if form.is_valid():
-            form.save()
-            os.remove('one_time_password.txt')
+            # Create the Shop object
+            shop = form.save(commit=False)
+            shop.save()
+            
+            # Add current user as ShopUser with level 3
+            shop_user, created = ShopUser.objects.get_or_create(
+                user=request.user,
+                shop=shop,
+                defaults={'level': 3}
+            )
+
+            # Delete the one-time password file if exists
+            try:
+                os.remove('one_time_password.txt')
+            except FileNotFoundError:
+                pass
+
+            # Show success message and log
             messages.success(request, 'Your Shop has been created successfully')
             log(f'The Shop of {request.user.username} has been created successfully with name {form.cleaned_data["name"]}')
-            return redirect('index')
-    form = ShopAddForm()
+
+            return redirect('ShopSettings', shop.id)
+        else:
+            messages.error(request, 'There was an error creating your Shop. Please check the form.')
+
+    else:
+        form = ShopAddForm()
+
+    # Log page access
     log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
-    return render(request, 'createShop.html' , {'form': form})
+    return render(request, 'createShop.html', {'form': form})
+
 
 def generate_one_time_password(request):
     if request.user.is_superuser:
@@ -199,23 +229,39 @@ def Shop_view(request, id = None):
         return redirect('index')
     else:
         if request.user.is_authenticated:
-            products = Product.objects.filter(shop=id)
-            if request.user in shop_instance.sellers.all() or request.user.is_superuser:
-                if request.user.is_superuser and request.user not in shop_instance.sellers.all():
-                    log(f"{request.user.username} accessed shop page as superuser", 0)
-                    base_url = f"{request.scheme}://{request.get_host()}"
-                    link = f"{base_url}/admin/main/shop/{id}/change/"
-                    msg = mark_safe(
-                        f'You are accessing this page as a superuser, but you are not a seller of this shop. '
-                        f'Add yourself <a href="{link}">here</a>.'
-                    )
-                    messages.warning(request, msg)
+            try:
+                shop_user = ShopUser.objects.get(user=request.user, shop=shop_instance)
+            except:
+                if request.user.is_superuser:
+                    ShopUser.objects.get_or_create(user=request.user,shop=shop_instance,defaults={'level': 3})
+                if request.user not in shop_instance.sellers.all():
+                    messages.warning(request, 'You are not a seller of this shop, please contact admin if you think this is a mistake')
+                else:
+                    ShopUser.objects.get_or_create(user=request.user,shop=shop_instance,defaults={'level': 1})
+                shop_user = ShopUser.objects.get(user=request.user, shop=shop_instance)
+                
+            if shop_user.level != 0: # Level 0
                 products = Product.objects.filter(shop=id)
-                log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
-                return render(request, 'shop.html', {'products': products , 'shop': shop_instance})
-            else:
-                messages.error(request, 'You are not allowed to access this page, because you are not a seller of this shop')
-                log(f"{request.user.username} tried to access shop page, but failed because he is not a seller of this shop", 2)
+                if request.user in shop_instance.sellers.all() or request.user.is_superuser:
+                    if request.user.is_superuser and request.user not in shop_instance.sellers.all():
+                        log(f"{request.user.username} accessed shop page as superuser", 0)
+                        base_url = f"{request.scheme}://{request.get_host()}"
+                        link = f"{base_url}/admin/main/shop/{id}/change/"
+                        msg = mark_safe(
+                            f'You are accessing this page as a superuser, but you are not a seller of this shop. '
+                            f'Add yourself <a href="{link}">here</a>.'
+                        )
+                        messages.warning(request, msg)
+                    products = Product.objects.filter(shop=id)
+                    log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
+                    return render(request, 'shop.html', {'products': products , 'shop': shop_instance})
+                else:
+                    messages.error(request, 'You are not allowed to access this page, because you are not a seller of this shop')
+                    log(f"{request.user.username} tried to access shop page, but failed because he is not a seller of this shop", 2)
+                return redirect('index')
+            else: 
+                messages.error(request, 'You are not allowed to access this page, because your account is locked')
+                log(f"{request.user.username} tried to access shop page, but failed because his account is locked", 2)
                 return redirect('index')
         else:
             messages.error(request, 'You are not allowed to access this page, because you are not logged in')
@@ -284,7 +330,7 @@ def SendOrder(request):
     order.save()
 
     log(f'The User account of {request.user.username} sent an order with customer id {customer_id} and products {products}')
-
+    announce_order_update()
     channel_layer = get_channel_layer()
     orders_data = [
         {
@@ -337,8 +383,12 @@ def cash_register(request):
 def pay_id(request, id):
     order = get_object_or_404(Order, id=id)
     order.payed = True
+    needs_kitchen = order.products.filter(needs_kitchen=True).exists()
+    if needs_kitchen == False:
+        order.picked_up = True
     order.save()
     Income.objects.create(price=order.price, order=order, reason='Order')
+    announce_order_update()
     channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
         "pay_screen_updates",
@@ -381,59 +431,119 @@ def display_order(request, id):
 
     return JsonResponse({"status": "ok", "order_id": order.id})
 
-def ShopSettings(request, shop_id):
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Shop, ShopUser
+from django.contrib.auth.models import User
+from django.http import JsonResponse
+from django.contrib.auth.models import User
+from django.views.decorators.http import require_GET
+
+@require_GET
+def search_users(request, shop_id):
+    query = request.GET.get('q', '').strip()
     shop = get_object_or_404(Shop, id=shop_id)
-    if request.method == "POST":
-        if "update_name" in request.POST:
-            new_name = request.POST.get("shop_name")
-            if new_name and new_name != shop.name:
+    existing_user_ids = shop.shopuser_set.values_list('user_id', flat=True)
+
+    if query:
+        users = User.objects.filter(username__icontains=query).exclude(id__in=existing_user_ids)[:10]
+        results = [{'id': u.id, 'username': u.username} for u in users]
+    else:
+        results = []
+
+    return JsonResponse(results, safe=False)
+
+LEVELS = {
+    0: 'Locked',
+    1: 'Seller',
+    2: 'Moderator',
+    3: 'Creator'
+}
+
+def get_actor_level(user, shop):
+    
+    """Return the level of the user in this shop."""
+    if user.is_superuser:
+        return 3  # Creator
+    su = ShopUser.objects.filter(shop=shop, user=user).first()
+    if su:
+        return su.level
+    return 0  # Locked / no access
+
+def ShopSettings(request, shop_id):
+    id = shop_id
+    shop = get_object_or_404(Shop, id=id)
+    actor_level = get_actor_level(request.user, shop)
+    shop_users = ShopUser.objects.filter(shop=shop)
+
+    # Handle shop renaming
+    if request.method == 'POST' and 'rename_shop' in request.POST:
+        if actor_level == 3:  # Only Creator can rename
+            new_name = request.POST.get('shop_name')
+            if new_name:
                 shop.name = new_name
                 shop.save()
-                messages.success(request, f"Shop name updated to '{new_name}'.")
-        if "add_seller" in request.POST:
-            username = request.POST.get("username")
-            if username:
-                try:
-                    user = User.objects.get(username=username)
-                    if user in shop.sellers.all():
-                        messages.warning(request, f"{user.username} is already a seller of this shop.")
-                    else:
-                        shop.sellers.add(user)
-                        messages.success(request, f"{user.username} was added as a seller.")
-                except User.DoesNotExist:
-                    messages.error(request, f"User '{username}' does not exist.")
-        if "remove_seller_id" in request.POST:
-            seller_id = request.POST.get("remove_seller_id")
-            try:
-                user = User.objects.get(id=seller_id)
-                shop.sellers.remove(user)
-                messages.success(request, f"{user.username} removed from sellers.")
-            except User.DoesNotExist:
-                messages.error(request, "Seller not found.")
-        if "remove_product_id" in request.POST:
-            product_id = request.POST.get("remove_product_id")
-            try:
-                product = Product.objects.get(id=product_id, shop=shop)
-                product.delete()
-                messages.success(request, f"Product '{product.name}' deleted.")
-            except Product.DoesNotExist:
-                messages.error(request, "Product not found.")
-        if "update_price" in request.POST:
-            product_id = request.POST.get("product_id")
-            price = request.POST.get("price")
-            try:
-                product = Product.objects.get(id=product_id, shop=shop)
-                product.price = float(price)
-                product.save()
-                messages.success(request, f"Price for '{product.name}' updated to €{price}.")
-            except Product.DoesNotExist:
-                messages.error(request, "Product not found.")
-            except ValueError:
-                messages.error(request, "Invalid price entered.")
-        return redirect("ShopSettings", shop_id=shop.id)
+                messages.success(request, "Shop renamed successfully.")
+                return redirect('ShopSettings', shop_id=shop.id)
+        else:
+            messages.error(request, "You do not have permission to rename this shop.")
+    # Handle adding seller
+    if request.method == 'POST' and 'add_user_id' in request.POST:
+        if actor_level >= 2:  # Only Manager or Creator can add
+            user_id = request.POST.get('add_user_id')
+            user_to_add = User.objects.filter(id=user_id).first()
+            if user_to_add:
+                ShopUser.objects.create(shop=shop, user=user_to_add, level=1)
+                messages.success(request, f"User {user_to_add.username} added successfully.")
+                return redirect('ShopSettings', shop_id=shop.id)
 
-    context = {"shop": shop}
-    return render(request, "shop_settings.html", context)
+
+    # Handle seller removal
+    if request.method == 'POST' and 'remove_seller_id' in request.POST:
+        remove_id = request.POST.get('remove_seller_id')
+        su_to_remove = ShopUser.objects.filter(shop=shop, user_id=remove_id).first()
+        if su_to_remove and actor_level > su_to_remove.level:
+            su_to_remove.delete()
+            messages.success(request, "Seller removed successfully.")
+            return redirect('ShopSettings', shop_id=shop.id)
+
+    # Handle seller level change
+    if request.method == 'POST' and 'user_id' in request.POST:
+        su_id = request.POST.get('user_id')
+        new_level = int(request.POST.get('new_level', 0))
+        su_to_update = ShopUser.objects.filter(shop=shop, user_id=su_id).first()
+        if su_to_update and actor_level > su_to_update.level:
+            if new_level <= actor_level:
+                su_to_update.level = new_level
+                su_to_update.save()
+                messages.success(request, "Seller level updated.")
+            else:
+                messages.error(request, "You cannot assign a level higher than yours.")
+            return redirect('ShopSettings', shop_id=shop.id)
+
+    # Handle Product Creation
+    if request.method == 'POST' and 'create_product' in request.POST:
+        form = ProductAddForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product created successfully!')
+            return redirect('ShopSettings', shop_id=shop.id)
+    else:
+        form = ProductAddForm(request.user)
+
+    # Precompute level names and allowed levels
+    for su in shop_users:
+        su.level_name = LEVELS.get(su.level, "Unknown")
+        su.allowed_levels = [(lvl, name) for lvl, name in LEVELS.items() if lvl <= actor_level]
+
+    context = {
+        'shop': shop,
+        'shop_users': shop_users,
+        'actor_level': actor_level,
+        'form': form,
+    }
+
+    return render(request, 'shop_settings.html', context)
 
 def pay_Screen(request):
     return render(request, "pay_screen.html", {})
@@ -453,13 +563,9 @@ def remove_from_payscreen(request):
     )
     return JsonResponse({"status": "ok"})
 
-from django.shortcuts import render
-from django.http import JsonResponse
-from .models import Customers
-from django.views.decorators.csrf import csrf_exempt
-
 @csrf_exempt
 def customer(request):
+
     """
     Handles customer screen:
     - POST: generates a new customer ID
@@ -492,3 +598,59 @@ def customer(request):
 
     # Otherwise, render template with preloaded orders
     return render(request, "customer.html", {"cid": cid, "orders": orders})
+
+from .models import SiteStatus
+
+from django.shortcuts import render, redirect
+from .models import SiteStatus
+
+MAINTENANCE_PASSWORD = "maain"
+
+def maintenance_page(request):
+    status = SiteStatus.objects.first()
+    maintenance_on = status.maintenance_mode if status else False
+    bypass = request.session.get('maintenance_bypass', False)
+
+    if request.method == 'POST':
+        password = request.POST.get('password', '')
+        if password == MAINTENANCE_PASSWORD:
+            request.session['maintenance_bypass'] = True
+            bypass = True
+            return redirect('/')  # Zurück zur Startseite
+
+    context = {
+        "maintenance_mode": maintenance_on,
+        "bypass": bypass,
+        "request": request
+    }
+    return render(request, '501.html', context)
+
+def search_users(request, shop_id):
+    """
+    Dummy view for searching users in a shop.
+    Replace with real implementation later.
+    """
+    return JsonResponse({"status": "not implemented yet"})
+
+def kitchen_view(request):
+    orders = Order.objects.filter(products__needs_kitchen=True, picked_up=False).distinct()
+    return render(request, "kitchen.html", {"orders": orders})
+
+
+def picked_up(request, id):
+    order = get_object_or_404(Order, id=id)
+    if order.payed == True:
+        order.picked_up = True
+        order.save()
+        return JsonResponse({"status": "ok", "order_id": order.id})
+    else:
+        return JsonResponse({"status": "customer_not_payed", "order_id": order.id})
+    
+
+def site_status(request):
+    site_status = SiteStatus.objects.first()
+    maintenance = False
+    if site_status:
+        maintenance = site_status.maintenance_mode
+        print(maintenance)
+    return JsonResponse({"maintenance_mode": maintenance})

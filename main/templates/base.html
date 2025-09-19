@@ -9,150 +9,160 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'main/favicon.ico' %}">
 
-    <style>
-        .message {
-            animation: fadeIn 0.3s ease;
-        }
+<style>
+    /* Fade-in for messages */
+    .message {
+        animation: fadeIn 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(4px);
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        .progress-bar {
-            transition: width linear;
-        }
+    .progress-bar {
+        transition: width linear;
+    }
 
-        /* Reset and basic styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
+    /* Reset and basic styles */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        color: #f0f0f0; /* default light text */
+    }
 
-        /* Fixed animated background */
-        #animated-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background: repeating-radial-gradient(
-                circle at 50% 50%,
-                #808080,
-                #505050 40px,
-                #8b8b8b 40px,
-                #6e6e6e 80px
-            );
-        }
+    /* Fixed animated background */
+    #animated-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        background: repeating-radial-gradient(
+            circle at 50% 50%,
+            #808080,
+            #505050 40px,
+            #8b8b8b 40px,
+            #6e6e6e 80px
+        );
+    }
 
-        /* Page content above background */
-        #content {
-            position: relative;
-            z-index: 0;
-        }
+    /* Page content above background */
+    #content {
+        position: relative;
+        z-index: 0;
+        padding: 0px 20px 20px 20px;
+        top: -100px;
+    }
 
-        /* Headings and text */
-        h1, h2, h3, h4, h5, h6 {
-            color: #333;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-align: center;
-        }
+    /* Headings and text */
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 20px;
+        line-height: 1.2;
+        text-align: center;
+    }
 
-        p {
-            margin-bottom: 15px;
-            color: #555;
-        }
+    p {
+        margin-bottom: 15px;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+        background-color: rgba(255,255,255,0.1);
+        color: #fff; /* will be overwritten by JS */
+    }
 
-        .helptext {
-            font-size: 1em;
-            color: #888;
-        }
+    .helptext {
+        font-size: 1em;
+    }
 
-        button, input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
+    button, input[type="submit"] {
+        background: linear-gradient(145deg, #007bff, #3399ff);
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
 
-        button:hover, input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
+    button:hover, input[type="submit"]:hover {
+        background: linear-gradient(145deg, #3399ff, #66b3ff);
+    }
 
-        /* Logo */
-        #logo-container {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 10;
-        }
+    /* Login/logout buttons */
+    #auth-buttons {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
 
-        #logo-container img {
-            height: 200px;
-        }
+    /* Logo */
+    #logo-container img {
+        height: 200px;
+    }
 
-        /* Login/logout buttons */
-        #auth-buttons {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
+    /* Footer */
+    footer {
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        z-index: 10;
+    }
 
-        /* Footer */
-        footer {
-            position: fixed;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            z-index: 10;
-        }
+    .message {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 6px;
+        min-width: max-content;
+        position: relative;
+        font-size: 16px;
+        background-color: rgba(255,255,255,0.1);
+        color: #fff; /* will be overwritten by JS if needed */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        backdrop-filter: blur(6px);
+    }
+</style>
 
-        .message {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 6px;
-            min-width: max-content;
-            position: relative;
-            font-size: 16px;
-        }
-    </style>
 </head>
 <body>
 
 <!-- Animated background -->
 <div id="animated-background"></div>
+
+<!-- Logo -->
+<div id="logo-container">
+    <a href="/"><img src="{% static 'main/logo.png' %}" alt="Logo"></a>
+</div>
 
 <!-- Page content -->
 <div id="content">
@@ -171,61 +181,49 @@
         {% endif %}
     </div>
 
-    <!-- Logo -->
-    <div id="logo-container">
-        <a href="/"><img src="{% static 'main/logo.png' %}" alt="Logo"></a>
-    </div>
-
     {% block content %}{% endblock content %}
 
     <!-- Footer and messages -->
     <footer>
         {% if messages %}
-<div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-    {% for message in messages %}
-    <div class="message" data-duration="4000"
-         style="position: relative; overflow: hidden;
-                background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %};
-                color: {% if message.tags == 'success' %}#3c763d{% elif message.tags == 'warning' %}#fff{% elif message.tags == 'error' %}#fff{% endif %};
-                max-width: 80%; text-align: center; padding: 10px 15px; border-radius: 5px; width: 300px;">
-        <!-- Progress bar -->
-        <div class="progress-bar" style="position: absolute; top: 0; left: 0; height: 4px; background: rgba(255,255,255,0.7); width: 100%;"></div>
-
-        <!-- Close button -->
-        <button onclick="this.parentElement.remove()"
-                style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; font-size: 16px; cursor: pointer;">&times;</button>
-
-        {{ message|safe }}
-    </div>
-    {% endfor %}
-</div>
-{% endif %}
-
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            {% for message in messages %}
+            <div class="message" data-duration="4000"
+                 style="position: relative; overflow: hidden;
+                        background-color: {% if message.tags == 'success' %}#dff0d8{% elif message.tags == 'warning' %}#ff8000{% elif message.tags == 'error' %}#ff0000{% endif %};
+                        color: {% if message.tags == 'success' %}#3c763d{% elif message.tags == 'warning' %}#fff{% elif message.tags == 'error' %}#fff{% endif %};
+                        max-width: 80%; text-align: center; padding: 10px 15px; border-radius: 5px; width: 300px;">
+                <div class="progress-bar" style="position: absolute; top: 0; left: 0; height: 4px; background: rgba(255,255,255,0.7); width: 100%;"></div>
+                <button onclick="this.parentElement.remove()"
+                        style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: inherit; font-size: 16px; cursor: pointer;">&times;</button>
+                {{ message|safe }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </footer>
 
 </div>
 
-<!-- Background animation script -->
+<!-- Scripts -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const bg = document.getElementById('animated-background');
 
+    // === Background animation ===
+    const bg = document.getElementById('animated-background');
     let x = Math.random() * 60 + 20;
     let y = Math.random() * 60 + 20;
     let targetX = Math.random() * 60 + 20;
     let targetY = Math.random() * 60 + 20;
-    const duration = 90000; // 90 seconds per movement
+    const duration = 90000; // 90 seconds
     let startTime = null;
 
     function animate(timestamp) {
         if (!startTime) startTime = timestamp;
-
         let progress = (timestamp - startTime) / duration;
         if (progress > 1) progress = 1;
-
         let currentX = x + (targetX - x) * progress;
         let currentY = y + (targetY - y) * progress;
-
         bg.style.background = `
             repeating-radial-gradient(
                 circle at ${currentX}% ${currentY}%,
@@ -235,43 +233,88 @@ document.addEventListener("DOMContentLoaded", function () {
                 #6e6e6e 80px
             )
         `;
-
-        if (progress < 1) {
-            requestAnimationFrame(animate);
-        } else {
-            x = targetX;
-            y = targetY;
+        if (progress < 1) requestAnimationFrame(animate);
+        else {
+            x = targetX; y = targetY;
             targetX = Math.random() * 60 + 20;
             targetY = Math.random() * 60 + 20;
             startTime = null;
             requestAnimationFrame(animate);
         }
     }
-
     requestAnimationFrame(animate);
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+    // === Messages progress bar ===
     const messages = document.querySelectorAll(".message");
     messages.forEach(msg => {
-        const duration = parseInt(msg.dataset.duration) || 4000; // default 4s
+        const duration = parseInt(msg.dataset.duration) || 4000;
         const progressBar = msg.querySelector(".progress-bar");
         let startTime = Date.now();
-
-        // Animate progress bar
         const interval = setInterval(() => {
             const elapsed = Date.now() - startTime;
             const percent = Math.max(0, 100 - (elapsed / duration) * 100);
             progressBar.style.width = percent + "%";
-            if (elapsed >= duration) {
-                clearInterval(interval);
-                msg.remove();
-            }
+            if (elapsed >= duration) { clearInterval(interval); msg.remove(); }
         }, 20);
     });
+
+    // === Adaptive text color ===
+    function getBrightness(rgb) {
+        const values = rgb.match(/\d+/g);
+        if (!values) return 255;
+        const r = parseInt(values[0]);
+        const g = parseInt(values[1]);
+        const b = parseInt(values[2]);
+        return (r*299 + g*587 + b*114)/1000;
+    }
+
+    function adaptTextColor(selector) {
+        document.querySelectorAll(selector).forEach(el => {
+            let bg = window.getComputedStyle(el).backgroundColor;
+            let parent = el.parentElement;
+            while ((bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') && parent) {
+                bg = window.getComputedStyle(parent).backgroundColor;
+                parent = parent.parentElement;
+            }
+            if (getBrightness(bg) > 180) el.style.color = "#000";
+            else el.style.color = "#fff";
+        });
+    }
+
+    adaptTextColor("p, h1, h2, h3, h4, h5, h6, label, span, input, textarea");
+
+    // === Input placeholders ===
+    document.querySelectorAll("input, textarea").forEach(el => {
+        const bg = window.getComputedStyle(el).backgroundColor;
+        const color = getBrightness(bg) > 180 ? "#000" : "#fff";
+        el.style.color = color;
+        el.style.setProperty('--placeholder-color', color);
+    });
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+    input::placeholder, textarea::placeholder {
+        color: var(--placeholder-color);
+        opacity: 0.7;
+    }`;
+    document.head.appendChild(style);
+
 });
+function checkMaintenance() {
+    fetch('/api/site-status/')
+      .then(res => res.json())
+      .then(data => {
+          if(data.maintenance_mode === true){
+              window.location.href = '/501/';
+          }
+      })
+      .catch(err => console.error('Site status check failed', err));
+}
 
+
+// alle 10 Sekunden prüfen
+setInterval(checkMaintenance, 10000);
+checkMaintenance();  // einmal sofort
 </script>
-
 </body>
 </html>

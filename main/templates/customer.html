@@ -2,40 +2,51 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kundenbestellungen</title>
     <style>
+        /* General body */
         body {
             font-family: "Arial", sans-serif;
             background: #f0f2f5;
-            padding: 20px;
+            padding: 15px;
+            margin: 0;
         }
 
         h1 {
             text-align: center;
             color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
 
+        /* Customer section */
         #customer-section {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-bottom: 20px;
+            gap: 10px;
         }
 
         #customer-id {
-            font-size: 16px;
-            padding: 5px 10px;
-            width: 150px;
+            font-size: 1rem;
+            padding: 8px 10px;
+            width: 80%;
+            max-width: 250px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         #generate-btn {
-            margin-left: 10px;
-            padding: 5px 10px;
-            font-size: 16px;
+            padding: 8px 15px;
+            font-size: 1rem;
             cursor: pointer;
             background-color: #4caf50;
             border: none;
             border-radius: 5px;
             color: white;
+            transition: background 0.2s;
         }
 
         #generate-btn:disabled {
@@ -43,24 +54,31 @@
             cursor: not-allowed;
         }
 
+        #generate-btn:hover:not(:disabled) {
+            background-color: #45a049;
+        }
+
+        /* Orders container */
         #orders-container {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin: 20px auto;
+            margin: 0 auto;
+            width: 95%;
             max-width: 500px;
         }
 
         .order-card {
             background: #fff;
             border-left: 5px solid #4caf50;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 5px;
             transition: transform 0.2s;
+            word-wrap: break-word;
         }
 
         .order-card:hover {
@@ -68,14 +86,27 @@
         }
 
         .order-card .products {
-            font-size: 16px;
+            font-size: 1rem;
             color: #333;
         }
 
         .order-card .price {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1rem;
             color: #4caf50;
+            align-self: flex-end;
+        }
+
+        /* Responsive adjustments for larger screens */
+        @media (min-width: 480px) {
+            #customer-section {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            #customer-id {
+                width: 150px;
+            }
         }
     </style>
 </head>
@@ -97,7 +128,6 @@
             const generateBtn = document.getElementById("generate-btn");
 
             let cid = localStorage.getItem("customer_id");
-
             customerInput.value = cid || "";
 
             async function fetchUnpaidOrders(customerId) {
@@ -107,9 +137,6 @@
                     });
                     if (!response.ok) throw new Error("Failed to fetch orders");
                     const htmlText = await response.text();
-
-                    // Extract JSON orders from rendered template if necessary
-                    // Here we assume view renders JSON for AJAX fetch
                     return JSON.parse(htmlText).orders || [];
                 } catch (err) {
                     console.error(err);
@@ -121,11 +148,8 @@
                 if (!cid) return;
 
                 const unpaidOrders = await fetchUnpaidOrders(cid);
-
                 generateBtn.disabled = unpaidOrders.length > 0;
-
                 unpaidOrders.forEach(order => displayOrder(order));
-
                 initWebSocket();
             }
 

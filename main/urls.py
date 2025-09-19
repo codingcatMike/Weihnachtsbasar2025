@@ -1,19 +1,3 @@
-"""
-URL configuration for Basar project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.static import serve
@@ -37,12 +21,16 @@ urlpatterns = [
     path("pay/", cash_register, name="cash_register"),
     path("pay/<id>/", pay_id, name="pay_id"),
     path("Shop/<shop_id>/settings/", ShopSettings, name="ShopSettings"),
+    path('shop/<int:shop_id>/search-users/', search_users, name='search_users'),
     path("pay_Screen/", pay_Screen, name="pay_Screen"),
     path("display_order/<id>/", display_order, name="display_order"),
     path('receipt/<int:order_id>/', generate_pdf_receipt, name='receipt'),
     path("admin/", admin.site.urls, name="admin"),
     path("rmfps/", remove_from_payscreen, name="rmfps"),
     path("customer", customer, name="customer"),
+    path("kitchen/", kitchen_view, name="kitchen" ),
+    path("pick_up/<id>/", picked_up, name="pick_up"),
+    path("api/site-status/", site_status, name="site-status"),
+    path('501/', maintenance_page, name='maintenance-page'),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT, "show_indexes": True}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

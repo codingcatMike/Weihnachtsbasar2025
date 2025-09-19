@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}Küchenübersicht{% endblock title %}
+
+{% block content %}
+<div class="container" style="max-width: 900px; margin: 80px auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    <h1 style="text-align:center; margin-bottom: 20px;">Küchenübersicht</h1>
+    <h2 style="text-align:center; margin-bottom: 30px;">Aktuelle Anzahl an Bestellungen: <span id="income">NUMBER OF ORDERS</span>€</h2>
+    
+    <input type="number" id="order-search" placeholder="Kundennummer suchen..." style="width:100%; padding:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
+
+    <div id="connection" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+        <p id="connection-status" style="margin: 0; padding: 6px 12px; border-radius: 6px; cursor: pointer; color: red; border: 1px solid red;">
+            Nicht verbunden oder Verbindung wird aufgebaut…
+        </p>
+    </div>
+
+    <div id="orders" style="color:black">
+        {% for order in orders %}
+            <div class="order-card" 
+                 id="order-{{ order.id }}" 
+                 data-order-id="{{ order.id }}" 
+                 data-customer-id="{{ order.customer.id }}" 
+                 style="background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; 
+                        box-shadow:0 2px 8px rgba(0,0,0,0.05); 
+                        border:2px solid {% if order.payed %}green{% else %}orange{% endif %};">
+                <p style="font-weight:bold; margin-bottom:8px;">Kunde #{{ order.customer.id }} - {{ order.total_price }}€</p>
+                <p style="margin-bottom:10px;">
+                    {% for item in order.orderitem_set.all %}
+                        {% if item.product.needs_kitchen %}
+                            {{ item.product.name }} x{{ item.quantity }}{% if not forloop.last %}, {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <button class="display-pay-button" data-order-id="{{ order.id }}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Abgeholt</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="popup" style="
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+"></div>
+
+<script>
+// ----- WebSocket connection and live updates -----
+let socket = null;
+const popup = document.getElementById('popup');
+
+function updateConnectionStatus(state) {
+    const statusEl = document.getElementById("connection-status");
+    const colors = {connected:"green", disconnected:"red", connecting:"orange", closing:"darkorange"};
+    const texts = {
+        connected:"Live-Server verbunden (click to reconnect)",
+        disconnected:"Nicht verbunden (click to reconnect)",
+        connecting:"Verbindung wird aufgebaut…",
+        closing:"Verbindung wird geschlossen…"
+    };
+    statusEl.textContent = texts[state];
+    statusEl.style.color = colors[state];
+    statusEl.style.borderColor = colors[state];
+}
+
+function connectSocket() {
+    updateConnectionStatus("connecting");
+
+    socket = new WebSocket(`${window.location.protocol==='https:'?'wss':'ws'}://${window.location.host}/ws/kitchen/`);
+
+    socket.onopen = () => updateConnectionStatus("connected");
+    socket.onclose = () => updateConnectionStatus("disconnected");
+
+    socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        console.log("WebSocket Nachricht:", data);
+
+        if(data.status === "orders_list"){
+            const ordersContainer = document.getElementById("orders");
+            ordersContainer.innerHTML = "";
+
+            data.orders.forEach(order => {
+                console.log(`Order #${order.id} paid status:`, order.payed);
+
+                const items = order.items.map(i => `${i.name} x${i.quantity}`).join(", ");
+                const borderColor = order.payed ? "green" : "orange";
+
+                const div = document.createElement("div");
+                div.className = "order-card";
+                div.id = `order-${order.id}`;
+                div.dataset.customerId = order.customer_id;
+                div.dataset.orderId = order.id;
+                div.style = `
+                    background:#f9f9f9;
+                    padding:15px;
+                    margin-bottom:15px;
+                    border-radius:8px;
+                    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+                    border:2px solid ${borderColor};
+                    color:black;
+                `;
+                div.innerHTML = `
+                    <p style="font-weight:bold; margin-bottom:8px;">Kunde #${order.customer_id} - ${order.price}€</p>
+                    <p style="margin-bottom:10px;">${items}</p>
+                    <button class="display-pay-button" data-order-id="${order.id}" style="
+                        padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;
+                    ">Abgeholt</button>
+                `;
+                ordersContainer.appendChild(div);
+            });
+
+            document.getElementById("income").textContent = data.income;
+        }
+    };
+}
+
+connectSocket();
+
+document.getElementById("connection-status").addEventListener("click", ()=>{
+    if(socket && socket.readyState === WebSocket.OPEN){
+        updateConnectionStatus("closing");
+        socket.close();
+    } else if(!socket || socket.readyState === WebSocket.CLOSED){
+        connectSocket();
+    }
+});
+
+// ----- Abgeholt button -----
+document.addEventListener("click",function(e){
+    if(e.target.classList.contains("display-pay-button")){
+        const orderId = e.target.dataset.orderId;
+        pickUpOrder(orderId);
+    }
+});
+
+// ----- Search bar -----
+const searchInput=document.getElementById('order-search');
+let searchTimeout=null;
+searchInput.addEventListener('input',function(){
+    clearTimeout(searchTimeout);
+    searchTimeout=setTimeout(()=>{
+        const value=searchInput.value.trim();
+        if(!value) return;
+        const searchNumber=Number(value);
+        document.querySelectorAll('.order-card').forEach(div=>{
+            if(Number(div.dataset.customerId)===searchNumber){
+                div.scrollIntoView({behavior:"smooth"});
+                div.style.border="3px solid blue"; // highlight
+                searchInput.value='';
+            }
+        });
+    },300);
+});
+
+// ----- Pick up order function -----
+function pickUpOrder(orderId) {
+    fetch(`/pick_up/${orderId}/`, {
+        method: "POST",
+        headers: {"X-CSRFToken": getCookie("csrftoken")}
+    })
+    .then(resp=>resp.json())
+    .then(data=>{
+        if(data.status === "ok"){
+            const el=document.getElementById(`order-${orderId}`);
+            if(el) el.remove();
+        } else if(data.status === "customer_not_payed") {
+            alert("Customer has not paid yet!");
+        }
+    });
+}
+
+// ----- CSRF helper -----
+function getCookie(name) {
+    let cookieValue = null;
+    if(document.cookie && document.cookie !== ''){
+        const cookies = document.cookie.split(';');
+        for(let i=0;i<cookies.length;i++){
+            const cookie = cookies[i].trim();
+            if(cookie.startsWith(name + '=')){
+                cookieValue = decodeURIComponent(cookie.substring(name.length+1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+{% endblock content %}

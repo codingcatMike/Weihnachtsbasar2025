@@ -1,0 +1,183 @@
+Log file for 2025-09-10
+Created at: 2025-09-10 03:18:08.087498
+Device : posix
+[Info]  accessed / page --at-- 2025-09-10 03:18:08.368223
+[Info]  accessed http://www.google.com.hk page --at-- 2025-09-10 05:44:05.417052
+[Info]  accessed http://www.google.com.hk page --at-- 2025-09-10 05:45:26.188384
+[Info] main accessed / page --at-- 2025-09-10 09:34:05.676863
+[Info] main accessed / page --at-- 2025-09-10 09:34:09.422309
+[Info] main accessed / page --at-- 2025-09-10 09:35:56.118653
+[Info] main accessed / page --at-- 2025-09-10 09:40:08.213238
+[Info] main accessed / page --at-- 2025-09-10 09:40:37.356743
+[Info] The Shop of main has been created successfully with name 233423 --at-- 2025-09-10 09:40:42.188533
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 09:40:42.292854
+[Info] main accessed / page --at-- 2025-09-10 09:46:38.955294
+[Info] main accessed / page --at-- 2025-09-10 09:46:40.971079
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 09:46:45.014462
+[Info]  accessed / page --at-- 2025-09-10 09:49:28.703621
+[Info]  accessed / page --at-- 2025-09-10 09:50:34.954021
+[Info]  accessed / page --at-- 2025-09-10 10:09:30.340960
+[Info]  accessed / page --at-- 2025-09-10 10:09:32.256064
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 10:15:54.802670
+[Info] main accessed / page --at-- 2025-09-10 10:16:04.544740
+[Info] main accessed / page --at-- 2025-09-10 10:18:30.929354
+[Info] main accessed / page --at-- 2025-09-10 10:18:40.197419
+[Info] main accessed / page --at-- 2025-09-10 10:18:49.808060
+[Info] main accessed / page --at-- 2025-09-10 10:20:05.125477
+[Info] main accessed / page --at-- 2025-09-10 10:20:13.583602
+[Info] main accessed / page --at-- 2025-09-10 10:20:19.025122
+[Info] main accessed / page --at-- 2025-09-10 10:21:10.207616
+[Info] main accessed / page --at-- 2025-09-10 10:22:31.211063
+[Info] main accessed / page --at-- 2025-09-10 10:24:51.558278
+[Info] main accessed / page --at-- 2025-09-10 10:26:38.003333
+[Info] main accessed / page --at-- 2025-09-10 10:27:06.513163
+[Info] main accessed / page --at-- 2025-09-10 10:27:09.904250
+[Info] main accessed / page --at-- 2025-09-10 10:27:21.304241
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-10 10:29:24.584914
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-10 10:30:06.046510
+[Info] main accessed / page --at-- 2025-09-10 10:30:08.471961
+[Info] main accessed / page --at-- 2025-09-10 10:30:16.559635
+[Info] main accessed https://www.webdevcode.de/help/ page --at-- 2025-09-10 10:30:18.182896
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-10 10:31:08.095990
+[Info] main accessed / page --at-- 2025-09-10 10:32:05.640453
+[Info] main accessed / page --at-- 2025-09-10 10:32:13.885935
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 10:33:34.607103
+[Info] main accessed / page --at-- 2025-09-10 10:56:53.066155
+[Info] main accessed / page --at-- 2025-09-10 10:57:25.082408
+[Info] main accessed / page --at-- 2025-09-10 10:57:48.694153
+[Info] main accessed / page --at-- 2025-09-10 10:57:49.324913
+[Info] main accessed / page --at-- 2025-09-10 10:57:49.772012
+[Info] main accessed / page --at-- 2025-09-10 10:58:18.882831
+[Info] main accessed / page --at-- 2025-09-10 10:58:19.493193
+[Info] main accessed / page --at-- 2025-09-10 10:58:19.848957
+[Info] main accessed / page --at-- 2025-09-10 10:58:20.131285
+[Info] main accessed / page --at-- 2025-09-10 10:58:20.341415
+[Info] main accessed / page --at-- 2025-09-10 10:58:20.558169
+[Info] main accessed / page --at-- 2025-09-10 10:58:20.898200
+[Info] main accessed / page --at-- 2025-09-10 10:58:21.128310
+[Info] main accessed / page --at-- 2025-09-10 10:58:21.641998
+[Info] main accessed / page --at-- 2025-09-10 10:58:39.777975
+[Info] main accessed / page --at-- 2025-09-10 11:36:55.478666
+[Info] main accessed / page --at-- 2025-09-10 11:36:56.972419
+[Info]  accessed / page --at-- 2025-09-10 11:53:36.427293
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-10 11:53:49.775758
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 11:53:59.666003
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 11:57:36.931096
+[Info] main accessed / page --at-- 2025-09-10 11:58:52.934521
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 11:58:55.788335
+[Error] main tried to access shop page, but failed because his account is locked --at-- 2025-09-10 11:58:59.472545
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 11:58:59.533749
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 11:59:20.002750
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 11:59:29.465408
+[Info] main accessed / page --at-- 2025-09-10 12:30:07.377923
+[Info] main accessed / page --at-- 2025-09-10 12:30:29.538073
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:30:32.907366
+[Info] main accessed / page --at-- 2025-09-10 12:32:12.092647
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:32:21.194653
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:32:24.941352
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-10 12:32:34.746788
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:32:49.731497
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:33:09.845966
+[Info] main accessed / page --at-- 2025-09-10 12:33:14.120092
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:22.305856
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:29.873477
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:30.904709
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:31.931749
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:32.501594
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:32.833897
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:33.358528
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:33.685658
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:33:33.898167
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:34:08.232806
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:34:18.678939
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:34:30.353585
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:35:17.644493
+[Info] main accessed https://www.webdevcode.de/credits/ page --at-- 2025-09-10 12:35:18.590778
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:36:48.001864
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-09-10 12:36:49.631236
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:38:27.558389
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:40:38.582955
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:40:44.104017
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 12:44:15.608637
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:46:00.087061
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:46:01.207610
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:46:40.675376
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:46:52.829268
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:46:53.751666
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:47:01.592803
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:47:45.616132
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-10 12:47:55.896633
+[Info] main accessed / page --at-- 2025-09-10 12:48:01.170205
+[Info] main accessed / page --at-- 2025-09-10 12:48:56.338978
+[Info]  accessed android-app://com.google.android.googlequicksearchbox/ page --at-- 2025-09-10 12:49:52.594519
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:53:05.940599
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:53:19.648533
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:54:03.631072
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:56:10.696368
+[Info] The User account of main sent an order with customer id 123456137 and products [1] --at-- 2025-09-10 12:56:21.439317
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:56:21.529863
+[Info] The User account of main sent an order with customer id 123456137 and products [1, 1] --at-- 2025-09-10 12:56:50.135304
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:56:50.216335
+[Info] main accessed / page --at-- 2025-09-10 12:57:17.614695
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 12:57:46.226297
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:00:33.476934
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:00:35.169065
+[Info] main accessed / page --at-- 2025-09-10 13:00:41.897714
+[Info] main accessed / page --at-- 2025-09-10 13:01:04.335968
+[Info] main accessed / page --at-- 2025-09-10 13:01:36.910921
+[Info] main accessed / page --at-- 2025-09-10 13:02:54.328739
+[Info] main accessed / page --at-- 2025-09-10 13:02:55.291908
+[Info] main accessed / page --at-- 2025-09-10 13:02:55.884141
+[Info] main accessed / page --at-- 2025-09-10 13:05:29.675132
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:05:32.574371
+[Info] The User account of main sent an order with customer id 9012 and products [1] --at-- 2025-09-10 13:05:52.565004
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:05:52.674926
+[Info] main accessed / page --at-- 2025-09-10 13:09:30.169331
+[Info] main accessed / page --at-- 2025-09-10 13:09:37.297408
+[Info] main accessed / page --at-- 2025-09-10 13:09:40.439032
+[Info] main accessed / page --at-- 2025-09-10 13:10:11.053290
+[Info] main accessed / page --at-- 2025-09-10 13:10:12.979261
+[Info] main accessed / page --at-- 2025-09-10 13:12:25.901533
+[Info] main accessed / page --at-- 2025-09-10 13:12:26.837277
+[Info] main accessed / page --at-- 2025-09-10 13:12:27.496441
+[Info] main accessed / page --at-- 2025-09-10 13:12:31.895392
+[Info] main accessed / page --at-- 2025-09-10 13:12:48.960602
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-10 13:12:52.068961
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-10 13:12:53.080432
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 13:12:54.777058
+[Info] The User account of main sent an order with customer id 1 and products [1] --at-- 2025-09-10 13:13:02.068715
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:13:02.163349
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 13:13:48.581543
+[Info] The User account of main sent an order with customer id 2 and products [1] --at-- 2025-09-10 13:13:56.601180
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:13:56.700291
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 13:14:28.872417
+[Info] The User account of main sent an order with customer id 3 and products [1, 1] --at-- 2025-09-10 13:14:35.652063
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:14:35.743112
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 13:14:40.275558
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:14:41.905011
+[Info] The User account of main sent an order with customer id 9 and products [1] --at-- 2025-09-10 13:14:55.083652
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:14:55.179111
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 13:15:34.788379
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:15:36.250801
+[Info] The User account of main sent an order with customer id 92 and products [1] --at-- 2025-09-10 13:15:48.301379
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:15:48.417911
+[Info] main accessed / page --at-- 2025-09-10 13:16:35.009617
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 13:16:52.938497
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-09-10 13:16:54.585544
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-09-10 13:17:13.963394
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-09-10 13:17:57.919215
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 13:38:25.163714
+[Info] main accessed / page --at-- 2025-09-10 14:07:22.790711
+[Info]  accessed / page --at-- 2025-09-10 14:45:52.164297
+[Info]  accessed / page --at-- 2025-09-10 14:45:52.828884
+[Info]  accessed / page --at-- 2025-09-10 16:05:33.208391
+[Info]  accessed / page --at-- 2025-09-10 16:05:35.342284
+[Info]  accessed / page --at-- 2025-09-10 17:16:30.026590
+[Info]  accessed / page --at-- 2025-09-10 17:16:30.173473
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-10 18:01:11.578097
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-10 18:01:15.652975
+[Info]  accessed http://webdevcode.de page --at-- 2025-09-10 18:02:45.074435
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-10 18:02:45.244374
+[Info]  accessed http://webdevcode.de/?phpinfo=1 page --at-- 2025-09-10 18:02:45.597824
+[Info]  accessed / page --at-- 2025-09-10 19:16:45.089316
+[Info]  accessed / page --at-- 2025-09-10 19:16:48.064975

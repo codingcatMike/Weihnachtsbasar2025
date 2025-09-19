@@ -1,0 +1,73 @@
+Log file for 2025-09-19
+Created at: 2025-09-19 00:00:39.023548
+Device : posix
+[Info]  accessed / page --at-- 2025-09-19 04:42:39.841650
+[Info] main accessed / page --at-- 2025-09-19 04:47:03.524202
+[Info] main accessed / page --at-- 2025-09-19 05:13:41.222735
+[Info] main accessed / page --at-- 2025-09-19 05:14:05.467046
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-19 05:21:11.344599
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-19 06:01:11.278107
+[Info]  accessed / page --at-- 2025-09-19 07:04:05.855271
+[Info] main accessed / page --at-- 2025-09-19 07:30:50.542521
+[Info] main accessed / page --at-- 2025-09-19 14:30:45.996587
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 14:31:55.227654
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-19 14:35:20.565469
+[Info] main accessed / page --at-- 2025-09-19 14:39:09.818918
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-19 14:39:11.993349
+[Info] main accessed / page --at-- 2025-09-19 18:49:57.375226
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-19 18:49:58.993973
+[Info] The User account of main sent an order with customer id 9 and products [1] --at-- 2025-09-19 18:50:05.995740
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-19 18:50:06.081850
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-19 18:57:40.222449
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-19 18:57:53.315815
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-19 18:58:06.928590
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-19 18:58:23.291853
+[Info] main accessed / page --at-- 2025-09-19 18:59:14.312932
+[Info] main accessed / page --at-- 2025-09-19 18:59:38.670800
+[Info] main accessed / page --at-- 2025-09-19 18:59:52.277505
+[Info] The User account of main sent an order with customer id 88 and products [1, 1, 5, 5] --at-- 2025-09-19 18:59:59.652922
+[Info] main accessed / page --at-- 2025-09-19 18:59:59.773345
+[Info] main accessed / page --at-- 2025-09-19 19:26:35.363393
+[Info] main accessed / page --at-- 2025-09-19 19:28:20.460343
+[Info] main accessed / page --at-- 2025-09-19 19:29:30.115094
+[Info] main accessed / page --at-- 2025-09-19 19:29:42.289927
+[Info] main accessed / page --at-- 2025-09-19 19:30:50.866453
+[Info] main accessed / page --at-- 2025-09-19 19:31:10.110213
+[Info] main accessed / page --at-- 2025-09-19 19:32:58.969307
+[Info] main accessed / page --at-- 2025-09-19 19:33:53.493585
+[Info] main accessed / page --at-- 2025-09-19 19:34:03.849091
+[Info] main accessed / page --at-- 2025-09-19 19:35:07.080613
+[Info] main accessed / page --at-- 2025-09-19 19:35:16.231576
+[Info] main accessed / page --at-- 2025-09-19 19:35:32.819193
+[Info] main accessed / page --at-- 2025-09-19 19:35:55.678461
+[Info] main accessed / page --at-- 2025-09-19 19:37:45.209826
+[Info] main accessed / page --at-- 2025-09-19 19:42:38.846136
+[Info] main accessed / page --at-- 2025-09-19 19:48:43.195353
+[Info] main accessed / page --at-- 2025-09-19 19:48:53.549723
+[Info] main accessed / page --at-- 2025-09-19 19:50:50.958746
+[Info] main accessed / page --at-- 2025-09-19 19:57:04.291883
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 19:57:29.066432
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 19:59:06.253010
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:01:18.503953
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:05:19.975316
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:05:22.193998
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:05:22.900739
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:06:37.758056
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:06:39.043841
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:06:50.093725
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:06:51.233229
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:06:53.189207
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:08:50.012704
+[Info] main accessed / page --at-- 2025-09-19 20:12:58.403997
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:14:58.976425
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:15:00.554763
+[Info] main accessed / page --at-- 2025-09-19 20:21:58.562219
+[Info] main accessed / page --at-- 2025-09-19 20:22:47.786490
+[Info] main accessed / page --at-- 2025-09-19 20:22:55.651758
+[Info] main accessed / page --at-- 2025-09-19 20:23:54.254844
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:27:38.573550
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:28:07.967790
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:28:30.357651
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:28:31.120855
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:28:31.839600
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-19 20:30:55.840628

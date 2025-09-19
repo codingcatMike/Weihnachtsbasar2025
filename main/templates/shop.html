@@ -1,22 +1,42 @@
 {% extends "base.html" %}
 {% block title %}Shop{% endblock title %}
+
 {% block content %}
 {% load static %}
+
 <script defer>
-orders = []
-orders_name =  []
-function AddProduct(id, name) {
-    console.log(id);
-    if (id != null && id != "") {
-        orders.push(id);
-        name = " " + name;
-        orders_name.push(name);
-        console.log("Produkte im Warenkorb: " + orders_name);
-        document.getElementById("orders").innerHTML = "Produkte im Warenkorb: " + orders_name;
-    } else {
+let orders = [];  // Array für Produktobjekte: {id, name, quantity, price}
+
+function AddProduct(id, name, price) {
+    if (!id) {
         console.log("Ungültige Produkt-ID");
         return;
     }
+
+    // Prüfen, ob Produkt schon im Warenkorb ist
+    const existing = orders.find(p => p.id === id);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        orders.push({id: id, name: name, quantity: 1, price: price});
+    }
+
+    console.log("Produkte im Warenkorb:", orders);
+
+    const ordersList = document.getElementById("orders_list");
+    ordersList.innerHTML = "";  // vorherige Liste löschen
+
+    let total = 0;
+
+    orders.forEach(product => {
+        const li = document.createElement("li");
+        li.className = "cart-item";
+        li.textContent = `${product.name} - ${product.price}€ x ${product.quantity}`;
+        total += product.price * product.quantity;
+        ordersList.appendChild(li);
+    });
+
+    document.getElementById("cart_total").textContent = "Gesamt: " + total.toFixed(2) + "€";
 }
 
 function SendOrder() {
@@ -24,11 +44,25 @@ function SendOrder() {
         alert("Bitte fügen Sie Produkte zum Warenkorb hinzu.");
         return;
     }
-    const customerId = document.querySelector('input[name="customer_id"]').value;
+
+    const customerInput = document.getElementById("customer_id");
+    if (!customerInput) {
+        alert("Kundenfeld nicht gefunden!");
+        return;
+    }
+
+    const customerId = customerInput.value.trim();
     if (!customerId) {
         alert("Bitte geben Sie eine Kunden ID ein.");
         return;
     }
+
+    const productIds = [];
+    orders.forEach(p => {
+        for (let i = 0; i < p.quantity; i++) {
+            productIds.push(p.id);
+        }
+    });
 
     fetch("{% url 'sendOrder' %}", {
         method: "POST",
@@ -38,14 +72,13 @@ function SendOrder() {
         },
         body: JSON.stringify({
             customer_id: customerId,
-            products: orders,
-            shop: "{{shop.id}}"
+            products: productIds,
+            shop: "{{ shop.id }}"
         })
     })
     .then(async response => {
         const data = await response.json();
         if (!response.ok) {
-            // Zeige die Nachricht aus dem Backend
             throw new Error(data.message || "Unbekannter Fehler vom Server");
         }
         return data;
@@ -57,57 +90,75 @@ function SendOrder() {
     .catch(err => {
         console.error("Fehler beim Senden:", err);
         alert("Es gab ein Problem mit der Bestellung:\n" + err.message);
-        location.reload()
+        location.reload();
     });
 }
-
 </script>
 
-<!-- Haupt-Container auf 66% Breite, mittig -->
+<!-- Haupt-Container -->
 <div class="container" style="width: 66%; margin: 0 auto; text-align: center;">
     <h1>{{ shop.name }}</h1>
-    {% if shop.activated == False %}
-    <p style="color: orange">Dein Shop ist nochnicht aktiviert, deshalb kannst du keine Orders abschicken. Du kannst trotzdem Produkte erstellen </p>
+    {% if not shop.activated %}
+    <p style="color: orange">
+        Dein Shop ist noch nicht aktiviert, deshalb kannst du keine Orders abschicken.
+        Du kannst trotzdem Produkte erstellen.
+    </p>
     {% endif %}
 
     <div style="margin-bottom: 20px;">
-        Kunden ID: 
-        <input type="text" 
-               name="customer_id" 
-               id="customer_id" 
-               placeholder="Kunden ID" 
-               autocomplete="off" 
-               style="background-color: rgb(214, 214, 214);">
+        <label for="customer_id">Kunden ID:</label>
+        <input type="text" id="customer_id" name="customer_id" placeholder="Kunden ID" autocomplete="off" style="background-color: rgb(214, 214, 214);">
     </div>
 
+    <script>
+        const input = document.getElementById('customer_id');
+        input.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '');
+        });
+    </script>
+
     {% for product in products %}
-        <button style="margin-top: 10px; width: 100%" 
-                onclick="AddProduct({{ product.id }}, '{{product.name}}')">
-            {{ product.name }} - {{ product.price }}€
-        </button><br>
+    <button style="margin-top: 10px; width: 100%" onclick="AddProduct({{ product.id }}, '{{ product.name }}', {{ product.price }})">
+        {{ product.name }} - {{ product.price }}€
+    </button><br>
     {% endfor %}
 
-    <button type="submit" 
-            style="margin-top: 30px; background-color: rgb(136, 255, 0);" 
-            onclick="SendOrder()">Senden</button>
+    <button type="button" style="margin-top: 30px; background-color: rgb(136, 255, 0);" onclick="SendOrder()">Senden</button>
+    <button type="button" style="margin-top: 20px; background-color: rgb(255, 0, 0);" onclick="location.reload()">Alle Felder Löschen</button>
 
-    <button style="margin-top: 20px; background-color: rgb(255, 0, 0);" 
-            onclick="location.reload()">Alle Felder Löschen</button>
-
-    <div id="orders" style="margin-top: 20px;">
-        Produkte im Warenkorb:
+    <!-- Warenkorb -->
+    <div id="orders" style="margin-top: 20px; text-align: left; color: black">
+        <h3>Produkte im Warenkorb:</h3>
+        <ul id="orders_list" style="list-style-type: none; padding-left: 0;"></ul>
+        <p id="cart_total" style="font-weight: bold; margin-top: 10px; color: white">Gesamt: 0€</p>
     </div>
 </div>
 
 <!-- Floating Button für Settings -->
 <button style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: fixed; bottom: 10px; right: 10px; background-color: #007bff; color: white; font-size: 24px; padding: 10px; border-radius: 50%; border: none; cursor: pointer;"
-        onclick="window.location.href='/Shop/{{ shop.id }}/settings';" 
-        title="Shop Settings" 
-        aria-label="Shop Settings" 
-        tabindex="0" 
-        role="button" 
+        onclick="window.location.href='/Shop/{{ shop.id }}/settings';"
+        title="Shop Settings"
+        aria-label="Shop Settings"
+        tabindex="0"
+        role="button"
         aria-pressed="false">
     ⚙️
 </button>
+
+<style>
+.cart-item {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
+}
+
+.cart-item:hover {
+    background-color: #e0f7ff;
+}
+</style>
 
 {% endblock %}

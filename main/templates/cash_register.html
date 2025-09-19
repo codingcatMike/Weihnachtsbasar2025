@@ -16,7 +16,7 @@
         <a href="{% url 'pay_Screen' %}" style="display:block; margin-top:5px;">Diese Instanz als Bildschirm nutzen</a>
     </div>
 
-    <div id="orders">
+    <div id="orders" style="color=black">
         {% for order in orders %}
             <div class="order-card" id="order-{{ order.id }}" data-customer-id="{{ order.customer.id }}" style="background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
                 <p style="font-weight:bold; margin-bottom:8px;">Kunde #{{ order.customer.id }} - {{ order.price }}€</p>
@@ -82,7 +82,7 @@ function connectSocket() {
                 div.className = "order-card";
                 div.id = `order-${order.id}`;
                 div.dataset.customerId = order.customer_id;
-                div.style = "background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);";
+                div.style = "background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05); color:black;";
                 div.innerHTML = `
                     <p style="font-weight:bold; margin-bottom:8px;">Kunde #${order.customer_id} - ${order.price}€</p>
                     <p style="margin-bottom:10px;">${items}</p>

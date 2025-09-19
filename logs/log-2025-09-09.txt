@@ -175,3 +175,24 @@ Device : posix
 [Info] main accessed https://www.webdevcode.de/Shop/5/ page --at-- 2025-09-09 19:17:53.675244
 [Info] main accessed / page --at-- 2025-09-09 19:18:28.990983
 [Info] main accessed / page --at-- 2025-09-09 19:19:06.279675
+[Info]  accessed / page --at-- 2025-09-09 19:44:59.630990
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-09 19:45:14.455655
+[Info] main accessed shop page as superuser --at-- 2025-09-09 19:45:30.498435
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-09 19:45:30.498901
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-09 19:45:38.495480
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-09 19:45:43.129035
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-09 19:45:43.839980
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-09 19:45:45.792489
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-09 19:45:46.823662
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-09 19:45:48.992374
+[Info] main accessed https://www.webdevcode.de/create-shop/ page --at-- 2025-09-09 19:45:51.789695
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-09 19:45:54.418618
+[Info] main accessed https://www.webdevcode.de/admin/ page --at-- 2025-09-09 19:47:40.549103
+[Info] main accessed shop page as superuser --at-- 2025-09-09 19:47:47.692480
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-09 19:47:47.692993
+[Info] main accessed https://www.webdevcode.de/Shop/7/ page --at-- 2025-09-09 19:48:04.368034
+[Info]  accessed / page --at-- 2025-09-09 20:57:20.257537
+[Info]  accessed https://webdevcode.de/ page --at-- 2025-09-09 22:47:25.574622
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-09 22:47:39.050678
+[Info]  accessed https://webdevcode.de/ page --at-- 2025-09-09 23:21:11.523129
+[Info]  accessed https://webdevcode.de/ page --at-- 2025-09-09 23:52:04.178434

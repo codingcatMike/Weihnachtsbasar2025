@@ -10,6 +10,7 @@ import io
 import base64
 import qrcode
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
+from asgiref.sync import sync_to_async
 
 class CustomerConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
@@ -156,6 +157,25 @@ class CustomerConsumer(AsyncJsonWebsocketConsumer):
     async def order_update(self, event):
         await self.send_json(event["order"])
 
+from asgiref.sync import sync_to_async
+
+from channels.generic.websocket import AsyncWebsocketConsumer
+import json
+
+class KitchenConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        await self.channel_layer.group_add("kitchen", self.channel_name)
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard("kitchen", self.channel_name)
+
+    # Handler for messages sent with "type": "kitchen_update"
+    async def kitchen_update(self, event):
+        # event["data"] is what you sent from announce_order_update
+        await self.send(text_data=json.dumps(event["data"]))
+
+
 # main/utils.py
 def send_orders_update():
     print("Sending orders update to WebSocket clients...")
@@ -236,3 +256,32 @@ def send_order_customer_update(order):
     }
 )
 
+
+def announce_order_update():
+    orders = Order.objects.filter(picked_up=False, orderitem__product__needs_kitchen=True).distinct()
+
+    channel_layer = get_channel_layer()
+    data = []
+    for order in orders:
+        data.append({
+            "id": order.id,
+            "customer_id": order.customer.id,
+            "price": float(order.price),
+            "payed": order.payed,
+            "items": [
+                {"name": item.product.name, "quantity": item.quantity}
+                for item in order.orderitem_set.filter(product__needs_kitchen=True)
+            ]
+        })
+
+    async_to_sync(channel_layer.group_send)(
+        "kitchen",
+        {
+            "type": "kitchen_update",
+            "data": {
+                "status": "orders_list",
+                "orders": data,
+            }
+        }
+    )
+    print("announce_order_update: sent kitchen update")

@@ -1,0 +1,57 @@
+Log file for 2025-09-15
+Created at: 2025-09-15 01:22:00.352647
+Device : posix
+[Info]  accessed / page --at-- 2025-09-15 01:54:08.161568
+[Info]  accessed / page --at-- 2025-09-15 01:54:08.733810
+[Info]  accessed / page --at-- 2025-09-15 10:12:31.814607
+[Info]  accessed / page --at-- 2025-09-15 10:12:35.314906
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:12:45.757210
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:13:03.468432
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:13:06.351076
+[Info] The User account of Betatest has been created successfully --at-- 2025-09-15 10:13:55.110489
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:14:34.899439
+[Info] Betatest accessed / page --at-- 2025-09-15 10:15:45.241419
+[Info]  accessed / page --at-- 2025-09-15 10:15:55.749848
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:16:42.363222
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:16:53.844017
+[Info] Betatest accessed / page --at-- 2025-09-15 10:18:34.741612
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:18:38.061701
+[Info] The Shop of Betatest has been created successfully with name Aktiv Testshop --at-- 2025-09-15 10:18:59.995072
+[Info] Betatest accessed https://www.webdevcode.de/Shop/2/settings/ page --at-- 2025-09-15 10:19:21.863892
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:19:32.378616
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:19:53.402403
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:19:54.846980
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:20:15.184577
+[Info]  accessed / page --at-- 2025-09-15 10:22:10.526386
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:23:29.800814
+[Info]  accessed / page --at-- 2025-09-15 10:28:39.702545
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 10:29:06.817906
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:29:15.025582
+[Info] The Shop of Betatest has been created successfully with name haupt --at-- 2025-09-15 10:29:33.474280
+[Info] Betatest accessed https://www.webdevcode.de/Shop/3/settings/ page --at-- 2025-09-15 10:30:20.692005
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:30:24.509026
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:30:27.273064
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:30:28.181360
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:30:44.750369
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-15 10:30:53.454428
+[Info]  accessed / page --at-- 2025-09-15 11:12:31.874941
+[Info]  accessed / page --at-- 2025-09-15 11:13:42.361634
+[Info]  accessed / page --at-- 2025-09-15 11:13:42.722642
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 11:14:15.114763
+[Info] Betatest accessed https://www.webdevcode.de/Shop/2/settings/ page --at-- 2025-09-15 11:16:08.127782
+[Info]  accessed / page --at-- 2025-09-15 11:17:42.724491
+[Info]  accessed / page --at-- 2025-09-15 11:18:49.998656
+[Info]  accessed / page --at-- 2025-09-15 11:18:51.592166
+[Info]  accessed / page --at-- 2025-09-15 11:18:54.810773
+[Info] Betatest accessed / page --at-- 2025-09-15 11:19:01.086121
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-15 11:19:09.617555
+[Info] main accessed / page --at-- 2025-09-15 11:19:40.722509
+[Info] main accessed / page --at-- 2025-09-15 11:22:44.584602
+[Info] main accessed / page --at-- 2025-09-15 11:28:32.460188
+[Info]  accessed / page --at-- 2025-09-15 12:11:18.627413
+[Info]  accessed / page --at-- 2025-09-15 12:11:18.753723
+[Info]  accessed / page --at-- 2025-09-15 16:25:05.242061
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-15 16:25:53.471555
+[Info]  accessed / page --at-- 2025-09-15 20:50:58.861589
+[Info]  accessed / page --at-- 2025-09-15 22:48:37.107097
+[Info]  accessed / page --at-- 2025-09-15 22:48:37.268275

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Seite nicht gefunden</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7dd3fc;--muted:#9aa6b2;--glass: rgba(255,255,255,0.03);font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(1000px 500px at 10% 10%, rgba(125,211,252,0.06), transparent), radial-gradient(700px 350px at 90% 90%, rgba(168,85,247,0.03), transparent),var(--bg);color:#e6eef6;display:flex;align-items:center;justify-content:center;padding:28px}
+    .wrap{max-width:920px;width:100%}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);border-radius:14px;padding:28px;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    h1{font-size:40px;margin:0 0 6px 0}
+    p.lead{margin:0;color:var(--muted);font-size:15px}
+    .meta{margin-top:12px;color:var(--muted);font-size:13px}
+    .actions{margin-top:18px;display:flex;gap:12px}
+    .btn{background:linear-gradient(90deg,var(--accent), #60a5fa);color:#07203a;padding:10px 14px;border-radius:10px;border:none;font-weight:600;text-decoration:none}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);padding:8px 12px}
+    .url-box{margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:8px;border:1px solid rgba(255,255,255,0.03);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;color:#d9f6ff;overflow-wrap:anywhere}
+    .svg-wrap{display:flex;justify-content:center;margin-top:18px}
+    .scene{width:520px;max-width:100%}
+
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .float{animation:floaty 4s ease-in-out infinite}
+
+    @media (max-width:560px){h1{font-size:28px}.actions{flex-direction:column;align-items:stretch}.url-box{font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="title">
+      <h1 id="title">404 — Seite nicht gefunden...</h1>
+      <p class="lead">Die von dir angeforderte Seite existiert nicht (mehr) oder wir waren zu dumm sie einzuprogramieren — weil diese seite gibts nicht:</p>
+
+      <div id="current-url" class="url-box" aria-live="polite">Lade aktuelle URL…</div>
+
+      <div class="actions" role="group" aria-label="Aktionen">
+        <a class="btn" href="/">← Zur Startseite</a>
+      </div>
+
+      <p class="meta">Sieht aus als hättest du kein Plan. Frag Mika oder Henrik oder geh zur startseite zurück.</p>
+    </main>
+
+    <!-- Neue SVG unter dem Kasten mit dem 404 Error -->
+    <div class="svg-wrap" aria-hidden="true">
+      <svg class="scene float" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dekorative Illustration">
+        <defs>
+          <linearGradient id="grad404" x1="0" x2="1">
+            <stop offset="0" stop-color="#7dd3fc" stop-opacity="0.95"/>
+            <stop offset="1" stop-color="#60a5fa" stop-opacity="0.95"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Einfacher Computer-Monitor mit Gesicht -->
+        <rect x="120" y="60" width="360" height="200" rx="16" fill="#071226" stroke="url(#grad404)" stroke-width="4"/>
+        <rect x="220" y="260" width="160" height="20" rx="6" fill="#7dd3fc" opacity="0.2"/>
+
+        <!-- trauriges Gesicht -->
+        <!-- trauriges Gesicht -->
+<!-- Augen etwas enger und tiefer -->
+<circle cx="240" cy="150" r="10" fill="#7dd3fc"/>
+<circle cx="360" cy="150" r="10" fill="#7dd3fc"/>
+
+<!-- nach unten gezogener Mund: von Q300 220 -> 300 170 -->
+<path d="M250 200 Q300 170 350 200" 
+      stroke="#7dd3fc" stroke-width="6" fill="none" stroke-linecap="round"/>
+       
+ <!-- kleine blinkende Sterne -->
+        <g opacity="0.6">
+          <circle cx="80" cy="80" r="3" fill="#9fb9c9"/>
+          <circle cx="540" cy="60" r="2.5" fill="#9fb9c9"/>
+          <circle cx="560" cy="200" r="2.8" fill="#9fb9c9"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      try{
+        var el = document.getElementById('current-url');
+        var href = window.location.href || '';
+        el.textContent = href;
+      }catch(e){
+        console.warn('404 page: konnte URL nicht setzen', e);
+      }
+    })();
+  </script>
+</body>
+</html>
