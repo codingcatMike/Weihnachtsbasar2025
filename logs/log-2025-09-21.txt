@@ -1,0 +1,177 @@
+Log file for 2025-09-21
+Created at: 2025-09-21 05:14:42.546868
+Device : posix
+[Info] main accessed https://www.webdevcode.de/admin/ page --at-- 2025-09-21 07:35:30.573907
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 07:36:05.409457
+[Info] main accessed https://www.webdevcode.de/admin/main/cupon/1/change/ page --at-- 2025-09-21 07:36:23.003425
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 07:36:24.947805
+[Info] main accessed / page --at-- 2025-09-21 07:38:54.336944
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-09-21 07:39:33.560650
+[Info]  accessed / page --at-- 2025-09-21 07:39:33.613330
+[Info] main accessed / page --at-- 2025-09-21 07:40:19.508541
+[Info] main accessed / page --at-- 2025-09-21 07:41:11.839989
+[Info] main accessed / page --at-- 2025-09-21 07:44:24.048417
+[Info] main accessed / page --at-- 2025-09-21 07:44:45.010569
+[Info] main accessed / page --at-- 2025-09-21 07:49:41.622025
+[Info] main accessed / page --at-- 2025-09-21 07:50:15.577074
+[Info] main accessed / page --at-- 2025-09-21 08:42:55.999116
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 08:42:58.944748
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 08:54:54.598630
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 08:55:23.212867
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 08:55:54.919377
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 08:57:37.208460
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 08:59:21.820014
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 09:20:12.428222
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-21 09:30:51.877495
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 09:39:43.526835
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-21 09:39:49.742227
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 09:39:51.764423
+[Info] The User account of main sent an order with customer id 1 and products [1, 5] --at-- 2025-09-21 09:40:07.706072
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 09:40:07.792011
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 09:57:39.958520
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:00:19.199701
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:00:22.895473
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:00:24.571089
+[Info] The User account of main sent an order with customer id 2 and products [1, 1, 5] --at-- 2025-09-21 10:08:34.892497
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:08:34.984712
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:08:39.512403
+[Info] The User account of main sent an order with customer id 3 and products [5, 5, 5] --at-- 2025-09-21 10:11:50.179802
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:11:50.283443
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:11:54.675453
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:13:38.623128
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:13:40.042585
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:14:21.598294
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:16:47.248720
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:18:03.555575
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:19:07.683424
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:19:49.879380
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:20:06.249708
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:20:13.051456
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:20:31.788219
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:20:49.472991
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:20:56.200978
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:21:28.661829
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:21:35.331774
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:21:51.836659
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:22:16.095568
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:22:38.464474
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:22:52.990436
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:23:29.522969
+[Info] The User account of main sent an order with customer id 4 and products [1, 1, 1, 1, 5, 5, 5, 5] --at-- 2025-09-21 10:24:08.823101
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:24:08.920744
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 10:24:48.448885
+[Info] main accessed / page --at-- 2025-09-21 10:27:16.234886
+[Info] main accessed / page --at-- 2025-09-21 10:29:28.080472
+[Info] main accessed / page --at-- 2025-09-21 10:32:20.120495
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-09-21 10:46:14.200156
+[Info]  accessed / page --at-- 2025-09-21 10:46:14.267617
+[Info] main accessed / page --at-- 2025-09-21 10:48:51.164848
+[Info] main accessed / page --at-- 2025-09-21 11:03:07.801616
+[Info] main accessed / page --at-- 2025-09-21 11:13:25.958095
+[Info] main accessed / page --at-- 2025-09-21 11:17:33.003260
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 11:20:41.306667
+[Info] The User account of main sent an order with customer id 5 and products [1] --at-- 2025-09-21 11:20:46.244508
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 11:20:46.342465
+[Info] main accessed / page --at-- 2025-09-21 11:20:58.471919
+[Info] The User account of main sent an order with customer id 6 and products [5, 5, 5] --at-- 2025-09-21 11:21:17.519096
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 11:21:17.627001
+[Info] The User account of main sent an order with customer id 7 and products [5] --at-- 2025-09-21 11:23:36.126786
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 11:23:36.230529
+[Info] main accessed / page --at-- 2025-09-21 11:24:55.892751
+[Info] main accessed / page --at-- 2025-09-21 11:32:52.032527
+[Info] main accessed / page --at-- 2025-09-21 11:35:10.838431
+[Info] main accessed / page --at-- 2025-09-21 11:37:25.003199
+[Info] main accessed / page --at-- 2025-09-21 11:38:00.284515
+[Info] main accessed / page --at-- 2025-09-21 11:38:58.177839
+[Info] main accessed / page --at-- 2025-09-21 11:39:20.394789
+[Info] main accessed / page --at-- 2025-09-21 11:40:00.104084
+[Info] main accessed / page --at-- 2025-09-21 11:40:14.873252
+[Info] main accessed / page --at-- 2025-09-21 11:40:27.499590
+[Info] main accessed / page --at-- 2025-09-21 11:40:51.356204
+[Info] The User account of main sent an order with customer id 1 and products [5, 5, 1, 1] --at-- 2025-09-21 11:42:06.534708
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 11:42:06.647954
+[Info] main accessed / page --at-- 2025-09-21 11:43:09.197881
+[Info] main accessed / page --at-- 2025-09-21 11:44:56.963162
+[Info] main accessed / page --at-- 2025-09-21 11:51:07.007497
+[Info] main accessed / page --at-- 2025-09-21 11:52:17.721212
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 11:52:20.768303
+[Info] The User account of main sent an order with customer id 2 and products [1, 5] --at-- 2025-09-21 11:52:30.400860
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 11:52:30.494882
+[Info] The User account of main sent an order with customer id 2 and products [5, 5] --at-- 2025-09-21 12:21:52.065786
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:21:52.160910
+[Info] main accessed / page --at-- 2025-09-21 12:21:59.558268
+[Info] The User account of main sent an order with customer id 2 and products [5, 5] --at-- 2025-09-21 12:22:46.892671
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:22:46.975816
+[Info] main accessed / page --at-- 2025-09-21 12:22:49.371435
+[Info] main accessed / page --at-- 2025-09-21 12:22:50.648958
+[Info] The User account of main sent an order with customer id 123456139 and products [1, 1, 5, 5] --at-- 2025-09-21 12:32:17.687651
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:32:17.788209
+[Info] main accessed / page --at-- 2025-09-21 12:32:31.953248
+[Info] The User account of main sent an order with customer id 123456139 and products [5, 5, 1, 1] --at-- 2025-09-21 12:45:05.553727
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:45:05.642378
+[Info] main accessed / page --at-- 2025-09-21 12:45:10.552071
+[Info] The User account of main sent an order with customer id 1 and products [1, 1, 1] --at-- 2025-09-21 12:52:12.339070
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:52:12.434302
+[Info] The User account of main sent an order with customer id 2 and products [5, 5, 5, 5] --at-- 2025-09-21 12:52:34.637418
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:52:34.727984
+[Info] The User account of main sent an order with customer id 3 and products [5, 5, 5, 5, 1, 1] --at-- 2025-09-21 12:55:13.628397
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:55:13.729008
+[Info] main accessed / page --at-- 2025-09-21 12:55:16.377010
+[Info] The User account of main sent an order with customer id 4 and products [1, 1, 5, 5] --at-- 2025-09-21 12:58:49.382834
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 12:58:49.470005
+[Info] main accessed / page --at-- 2025-09-21 12:58:54.130954
+[Info] main accessed / page --at-- 2025-09-21 13:00:22.788859
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 13:00:24.560705
+[Info] The User account of main sent an order with customer id 5 and products [1, 1, 5, 5] --at-- 2025-09-21 13:01:30.657814
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 13:01:30.761830
+[Info] main accessed / page --at-- 2025-09-21 13:01:34.168967
+[Info] The User account of main sent an order with customer id 6 and products [1, 1, 5, 5] --at-- 2025-09-21 13:03:59.262997
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 13:03:59.366768
+[Info] main accessed / page --at-- 2025-09-21 13:04:03.143387
+[Info] The User account of main sent an order with customer id 7 and products [1, 1, 5, 5] --at-- 2025-09-21 13:06:16.102024
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 13:06:16.216285
+[Info] main accessed / page --at-- 2025-09-21 13:06:18.700489
+[Info] The User account of main sent an order with customer id 8 and products [1, 1] --at-- 2025-09-21 13:06:49.800322
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 13:06:49.897776
+[Info] The User account of main sent an order with customer id 9 and products [1, 1] --at-- 2025-09-21 13:09:44.608710
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 13:09:44.718074
+[Info] main accessed / page --at-- 2025-09-21 13:09:47.732025
+[Info] main accessed / page --at-- 2025-09-21 14:12:25.759516
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 14:12:38.792686
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 14:12:40.460462
+[Info] The User account of main sent an order with customer id 10 and products [1] --at-- 2025-09-21 14:12:45.773687
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 14:12:45.878098
+[Info] main accessed / page --at-- 2025-09-21 14:13:04.700231
+[Info] main accessed / page --at-- 2025-09-21 15:30:35.332814
+[Info] main accessed / page --at-- 2025-09-21 15:35:51.414987
+[Info] The User account of main sent an order with customer id 11 and products [1, 5] --at-- 2025-09-21 15:35:59.596994
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 15:35:59.725918
+[Info] main accessed / page --at-- 2025-09-21 15:36:32.801415
+[Info] The User account of main sent an order with customer id 12 and products [1, 5] --at-- 2025-09-21 15:37:48.625720
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 15:37:48.740384
+[Info] main accessed / page --at-- 2025-09-21 15:37:50.729924
+[Info] The User account of main sent an order with customer id 13 and products [1, 5] --at-- 2025-09-21 16:16:14.504863
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:16:14.612155
+[Info] The User account of main sent an order with customer id 14 and products [1, 5] --at-- 2025-09-21 16:19:20.795498
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:19:20.901539
+[Info] The User account of main sent an order with customer id 15 and products [1, 5] --at-- 2025-09-21 16:22:52.119201
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:22:52.236016
+[Info] main accessed / page --at-- 2025-09-21 16:22:54.956196
+[Info] The User account of main sent an order with customer id 16 and products [1, 5] --at-- 2025-09-21 16:23:16.792929
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:23:16.916888
+[Info] main accessed / page --at-- 2025-09-21 16:23:18.511117
+[Info] The User account of main sent an order with customer id 17 and products [1, 5] --at-- 2025-09-21 16:25:06.422474
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:25:06.537457
+[Info] main accessed / page --at-- 2025-09-21 16:25:08.379826
+[Info] The User account of main sent an order with customer id 18 and products [1, 5] --at-- 2025-09-21 16:28:53.819159
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:28:53.958207
+[Info] main accessed / page --at-- 2025-09-21 16:28:56.477511
+[Info] The User account of main sent an order with customer id 20 and products [1, 5] --at-- 2025-09-21 16:30:58.853118
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:30:58.963535
+[Info] The User account of main sent an order with customer id 19 and products [1, 5] --at-- 2025-09-21 16:31:08.348355
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:31:08.465026
+[Info] main accessed / page --at-- 2025-09-21 16:31:11.247348
+[Info] The User account of main sent an order with customer id 20 and products [1, 5] --at-- 2025-09-21 16:31:51.372273
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:31:51.493596
+[Info] The User account of main sent an order with customer id 21 and products [1, 5] --at-- 2025-09-21 16:31:56.110826
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-21 16:31:56.215888

@@ -1,247 +1,249 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kundenbestellungen</title>
-    <style>
-        /* General body */
-        body {
-            font-family: "Arial", sans-serif;
-            background: #f0f2f5;
-            padding: 15px;
-            margin: 0;
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kundenbestellungen</title>
+<style>
+  body{font-family:Arial, sans-serif;background:#f0f2f5;padding:15px;margin:0}
+  h1{text-align:center;color:#333;font-size:1.8rem;margin-bottom:10px}
+  #customer-section{display:flex;flex-direction:column;align-items:center;margin-bottom:10px;gap:10px}
+  #customer-id{font-size:1rem;padding:8px 10px;width:80%;max-width:250px;text-align:center;box-sizing:border-box}
+  #coupon-note{font-size:0.9rem;color:#555;text-align:center;margin-bottom:15px}
+  #orders-container{display:flex;flex-direction:column;gap:10px;margin:0 auto;width:95%;max-width:500px}
+  .order-card{background:#fff;border-left:5px solid #4caf50;padding:12px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);display:flex;flex-direction:column;gap:5px;word-wrap:break-word;position:relative;overflow:hidden}
+  .ticket{background:#fff3cd;border-left:5px solid #ffc107;padding:8px;border-radius:5px;font-weight:bold;color:#856404;margin-top:5px;text-align:center}
+  .ticket strong{display:block;color:#000;margin-top:5px}
 
-        h1 {
-            text-align: center;
-            color: #333;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        /* Customer section */
-        #customer-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-
-        #customer-id {
-            font-size: 1rem;
-            padding: 8px 10px;
-            width: 80%;
-            max-width: 250px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        #generate-btn {
-            padding: 8px 15px;
-            font-size: 1rem;
-            cursor: pointer;
-            background-color: #4caf50;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            transition: background 0.2s;
-        }
-
-        #generate-btn:disabled {
-            background-color: #aaa;
-            cursor: not-allowed;
-        }
-
-        #generate-btn:hover:not(:disabled) {
-            background-color: #45a049;
-        }
-
-        /* Orders container */
-        #orders-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 0 auto;
-            width: 95%;
-            max-width: 500px;
-        }
-
-        .order-card {
-            background: #fff;
-            border-left: 5px solid #4caf50;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            transition: transform 0.2s;
-            word-wrap: break-word;
-        }
-
-        .order-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .order-card .products {
-            font-size: 1rem;
-            color: #333;
-        }
-
-        .order-card .price {
-            font-weight: bold;
-            font-size: 1rem;
-            color: #4caf50;
-            align-self: flex-end;
-        }
-
-        /* Responsive adjustments for larger screens */
-        @media (min-width: 480px) {
-            #customer-section {
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            #customer-id {
-                width: 150px;
-            }
-        }
-    </style>
+  /* Fullscreen overlay for messages */
+  .fullscreen-message {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    display:flex; justify-content:center; align-items:center;
+    flex-direction: column;
+    color:#fff; font-size:3rem; text-align:center;
+    z-index:9999; opacity:0; transition: opacity 0.3s;
+  }
+  .fullscreen-message p {
+    margin:0.5em 0;
+  }
+  #paid-overlay p { font-size:2rem; color:#28a745; }
+  #pickup-overlay p { font-size:2.5rem; color:#ffcc00; }
+</style>
 </head>
 <body>
-    <h1>Live-Bestellungen</h1>
+<h1>Live-Bestellungen</h1>
+<div id="customer-section">
+  <label for="customer-id">Kunden-ID:</label>
+  <input id="customer-id" type="text" readonly />
+</div>
+<div id="coupon-note">Gutscheine werden an der Kasse automatisch angewendet.</div>
+<div id="orders-container"></div>
 
-    <div id="customer-section">
-        <label for="customer-id">Kunden-ID:</label>
-        <input type="text" id="customer-id" readonly>
-        <button id="generate-btn">Neue Kunden-ID generieren</button>
-    </div>
+<!-- Paid message overlay -->
+<div id="paid-overlay" class="fullscreen-message">
+  <p id="paid-message">Bezahlt!</p>
+  <p id="paid-price"></p>
+</div>
 
-    <div id="orders-container"></div>
+<!-- Pickup message overlay -->
+<div id="pickup-overlay" class="fullscreen-message">
+  <p>Guten Appetit!</p>
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const ordersContainer = document.getElementById("orders-container");
-            const customerInput = document.getElementById("customer-id");
-            const generateBtn = document.getElementById("generate-btn");
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const customerInput = document.getElementById("customer-id");
+  const ordersContainer = document.getElementById("orders-container");
+  const paidOverlay = document.getElementById("paid-overlay");
+  const paidPriceEl = document.getElementById("paid-price");
+  const paidMessageEl = document.getElementById("paid-message");
+  const pickupOverlay = document.getElementById("pickup-overlay");
 
-            let cid = localStorage.getItem("customer_id");
-            customerInput.value = cid || "";
+  // Paid quotes
+  const quotes = [
+    "Danke, dass du gekauft hast – jetzt können wir die Lehrer mit Glühwein bestechen… äh, motivieren! 🎄",
+    "Du bist cooler als der letzte freie Platz in der ersten Reihe – danke für deinen Einkauf! 🏫",
+    "Danke! Dein Geld rettet unsere Schul-Weihnachtskekse vor dem Hungertod. 🍪",
+    "Ho Ho Ho! Ohne dich wären unsere Plätzchen bald nur Zuckerstaub. ✨",
+    "Danke! Dein Kauf bringt mehr Glitzer in die Schule als der Chemiesaal nach einem Versuch. 🧪",
+    "Du hast gerade unseren Schulsanitätsdienst glücklich gemacht – endlich Pausen für uns! ⏰",
+    "Danke! Dein Geld hilft uns, die Weihnachtsdeko bis zur Decke zu stapeln. 🎄",
+    "Du bist unser Schul-Weihnachtsheld – Umhang optional, Kekse Pflicht. 🦸",
+    "Danke! Mit deinem Einkauf können wir die Rentiere… äh, die Lehrer, glücklich stimmen. 🦌",
+    "Ho Ho Ho! Dein Geld bringt mehr Freude als die letzte Stunde vor den Ferien. 🎁",
+    "Danke, dass du gekauft hast – unsere Klassenkasse tanzt gerade Lambada. 💃",
+    "Dein Einkauf = Bonuspunkte bei uns (leider nicht bei den Lehrern). 😎",
+    "Danke! Ohne dich müssten wir Weihnachtsplätzchen gegen Hausaufgaben tauschen. 📚🍪",
+    "Du bist offizieller Mit-Glühwein- und Kekstest-Manager – danke! ☕",
+    "Danke, dass du gekauft hast – unsere Pausen sind jetzt ein bisschen süßer. 🍬",
+    "Dein Kauf rettet die Schul-Weihnachts-Party vor Langeweile – hurra! 🎉",
+    "Danke! Du bist wie ein Schneemann in der Sonne: überraschend cool. ⛄",
+    "Dein Geld = mehr Lametta + weniger Mathe-Tränen. Danke! ✨",
+    "Danke! Du machst unseren Weihnachtsbasar epischer als den Chemie-Experiment-Unfall. 🧪💥",
+    "Du bist der Grund, warum unser Klassen-Weihnachtsbaum nicht traurig ist – danke! 🎄"
+  ];
 
-            async function fetchUnpaidOrders(customerId) {
-                try {
-                    const response = await fetch(`/customer?cid=${customerId}`, {
-                        headers: { "X-Requested-With": "XMLHttpRequest" }
-                    });
-                    if (!response.ok) throw new Error("Failed to fetch orders");
-                    const htmlText = await response.text();
-                    return JSON.parse(htmlText).orders || [];
-                } catch (err) {
-                    console.error(err);
-                    return [];
-                }
-            }
+  // Pickup quotes
+  const pickupQuotes = [
+    "Danke, dass du zugeschlagen hast – unsere Weihnachtsfreude steigt wie heißer Kakao! ☕✨",
+    "Ho Ho Ho! Dein Einkauf bringt extra Glitzer in unsere Teller. 🎄",
+    "Danke! Du hast gerade unser Weihnachts-Glückslevel aufgefüllt. 🌟",
+    "Dein Beitrag sorgt für festliche Stimmung in jedem Bissen – äh, Moment. 🎉",
+    "Danke, dass du gekauft hast – unsere Weihnachtsmagie wird dadurch größer. 🧝‍♂️",
+    "Du bist der Grund, warum die Schule heute noch süßer schmeckt! 😋",
+    "Ho Ho Ho! Dein Einkauf hat unsere Weihnachtsstimmung zum Kochen gebracht. 🍽️",
+    "Danke! Dank dir tanzen die Lichterketten und die Teller im Takt. 💃✨",
+    "Dein Beitrag sorgt für Extra-Spaß auf dem Weihnachtsbasar! 🎄",
+    "Danke! Du hast gerade das Weihnachtschaos köstlich gerettet. 🎉",
+    "Ho Ho Ho! Dein Einkauf macht unsere Klassenzimmer fröhlicher als je zuvor. 🏫",
+    "Danke, dass du gekauft hast – jetzt glitzert die Weihnachtsstimmung richtig. ✨",
+    "Du bist offiziell Teil unseres festlichen Glücks-Teams – danke! 🎄",
+    "Danke! Dein Beitrag bringt festliche Energie in jeden Raum. ⚡",
+    "Ho Ho Ho! Dank dir wird unser Basar ein bisschen magischer. 🧝‍♀️",
+    "Danke! Du hast unser Weihnachts-Barometer auf Maximum gestellt. 🌟",
+    "Dein Einkauf = mehr Freude, weniger Langeweile. Danke! 😎",
+    "Danke, dass du gekauft hast – unser Basar tanzt jetzt im Festtagsrhythmus. 💃",
+    "Ho Ho Ho! Dein Beitrag bringt Glanz in jede Ecke unseres Basars. ✨",
+    "Danke! Du machst unseren Weihnachtsbasar ein Stückchen leckerer… und magischer. 🎄"
+  ];
 
-            async function initCustomer() {
-                if (!cid) return;
+  // Track already shown overlays persistently
+  let shownPaidOrders = new Set(JSON.parse(localStorage.getItem('shownPaidOrders') || '[]'));
+  let shownPickupOrders = new Set(JSON.parse(localStorage.getItem('shownPickupOrders') || '[]'));
 
-                const unpaidOrders = await fetchUnpaidOrders(cid);
-                generateBtn.disabled = unpaidOrders.length > 0;
-                unpaidOrders.forEach(order => displayOrder(order));
-                initWebSocket();
-            }
+  function getCookie(name){
+    let cookieValue = null;
+    if(document.cookie && document.cookie !== ''){
+      document.cookie.split(';').forEach(c => {
+        c = c.trim();
+        if(c.startsWith(name + '=')) cookieValue = decodeURIComponent(c.substring(name.length + 1));
+      });
+    }
+    return cookieValue;
+  }
 
-            function displayOrder(order) {
-                const itemsText = order.items.map(i => `${i.name} x${i.quantity}`).join(", ");
-                const priceText = `€${order.price.toFixed(2)}`;
+  async function createNewCid(){
+    const res = await fetch('/customer', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken'),
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json'
+      },
+      body: '{}'
+    });
+    if(!res.ok) throw new Error('Failed to create new cid');
+    const data = await res.json();
+    return data.cid;
+  }
 
-                let existingCard = document.querySelector(`#order-card-${order.id}`);
-                if (existingCard) {
-                    existingCard.querySelector(".products").textContent = itemsText;
-                    existingCard.querySelector(".price").textContent = priceText;
-                } else {
-                    const card = document.createElement("div");
-                    card.id = `order-card-${order.id}`;
-                    card.className = "order-card";
-                    card.innerHTML = `
-                        <div class="products">${itemsText}</div>
-                        <div class="price">${priceText}</div>
-                    `;
-                    ordersContainer.prepend(card);
-                }
-            }
+  async function checkCidOnServer(cid){
+    const res = await fetch(`/customer?cid=${cid}`, {
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    });
+    if(!res.ok) throw new Error('Failed to check cid');
+    return await res.json();
+  }
 
-            generateBtn.addEventListener("click", async () => {
-                try {
-                    const response = await fetch("/customer", {
-                        method: "POST",
-                        headers: {
-                            "X-CSRFToken": getCookie("csrftoken"),
-                            "Content-Type": "application/json"
-                        }
-                    });
-                    if (response.ok) {
-                        const data = await response.json();
-                        cid = data.cid;
-                        localStorage.setItem("customer_id", cid);
-                        customerInput.value = cid;
-                        generateBtn.disabled = true;
-                        initWebSocket();
-                    } else {
-                        console.error("Error generating CID");
-                    }
-                } catch (err) {
-                    console.error(err);
-                }
-            });
+  function showOverlay(overlay, duration=3000){
+    overlay.style.opacity = 1;
+    clearTimeout(overlay._timeout);
+    overlay._timeout = setTimeout(()=>{
+      overlay.style.opacity = 0;
+    }, duration);
+  }
 
-            function markOrderPaid(orderId) {
-                let paidOrders = JSON.parse(localStorage.getItem("paid_orders") || "[]");
-                paidOrders.push(parseInt(cid));
-                localStorage.setItem("paid_orders", JSON.stringify(paidOrders));
-                generateBtn.disabled = false;
-            }
+  function renderOrder(order){
+    ordersContainer.innerHTML = ''; 
+    const card = document.createElement('div');
+    card.className = 'order-card';
+    card.id = 'order-card-' + order.id;
+    card.innerHTML = `
+      <div class="products">${order.items.map(i => `${i.name} x${i.quantity}`).join(', ')}</div>
+      <div class="price">€${order.price.toFixed(2)}</div>
+    `;
 
-            function getCookie(name) {
-                let cookieValue = null;
-                if (document.cookie && document.cookie !== '') {
-                    const cookies = document.cookie.split(';');
-                    for (let cookie of cookies) {
-                        cookie = cookie.trim();
-                        if (cookie.startsWith(name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
-            }
+    // Show ticket if needs kitchen and not yet picked up
+    if(order.payed && !order.picked_up && order.needs_kitchen){
+      const ticket = document.createElement('div');
+      ticket.className = 'ticket';
+      ticket.innerHTML = `
+        Ticket: ${order.customer_id}
+        <strong>Gehen Sie in die Küche, dort können Sie Ihr Essen mit diesem Ticket abholen.</strong>
+      `;
+      card.appendChild(ticket);
+    }
 
-            let ws;
-            function initWebSocket() {
-                if (!cid) return;
+    // Paid overlay: only once per order
+    if(order.payed && !shownPaidOrders.has(order.id)){
+      paidPriceEl.textContent = `€${order.price.toFixed(2)}`;
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      paidMessageEl.textContent = randomQuote;
+      showOverlay(paidOverlay, 3000);
 
-                ws = new WebSocket(`wss://${window.location.host}/ws/customer/`);
+      shownPaidOrders.add(order.id);
+      localStorage.setItem('shownPaidOrders', JSON.stringify([...shownPaidOrders]));
+    }
 
-                ws.addEventListener("open", () => {
-                    ws.send(JSON.stringify({ cid }));
-                });
+    // Pickup overlay: only once per order
+    if(order.picked_up && order.needs_kitchen && !shownPickupOrders.has(order.id)){
+      const randomPickupQuote = pickupQuotes[Math.floor(Math.random() * pickupQuotes.length)];
+      pickupOverlay.querySelector('p').textContent = randomPickupQuote;
+      showOverlay(pickupOverlay, 4000);
 
-                ws.addEventListener("message", (event) => {
-                    const order = JSON.parse(event.data);
-                    displayOrder(order);
+      shownPickupOrders.add(order.id);
+      localStorage.setItem('shownPickupOrders', JSON.stringify([...shownPickupOrders]));
+    }
 
-                    if (order.paid) {
-                        markOrderPaid(order.id);
-                    }
-                });
-            }
+    ordersContainer.appendChild(card);
+  }
 
-            // Initialize on page load
-            initCustomer();
-        });
-    </script>
+  let cid = localStorage.getItem('customer_id');
+
+  try {
+    if(!cid){
+      cid = await createNewCid();
+      localStorage.setItem('customer_id', cid);
+    } else {
+      const check = await checkCidOnServer(cid);
+      if(check.picked_up === true){
+        cid = await createNewCid();
+        localStorage.setItem('customer_id', cid);
+      } else {
+        if(Array.isArray(check.orders) && check.orders.length > 0){
+          renderOrder(check.orders[0]);
+        }
+        if(check.cid) {
+          cid = check.cid;
+          localStorage.setItem('customer_id', cid);
+        }
+      }
+    }
+    customerInput.value = cid;
+  } catch (err) {
+    console.error('Initialization error:', err);
+    if(cid) customerInput.value = cid;
+  }
+
+  try {
+    const ws = new WebSocket(`wss://${window.location.host}/ws/customer/`);
+    ws.addEventListener('open', () => {
+      ws.send(JSON.stringify({ cid }));
+    });
+    ws.addEventListener('message', (ev) => {
+      try {
+        const order = JSON.parse(ev.data);
+        renderOrder(order);
+      } catch (e) {
+        console.error('WS message parse error', e);
+      }
+    });
+  } catch (e) {
+    console.error('WebSocket error', e);
+  }
+});
+</script>
 </body>
 </html>

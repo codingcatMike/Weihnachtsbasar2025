@@ -3,38 +3,49 @@
 {% block title %}Küchenübersicht{% endblock title %}
 
 {% block content %}
-<div class="container" style="max-width: 900px; margin: 80px auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-    <h1 style="text-align:center; margin-bottom: 20px;">Küchenübersicht</h1>
-    <h2 style="text-align:center; margin-bottom: 30px;">Aktuelle Anzahl an Bestellungen: <span id="income">NUMBER OF ORDERS</span>€</h2>
-    
-    <input type="number" id="order-search" placeholder="Kundennummer suchen..." style="width:100%; padding:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
+<div class="container" style="max-width: 1200px; display:flex; gap:20px; margin: 80px auto;">
+    <!-- Left side: orders -->
+    <div style="flex:3; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+        <h1 style="text-align:center; margin-bottom: 20px;">Küchenübersicht</h1>
+        <h2 style="text-align:center; margin-bottom: 30px;">Aktuelle Anzahl an Bestellungen: <span id="income">NUMBER OF ORDERS</span>€</h2>
+        
+        <input type="number" id="order-search" placeholder="Kundennummer suchen..." style="width:100%; padding:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
 
-    <div id="connection" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
-        <p id="connection-status" style="margin: 0; padding: 6px 12px; border-radius: 6px; cursor: pointer; color: red; border: 1px solid red;">
-            Nicht verbunden oder Verbindung wird aufgebaut…
-        </p>
+        <div id="connection" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+            <p id="connection-status" style="margin: 0; padding: 6px 12px; border-radius: 6px; cursor: pointer; color: red; border: 1px solid red;">
+                Nicht verbunden oder Verbindung wird aufgebaut…
+            </p>
+        </div>
+
+        <div id="orders" style="color:black">
+            {% for order in orders %}
+                <div class="order-card" 
+                     id="order-{{ order.id }}" 
+                     data-order-id="{{ order.id }}" 
+                     data-customer-id="{{ order.customer.id }}" 
+                     style="background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; 
+                            box-shadow:0 2px 8px rgba(0,0,0,0.05); 
+                            border:2px solid {% if order.payed %}green{% else %}orange{% endif %};">
+                    <p style="font-weight:bold; margin-bottom:8px;">Kunde #{{ order.customer.id }} - {{ order.total_price }}€</p>
+                    <p style="margin-bottom:10px;">
+                        {% for item in order.orderitem_set.all %}
+                            {% if item.product.needs_kitchen %}
+                                {{ item.product.name }} x{{ item.quantity }}{% if not forloop.last %}, {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+                    <button class="display-pay-button" data-order-id="{{ order.id }}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Abgeholt</button>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
-    <div id="orders" style="color:black">
-        {% for order in orders %}
-            <div class="order-card" 
-                 id="order-{{ order.id }}" 
-                 data-order-id="{{ order.id }}" 
-                 data-customer-id="{{ order.customer.id }}" 
-                 style="background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; 
-                        box-shadow:0 2px 8px rgba(0,0,0,0.05); 
-                        border:2px solid {% if order.payed %}green{% else %}orange{% endif %};">
-                <p style="font-weight:bold; margin-bottom:8px;">Kunde #{{ order.customer.id }} - {{ order.total_price }}€</p>
-                <p style="margin-bottom:10px;">
-                    {% for item in order.orderitem_set.all %}
-                        {% if item.product.needs_kitchen %}
-                            {{ item.product.name }} x{{ item.quantity }}{% if not forloop.last %}, {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </p>
-                <button class="display-pay-button" data-order-id="{{ order.id }}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Abgeholt</button>
-            </div>
-        {% endfor %}
+    <!-- Right side: product tally -->
+    <div style="flex:1; background:#fff; padding:25px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); height:fit-content;">
+        <h2 style="text-align:center; margin-bottom:20px;">Produktübersicht</h2>
+        <div id="product-summary">
+            <!-- JS will fill this dynamically -->
+        </div>
     </div>
 </div>
 
@@ -53,9 +64,54 @@
 "></div>
 
 <script>
+// ----- Helper to render product summary -----
+function renderProductSummary(orders) {
+    const productSummaryEl = document.getElementById("product-summary");
+    productSummaryEl.innerHTML = ""; // clear
+
+    const productCounts = {};
+    orders.forEach(order => {
+        order.orderitem_set.forEach(item => {
+            if (!item.product.needs_kitchen) return;
+            if (!productCounts[item.product.name]) productCounts[item.product.name] = { paid: 0, notPaid: 0 };
+            if (order.payed) productCounts[item.product.name].paid += item.quantity;
+            else productCounts[item.product.name].notPaid += item.quantity;
+        });
+    });
+
+    for (const productName in productCounts) {
+        const counts = productCounts[productName];
+        const p = document.createElement("p");
+        p.innerHTML = `
+            ${productName} - 
+            <span style="color:orange;">${counts.notPaid}</span> | 
+            <span style="color:green;">${counts.paid}</span>
+        `;
+        productSummaryEl.appendChild(p);
+    }
+}
+
+// ----- Render on page load using initial Django orders -----
+const initialOrders = [
+    {% for order in orders %}
+    {
+        payed: {{ order.payed|yesno:"true,false" }},
+        orderitem_set: [
+            {% for item in order.orderitem_set.all %}
+            {
+                quantity: {{ item.quantity }},
+                product: { name: "{{ item.product.name }}", needs_kitchen: {{ item.product.needs_kitchen|yesno:"true,false" }} }
+            },
+            {% endfor %}
+        ]
+    },
+    {% endfor %}
+];
+
+renderProductSummary(initialOrders);
+
 // ----- WebSocket connection and live updates -----
 let socket = null;
-const popup = document.getElementById('popup');
 
 function updateConnectionStatus(state) {
     const statusEl = document.getElementById("connection-status");
@@ -87,9 +143,18 @@ function connectSocket() {
             const ordersContainer = document.getElementById("orders");
             ordersContainer.innerHTML = "";
 
-            data.orders.forEach(order => {
-                console.log(`Order #${order.id} paid status:`, order.payed);
+            const productCounts = {};
 
+            data.orders.forEach(order => {
+                order.items.forEach(item => {
+                    if(!productCounts[item.name]) productCounts[item.name] = { paid:0, notPaid:0 };
+                    if(order.payed) productCounts[item.name].paid += item.quantity;
+                    else productCounts[item.name].notPaid += item.quantity;
+                });
+            });
+
+            // Render orders
+            data.orders.forEach(order => {
                 const items = order.items.map(i => `${i.name} x${i.quantity}`).join(", ");
                 const borderColor = order.payed ? "green" : "orange";
 
@@ -118,6 +183,20 @@ function connectSocket() {
             });
 
             document.getElementById("income").textContent = data.income;
+
+            // Update product summary
+            const productSummaryEl = document.getElementById("product-summary");
+            productSummaryEl.innerHTML = "";
+            for(const productName in productCounts){
+                const counts = productCounts[productName];
+                const p = document.createElement("p");
+                p.innerHTML = `
+                    ${productName} - 
+                    <span style="color:orange;">${counts.notPaid}</span> | 
+                    <span style="color:green;">${counts.paid}</span>
+                `;
+                productSummaryEl.appendChild(p);
+            }
         }
     };
 }

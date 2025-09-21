@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+    <h1>Generate Coupons</h1>
+
+    <form method="post" style="margin-top: 20px; display: flex; align-items: center; gap: 10px;">
+        {% csrf_token %}
+        <label for="count">Number of coupons:</label>
+        <input type="number" name="count" id="count" value="1" min="1" max="50" style="width: 60px;">
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+
+    {% if cupons %}
+        <table class="table table-striped" style="margin-top: 30px;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Coupon Code</th>
+                    <th>Discount (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cupon in cupons %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ cupon.data }}</td>
+                        <td>{{ cupon.percentage }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

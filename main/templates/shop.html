@@ -119,7 +119,7 @@ function SendOrder() {
 
     {% for product in products %}
     <button style="margin-top: 10px; width: 100%" onclick="AddProduct({{ product.id }}, '{{ product.name }}', {{ product.price }})">
-        {{ product.name }} - {{ product.price }}€
+        {{ product.name }} - {% if happyhour %} {{product.happy_hour_price }}€ (HappyHour) {% else %} {{ product.price }}€ {% endif %}
     </button><br>
     {% endfor %}
 

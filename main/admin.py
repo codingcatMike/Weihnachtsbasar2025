@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.html import format_html
-from .models import Product, Order, Customers, Income, OrderItem, Shop, ShopUser, SiteStatus
+from .models import Product, Order, Customers, Income, OrderItem, Shop, ShopUser, SiteStatus, HappyHour, Cupon
 
 # -----------------------------
 # Normale Models
@@ -13,6 +13,7 @@ admin.site.register(Customers)
 admin.site.register(Income)
 admin.site.register(OrderItem)
 admin.site.register(ShopUser)
+admin.site.register(Cupon)
 
 # -----------------------------
 # Shop Admin mit Activate Button
@@ -78,3 +79,32 @@ class SiteStatusAdmin(admin.ModelAdmin):
         return format_html('<a class="button" href="{}">{}</a>', f'{obj.id}/toggle/', label)
 
     toggle_button.short_description = 'Toggle Maintenance'
+
+@admin.register(HappyHour)
+class HappyHourAdmin(admin.ModelAdmin):
+    list_display = ('id', 'status', 'toggle_button')
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                '<int:happyhour_id>/toggle/',
+                self.admin_site.admin_view(self.toggle_happyhour),
+                name='happyhour-toggle',
+            ),
+        ]
+        return custom_urls + urls
+
+    def toggle_happyhour(self, request, happyhour_id):
+        happyhour = get_object_or_404(HappyHour, pk=happyhour_id)
+        happyhour.status = not happyhour.status
+        happyhour.save()
+        state = "ON" if happyhour.status else "OFF"
+        self.message_user(request, f'Happy Hour #{happyhour.id} turned {state}!')
+        return redirect('../../')
+
+    def toggle_button(self, obj):
+        label = "Activate" if not obj.status else "Deactivate"
+        return format_html('<a class="button" href="{}">{}</a>', f'{obj.id}/toggle/', label)
+
+    toggle_button.short_description = 'Toggle Happy Hour'

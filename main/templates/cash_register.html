@@ -3,12 +3,13 @@
 {% block title %}Kasse{% endblock title %}
 
 {% block content %}
+
 <div class="container" style="max-width: 900px; margin: 80px auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
     <h1 style="text-align:center; margin-bottom: 20px;">Kasse</h1>
-    <h2 style="text-align:center; margin-bottom: 30px;">Aktuelles Geld: <span id="income">{{ income }}</span>€</h2>
-    
-    <input type="number" id="order-search" placeholder="Kundennummer suchen..." style="width:100%; padding:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
+    <h2 style="text-align:center; margin-bottom: 30px;">Aktueller Kassenstand: <span id="income">{{ income }}</span>€</h2>
 
+    <input type="number" id="order-search" placeholder="Kundennummer suchen..." style="width:100%; padding:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
+    
     <div id="connection" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
         <p id="connection-status" style="margin: 0; padding: 6px 12px; border-radius: 6px; cursor: pointer; color: red; border: 1px solid red;">
             Nicht verbunden oder Verbindung wird aufgebaut…
@@ -16,19 +17,36 @@
         <a href="{% url 'pay_Screen' %}" style="display:block; margin-top:5px;">Diese Instanz als Bildschirm nutzen</a>
     </div>
 
-    <div id="orders" style="color=black">
+    <div id="orders" style="color:black">
         {% for order in orders %}
             <div class="order-card" id="order-{{ order.id }}" data-customer-id="{{ order.customer.id }}" style="background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-                <p style="font-weight:bold; margin-bottom:8px;">Kunde #{{ order.customer.id }} - {{ order.price }}€</p>
+                <p style="font-weight:bold; margin-bottom:8px;">Kunde #{{ order.customer.id }} - <span> {{ order.price }} </span>€ [{{order.id}}]</p>
                 <p style="margin-bottom:10px;">
                     {% for product in order.orderitem_set.all %}
                         {{ product.product.name }} x{{ product.quantity }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
+
+                <input type="text" class="cupon-input" placeholder="Cupon Code eingeben" autocomplete="off" style="margin-bottom:10px; padding:6px 8px; width:100%; border-radius:5px; border:1px solid #ccc; color: black">
+
                 <button class="display-pay-button" data-order-id="{{ order.id }}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Auf Bildschirm anzeigen</button>
             </div>
         {% endfor %}
     </div>
+
+    <div id="pay-sb-form" style="margin-bottom: 30px; padding: 15px; border:1px solid #ccc; border-radius:8px; background:#f4f4f4;">
+        <h3>Erstattung</h3>
+        <input type="text" id="sb-reason" placeholder="Grund" style="padding:6px 8px; width:30%; margin-right:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="number" id="sb-price" placeholder="Betrag (€)" style="padding:6px 8px; width:20%; margin-right:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="password" id="sb-password" placeholder="Passwort" style="padding:6px 8px; width:20%; margin-right:10px; border-radius:5px; border:1px solid #ccc;">
+        <button id="pay-sb-btn" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Bezahlen</button>
+    </div>
+
+    {% if happyhour %}
+        <button onclick="toggleHappyHour()" class="hh-active">Happy Hour Ausschalten</button>
+    {% else %}
+        <button onclick="toggleHappyHour()" class="hh-inactive">Happy Hour Einschalten</button>
+    {% endif %}
 </div>
 
 <div id="popup" style="
@@ -41,7 +59,7 @@
     padding: 10px 20px;
     border-radius: 8px;
     display: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2 6px rgba(0,0,0,0.2);
     z-index: 1000;
 "></div>
 
@@ -82,10 +100,11 @@ function connectSocket() {
                 div.className = "order-card";
                 div.id = `order-${order.id}`;
                 div.dataset.customerId = order.customer_id;
-                div.style = "background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05); color:black;";
+                div.style = "background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2 8px rgba(0,0,0,0.05); color:black;";
                 div.innerHTML = `
                     <p style="font-weight:bold; margin-bottom:8px;">Kunde #${order.customer_id} - ${order.price}€</p>
                     <p style="margin-bottom:10px;">${items}</p>
+                    <input type="text" class="cupon-input" placeholder="Cupon Code eingeben" style="margin-bottom:10px; padding:6px 8px; width:100%; border-radius:5px; border:1px solid #ccc;">
                     <button class="display-pay-button" data-order-id="${order.id}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Auf Bildschirm anzeigen</button>
                 `;
                 ordersContainer.appendChild(div);
@@ -97,62 +116,104 @@ function connectSocket() {
 
 connectSocket();
 
+// Safe displayOrder function
 function displayOrder(orderDiv){
+    if(!orderDiv || !orderDiv.querySelector) return;
     const button = orderDiv.querySelector('.display-pay-button');
+    const cuponInput = orderDiv.querySelector('.cupon-input');
     const orderId = button.dataset.orderId;
-    if(!button.dataset.displaying){
-        fetch(`/display_order/${orderId}/`,{method:"GET", headers:{"X-CSRFToken":"{{ csrf_token }}"}})
-        .then(()=>{
-            button.textContent="NOW DISPLAYING ON SCREEN - REMOVE?";
-            button.dataset.displaying="true";
 
-            const paidBtn = document.createElement("button");
-            paidBtn.textContent="Als bezahlt markieren";
-            paidBtn.dataset.orderId=orderId;
-            paidBtn.style.cssText="margin-left:10px;padding:6px 12px;border:none;border-radius:5px;background:#2196f3;color:white;cursor:pointer;";
-            orderDiv.appendChild(paidBtn);
-            paidBtn.addEventListener("click",()=>markPaid(orderId));
+    if(button.dataset.displaying) return;
 
-            button.addEventListener("click",function removeHandler(){
-                fetch('/rmfps/',{method:'GET', headers:{'X-CSRFToken':'{{ csrf_token }}'}})
-                .then(()=>{
-                    button.textContent="Auf Bildschirm anzeigen";
-                    delete button.dataset.displaying;
-                    paidBtn.remove();
-                    button.removeEventListener("click",removeHandler);
-                });
-            });
+    const cuponCode = cuponInput ? cuponInput.value.trim() : null;
+    let url = `/display_order/${orderId}/`;
+    if(cuponCode) url += `?cupon=${encodeURIComponent(cuponCode)}`;
 
-            const ordersContainer=document.getElementById('orders');
-            ordersContainer.prepend(orderDiv);
-
-            popup.textContent=`Kunde #${orderDiv.dataset.customerId} auf Bildschirm!`;
-            popup.style.display='block';
+    fetch(url, {method:"GET", headers:{"X-CSRFToken":"{{ csrf_token }}"}})
+    .then(resp => resp.json())
+    .then(data => {
+        if(data.status !== "ok"){
+            popup.textContent = "Fehler beim Anzeigen der Bestellung!";
+            popup.style.display = 'block';
             setTimeout(()=>{popup.style.display='none';},2000);
-        });
-    }
-}
-
-function markPaid(orderId){
-    fetch(`/pay/${orderId}/`,{method:'GET', headers:{"X-CSRFToken":"{{ csrf_token }}"}})
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.status==="ok"){
-            const el=document.getElementById(`order-${orderId}`);
-            if(el) el.remove();
-            popup.textContent=`Kunde #${orderId} als bezahlt markiert!`;
-            popup.style.display='block';
-            setTimeout(()=>{popup.style.display='none';},2000);
+            return;
         }
+        if(cuponInput) cuponInput.disabled = true;
+        button.textContent="NOW DISPLAYING ON SCREEN - REMOVE";
+        button.dataset.displaying="true";
+
+        if(data.order_id && data.discount > 0){
+            const discountInfo = document.createElement("div");
+            discountInfo.className = "discount-info";
+            discountInfo.style.cssText="margin-top:5px;color:green;font-weight:bold;";
+            discountInfo.textContent = `Rabatt: -${data.discount.toFixed(2)} € → Endpreis: ${data.discounted_price.toFixed(2)} €`;
+            orderDiv.appendChild(discountInfo);
+        }
+
+        const paidBtn = document.createElement("button");
+        paidBtn.textContent="Als bezahlt markieren";
+        paidBtn.dataset.orderId = orderId;
+        paidBtn.style.cssText="margin-left:10px;padding:6px 12px;border:none;border-radius:5px;background:#2196f3;color:white;cursor:pointer;";
+        orderDiv.appendChild(paidBtn);
+
+        paidBtn.addEventListener("click", () => markPaid(orderId, cuponCode));
+
+        button.addEventListener("click", function removeHandler(){
+            fetch('/rmfps/',{method:'GET', headers:{'X-CSRFToken':'{{ csrf_token }}'}})
+            .then(()=>{
+                button.textContent="Auf Bildschirm anzeigen";
+                delete button.dataset.displaying;
+                paidBtn.remove();
+                const discountInfo = orderDiv.querySelector(".discount-info");
+                if(discountInfo) discountInfo.remove();
+                if(cuponInput) cuponInput.disabled = false;
+                button.removeEventListener("click",removeHandler);
+            });
+        });
+
+        const ordersContainer=document.getElementById('orders');
+        ordersContainer.prepend(orderDiv);
+
+        popup.textContent=`Kunde #${orderDiv.dataset.customerId} auf Bildschirm!`;
+        popup.style.display='block';
+        setTimeout(()=>{popup.style.display='none';},2000);
     });
 }
 
-document.addEventListener("click",function(e){
-    if(e.target.classList.contains("display-pay-button")){
-        displayOrder(e.target.closest('.order-card'));
-    }
+// Event delegation for display buttons
+document.getElementById("orders").addEventListener("click", function(e){
+    const btn = e.target.closest(".display-pay-button");
+    if(!btn) return;
+    const orderDiv = btn.closest(".order-card");
+    displayOrder(orderDiv);
 });
 
+// Mark paid logic
+function markPaid(orderId, cuponCode = null){
+    let url = `/pay/${orderId}/`;
+    if(cuponCode) url += `${cuponCode}/`;
+    fetch(url, {
+        method: 'GET',
+        headers: {"X-CSRFToken": "{{ csrf_token }}"}
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.status === "ok"){
+            const el = document.getElementById(`order-${orderId}`);
+            if(el) el.remove();
+            popup.textContent = `Kunde #${orderId} als bezahlt markiert!`;
+        } else if(data.status === "not_valid_cupon") {
+            popup.textContent = `Ungültiger Coupon! Bitte prüfen.`;
+        } else {
+            popup.textContent = `Fehler beim Bezahlen der Bestellung.`;
+        }
+        popup.style.display = 'block';
+        setTimeout(() => { popup.style.display = 'none'; }, 2000);
+    })
+    .catch(err => console.error("Error marking order as paid:", err));
+}
+
+// Connection status click
 document.getElementById("connection-status").addEventListener("click",()=>{
     if(socket && socket.readyState===WebSocket.OPEN){
         updateConnectionStatus("closing");
@@ -162,6 +223,7 @@ document.getElementById("connection-status").addEventListener("click",()=>{
     }
 });
 
+// Search functionality
 const searchInput=document.getElementById('order-search');
 let searchTimeout=null;
 searchInput.addEventListener('input',function(){
@@ -178,5 +240,66 @@ searchInput.addEventListener('input',function(){
         });
     },300);
 });
+
+// Happy Hour toggle
+function toggleHappyHour() {
+    fetch('/thh/', { method: 'GET' })
+        .then(response => {
+            if (!response.ok) throw new Error("Network response was not OK");
+            return response.json();
+        })
+        .then(data => { location.reload(); })
+        .catch(error => {
+            console.error("Error toggling Happy Hour:", error);
+            alert("Failed to toggle Happy Hour.");
+        });
+}
+
+// Clear cupon inputs on load
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.cupon-input').forEach(input => input.value = '');
+});
+
+// SB-Kosten Payment JS
+document.getElementById('pay-sb-btn').addEventListener('click', () => {
+    const reason = document.getElementById('sb-reason').value.trim();
+    const price = document.getElementById('sb-price').value.trim();
+    const password = document.getElementById('sb-password').value.trim();
+
+    if(!reason || !price || !password){
+        alert("Bitte alle Felder ausfüllen!");
+        return;
+    }
+
+    const url = `/pay_sb_costs/?reason=${encodeURIComponent(reason)}&price=${encodeURIComponent(price)}&password=${encodeURIComponent(password)}`;
+
+    fetch(url, { method: 'GET', headers: {"X-CSRFToken": "{{ csrf_token }}"} })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === "ok"){
+                alert(`SB-Kosten von ${price}€ für "${reason}" hinzugefügt!`);
+                document.getElementById('sb-reason').value = '';
+                document.getElementById('sb-price').value = '';
+                document.getElementById('sb-password').value = '';
+                document.getElementById('income').textContent = data.new_income;
+            } else {
+                alert("Falsches Passwort oder Fehler beim Hinzufügen!");
+            }
+        })
+        .catch(err => console.error("Error paying SB costs:", err));
+});
 </script>
+
+<style>
+.hh-active {
+    background: red !important;
+    color: white !important;
+    border: none !important;
+}
+.hh-inactive {
+    background: green !important;
+    color: white !important;
+    border: none !important;
+}
+</style>
 {% endblock content %}

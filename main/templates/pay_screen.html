@@ -5,111 +5,195 @@
     <meta charset="UTF-8">
     <title>Pay Screen</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 5px;
+            padding: 5px;
+            font-size: 14px;
+            background: #f9f9f9;
+            color: #222;
+        }
+
         table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
             width: 100%;
-            margin: 0px;
+            border-collapse: collapse;
+            margin-bottom: 5px;
+            table-layout: fixed;
         }
-        td, th {
-            border: 1px solid #dddddd;
+
+        th, td {
+            padding: 5px 6px;
             text-align: left;
-            padding: 8px;
+            word-wrap: break-word;
         }
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-        .total-row {
+
+        th {
+            background: #000;
+            color: #fff;
             font-weight: bold;
-            background-color: #f2f2f2;
+            font-size: 15px;
         }
+
+        td {
+            background: #fff;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Items table font size bigger */
+        .items-table td {
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) td {
+            background: #f7f7f7;
+        }
+
+        .discount-row td {
+            background: #f2dede;
+            color: #a94442;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .total-row td {
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+            font-size: 20px; /* bigger total */
+            border-top: 2px solid #000;
+        }
+
+        .customer-info {
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .summary-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .summary-tables {
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+
         .qr-container {
             text-align: center;
-            margin-top: 20px;
+            width: 110px;
         }
+
         .qr-container img {
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 6px;
         }
+
+        /* Column widths */
+        table th:nth-child(1), table td:nth-child(1) { width: 10%; } /* quantity */
+        table th:nth-child(2), table td:nth-child(2) { width: 50%; } /* product name */
+        table th:nth-child(3), table td:nth-child(3) { width: 20%; } /* unit price */
+        table th:nth-child(4), table td:nth-child(4) { width: 20%; } /* total price */
     </style>
 </head>
 <body>
 
-<div id="order-container">
-    <!-- Order table + QR code will appear here -->
-</div>
+<div id="order-container"></div>
 
 <script>
-const socket = new WebSocket(`${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws/pay_screen/`);
+let reconnectInterval = 3000; // 3 seconds
+
+function connectWebSocket() {
+    const socket = new WebSocket(`${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws/pay_screen/`);
+
+    socket.onopen = () => {
+        console.log("Connected to PayScreen WebSocket");
+    };
+
+    socket.onclose = () => {
+        console.log(`Disconnected. Attempting to reconnect in ${reconnectInterval / 1000} seconds...`);
+        setTimeout(connectWebSocket, reconnectInterval);
+    };
+
+    socket.onmessage = (e) => {
+        const data = JSON.parse(e.data);
 
 
-socket.onopen = function() {
-    console.log("Connected to PayScreen WebSocket");
-};
 
-socket.onclose = function() {
-    console.log("Disconnected from PayScreen WebSocket");
-};
-
-socket.onmessage = function(e) {
-    const data = JSON.parse(e.data);
-    const container = document.getElementById("order-container");
-    console.log("DEBUG order:", data.order);
-    console.log("QR Code:", data.order ? data.order.qr_code : "No order");
-
-    // Clear display if order is None
-    if (data.order === null) {
-        container.innerHTML = "";
-        return;
+        const order = data.order;
+                const container = document.getElementById("order-container");
+        if (!order) {
+              container.innerHTML = "";
+                        return;
     }
 
-    if (data.paid_order_id) {
-    container.innerHTML = "";
-}
-
-    if (data.order) {
-        const order = data.order;
-        let itemsHtml = order.items.map(item =>
-            `<tr>
+        // Items Table
+        let itemsHtml = order.items.map(item => {
+            const price = order.happyhour && item.happy_hour_price ? item.happy_hour_price : item.price;
+            return `<tr>
                 <td>${item.quantity}</td>
                 <td>${item.name}</td>
-                <td>${item.price}€</td>
-                <td>${(item.quantity * item.price)}€</td>
-            </tr>`
-        ).join("");
+                <td>${price.toFixed(2)} €</td>
+                <td>${(item.quantity * price).toFixed(2)} €</td>
+            </tr>`;
+        }).join("");
 
-        const tableHtml = `
-            <table>
-                <tr>
-                    <th>Anzahl</th>
-                    <th>Produkt</th>
-                    <th>Einzelpreis</th>
-                    <th>Gesamt</th>
-                </tr>
-                ${itemsHtml}
-                <tr class="total-row">
-                    <td colspan="2"><strong>Total (insgesamt):</strong></td>
-                    <td colspan="2"><strong>${order.price}€</strong></td>
-                </tr>
-                <tr class="total-row">
-                    <td colspan="2"><strong>Kundennummer:</strong></td>
-                    <td colspan="2"><strong>${order.customer_id} (${order.id})</strong></td>
-                </tr>
-            </table>
-            <div class="qr-container">
-              <p>Scan this QR code to get your receipt:</p>
-              <img src="${order.qr_code}" alt="QR Code">
-          </div>
+        // Discount row (last column only)
+        const discountRow = order.discount_value > 0 ? `
+            <tr class="discount-row">
+                <td colspan="3">Coupon / Rabatt:</td>
+                <td>
+                <td>- ${order.discount_value.toFixed(2)} €</td>
+            </tr>` : "";
+
+        // Total row (last column only)
+        const totalRow = `
+            <tr class="total-row">
+                <td colspan="3">Total:</td>
+                <td>
+                <td>${order.discounted_price.toFixed(2)} €</td>
+            </tr>`;
+
+        container.innerHTML = `
+            <div class="summary-container">
+                <div class="summary-tables">
+                    <table class="items-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Produkt</th>
+                                <th>Preis</th>
+                                <th>Gesamt</th>
+                            </tr>
+                        </thead>
+                        <tbody>${itemsHtml}</tbody>
+                    </table>
+
+                    <table>
+                        <tbody>
+                            ${discountRow}
+                            ${totalRow}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="qr-container">
+                    <img src="${order.qr_code}" alt="QR Code">
+                    <div class="customer-info">
+                        Kunde: ${order.customer_id} (#${order.id})
+                    </div>
+                </div>
+            </div>
         `;
+    };
+}
 
-        container.innerHTML = tableHtml;
-    }
-
-    // Optionally handle order removal if it's paid
-    if (data.paid_order_id) {
-        container.innerHTML = "<p>Keine Bestellung angezeigt</p>";
-    }
-};
+// Initial connection
+connectWebSocket();
 </script>
 
 </body>

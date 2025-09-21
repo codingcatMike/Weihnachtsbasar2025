@@ -47,65 +47,68 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Customers
 from django.views.decorators.csrf import csrf_exempt
+from reportlab.lib.enums import TA_CENTER
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
+from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import check_password
+from django.http import JsonResponse
+
 
 
 def generate_pdf_receipt(request, order_id):
     order = Order.objects.get(id=order_id)
-    items = [
-        {"name": item.product.name, "quantity": item.quantity, "price": float(item.product.price)}
-        for item in order.orderitem_set.all()
-    ]
-
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = f'inline; filename="receipt_{order.id}.pdf"'
+    # Change 'attachment' to 'inline' so it opens in the browser
+    response['Content-Disposition'] = f'inline; filename="rechnung_{order_id}.pdf"'
 
-    pdf = canvas.Canvas(response, pagesize=A4)
-    width, height = A4
+    doc = SimpleDocTemplate(response, pagesize=A4, rightMargin=20, leftMargin=20, topMargin=20, bottomMargin=20)
+    elements = []
+
+    styles = getSampleStyleSheet()
+    title_style = ParagraphStyle('TitleStyle', parent=styles['Heading1'], alignment=TA_CENTER, fontSize=16)
+    normal_center = ParagraphStyle('NormalCenter', parent=styles['Normal'], alignment=TA_CENTER)
 
     # Header
-    pdf.setFont("Helvetica-Bold", 18)
-    pdf.drawCentredString(width / 2, height - 50, "Weihnachtsbasarprojekt 2025 Derksen")
-    
-    pdf.setFont("Helvetica-Oblique", 10)
-    pdf.drawCentredString(width / 2, height - 65, "(NOT AN OFFICIAL RECEIPT / KEIN OFFIZIELLER KASSENZETTEL)")
-
-    pdf.setFont("Helvetica", 12)
-    pdf.drawCentredString(width / 2, height - 85, f"Receipt #{order.id}")
-
-    # Customer info
-    pdf.setFont("Helvetica", 11)
-    pdf.drawString(50, height - 120, f"Customer ID: {order.customer.id}")
-    pdf.drawString(50, height - 135, f"Total Price: €{order.price:.2f}")
+    elements.append(Paragraph(f"Weihnachtsbasar Derksen - {order.id}", title_style))
+    elements.append(Paragraph("<i>Dies ist keine offizielle Rechnung</i>", normal_center))
+    elements.append(Paragraph("<br/>", normal_center))  # empty line
 
     # Table data
-    data = [["Qty", "Product", "Unit Price", "Total"]]
-    for item in items:
-        total_item = item['quantity'] * item['price']
-        data.append([item['quantity'], item['name'], f"€{item['price']:.2f}", f"€{total_item:.2f}"])
-    
-    # Add total row
-    data.append(["", "", "TOTAL:", f"€{order.price:.2f}"])
+    data = [["Anzahl", "Produkt", "Preis (€)"]]
 
-    # Table styling
-    table = Table(data, colWidths=[25*mm, 80*mm, 30*mm, 30*mm])
+    for item in order.orderitem_set.all():
+        data.append([str(item.quantity), item.product.name, f"{item.total:.2f}"])
+    cupon = order.cupon  # works for numeric and normal coupons
+    if cupon:
+        discount_amount = order.price * (cupon.percentage / 100)
+        data.append([f"Coupon ({cupon.data} - {cupon.percentage}%)", "", f"-{discount_amount:.2f}"])
+    else:
+        discount_amount = 0
+
+    # Total
+    total_amount = order.price - discount_amount
+    data.append(["Gesamt", "", f"{total_amount:.2f}"])
+
+    # Create table
+    table = Table(data, colWidths=[40*mm, 100*mm, 40*mm])
     table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.lightgrey),
         ('TEXTCOLOR', (0,0), (-1,0), colors.black),
-        ('ALIGN', (2,1), (-1,-1), 'RIGHT'),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.black),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
         ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('FONTNAME', (0,-1), (-1,-1), 'Helvetica-Bold'),
-        ('BACKGROUND', (0,-1), (-1,-1), colors.whitesmoke),
+        ('BOTTOMPADDING', (0,0), (-1,0), 8),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.grey),
+        ('FONTNAME', (0,-1), (-1,-1), 'Helvetica-Bold'),  # total row bold
     ]))
 
-    # Position table
-    table.wrapOn(pdf, width, height)
-    table.drawOn(pdf, 50, height - 300)
+    elements.append(table)
 
-    pdf.showPage()
-    pdf.save()
-
+    # Build PDF
+    doc.build(elements)
     return response
+
 
 def index(request):
     log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
@@ -254,7 +257,8 @@ def Shop_view(request, id = None):
                         messages.warning(request, msg)
                     products = Product.objects.filter(shop=id)
                     log(f"{request.user.username} accessed {request.META.get('HTTP_REFERER', '/')} page")
-                    return render(request, 'shop.html', {'products': products , 'shop': shop_instance})
+                    happyhour = HappyHour.objects.first().status
+                    return render(request, 'shop.html', {'products': products , 'shop': shop_instance, 'happyhour' : happyhour})
                 else:
                     messages.error(request, 'You are not allowed to access this page, because you are not a seller of this shop')
                     log(f"{request.user.username} tried to access shop page, but failed because he is not a seller of this shop", 2)
@@ -313,21 +317,37 @@ def SendOrder(request):
     order, created_order = Order.objects.get_or_create(customer=customer, defaults={"price": 0})
     counter = Counter(products)
     total_price = 0
+    happy_hour_active = HappyHour.objects.first().status if HappyHour.objects.exists() else False
+    total_price = 0
 
     for product_id, quantity in counter.items():
         product = Product.objects.get(id=product_id)
+        
+        # Decide which price to use
+        price_to_use = product.happy_hour_price if happy_hour_active else product.price
+
+        # Create or update OrderItem with price_at_order
         order_item, created_item = OrderItem.objects.get_or_create(
             order=order,
             product=product,
-            defaults={"quantity": quantity}
+            defaults={
+                "quantity": quantity,
+                "price_at_order": price_to_use  # store the correct price now
+            }
         )
+        
         if not created_item:
             order_item.quantity += quantity
+            order_item.price_at_order = price_to_use  # update price if needed
             order_item.save()
-        total_price += product.price * quantity
 
-    order.price += total_price
+        # Add to total
+        total_price += price_to_use * quantity
+
+    # Save total price in Order
+    order.price = total_price
     order.save()
+
 
     log(f'The User account of {request.user.username} sent an order with customer id {customer_id} and products {products}')
     announce_order_update()
@@ -377,30 +397,88 @@ def cash_register(request):
     if order:
         for order_item in order.orderitem_set.all():
             print("Order product quantity: ", order_item.quantity)
+    happyhour = HappyHour.objects.first().status
+    return render(request, 'cash_register.html', {'orders': orders, 'income': current_money, 'happyhour': happyhour})
 
-    return render(request, 'cash_register.html', {'orders': orders, 'income': current_money})
-
-def pay_id(request, id):
+def pay_id(request, id, cupon=None):
     order = get_object_or_404(Order, id=id)
+    cupon_instance = None
+
+    if cupon:
+        try:
+            if cupon.isdigit():  # numeric coupon
+                try:
+                    cupon_instance = Cupon.objects.get(data=cupon)
+                except Cupon.DoesNotExist:
+                    cupon_instance = Cupon.objects.create(
+                        data=cupon,
+                        percentage=int(cupon),
+                        used=False
+                    )
+            else:  # normal coupon
+                cupon_instance = get_object_or_404(Cupon, data=cupon)
+                cupon_instance.used = True
+                cupon_instance.save()
+
+            # override order.price
+            order.cupon = cupon_instance
+            order.price = order.price * (1 - cupon_instance.percentage / 100)
+
+        except:
+            return JsonResponse({"status": "not_valid_cupon"})
+
     order.payed = True
-    needs_kitchen = order.products.filter(needs_kitchen=True).exists()
-    if needs_kitchen == False:
+    if not order.products.filter(needs_kitchen=True).exists():
         order.picked_up = True
     order.save()
+
     Income.objects.create(price=order.price, order=order, reason='Order')
     announce_order_update()
+    send_order_customer_update(order)
+
     channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
         "pay_screen_updates",
-        {
-            "type": "order_paid",
-            "order_id": 0
-        }
+        {"type": "order_paid", "order_id": order.id}
     )
+
     return JsonResponse({"status": "ok", "order_id": order.id})
+
 
 def display_order(request, id):
     order = get_object_or_404(Order, id=id)
+    
+    # Optional: get coupon code from GET parameter
+    cupon_code = request.GET.get("cupon")  # or however you pass it
+    discount_value = 0  # default: no discount
+    
+    if cupon_code:
+        try:
+            if cupon_code.isdigit():  # numeric coupon
+                try:
+                    cupon_instance = Cupon.objects.get(data=cupon_code)
+                except Cupon.DoesNotExist:
+                    cupon_instance = Cupon.objects.create(
+                        data=cupon_code,
+                        percentage=int(cupon_code),
+                        used=False
+                    )
+            else:  # normal coupon
+                cupon_instance = get_object_or_404(Cupon, data=cupon_code)
+                cupon_instance.used = True
+                cupon_instance.used_on = order
+                cupon_instance.save()
+
+            # override order.price
+            
+            discount_value = order.price * (cupon_instance.percentage / 100)
+
+        except:
+            discount_value = 0
+    
+    discounted_price = order.price - discount_value
+    
+    # QR code
     url = settings.SITE_URL + reverse("receipt", args=[order.id])
     qr = qrcode.make(url)
     buf = io.BytesIO()
@@ -409,12 +487,18 @@ def display_order(request, id):
     qr_base64 = base64.b64encode(buf.read()).decode("utf-8")
     qr_data = f"data:image/png;base64,{qr_base64}"
 
+    active_happyhour = HappyHour.objects.filter(status=True).exists()
+
     order_data = {
         "id": order.id,
         "customer_id": order.customer.id,
         "price": float(order.price),
+        "discount_value": float(discount_value),
+        "discounted_price": float(discounted_price),
+        "happyhour": active_happyhour,
+        "have_cupon": discount_value > 0,  # true only if a valid cupon applied
         "items": [
-            {"name": i.product.name, "quantity": i.quantity, "price": float(i.product.price)}
+            {"name": i.product.name, "quantity": i.quantity, "price": float(i.price_at_order), "happy_hour_price": float(i.product.happy_hour_price)}
             for i in order.orderitem_set.all()
         ],
         "qr_code": qr_data,
@@ -429,7 +513,7 @@ def display_order(request, id):
         }
     )
 
-    return JsonResponse({"status": "ok", "order_id": order.id})
+    return JsonResponse({"status": "ok", "order_id": order.id, "cupon": cupon_code, "discount": discount_value, "discounted_price": discounted_price})
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -565,39 +649,54 @@ def remove_from_payscreen(request):
 
 @csrf_exempt
 def customer(request):
-
     """
-    Handles customer screen:
-    - POST: generates a new customer ID
-    - GET: optionally preloads unpaid orders if ?cid=... is passed
+    - POST (AJAX): create a new Customers object and return {"cid": <id>}
+    - GET + X-Requested-With: return JSON about the given cid (orders or picked_up)
+    - Normal GET (no X-Requested-With): render the customer.html page
     """
+    # Create new customer (POST)
     if request.method == "POST":
-        # Generate next customer ID
-        top_customer = Customers.objects.order_by('-id').first()
-        next_cid = top_customer.id + 1 if top_customer else 1
-        return JsonResponse({"cid": next_cid})
+        customer = Customers.objects.create()
+        return JsonResponse({"cid": customer.id})
 
-    # GET request
-    cid = request.GET.get("cid")
-    orders = []
+    # AJAX GET checks (from the frontend)
+    if request.headers.get("x-requested-with") == "XMLHttpRequest":
+        cid = request.GET.get("cid")
+        if not cid:
+            # Frontend should POST to create new cid; return error or empty
+            return JsonResponse({"error": "no_cid_provided"}, status=400)
 
-    if cid:
-        # Fetch all unpaid orders for this customer
-        qs = Order.objects.filter(customer_id=cid, payed=False).prefetch_related("orderitem_set__product")
-        for o in qs:
-            orders.append({
-                "id": o.id,
-                "price": o.price,
-                "customer_id": o.customer.id,
-                "items": [{"name": item.product.name, "quantity": item.quantity} for item in o.orderitem_set.all()]
-            })
+        # Find an order for that customer (one order per customer assumed)
+        order = Order.objects.filter(customer_id=cid).first()
 
-        # If the request is AJAX, return JSON directly
-        if request.headers.get("x-requested-with") == "XMLHttpRequest":
-            return JsonResponse({"orders": orders})
+        if order:
+            # If picked_up, frontend should create a new customer via POST (on reload)
+            if order.picked_up:
+                return JsonResponse({"picked_up": True})
 
-    # Otherwise, render template with preloaded orders
-    return render(request, "customer.html", {"cid": cid, "orders": orders})
+            # Otherwise return the order details (include payed + picked_up + needs_kitchen)
+            items = [
+                {"name": oi.product.name, "quantity": oi.quantity}
+                for oi in order.orderitem_set.all()
+            ]
+            order_data = {
+                "id": order.id,
+                "customer_id": order.customer.id,
+                "price": float(order.price),
+                "items": items,
+                "payed": order.payed,
+                "picked_up": order.picked_up,
+                "needs_kitchen": any(i.product.needs_kitchen for i in order.orderitem_set.all())
+            }
+            return JsonResponse({"cid": int(cid), "orders": [order_data]})
+
+        # No order found for this cid
+        return JsonResponse({"cid": int(cid), "orders": []})
+
+    # Normal browser request -> render the HTML page
+    return render(request, "customer.html")
+
+
 
 from .models import SiteStatus
 
@@ -642,6 +741,7 @@ def picked_up(request, id):
     if order.payed == True:
         order.picked_up = True
         order.save()
+        send_order_customer_update(order)
         return JsonResponse({"status": "ok", "order_id": order.id})
     else:
         return JsonResponse({"status": "customer_not_payed", "order_id": order.id})
@@ -654,3 +754,73 @@ def site_status(request):
         maintenance = site_status.maintenance_mode
         print(maintenance)
     return JsonResponse({"maintenance_mode": maintenance})
+
+def togglehappyhour(request):
+    if request.method != 'GET':
+        return JsonResponse({"status": "error", "message": "Only GET allowed"}, status=405)
+    
+    hh = HappyHour.objects.first()
+    if not hh:
+        return JsonResponse({"status": "error", "message": "No HappyHour instance found"}, status=404)
+    
+    # Toggle the status
+    hh.status = not hh.status
+    hh.save()
+    
+    state = "ON" if hh.status else "OFF"
+    return JsonResponse({"status": "ok", "happy_hour": hh.status, "message": f"Happy Hour is now {state}"})
+
+
+
+def pay_sb_costs(request):
+    password = request.GET.get('password')
+    price = request.GET.get('price')
+    reason = request.GET.get('reason')
+
+    User = get_user_model()
+    superusers = User.objects.filter(is_superuser=True)
+
+    # Check if password matches any superuser
+    valid_password = any(check_password(password, su.password) for su in superusers)
+
+    if valid_password:
+        income = Income.objects.create(
+            price=float(price) * -1,  # keep your original logic
+            reason=reason
+        )
+        return JsonResponse({'status': 'ok'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid password'})
+
+
+
+import random
+import string
+from django.shortcuts import render
+from .models import Cupon
+
+def generate_cupons(request):
+    generated_cupons = []
+
+    if request.method == "POST":
+        try:
+            count = int(request.POST.get("count", 1))
+            count = max(1, min(count, 50))  # limit max 50
+        except ValueError:
+            count = 1
+
+        for _ in range(count):
+            # Skewed discount
+            r = random.random()
+            if r < 0.8:
+                percentage = random.randint(5, 25)
+            else:
+                skewed = r ** 30
+                percentage = int(26 + skewed * (55 - 26))
+
+
+            # Save coupon
+            cupon = Cupon.objects.create(percentage=percentage)
+            generated_cupons.append(cupon)
+
+    return render(request, "generate_cupons.html", {"cupons": generated_cupons})

@@ -20,6 +20,7 @@ urlpatterns = [
     path("SendOrder/", SendOrder, name="sendOrder"),
     path("pay/", cash_register, name="cash_register"),
     path("pay/<id>/", pay_id, name="pay_id"),
+    path("pay/<id>/<cupon>/", pay_id, name="pay_id"),
     path("Shop/<shop_id>/settings/", ShopSettings, name="ShopSettings"),
     path('shop/<int:shop_id>/search-users/', search_users, name='search_users'),
     path("pay_Screen/", pay_Screen, name="pay_Screen"),
@@ -31,6 +32,9 @@ urlpatterns = [
     path("kitchen/", kitchen_view, name="kitchen" ),
     path("pick_up/<id>/", picked_up, name="pick_up"),
     path("api/site-status/", site_status, name="site-status"),
+    path("thh/", togglehappyhour, name="thh"),
     path('501/', maintenance_page, name='maintenance-page'),
+    path("pay_sb_costs/", pay_sb_costs, name="pay_sb_costs"),
+    path("generate-cupons/", generate_cupons, name="generate_cupons"),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT, "show_indexes": True}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

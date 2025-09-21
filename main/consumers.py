@@ -235,7 +235,6 @@ def get_new_onscreen_order(id):
 def send_order_customer_update(order):
     channel_layer = get_channel_layer()
 
-    # Use the correct related manager
     items = [
         {"name": item.product.name, "quantity": item.quantity}
         for item in order.orderitem_set.all()
@@ -245,17 +244,19 @@ def send_order_customer_update(order):
         "id": order.id,
         "customer_id": order.customer.id,
         "price": float(order.price),
-        "items": items
+        "items": items,
+        "payed": order.payed,
+        "picked_up": order.picked_up,
+        "needs_kitchen": any([i.product.needs_kitchen for i in order.orderitem_set.all()])
     }
 
     async_to_sync(channel_layer.group_send)(
-    f"customer_{order.customer.id}",
-    {
-        "type": "order_update",  # <-- this must match the async def order_update(self, event)
-        "order": order_data
-    }
-)
-
+        f"customer_{order.customer.id}",
+        {
+            "type": "order_update",
+            "order": order_data
+        }
+    )
 
 def announce_order_update():
     orders = Order.objects.filter(picked_up=False, orderitem__product__needs_kitchen=True).distinct()
