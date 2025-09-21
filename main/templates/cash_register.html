@@ -104,7 +104,7 @@ function connectSocket() {
                 div.innerHTML = `
                     <p style="font-weight:bold; margin-bottom:8px;">Kunde #${order.customer_id} - ${order.price}€</p>
                     <p style="margin-bottom:10px;">${items}</p>
-                    <input type="text" class="cupon-input" placeholder="Cupon Code eingeben" style="margin-bottom:10px; padding:6px 8px; width:100%; border-radius:5px; border:1px solid #ccc;">
+                    <input type="text" class="cupon-input" placeholder="Cupon Code eingeben" style="margin-bottom:10px; padding:6px 8px; width:100%; border-radius:5px; border:1px solid #ccc; color: black">
                     <button class="display-pay-button" data-order-id="${order.id}" style="padding:6px 12px; border:none; border-radius:5px; background:#4caf50; color:white; cursor:pointer;">Auf Bildschirm anzeigen</button>
                 `;
                 ordersContainer.appendChild(div);

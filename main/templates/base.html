@@ -179,6 +179,18 @@
             <button type="button" onclick="window.location.href='{% url 'login' %}'">Login</button>
             <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
         {% endif %}
+        {% if request.session.maintenance_bypass %}
+<div style="position: fixed; bottom: 10px; right: 10px; z-index: 999;">
+    <form method="post" action="{% url 'maintenance-page' %}">
+        {% csrf_token %}
+        <input type="hidden" name="deactivate_bypass" value="1">
+        <button type="submit" style="background:#f87171;color:white;padding:8px 12px;border:none;border-radius:6px;">
+            Wartung zurücksetzen
+        </button>
+    </form>
+</div>
+{% endif %}
+
     </div>
 
     {% block content %}{% endblock content %}
@@ -304,7 +316,10 @@ function checkMaintenance() {
     fetch('/api/site-status/')
       .then(res => res.json())
       .then(data => {
-          if(data.maintenance_mode === true){
+          // Only redirect if maintenance is on AND bypass is false AND not already on 501
+          if (data.maintenance_mode === true &&
+              data.bypass === false &&
+              window.location.pathname !== '/501/') {
               window.location.href = '/501/';
           }
       })
@@ -316,5 +331,22 @@ function checkMaintenance() {
 setInterval(checkMaintenance, 10000);
 checkMaintenance();  // einmal sofort
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const skipPaths = ["/501/", "/503/"];
+    const path = window.location.pathname;
+
+    if (
+        !path.startsWith("/api/") &&
+        !path.startsWith("/static/") &&
+        !path.startsWith("/favicon.ico") &&
+        !path.startsWith("/admin/") &&
+        !skipPaths.includes(path)
+    ) {
+        sessionStorage.setItem("last_url", window.location.href);
+    }
+});
+</script>
+
 </body>
 </html>

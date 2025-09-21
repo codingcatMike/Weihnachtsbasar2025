@@ -703,26 +703,47 @@ from .models import SiteStatus
 from django.shortcuts import render, redirect
 from .models import SiteStatus
 
-MAINTENANCE_PASSWORD = "maain"
+MAINTENANCE_PASSWORD = "main"
+
+# views.py
+from django.conf import settings
+
+
+
 
 def maintenance_page(request):
     status = SiteStatus.objects.first()
     maintenance_on = status.maintenance_mode if status else False
-    bypass = request.session.get('maintenance_bypass', False)
 
-    if request.method == 'POST':
-        password = request.POST.get('password', '')
-        if password == MAINTENANCE_PASSWORD:
+    # Handle POST first
+    if request.method == "POST":
+        if request.POST.get("deactivate_bypass"):
+            request.session['maintenance_bypass'] = False
+            request.session['maintenance_bypass_disabled'] = True
+            request.session.modified = True
+            return redirect(request.session.get("last_url", "/"))
+
+        elif request.POST.get("password") == getattr(settings, "MAINTENANCE_PASSWORD", ""):
             request.session['maintenance_bypass'] = True
-            bypass = True
-            return redirect('/')  # Zurück zur Startseite
+            request.session['maintenance_bypass_disabled'] = False
+            request.session.modified = True
+            return redirect(request.session.get("last_url", "/"))
 
-    context = {
-        "maintenance_mode": maintenance_on,
+    # Compute bypass after any POST changes
+    bypass = ((request.user.is_authenticated and request.user.is_superuser) or
+              request.session.get('maintenance_bypass', False)) and \
+             not request.session.get('maintenance_bypass_disabled', False)
+
+    # Show password field if bypass not active
+    show_password_form = not bypass
+
+    return render(request, "501.html", {
         "bypass": bypass,
-        "request": request
-    }
-    return render(request, '501.html', context)
+        "maintenance_on": maintenance_on,
+        "show_password_form": show_password_form,
+    })
+
+
 
 def search_users(request, shop_id):
     """
@@ -747,13 +768,32 @@ def picked_up(request, id):
         return JsonResponse({"status": "customer_not_payed", "order_id": order.id})
     
 
+from django.http import JsonResponse
+
 def site_status(request):
-    site_status = SiteStatus.objects.first()
-    maintenance = False
-    if site_status:
-        maintenance = site_status.maintenance_mode
-        print(maintenance)
-    return JsonResponse({"maintenance_mode": maintenance})
+    """
+    Returns the current maintenance status of the site and whether
+    the user/session has an active bypass.
+    """
+
+    # Get current maintenance status from the database
+    status = SiteStatus.objects.first()
+    maintenance_on = status.maintenance_mode if status else False
+
+    # Check if the temporary bypass has been disabled
+    bypass_disabled = request.session.get('maintenance_bypass_disabled', False)
+
+    # Compute effective bypass
+    bypass = (
+        ((request.user.is_authenticated and request.user.is_superuser) or
+         request.session.get('maintenance_bypass', False))
+        and not bypass_disabled
+    )
+
+    return JsonResponse({
+        "maintenance_mode": maintenance_on,
+        "bypass": bypass
+    })
 
 def togglehappyhour(request):
     if request.method != 'GET':

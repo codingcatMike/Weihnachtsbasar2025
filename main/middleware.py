@@ -10,13 +10,16 @@ class MaintenanceModeMiddleware:
         maintenance_on = status.maintenance_mode if status else False
         bypass = getattr(request.user, 'is_superuser', False) or request.session.get('maintenance_bypass', False)
 
-        # Print to console immediately
-        print(f"[MaintenanceMiddleware] maintenance_bypass session value: {request.session.get('maintenance_bypass')}")
-        print(f"[MaintenanceMiddleware] User: {request.user}, is_superuser: {getattr(request.user, 'is_superuser', False)}")
-        print(f"[MaintenanceMiddleware] Maintenance mode: {maintenance_on}, Bypass: {bypass}")
-
+        # Wenn Wartung aktiv und kein Bypass → weiterleiten
         if maintenance_on and not bypass:
-            if not request.path.startswith('/admin/') and request.path != '/501/' and not request.path.startswith('/api/'):
-                return redirect('/501/')
+            if (
+                not request.path.startswith("/api/")
+                and not request.path.startswith("/static/")
+                and not request.path.startswith("/favicon.ico")
+                and not request.path.startswith("/admin/")
+                and  request.path != "/501/"
+                
+            ):
+                return redirect("/501/")
 
         return self.get_response(request)

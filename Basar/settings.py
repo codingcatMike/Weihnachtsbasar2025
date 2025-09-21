@@ -12,6 +12,8 @@ SITE_URL = "https://webdevcode.de"
 SECRET_KEY = "django-insecure-ed%gkrmb9^7wd9rssu*0gwvp%3e2dept3mdx6o2v4^uzqu$to4"
 
 DEBUG = True
+MAINTENANCE_PASSWORD = "main"
+
 
 ALLOWED_HOSTS = [
     "webdevcode.de",
