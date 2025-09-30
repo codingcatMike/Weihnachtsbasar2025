@@ -1,0 +1,19 @@
+Log file for 2025-09-23
+Created at: 2025-09-23 09:17:39.442335
+Device : posix
+[Info] main accessed / page --at-- 2025-09-23 09:17:45.070584
+[Info]  accessed / page --at-- 2025-09-23 11:38:25.834956
+[Info]  accessed / page --at-- 2025-09-23 11:56:57.563068
+[Info]  accessed / page --at-- 2025-09-23 13:44:16.565401
+[Info]  accessed / page --at-- 2025-09-23 13:55:57.732257
+[Info] main accessed / page --at-- 2025-09-23 15:47:59.171425
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-23 15:48:10.080871
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-23 15:48:10.833223
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-23 15:48:11.475810
+[Info]  accessed / page --at-- 2025-09-23 17:47:32.128430
+[Info] Betatest accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-23 17:48:24.383234
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-23 17:48:58.077687
+[Info] Betatest accessed https://www.webdevcode.de/Shop/2/settings/ page --at-- 2025-09-23 17:50:23.029108
+[Info] Betatest accessed https://www.webdevcode.de/ page --at-- 2025-09-23 17:50:38.327999
+[Info]  accessed / page --at-- 2025-09-23 20:14:29.836662
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-23 20:35:04.142759

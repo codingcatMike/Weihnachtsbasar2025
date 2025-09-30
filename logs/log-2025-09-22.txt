@@ -1,0 +1,41 @@
+Log file for 2025-09-22
+Created at: 2025-09-22 05:31:42.030147
+Device : posix
+[Info]  accessed / page --at-- 2025-09-22 07:36:59.908570
+[Info] main accessed / page --at-- 2025-09-22 10:18:49.740560
+[Info]  accessed https://webdevcode.de/ page --at-- 2025-09-22 11:30:44.153232
+[Info] main accessed android-app://com.google.android.googlequicksearchbox/ page --at-- 2025-09-22 12:45:54.060923
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 12:46:00.562690
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-09-22 12:46:19.879749
+[Info]  accessed / page --at-- 2025-09-22 12:46:20.050366
+[Info]  accessed / page --at-- 2025-09-22 14:07:11.173132
+[Info]  accessed / page --at-- 2025-09-22 14:13:58.040662
+[Info] main accessed / page --at-- 2025-09-22 18:44:49.191793
+[Info]  accessed / page --at-- 2025-09-22 18:45:51.263607
+[Info] main accessed / page --at-- 2025-09-22 18:46:23.538362
+[Info] main accessed / page --at-- 2025-09-22 18:47:36.626282
+[Info] main accessed / page --at-- 2025-09-22 18:47:41.564438
+[Info] main accessed / page --at-- 2025-09-22 18:48:07.658538
+[Info] main accessed / page --at-- 2025-09-22 19:40:25.235880
+[Info] main accessed / page --at-- 2025-09-22 19:40:36.746416
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:40:50.622627
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:40:53.570436
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:40:59.945984
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:41:07.993024
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-22 19:41:22.800908
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-22 19:41:35.396602
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:41:42.231141
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:41:47.986820
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:41:52.554417
+[Info] main accessed / page --at-- 2025-09-22 19:42:07.822023
+[Info] main accessed https://www.webdevcode.de/501/ page --at-- 2025-09-22 19:42:53.400521
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:42:56.725723
+[Info] The Shop of main has been created successfully with name GammelderShopFürMikasSachen --at-- 2025-09-22 19:43:12.815298
+[Info] main accessed https://www.webdevcode.de/Shop/11/settings/ page --at-- 2025-09-22 19:44:08.366712
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:44:13.125791
+[Info] main accessed https://www.webdevcode.de/Shop/11/settings/ page --at-- 2025-09-22 19:46:39.416281
+[Info] main accessed / page --at-- 2025-09-22 19:46:47.138645
+[Info] main accessed https://www.webdevcode.de/Shop/11/settings/ page --at-- 2025-09-22 19:47:57.099885
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-22 19:48:05.464273
+[Info]  accessed / page --at-- 2025-09-22 21:55:32.577541
+[Info]  accessed / page --at-- 2025-09-22 22:32:34.503086

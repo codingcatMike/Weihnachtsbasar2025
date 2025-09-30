@@ -1,0 +1,14 @@
+Log file for 2025-09-30
+Created at: 2025-09-30 01:06:54.205233
+Device : posix
+[Info]  accessed / page --at-- 2025-09-30 02:30:37.752699
+[Info]  accessed / page --at-- 2025-09-30 03:43:33.386667
+[Info]  accessed / page --at-- 2025-09-30 04:05:16.170447
+[Info]  accessed / page --at-- 2025-09-30 11:43:36.821948
+[Info]  accessed / page --at-- 2025-09-30 17:09:11.308146
+[Info] main accessed / page --at-- 2025-09-30 17:10:58.572246
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-30 17:11:26.646874
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-09-30 17:11:31.242274
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-30 17:11:34.733211
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-30 17:11:36.558324
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-30 17:12:46.905592

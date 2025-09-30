@@ -1,0 +1,10 @@
+Log file for 2025-09-24
+Created at: 2025-09-24 00:18:30.599871
+Device : posix
+[Info]  accessed / page --at-- 2025-09-24 00:18:30.953051
+[Info]  accessed / page --at-- 2025-09-24 05:14:55.699053
+[Info] main accessed android-app://com.google.android.googlequicksearchbox/ page --at-- 2025-09-24 11:01:27.833680
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-24 11:01:31.938100
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-24 11:31:25.137994
+[Info]  accessed / page --at-- 2025-09-24 21:10:34.844234
+[Info]  accessed / page --at-- 2025-09-24 21:10:35.412149

@@ -1,0 +1,35 @@
+Log file for 2025-09-25
+Created at: 2025-09-25 09:00:43.135588
+Device : posix
+[Info]  accessed / page --at-- 2025-09-25 09:00:43.211554
+[Info]  accessed / page --at-- 2025-09-25 09:00:54.745313
+[Info]  accessed / page --at-- 2025-09-25 09:01:05.620360
+[Info]  accessed / page --at-- 2025-09-25 12:30:01.637930
+[Info]  accessed / page --at-- 2025-09-25 12:30:01.970842
+[Info]  accessed / page --at-- 2025-09-25 12:37:01.447811
+[Info] main accessed / page --at-- 2025-09-25 12:37:04.840144
+[Info] main accessed / page --at-- 2025-09-25 15:07:10.314774
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-25 15:11:52.445071
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-09-25 15:32:10.033789
+[Info] main accessed / page --at-- 2025-09-25 17:01:35.746562
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-25 17:02:28.088016
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-25 17:02:54.976012
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-25 17:03:11.221184
+[Info]  accessed / page --at-- 2025-09-25 17:46:57.854407
+[Info]  accessed / page --at-- 2025-09-25 17:46:59.630239
+[Info]  accessed / page --at-- 2025-09-25 17:57:22.393359
+[Info]  accessed / page --at-- 2025-09-25 17:57:23.568295
+[Info]  accessed / page --at-- 2025-09-25 17:57:50.211592
+[Info]  accessed / page --at-- 2025-09-25 17:57:54.246411
+[Info]  accessed / page --at-- 2025-09-25 17:58:32.710368
+[Info]  accessed / page --at-- 2025-09-25 17:58:34.281327
+[Info] main accessed / page --at-- 2025-09-25 19:17:05.678093
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-25 19:17:16.457807
+[Info]  accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-09-25 19:18:20.157999
+[Info]  accessed / page --at-- 2025-09-25 19:19:46.492333
+[Info]  accessed / page --at-- 2025-09-25 19:19:58.781403
+[Info]  accessed / page --at-- 2025-09-25 19:20:19.054915
+[Info]  accessed / page --at-- 2025-09-25 19:25:32.739157
+[Info]  accessed / page --at-- 2025-09-25 20:20:35.705984
+[Info]  accessed / page --at-- 2025-09-25 22:52:33.453899
+[Info]  accessed / page --at-- 2025-09-25 23:21:28.940574

@@ -521,3 +521,7 @@ Device : posix
 [Info] main accessed http://www.webdevcode.de/pay/ page --at-- 2025-09-21 18:43:24.273425
 [Info] main accessed http://www.webdevcode.de/ page --at-- 2025-09-21 18:43:28.376790
 [Info] main accessed http://www.webdevcode.de/501/ page --at-- 2025-09-21 18:43:31.685957
+[Info]  accessed / page --at-- 2025-09-21 18:52:05.565480
+[Info]  accessed / page --at-- 2025-09-21 19:26:11.149878
+[Info]  accessed / page --at-- 2025-09-21 19:29:45.024696
+[Info]  accessed / page --at-- 2025-09-21 23:38:42.543108
