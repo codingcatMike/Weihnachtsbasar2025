@@ -745,12 +745,29 @@ def maintenance_page(request):
 
 
 
+@require_GET
 def search_users(request, shop_id):
     """
-    Dummy view for searching users in a shop.
-    Replace with real implementation later.
+    Search users who are NOT sellers in the shop.
+    Query parameter 'q' can be used to filter by username.
     """
-    return JsonResponse({"status": "not implemented yet"})
+    query = request.GET.get("q", "").strip()
+
+    try:
+        shop = Shop.objects.get(id=shop_id)
+    except Shop.DoesNotExist:
+        return JsonResponse({"error": "Shop not found"}, status=404)
+
+    # Get all users excluding those who are sellers in this shop
+    users_qs = User.objects.exclude(id__in=shop.sellers.values_list('id', flat=True))
+
+    # Apply search filter if query provided
+    if query:
+        users_qs = users_qs.filter(username__icontains=query)
+
+    users_data = [{"id": u.id, "username": u.username, "email": u.email} for u in users_qs]
+
+    return JsonResponse({"users": users_data})
 
 def kitchen_view(request):
     orders = Order.objects.filter(products__needs_kitchen=True, picked_up=False).distinct()

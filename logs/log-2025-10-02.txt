@@ -1,0 +1,26 @@
+Log file for 2025-10-02
+Created at: 2025-10-02 06:54:16.915571
+Device : posix
+[Error] Someone tried to access shop page, but failed because he is not logged in --at-- 2025-10-02 06:54:17.455240
+[Info]  accessed / page --at-- 2025-10-02 06:54:17.728820
+[Info] The User account of main sent an order with customer id 7478 and products [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6] --at-- 2025-10-02 06:54:45.078794
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-10-02 06:54:45.317670
+[Info] The User account of main sent an order with customer id 7478 and products [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6] --at-- 2025-10-02 06:54:45.369262
+[Info] main accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-10-02 06:54:48.002543
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-10-02 06:54:50.691410
+[Info]  accessed / page --at-- 2025-10-02 08:39:51.637245
+[Info]  accessed / page --at-- 2025-10-02 09:00:32.204062
+[Info]  accessed / page --at-- 2025-10-02 10:24:50.240184
+[Info]  accessed / page --at-- 2025-10-02 10:25:32.243598
+[Info]  accessed / page --at-- 2025-10-02 10:25:32.899560
+[Info]  accessed / page --at-- 2025-10-02 10:25:33.447106
+[Info]  accessed / page --at-- 2025-10-02 10:26:22.091764
+[Info]  accessed / page --at-- 2025-10-02 10:30:36.582312
+[Info]  accessed android-app://com.google.android.googlequicksearchbox/ page --at-- 2025-10-02 14:42:54.215366
+[Info]  accessed / page --at-- 2025-10-02 18:53:59.187233
+[Info]  accessed / page --at-- 2025-10-02 18:53:59.317458
+[Info]  accessed / page --at-- 2025-10-02 18:54:42.132646
+[Info]  accessed / page --at-- 2025-10-02 18:54:42.196500
+[Info] main accessed / page --at-- 2025-10-02 19:44:25.160967
+[Info]  accessed / page --at-- 2025-10-02 21:50:19.243542
+[Info]  accessed / page --at-- 2025-10-02 22:55:28.048329

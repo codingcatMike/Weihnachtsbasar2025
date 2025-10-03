@@ -45,6 +45,8 @@
 
             {% if user.is_staff %}
             <li style="margin: 5px 0;"><a style="font-size: 18px; color: #1a73e8;" href="{% url 'cash_register' %}">Kassenübersicht</a></li>
+            <li style="margin: 5px 0;"><a style="font-size: 18px; color: #1a73e8;" href="{% url 'kitchen' %}">Küchenübersicht</a></li>
+            <li style="margin: 5px 0;"><a style="font-size: 18px; color: #1a73e8;" href="{% url 'generate_cupons' %}">Cupons generieren</a></li>
             {% endif %}
         </ul>
 

@@ -4,6 +4,8 @@ from django.views.static import serve
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
+def whoami(request):
+    return HttpResponse("Pi1")  # On Pi2, return "Pi2"
 
 urlpatterns = [
     path("", index, name="index"),
@@ -36,5 +38,7 @@ urlpatterns = [
     path('501/', maintenance_page, name='maintenance-page'),
     path("pay_sb_costs/", pay_sb_costs, name="pay_sb_costs"),
     path("generate-cupons/", generate_cupons, name="generate_cupons"),
+    path("whoami/", whoami, name="whoami"),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT, "show_indexes": True}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

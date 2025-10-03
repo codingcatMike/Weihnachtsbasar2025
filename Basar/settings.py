@@ -11,7 +11,7 @@ SITE_URL = "https://webdevcode.de"
 
 SECRET_KEY = "django-insecure-ed%gkrmb9^7wd9rssu*0gwvp%3e2dept3mdx6o2v4^uzqu$to4"
 
-DEBUG = True
+DEBUG = False
 MAINTENANCE_PASSWORD = "main"
 
 
@@ -20,6 +20,7 @@ ALLOWED_HOSTS = [
     "www.webdevcode.de",
     "127.0.0.1",
     "localhost",
+    "*"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -62,11 +63,22 @@ INSTALLED_APPS = [
 
 ASGI_APPLICATION = "Basar.asgi.application"
 
+# settings.py
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis-server-ip", 6379)],
+            "hosts": [{
+                # Redis URL as string
+                "address": "redis://192.168.178.145:6379",
+                # Password for authentication
+                "password": "webdevcode.de",
+            }],
+            # Maximum number of messages a channel can hold before dropping old ones
+            "capacity": 1000,
+            # Seconds to keep messages in Redis
+            "expiry": 60,
         },
     },
 }
@@ -110,13 +122,17 @@ WSGI_APPLICATION = "Basar.wsgi.application"
 # Database
 # -------------------
 
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'weihnachtsbasar',
+        'USER': 'basar_user',
+        'PASSWORD': 'webdevcode.de',
+        'HOST': '192.168.178.145',  # The Pi1 or whichever host runs Postgres
+        'PORT': '5432',
     }
 }
-
 # -------------------
 # Password validation
 # -------------------

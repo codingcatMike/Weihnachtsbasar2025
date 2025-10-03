@@ -51,7 +51,9 @@
         </li>
         {% endfor %}
     </ul>
-        <h2>Add User</h2>
+
+    <!-- Add User Section -->
+    <h2>Add User</h2>
     <div style="position: relative; margin-bottom:30px;">
         <input type="text" id="user-search" placeholder="Type username..." style="padding:5px; width:250px;">
         <ul id="user-results" style="list-style:none; padding:5px; margin:0; border:1px solid #ccc; position:absolute; width:250px; background:white; z-index:10; display:none;"></ul>
@@ -71,6 +73,7 @@
         <button type="submit" style="padding:6px 12px; background-color:#2ecc71; color:white; border:none; border-radius:4px;">Create Product</button>
     </form>
 </div>
+
 <script>
 const searchInput = document.getElementById('user-search');
 const resultsList = document.getElementById('user-results');
@@ -88,12 +91,12 @@ searchInput.addEventListener('input', function() {
         .then(res => res.json())
         .then(data => {
             resultsList.innerHTML = '';
-            if (data.length === 0) {
+            if (!data.users || data.users.length === 0) {
                 resultsList.style.display = 'none';
                 return;
             }
 
-            data.forEach(user => {
+            data.users.forEach(user => {
                 const li = document.createElement('li');
                 li.textContent = user.username;
                 li.style.padding = '5px';
@@ -117,6 +120,7 @@ document.addEventListener('click', function(e) {
     }
 });
 </script>
+
 <style>
 #user-results li {
     color: black;

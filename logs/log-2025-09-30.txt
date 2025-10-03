@@ -13,3 +13,19 @@ Device : posix
 [Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-30 17:11:36.558324
 [Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-30 17:12:46.905592
 [Info]  accessed / page --at-- 2025-09-30 17:46:33.026089
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-30 18:50:09.021685
+[Info] main accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-30 19:20:17.513782
+[Info]  accessed https://www.webdevcode.de/Shop/1/settings/ page --at-- 2025-09-30 19:40:14.336647
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-09-30 19:43:03.449539
+[Info] main accessed / page --at-- 2025-09-30 19:43:45.909332
+[Info] main accessed / page --at-- 2025-09-30 19:43:46.669806
+[Info] main accessed / page --at-- 2025-09-30 19:43:47.375541
+[Info] main accessed http://192.168.178.145/ page --at-- 2025-09-30 19:43:49.181871
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-09-30 19:44:20.728312
+[Info] main accessed http://192.168.178.145/ page --at-- 2025-09-30 19:49:14.281806
+[Info] main accessed http://192.168.178.145/ page --at-- 2025-09-30 19:54:36.619682
+[Info] main accessed / page --at-- 2025-09-30 19:56:32.683561
+[Info] main accessed / page --at-- 2025-09-30 19:57:52.176432
+[Info] main accessed / page --at-- 2025-09-30 19:59:11.613335
+[Info] main accessed / page --at-- 2025-09-30 20:00:05.286134
+[Info] main accessed / page --at-- 2025-09-30 20:02:04.199627
