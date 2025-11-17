@@ -1,0 +1,181 @@
+Log file for 2025-11-17
+Created at: 2025-11-17 06:42:08.307008
+Device : posix
+[Info]  accessed / page --at-- 2025-11-17 06:44:14.714898
+[Info]  accessed / page --at-- 2025-11-17 06:57:47.882056
+[Info]  accessed / page --at-- 2025-11-17 10:26:21.499298
+[Info]  accessed / page --at-- 2025-11-17 10:26:32.139422
+[Info]  accessed / page --at-- 2025-11-17 10:27:20.096818
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:27:43.606744
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:28:15.396521
+[Info]  accessed / page --at-- 2025-11-17 10:28:16.110420
+[Info]  accessed / page --at-- 2025-11-17 10:28:16.374284
+[Info]  accessed / page --at-- 2025-11-17 10:28:16.689422
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:28:22.523830
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-11-17 10:28:23.243269
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-11-17 10:28:38.541049
+[Info]  accessed / page --at-- 2025-11-17 10:28:39.354923
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:28:41.507497
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:29:58.906420
+[Info] main accessed / page --at-- 2025-11-17 10:31:24.017500
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-11-17 10:31:24.524601
+[Info]  accessed / page --at-- 2025-11-17 10:31:24.623254
+[Info]  accessed / page --at-- 2025-11-17 10:31:24.998947
+[Info]  accessed / page --at-- 2025-11-17 10:34:52.283086
+[Info]  accessed / page --at-- 2025-11-17 10:34:59.104085
+[Info]  accessed / page --at-- 2025-11-17 10:35:06.686535
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:35:09.419224
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:35:20.382495
+[Info]  accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:36:28.259407
+[Info]  accessed / page --at-- 2025-11-17 10:36:33.013328
+[Info]  accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:37:58.362949
+[Info]  accessed https://www.google.com/ page --at-- 2025-11-17 10:38:30.534182
+[Info]  accessed https://www.google.com/ page --at-- 2025-11-17 10:40:28.858745
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:34.462184
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:39.682170
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:40.531970
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:41.486856
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:42.149272
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:42.344921
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:42.517634
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:42.725299
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:42.929935
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:43.152769
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:43.355353
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:43.557784
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:43.811957
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:44.653243
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:40:50.466054
+[Info]  accessed https://www.google.com/ page --at-- 2025-11-17 10:40:57.185962
+[Info] test9 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:41:31.668174
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:41:42.364679
+[Info] test9 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:43:28.192012
+[Info]  accessed / page --at-- 2025-11-17 10:56:06.624146
+[Info] test9 accessed https://www.google.com/ page --at-- 2025-11-17 10:56:20.777210
+[Info]  accessed / page --at-- 2025-11-17 10:56:26.352194
+[Info] test9 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:56:44.353874
+[Info]  accessed / page --at-- 2025-11-17 10:57:10.339072
+[Info]  accessed / page --at-- 2025-11-17 10:57:13.070259
+[Info]  accessed https://www.google.com/ page --at-- 2025-11-17 10:57:16.842642
+[Info] test9 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:57:36.034009
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-11-17 10:57:38.422922
+[Info] test9 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:57:43.799587
+[Info] test9 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:57:54.083462
+[Info] test9 accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 10:57:56.342993
+[Info]  accessed / page --at-- 2025-11-17 10:58:13.788868
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:58:25.063260
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:58:25.245597
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:58:26.101307
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:58:27.707872
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:58:27.758742
+[Info] The Shop of main has been created successfully with name Test --at-- 2025-11-17 10:58:50.429482
+[Info] The Shop of test9 has been created successfully with name Seifen/Kerzen --at-- 2025-11-17 10:58:52.847963
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-17 10:58:53.062477
+[Info] The Shop of test9 has been created successfully with name afrikanischer schmuck --at-- 2025-11-17 10:59:04.138641
+[Info] The Shop of test9 has been created successfully with name Schmuck --at-- 2025-11-17 10:59:09.949000
+[Info] The Shop of test9 has been created successfully with name Waffeln --at-- 2025-11-17 10:59:21.741035
+[Info] The Shop of test9 has been created successfully with name Smoothies --at-- 2025-11-17 10:59:34.389447
+[Info] test9 accessed https://www.webdevcode.de/Shop/15/settings/ page --at-- 2025-11-17 11:00:23.070821
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/settings/ page --at-- 2025-11-17 11:00:41.950262
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/settings/ page --at-- 2025-11-17 11:00:42.278512
+[Info] main accessed https://www.webdevcode.de/Shop/13/settings/ page --at-- 2025-11-17 11:00:43.348221
+[Error] Someone tried to access shop page, but failed because he is not logged in --at-- 2025-11-17 11:00:44.515117
+[Info]  accessed / page --at-- 2025-11-17 11:00:44.577456
+[Info] test9 accessed https://www.webdevcode.de/Shop/16/settings/ page --at-- 2025-11-17 11:00:46.981161
+[Info]  accessed / page --at-- 2025-11-17 11:01:00.438894
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/ page --at-- 2025-11-17 11:02:13.260947
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/ page --at-- 2025-11-17 11:02:16.646408
+[Info] test9 accessed https://www.webdevcode.de/Shop/16/settings/ page --at-- 2025-11-17 11:02:16.969078
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/settings/ page --at-- 2025-11-17 11:02:18.063240
+[Info] main accessed https://www.webdevcode.de/Shop/13/settings/ page --at-- 2025-11-17 11:02:19.458942
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/settings/ page --at-- 2025-11-17 11:02:23.738819
+[Info] The User account of test9 sent an order with customer id 67 and products [12, 12, 12, 12, 12] --at-- 2025-11-17 11:02:27.215349
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/ page --at-- 2025-11-17 11:02:27.425161
+[Info] The User account of test9 sent an order with customer id 12 and products [12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12] --at-- 2025-11-17 11:03:26.201079
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/ page --at-- 2025-11-17 11:03:26.408579
+[Info] The User account of test9 sent an order with customer id 26 and products [11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14] --at-- 2025-11-17 11:03:35.484193
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/ page --at-- 2025-11-17 11:03:35.585561
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/ page --at-- 2025-11-17 11:04:16.268913
+[Info] The User account of main sent an order with customer id 26 and products [13, 13, 13, 13, 13, 13, 13] --at-- 2025-11-17 11:04:50.152401
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:04:50.313552
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/ page --at-- 2025-11-17 11:04:51.587751
+[Info] The User account of test9 sent an order with customer id 26 and products [10, 10] --at-- 2025-11-17 11:04:53.248226
+[Info] test9 accessed https://www.webdevcode.de/Shop/16/settings/ page --at-- 2025-11-17 11:04:53.487620
+[Info] test9 accessed https://www.webdevcode.de/Shop/16/settings/ page --at-- 2025-11-17 11:04:53.789952
+[Info] main accessed / page --at-- 2025-11-17 11:05:20.647530
+[Info] main accessed / page --at-- 2025-11-17 11:05:24.658739
+[Info] main accessed / page --at-- 2025-11-17 11:05:24.678724
+[Info]  accessed / page --at-- 2025-11-17 11:05:32.851493
+[Info] test9 accessed https://www.webdevcode.de/Shop/17/settings/ page --at-- 2025-11-17 11:05:34.051897
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:05:39.888716
+[Info] The User account of test9 sent an order with customer id 26 and products [11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 14] --at-- 2025-11-17 11:05:46.565425
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/ page --at-- 2025-11-17 11:05:46.688677
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/ page --at-- 2025-11-17 11:05:48.173650
+[Info] The User account of test9 sent an order with customer id 26 and products [10, 10] --at-- 2025-11-17 11:05:50.251018
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-17 11:05:54.435741
+[Error] Someone tried to access shop page, but failed because he is not logged in --at-- 2025-11-17 11:05:57.529769
+[Info]  accessed / page --at-- 2025-11-17 11:05:57.968128
+[Error] Someone tried to access shop page, but failed because he is not logged in --at-- 2025-11-17 11:06:00.572187
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:06:05.939326
+[Info] test9 accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-11-17 11:06:18.542873
+[Info] test9 accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-11-17 11:06:18.872420
+[Info] The User account of test9 sent an order with customer id 26 and products [11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 14] --at-- 2025-11-17 11:06:42.818147
+[Info] test9 accessed https://www.webdevcode.de/Shop/14/settings/ page --at-- 2025-11-17 11:07:01.340692
+[Info] main accessed https://www.webdevcode.de/Shop/13/settings/ page --at-- 2025-11-17 11:07:03.620636
+[Info] The User account of test9 sent an order with customer id 67 and products [11, 11, 11] --at-- 2025-11-17 11:07:05.692813
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/ page --at-- 2025-11-17 11:07:05.807850
+[Info] main accessed / page --at-- 2025-11-17 11:07:19.166257
+[Info] The User account of test9 sent an order with customer id 51 and products [8, 18, 18] --at-- 2025-11-17 11:07:23.277573
+[Info] test9 accessed https://www.webdevcode.de/Shop/1/ page --at-- 2025-11-17 11:07:23.475860
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:07:30.104229
+[Info] The User account of main sent an order with customer id 26 and products [13] --at-- 2025-11-17 11:07:56.604802
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:07:56.727141
+[Info] The User account of test9 sent an order with customer id 11 and products [17, 17] --at-- 2025-11-17 11:07:57.640804
+[Info] test9 accessed https://www.webdevcode.de/Shop/14/ page --at-- 2025-11-17 11:07:57.753874
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:08:01.652833
+[Info] The User account of test9 sent an order with customer id 69 and products [11, 11, 11, 11] --at-- 2025-11-17 11:08:03.855344
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/ page --at-- 2025-11-17 11:08:03.978408
+[Info] main accessed / page --at-- 2025-11-17 11:08:14.041919
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-11-17 11:08:27.920637
+[Info] The User account of main sent an order with customer id 26 and products [13] --at-- 2025-11-17 11:08:54.940977
+[Info] The User account of main sent an order with customer id 26 and products [13] --at-- 2025-11-17 11:08:56.496905
+[Info] test9 accessed / page --at-- 2025-11-17 11:09:13.219140
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:09:42.017648
+[Info] main accessed / page --at-- 2025-11-17 11:09:50.137641
+[Info] main accessed / page --at-- 2025-11-17 11:09:54.060798
+[Info] main accessed / page --at-- 2025-11-17 11:09:54.725029
+[Info] main accessed / page --at-- 2025-11-17 11:09:59.047462
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:10:11.414202
+[Info] The User account of test9 sent an order with customer id 27 and products [11, 11, 11] --at-- 2025-11-17 11:10:12.665663
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/ page --at-- 2025-11-17 11:10:12.846023
+[Info] test9 accessed https://www.webdevcode.de/Shop/18/ page --at-- 2025-11-17 11:10:14.039990
+[Info] The User account of main sent an order with customer id 26 and products [20, 20, 20, 20, 20, 20, 20, 20, 20, 20] --at-- 2025-11-17 11:10:28.624088
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:10:28.882781
+[Info] The User account of main sent an order with customer id 26 and products [20] --at-- 2025-11-17 11:10:46.414497
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:10:46.593470
+[Info] The User account of test9 sent an order with customer id 27 and products [11, 11, 11] --at-- 2025-11-17 11:11:02.230624
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:11:10.892547
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:11:38.285839
+[Info] The User account of main sent an order with customer id 26 and products [21] --at-- 2025-11-17 11:11:47.813835
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:11:48.001254
+[Info] The User account of main sent an order with customer id 26 and products [21] --at-- 2025-11-17 11:12:01.291314
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:12:01.426154
+[Info] The User account of main sent an order with customer id 26 and products [20, 21] --at-- 2025-11-17 11:12:18.368266
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:12:18.545976
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-11-17 11:12:24.535162
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:12:26.541183
+[Info] main accessed https://www.webdevcode.de/Shop/13/ page --at-- 2025-11-17 11:12:33.395476
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 11:12:56.240360
+[Info]  accessed / page --at-- 2025-11-17 11:13:04.191121
+[Info] main accessed / page --at-- 2025-11-17 11:13:05.275591
+[Info] main accessed / page --at-- 2025-11-17 11:13:06.323173
+[Info]  accessed / page --at-- 2025-11-17 14:32:58.459093
+[Info]  accessed / page --at-- 2025-11-17 14:33:58.759769
+[Info] main accessed / page --at-- 2025-11-17 15:26:02.559451
+[Info]  accessed / page --at-- 2025-11-17 15:26:19.307430
+[Info] main accessed / page --at-- 2025-11-17 15:26:24.766545
+[Info] main accessed / page --at-- 2025-11-17 15:26:26.044298
+[Info]  accessed / page --at-- 2025-11-17 15:26:34.186431
+[Info]  accessed / page --at-- 2025-11-17 15:26:35.193535
+[Info] main accessed / page --at-- 2025-11-17 15:26:55.377895
+[Info]  accessed / page --at-- 2025-11-17 15:29:18.804759

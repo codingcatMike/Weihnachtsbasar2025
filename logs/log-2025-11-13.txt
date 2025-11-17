@@ -1,0 +1,60 @@
+Log file for 2025-11-13
+Created at: 2025-11-13 11:35:39.723575
+Device : posix
+[Info]  accessed / page --at-- 2025-11-13 11:35:52.510047
+[Info]  accessed / page --at-- 2025-11-13 11:36:11.849557
+[Info]  accessed / page --at-- 2025-11-13 11:36:12.444029
+[Info]  accessed / page --at-- 2025-11-13 11:44:00.429453
+[Info]  accessed / page --at-- 2025-11-13 11:45:04.731004
+[Info]  accessed / page --at-- 2025-11-13 11:45:16.377220
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-13 11:46:43.051741
+[Info]  accessed / page --at-- 2025-11-13 11:47:15.416989
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-13 11:47:27.038327
+[Info] main accessed / page --at-- 2025-11-13 11:55:31.151583
+[Info] main accessed / page --at-- 2025-11-13 12:00:05.203847
+[Info] main accessed / page --at-- 2025-11-13 12:00:14.284791
+[Info] main accessed / page --at-- 2025-11-13 12:00:16.164845
+[Info]  accessed / page --at-- 2025-11-13 12:00:46.624305
+[Info]  accessed / page --at-- 2025-11-13 12:00:48.453575
+[Info]  accessed / page --at-- 2025-11-13 12:01:00.084723
+[Info]  accessed / page --at-- 2025-11-13 12:01:01.465139
+[Info]  accessed / page --at-- 2025-11-13 12:01:11.102160
+[Info]  accessed / page --at-- 2025-11-13 12:01:15.897000
+[Info]  accessed / page --at-- 2025-11-13 12:02:18.241927
+[Info]  accessed / page --at-- 2025-11-13 12:02:20.488997
+[Info]  accessed / page --at-- 2025-11-13 12:02:28.212944
+[Info]  accessed / page --at-- 2025-11-13 12:02:30.578177
+[Info]  accessed / page --at-- 2025-11-13 12:02:40.559834
+[Info]  accessed / page --at-- 2025-11-13 12:02:41.061840
+[Info]  accessed / page --at-- 2025-11-13 12:04:23.712442
+[Info]  accessed / page --at-- 2025-11-13 12:04:25.683970
+[Info]  accessed / page --at-- 2025-11-13 12:04:33.675130
+[Info]  accessed / page --at-- 2025-11-13 12:04:36.098154
+[Info]  accessed / page --at-- 2025-11-13 12:04:43.505557
+[Info]  accessed / page --at-- 2025-11-13 12:04:46.267296
+[Info]  accessed / page --at-- 2025-11-13 12:06:14.872885
+[Info]  accessed / page --at-- 2025-11-13 12:08:51.094790
+[Info]  accessed / page --at-- 2025-11-13 12:14:15.048907
+[Info] main accessed / page --at-- 2025-11-13 12:14:22.543483
+[Info] main accessed / page --at-- 2025-11-13 12:16:47.751572
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-13 12:16:52.883908
+[Info] main accessed https://www.webdevcode.de/help/ page --at-- 2025-11-13 12:17:08.021383
+[Info] main accessed https://www.webdevcode.de/help/ page --at-- 2025-11-13 12:17:10.017956
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-13 12:17:18.499302
+[Info] main accessed / page --at-- 2025-11-13 12:17:26.089869
+[Info] main accessed / page --at-- 2025-11-13 12:17:46.783872
+[Info] main accessed / page --at-- 2025-11-13 12:18:32.821266
+[Info] main accessed / page --at-- 2025-11-13 12:18:40.635691
+[Info] main accessed / page --at-- 2025-11-13 12:19:28.069938
+[Info]  accessed / page --at-- 2025-11-13 12:44:08.980942
+[Info]  accessed / page --at-- 2025-11-13 12:45:07.730591
+[Info]  accessed https://www.google.com/ page --at-- 2025-11-13 12:50:40.474917
+[Info]  accessed / page --at-- 2025-11-13 12:50:49.304278
+[Info]  accessed / page --at-- 2025-11-13 12:51:52.698711
+[Info]  accessed / page --at-- 2025-11-13 12:55:12.269410
+[Info]  accessed / page --at-- 2025-11-13 12:55:12.404867
+[Info] main accessed https://www.google.com/ page --at-- 2025-11-13 13:08:58.916284
+[Info]  accessed http://webdevcode.de/ page --at-- 2025-11-13 14:17:02.570667
+[Info]  accessed / page --at-- 2025-11-13 14:39:41.806079
+[Info]  accessed / page --at-- 2025-11-13 16:47:59.233010
+[Info] main accessed / page --at-- 2025-11-13 19:18:22.251750

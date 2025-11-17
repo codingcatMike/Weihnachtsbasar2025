@@ -1,0 +1,12 @@
+Log file for 2025-10-20
+Created at: 2025-10-20 21:25:33.915026
+Device : posix
+[Info]  accessed / page --at-- 2025-10-20 21:26:34.313800
+[Info]  accessed / page --at-- 2025-10-20 21:26:39.540310
+[Info]  accessed / page --at-- 2025-10-20 21:26:40.284449
+[Info]  accessed / page --at-- 2025-10-20 21:26:40.852345
+[Info]  accessed / page --at-- 2025-10-20 21:26:42.192435
+[Info] main accessed http://192.168.1.4/accounts/login/ page --at-- 2025-10-20 21:27:12.740111
+[Info] main accessed http://192.168.1.4/accounts/login/ page --at-- 2025-10-20 21:27:17.679399
+[Info]  accessed / page --at-- 2025-10-20 21:45:07.196072
+[Info] main accessed / page --at-- 2025-10-20 21:45:36.071136

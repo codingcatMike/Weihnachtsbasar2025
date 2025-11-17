@@ -1,0 +1,17 @@
+Log file for 2025-10-22
+Created at: 2025-10-22 20:14:13.654654
+Device : posix
+[Info]  accessed / page --at-- 2025-10-22 20:14:16.254102
+[Info]  accessed / page --at-- 2025-10-22 20:15:06.312093
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-10-22 20:15:08.436445
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-10-22 20:15:32.363438
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-10-22 20:16:01.739033
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-10-22 20:16:28.349462
+[Info] main accessed / page --at-- 2025-10-22 20:16:31.452593
+[Info] main accessed / page --at-- 2025-10-22 20:16:33.949982
+[Info] main accessed / page --at-- 2025-10-22 20:16:54.217349
+[Info] The User account of main sent an order with customer id 891 and products [4] --at-- 2025-10-22 20:17:07.632672
+[Info] main accessed https://www.webdevcode.de/Shop/5/ page --at-- 2025-10-22 20:17:08.091236
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-10-22 20:17:10.966232
+[Info] main accessed / page --at-- 2025-10-22 20:17:22.551587
+[Info]  accessed / page --at-- 2025-10-22 20:22:10.894584

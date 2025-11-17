@@ -3,9 +3,11 @@ from django.urls import path, include, re_path
 from django.views.static import serve
 from .views import *
 from django.conf import settings
+import socket
 from django.conf.urls.static import static
 def whoami(request):
-    return HttpResponse("Pi1")  # On Pi2, return "Pi2"
+    device_name = socket.gethostname()
+    return HttpResponse(device_name)
 
 urlpatterns = [
     path("", index, name="index"),

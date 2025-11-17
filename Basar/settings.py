@@ -6,12 +6,12 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+  
 SITE_URL = "https://webdevcode.de"
 
 SECRET_KEY = "django-insecure-ed%gkrmb9^7wd9rssu*0gwvp%3e2dept3mdx6o2v4^uzqu$to4"
 
-DEBUG = False
+DEBUG = True
 MAINTENANCE_PASSWORD = "main"
 
 
@@ -70,7 +70,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
             "hosts": [{
-                # Redis URL as string
+                 # Redis URL as string
                 "address": "redis://192.168.178.145:6379",
                 # Password for authentication
                 "password": "webdevcode.de",
