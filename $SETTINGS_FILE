@@ -1,0 +1,14 @@
+
+import os
+import importlib.util
+
+# Path to your environment file
+ENV_FILE = os.path.expanduser("~/config/env.py")
+
+# Load environment file if it exists
+if os.path.exists(ENV_FILE):
+    spec = importlib.util.spec_from_file_location("env", ENV_FILE)
+    env = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(env)
+else:
+    env = None

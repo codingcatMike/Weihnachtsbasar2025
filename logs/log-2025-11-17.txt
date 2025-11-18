@@ -179,3 +179,17 @@ Device : posix
 [Info]  accessed / page --at-- 2025-11-17 15:26:35.193535
 [Info] main accessed / page --at-- 2025-11-17 15:26:55.377895
 [Info]  accessed / page --at-- 2025-11-17 15:29:18.804759
+[Info] main accessed / page --at-- 2025-11-17 15:47:19.314303
+[Error]  tried to access cash register page, but failed because he is not a staff member --at-- 2025-11-17 16:13:25.677751
+[Info] main accessed / page --at-- 2025-11-17 16:48:50.660352
+[Info] main accessed http://www.webdevcode.de/Shop/17/settings/ page --at-- 2025-11-17 16:49:02.374552
+[Info]  accessed / page --at-- 2025-11-17 16:49:49.145221
+[Info] main accessed / page --at-- 2025-11-17 17:05:36.407326
+[Info] main accessed / page --at-- 2025-11-17 17:07:00.382486
+[Info]  accessed / page --at-- 2025-11-17 17:07:01.810628
+[Info] main accessed https://www.google.com/ page --at-- 2025-11-17 19:48:17.521776
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 19:49:07.109007
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-17 19:49:31.555048
+[Info]  accessed / page --at-- 2025-11-17 20:12:33.690244
+[Info]  accessed / page --at-- 2025-11-17 21:54:27.250191
+[Info]  accessed / page --at-- 2025-11-17 23:25:26.513940

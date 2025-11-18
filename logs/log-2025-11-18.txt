@@ -1,0 +1,35 @@
+Log file for 2025-11-18
+Created at: 2025-11-18 04:00:53.946612
+Device : posix
+[Info]  accessed / page --at-- 2025-11-18 07:07:16.651373
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-18 07:07:52.599222
+[Info]  accessed / page --at-- 2025-11-18 07:08:15.139050
+[Info]  accessed / page --at-- 2025-11-18 09:55:30.610002
+[Info]  accessed / page --at-- 2025-11-18 09:56:34.030579
+[Info] test9 accessed https://www.google.com/ page --at-- 2025-11-18 10:43:29.935118
+[Info] test9 accessed https://www.google.com/ page --at-- 2025-11-18 10:43:34.968133
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-18 10:43:49.685753
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-18 10:44:30.471834
+[Info] test9 accessed https://www.webdevcode.de/ page --at-- 2025-11-18 10:45:18.365102
+[Info] main accessed https://www.google.com/url?q=https://www.webdevcode.de/&sa=U&ved=2ahUKEwjLwJy1xvuQAxVkQPEDHfXqEgAQFnoECBoQAQ&usg=AOvVaw1vcc2rP_TT6Z0NRPdIG6U0 page --at-- 2025-11-18 11:02:37.894935
+[Info] main accessed / page --at-- 2025-11-18 11:11:01.513524
+[Info] main accessed / page --at-- 2025-11-18 12:17:25.501728
+[Info] main accessed / page --at-- 2025-11-18 12:21:29.348631
+[Info] main accessed / page --at-- 2025-11-18 12:23:45.096356
+[Info] main accessed / page --at-- 2025-11-18 12:27:06.950684
+[Info] main accessed / page --at-- 2025-11-18 12:27:12.559540
+[Info] main accessed / page --at-- 2025-11-18 12:28:07.349692
+[Info] main accessed / page --at-- 2025-11-18 12:29:14.885061
+[Info] main accessed / page --at-- 2025-11-18 12:29:57.394189
+[Info] main accessed / page --at-- 2025-11-18 12:29:58.949016
+[Info] main accessed / page --at-- 2025-11-18 12:30:00.305817
+[Info] main accessed / page --at-- 2025-11-18 12:30:01.685298
+[Info] main accessed / page --at-- 2025-11-18 12:30:28.855644
+[Info] main accessed / page --at-- 2025-11-18 12:30:30.025387
+[Info] main accessed / page --at-- 2025-11-18 12:30:31.581327
+[Info]  accessed https://www.google.com/ page --at-- 2025-11-18 12:35:02.893922
+[Info]  accessed / page --at-- 2025-11-18 12:36:59.275434
+[Info]  accessed / page --at-- 2025-11-18 12:37:02.709138
+[Info]  accessed https://www.google.com/ page --at-- 2025-11-18 12:37:40.721814
+[Info]  accessed / page --at-- 2025-11-18 15:20:11.702508
+[Info]  accessed / page --at-- 2025-11-18 15:46:05.954455
