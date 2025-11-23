@@ -26,7 +26,7 @@ class ShopAddForm(forms.ModelForm):
 class ProductAddForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'price', 'happy_hour_price', 'shop']
+        fields = ['name', 'price', 'happy_hour_price', 'shop', 'needs_kitchen' ]
 
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)

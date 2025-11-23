@@ -1,0 +1,37 @@
+Log file for 2025-11-23
+Created at: 2025-11-23 00:27:25.293083
+Device : posix
+[Info]  accessed / page --at-- 2025-11-23 02:19:27.331505
+[Info] main accessed / page --at-- 2025-11-23 13:35:13.973956
+[Info] main accessed / page --at-- 2025-11-23 13:36:48.378657
+[Info] main accessed / page --at-- 2025-11-23 13:36:52.630904
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:36:54.604819
+[Info] The User account of main sent an order with customer id 1 and products [22] --at-- 2025-11-23 13:37:08.006641
+[Info] main accessed / page --at-- 2025-11-23 13:37:35.922554
+[Info] The User account of main sent an order with customer id 1 and products [23] --at-- 2025-11-23 13:37:48.410298
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:39:22.706581
+[Info] The User account of main sent an order with customer id 1 and products [22] --at-- 2025-11-23 13:39:33.513799
+[Info] The User account of main sent an order with customer id 2 and products [23] --at-- 2025-11-23 13:40:51.849079
+[Info] The User account of main sent an order with customer id 2 and products [23] --at-- 2025-11-23 13:40:58.941414
+[Info] main accessed / page --at-- 2025-11-23 13:42:15.020634
+[Info] The User account of main sent an order with customer id 2 and products [22] --at-- 2025-11-23 13:42:23.621567
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:42:23.736895
+[Info] The User account of main sent an order with customer id 2 and products [22] --at-- 2025-11-23 13:42:30.990086
+[Info] The User account of main sent an order with customer id 2 and products [22] --at-- 2025-11-23 13:42:33.122016
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:42:33.233729
+[Info] main accessed / page --at-- 2025-11-23 13:42:36.927827
+[Info] main accessed / page --at-- 2025-11-23 13:43:37.030377
+[Info] main accessed / page --at-- 2025-11-23 13:43:38.588367
+[Info] main accessed / page --at-- 2025-11-23 13:43:58.166069
+[Info] main accessed / page --at-- 2025-11-23 13:46:39.833917
+[Info] The User account of main sent an order with customer id 3 and products [23] --at-- 2025-11-23 13:47:18.634029
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:47:21.822346
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:52:42.318559
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:52:49.236990
+[Info] main accessed / page --at-- 2025-11-23 13:56:10.421777
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-23 13:56:14.724351
+[Info] The User account of main sent an order with customer id 5 and products {22: 1} --at-- 2025-11-23 13:56:19.613832
+[Info] The User account of main sent an order with customer id 5 and products {23: 1} --at-- 2025-11-23 13:56:25.712191
+[Info] main accessed / page --at-- 2025-11-23 13:56:28.177873
+[Info] main accessed / page --at-- 2025-11-23 13:56:29.346100
+[Info] main accessed / page --at-- 2025-11-23 13:56:29.945457

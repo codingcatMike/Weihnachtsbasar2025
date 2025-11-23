@@ -289,68 +289,111 @@ def create_product(request):
         messages.error(request, 'You are not allowed to access this page, because you are not logged in')
         log(f"Someone tried to access create product page, but failed because he is not logged in", 2)
         return redirect('index')
+from collections import Counter
+import json
+
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+
+# assume log, announce_order_update, send_orders_update, send_order_customer_update exist
+# and models are already imported: Shop, Customers, Order, Product, OrderItem, HappyHour
 
 def SendOrder(request):
     if request.method != 'POST':
         return JsonResponse({"status": "error", "message": "Nur POST erlaubt"}, status=405)
-    
-    data = json.loads(request.body)
-    shop = data.get('shop')
+
+    try:
+        data = json.loads(request.body)
+    except Exception:
+        return JsonResponse({"status": "error", "message": "Ungültiges JSON"}, status=400)
+
+    shop_id = data.get('shop')
     customer_id = data.get('customer_id')
-    products = data.get('products', [])
-    print('Your shop is: ' + shop)
-    if not customer_id or not products:
+    products_raw = data.get('products', [])
+
+    if not customer_id or not products_raw:
         return JsonResponse({"status": "error", "message": "Kunden-ID oder Produkte fehlen"}, status=400)
 
-
-    shop_obj = get_object_or_404(Shop, id=shop)
+    shop_obj = get_object_or_404(Shop, id=shop_id)
 
     if not shop_obj.activated:
-        messages.error(request, "Dein Shop ist nicht aktiviert.\nWende dich an den Admin")
-        return JsonResponse(
-            {"status": "error", "message": "Der Shop ist nicht aktiviert"}, 
-            status=400
-        )
+        return JsonResponse({"status": "error", "message": "Der Shop ist nicht aktiviert"}, status=400)
 
+    # Normalize products into Counter {product_id: quantity}
+    counter = Counter()
+    # Accept two formats:
+    # 1) products = [1, 2, 2, 3]  -> duplicates count as quantity
+    # 2) products = [{"id": 1, "quantity": 2}, {"id": 3, "quantity": 4}]
+    if isinstance(products_raw, list) and products_raw:
+        if all(isinstance(x, dict) and 'id' in x for x in products_raw):
+            for entry in products_raw:
+                try:
+                    pid = int(entry['id'])
+                except Exception:
+                    return JsonResponse({"status": "error", "message": "Ungültige Produkt-ID"}, status=400)
+                qty = int(entry.get('quantity', 1))
+                if qty <= 0:
+                    continue
+                counter[pid] += qty
+        else:
+            # treat as list of ids
+            try:
+                ids = [int(x) for x in products_raw]
+            except Exception:
+                return JsonResponse({"status": "error", "message": "Ungültige Produktliste"}, status=400)
+            counter.update(ids)
+    else:
+        return JsonResponse({"status": "error", "message": "Produkte müssen eine Liste sein"}, status=400)
 
-    customer, created_customer = Customers.objects.get_or_create(id=customer_id)
-    order, created_order = Order.objects.get_or_create(customer=customer, defaults={"price": 0})
-    counter = Counter(products)
-    total_price = 0
+    # Get or create customer
+    customer, _ = Customers.objects.get_or_create(id=customer_id)
+
+    # Use one order per customer (your requirement)
+    order, _ = Order.objects.get_or_create(customer=customer, defaults={"price": 0})
+
+    # Determine happy hour
     happy_hour_active = HappyHour.objects.first().status if HappyHour.objects.exists() else False
-    total_price = 0
 
+    # Process each product in the incoming batch
     for product_id, quantity in counter.items():
-        product = Product.objects.get(id=product_id)
-        
-        # Decide which price to use
+        if quantity <= 0:
+            continue
+        try:
+            product = Product.objects.get(id=product_id)
+        except Product.DoesNotExist:
+            return JsonResponse({"status": "error", "message": f"Produkt {product_id} existiert nicht"}, status=400)
+
         price_to_use = product.happy_hour_price if happy_hour_active else product.price
 
-        # Create or update OrderItem with price_at_order
-        order_item, created_item = OrderItem.objects.get_or_create(
+        # Create new OrderItem if missing, otherwise add quantity WITHOUT changing existing price_at_order
+        order_item, created = OrderItem.objects.get_or_create(
             order=order,
             product=product,
             defaults={
                 "quantity": quantity,
-                "price_at_order": price_to_use  # store the correct price now
+                "price_at_order": price_to_use
             }
         )
-        
-        if not created_item:
+        if not created:
+            # only add the new quantity; DO NOT overwrite price_at_order (keep the original price)
             order_item.quantity += quantity
-            order_item.price_at_order = price_to_use  # update price if needed
             order_item.save()
 
-        # Add to total
-        total_price += price_to_use * quantity
-
-    # Save total price in Order
-    order.price = total_price
+    # Recalculate the full total from all order items (safe and authoritative)
+    full_total = sum(item.total for item in order.orderitem_set.all())
+    order.price = full_total
     order.save()
 
-
-    log(f'The User account of {request.user.username} sent an order with customer id {customer_id} and products {products}')
+    # Logging / notifications (kept as in your original flow)
+    try:
+        username = request.user.username
+    except Exception:
+        username = "anonymous"
+    log(f'The User account of {username} sent an order with customer id {customer_id} and products {dict(counter)}')
     announce_order_update()
+
     channel_layer = get_channel_layer()
     orders_data = [
         {
@@ -365,21 +408,22 @@ def SendOrder(request):
         for o in Order.objects.all()
     ]
 
-    current_income = sum(o.price for o in Order.objects.all())
+    current_income = float(sum(o.price for o in Order.objects.all()))
 
     async_to_sync(channel_layer.group_send)(
         "pay_room",
         {
             "type": "new_order",
             "orders": orders_data,
-            "income": float(current_income),
+            "income": current_income,
         }
     )
 
     send_orders_update()
-    print(f"[VIEW] Sending order update for customer {order.customer.id}")
     send_order_customer_update(order)
-    return JsonResponse({"status": "ok", "order_id": order.id, "total": order.price})
+
+    return JsonResponse({"status": "ok", "order_id": order.id, "total": float(order.price)})
+
 
 def cash_register(request):
     if not request.user.is_staff:

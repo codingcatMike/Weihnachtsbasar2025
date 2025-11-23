@@ -1,0 +1,28 @@
+Log file for 2025-11-20
+Created at: 2025-11-20 09:00:41.513788
+Device : posix
+[Info]  accessed / page --at-- 2025-11-20 09:00:46.737986
+[Info]  accessed / page --at-- 2025-11-20 09:00:58.599483
+[Info]  accessed / page --at-- 2025-11-20 09:01:11.863338
+[Info] main accessed / page --at-- 2025-11-20 09:32:27.990417
+[Info] main accessed / page --at-- 2025-11-20 09:32:38.645872
+[Info] main accessed https://www.google.com/ page --at-- 2025-11-20 09:32:48.906347
+[Info] main accessed / page --at-- 2025-11-20 09:33:29.237467
+[Info] main accessed / page --at-- 2025-11-20 11:39:36.254794
+[Info] main accessed / page --at-- 2025-11-20 11:57:32.177122
+[Info] main accessed / page --at-- 2025-11-20 11:57:34.582011
+[Info]  accessed / page --at-- 2025-11-20 12:04:42.267169
+[Info]  accessed / page --at-- 2025-11-20 12:04:45.393774
+[Info]  accessed / page --at-- 2025-11-20 12:04:55.956682
+[Info]  accessed / page --at-- 2025-11-20 12:05:09.073968
+[Info]  accessed / page --at-- 2025-11-20 12:06:43.586987
+[Info]  accessed / page --at-- 2025-11-20 17:21:10.600410
+[Info]  accessed / page --at-- 2025-11-20 17:36:55.358189
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-20 17:36:59.134308
+[Info]  accessed / page --at-- 2025-11-20 17:38:46.298827
+[Info]  accessed / page --at-- 2025-11-20 17:38:51.503006
+[Info]  accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-20 17:38:53.791305
+[Info]  accessed / page --at-- 2025-11-20 17:38:54.954871
+[Info]  accessed / page --at-- 2025-11-20 17:38:55.314685
+[Info]  accessed / page --at-- 2025-11-20 17:38:55.734916
+[Info]  accessed / page --at-- 2025-11-20 20:36:59.155440

@@ -33,3 +33,8 @@ Device : posix
 [Info]  accessed https://www.google.com/ page --at-- 2025-11-18 12:37:40.721814
 [Info]  accessed / page --at-- 2025-11-18 15:20:11.702508
 [Info]  accessed / page --at-- 2025-11-18 15:46:05.954455
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-18 16:15:01.813835
+[Info] main accessed / page --at-- 2025-11-18 16:24:49.486457
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-18 16:24:51.409739
+[Info]  accessed / page --at-- 2025-11-18 19:41:46.481848
+[Info]  accessed / page --at-- 2025-11-18 20:28:39.212304

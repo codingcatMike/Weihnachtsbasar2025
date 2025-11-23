@@ -1,0 +1,51 @@
+Log file for 2025-11-22
+Created at: 2025-11-22 02:29:29.118825
+Device : posix
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:29:43.645508
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:29:43.887374
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:29:44.074069
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:29:44.331113
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:29:44.416526
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:29:46.001847
+[Info] main accessed https://www.webdevcode.de/accounts/login/ page --at-- 2025-11-22 02:29:59.775109
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:30:05.379381
+[Info] main accessed https://www.webdevcode.de/Shop/19/settings/ page --at-- 2025-11-22 02:31:24.736789
+[Info] main accessed https://www.webdevcode.de/Shop/19/ page --at-- 2025-11-22 02:31:27.977679
+[Info] main accessed https://www.webdevcode.de/Shop/19/settings/ page --at-- 2025-11-22 02:31:42.023137
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:32:36.921259
+[Info] main accessed https://www.webdevcode.de/pay/ page --at-- 2025-11-22 02:33:35.160281
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:33:35.674338
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:34:21.883545
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:34:22.285649
+[Info] main accessed https://www.webdevcode.de/Shop/19/settings/ page --at-- 2025-11-22 02:34:47.975881
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:35:20.888617
+[Info] The User account of main sent an order with customer id 67 and products [22, 22, 22, 22, 22, 22] --at-- 2025-11-22 02:35:21.284249
+[Info] main accessed https://www.webdevcode.de/Shop/19/ page --at-- 2025-11-22 02:35:21.408028
+[Info] The User account of main sent an order with customer id 67 and products [22] --at-- 2025-11-22 02:35:38.054260
+[Info] main accessed https://www.webdevcode.de/Shop/19/ page --at-- 2025-11-22 02:35:38.178438
+[Info] The User account of main sent an order with customer id 67 and products [22] --at-- 2025-11-22 02:35:40.070276
+[Info] main accessed https://www.webdevcode.de/Shop/19/ page --at-- 2025-11-22 02:35:41.913279
+[Info] main accessed https://www.webdevcode.de/Shop/19/settings/ page --at-- 2025-11-22 02:36:10.492920
+[Info] main accessed https://www.webdevcode.de/Shop/19/settings/ page --at-- 2025-11-22 02:36:12.411249
+[Info] The User account of main sent an order with customer id 67 and products [23] --at-- 2025-11-22 02:36:16.449966
+[Info] main accessed https://www.webdevcode.de/Shop/19/ page --at-- 2025-11-22 02:36:16.566206
+[Info] The User account of main sent an order with customer id 67 and products [22, 22, 22, 22, 22, 22] --at-- 2025-11-22 02:36:19.180326
+[Info] main accessed https://www.webdevcode.de/ page --at-- 2025-11-22 02:36:29.412649
+[Info]  accessed / page --at-- 2025-11-22 05:15:37.405383
+[Info]  accessed / page --at-- 2025-11-22 07:01:01.682474
+[Info]  accessed / page --at-- 2025-11-22 07:01:16.863971
+[Info]  accessed http://webdevcode.de:8880 page --at-- 2025-11-22 07:38:25.018404
+[Info]  accessed http://webdevcode.de:2086 page --at-- 2025-11-22 07:38:40.491836
+[Info]  accessed / page --at-- 2025-11-22 08:53:49.644105
+[Info]  accessed https://webdevcode.de/ page --at-- 2025-11-22 09:24:20.405184
+[Info]  accessed / page --at-- 2025-11-22 10:26:06.548916
+[Info]  accessed / page --at-- 2025-11-22 12:07:31.825934
+[Info]  accessed http://webdevcode.de:2052 page --at-- 2025-11-22 12:41:19.613564
+[Info]  accessed / page --at-- 2025-11-22 13:00:52.427802
+[Info] main accessed / page --at-- 2025-11-22 13:07:07.329885
+[Info]  accessed http://webdevcode.de:2095 page --at-- 2025-11-22 13:31:58.295438
+[Info]  accessed https://webdevcode.de:2053 page --at-- 2025-11-22 14:25:54.613097
+[Info]  accessed / page --at-- 2025-11-22 19:39:37.720381
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 19:39:41.670580
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 19:39:42.931518
+[Info]  accessed https://www.webdevcode.de/ page --at-- 2025-11-22 19:39:44.198381
